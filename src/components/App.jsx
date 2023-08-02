@@ -1,3 +1,5 @@
+import NewBoard from './NewBoard/NewBoard';
+
 export const App = () => {
   return (
     <div
@@ -41,6 +43,7 @@ export const App = () => {
           todo app
         </p>
       </div>
+      <NewBoard />
     </div>
   );
 };
