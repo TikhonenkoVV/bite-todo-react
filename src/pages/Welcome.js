@@ -1,13 +1,11 @@
 import hero1x from '../img/welcome-img-1x.png';
 import { useModal } from 'hooks/useModal';
-import {Modal} from 'components/Modal';
+import { Modal } from 'components/Modal';
 import Test from 'components/Test';
-
 
 const Welcome = () => {
   const { isModalOpen, closeModal, openModal } = useModal();
   return (
-    
     <div
       style={{
         height: '100vh',
@@ -37,11 +35,13 @@ const Welcome = () => {
       </div>
       <button type="button" onClick={openModal}>
         showModal
-      </button>   
-      {isModalOpen && <Modal onClose={closeModal}><Test onClose={closeModal} /></Modal>}   
+      </button>
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <Test onClose={closeModal} />
+        </Modal>
+      )}
     </div>
-    
-    
   );
 };
 
