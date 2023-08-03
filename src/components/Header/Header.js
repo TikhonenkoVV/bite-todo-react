@@ -16,6 +16,10 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+    height: 68px;
+  }
 `;
 
 const DivBtnStyle = styled.div`
@@ -37,7 +41,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleKeyPress = event => {
-      if (event.key === 'Escape' && menuActive) {
+      if (event.key === 'Escape' && menuActive && window.innerWidth <= 768) {
         setMenuActive(false);
       }
     };

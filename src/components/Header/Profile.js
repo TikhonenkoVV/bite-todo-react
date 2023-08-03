@@ -1,14 +1,34 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { Modal } from 'components/Modal';
+import { useModal } from 'hooks/useModal';
 
 import userdefaultimg from '../../img/Header/user.png';
 
+const DivInfoUserStyled = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
 const DivUserImgStyled = styled.div`
-  width: 68px;
-  height: 68px;
+  width: 32px;
+  height: 32px;
   border-radius: 8px;
   background-color: #1f1f1f;
   position: relative;
+`;
+
+const TextStyled = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+`;
+
+const LinkStyled = styled.a`
+  text-decoration: none;
+  cursor: pointer;
 `;
 
 const DivIconPlus = styled.div`
@@ -24,11 +44,21 @@ const DivIconPlus = styled.div`
 `;
 
 const Profile = () => {
+  const { isModalOpen, openModal, closeModal } = useModal();
+
+  const onClickModalOpen = () => {
+    openModal();
+  };
+
   return (
-    <div>
-      <DivUserImgStyled>
-        <img src={userdefaultimg} alt="userlogo" />
-        <DivIconPlus>
+    <>
+      <DivInfoUserStyled>
+        <TextStyled>Name</TextStyled>
+        <DivUserImgStyled>
+          <LinkStyled onClick={onClickModalOpen}>
+            <img width={32} height={32} src={userdefaultimg} alt="userlogo" />
+          </LinkStyled>
+          {/* <DivIconPlus>
           <svg
             width="10"
             height="10"
@@ -48,10 +78,12 @@ const Profile = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-          </svg>{' '}
-        </DivIconPlus>
-      </DivUserImgStyled>
-    </div>
+          </svg>  
+        </DivIconPlus> */}
+        </DivUserImgStyled>
+      </DivInfoUserStyled>
+      {isModalOpen && <Modal onClose={closeModal}></Modal>}
+    </>
   );
 };
 
