@@ -2,20 +2,59 @@ import React from 'react';
 import { Field } from 'formik';
 import styles from './NewBoard.module.css';
 
-const BackgroundRadioButton = ({ name, value }) => {
+import defaultImage from '../../img/modal/default.png';
+import flowersImage from '../../img/modal/flowers.png';
+import starsImage from '../../img/modal/stars.png';
+import sakuraImage from '../../img/modal/sakura.png';
+import nightImage from '../../img/modal/night.png';
+import fernImage from '../../img/modal/fern.png';
+import cloudsImage from '../../img/modal/clouds.png';
+import rockImage from '../../img/modal/rock.png';
+import circleImage from '../../img/modal/circle.png';
+import moonImage from '../../img/modal/moon.png';
+import yachtImage from '../../img/modal/yacht.png';
+import balloonImage from '../../img/modal/balloon.png';
+import canyonImage from '../../img/modal/canyon.png';
+import coastImage from '../../img/modal/coast.png';
+import balloonsImage from '../../img/modal/balloons.png';
+import auroraImage from '../../img/modal/aurora.png';
+
+const backgroundImages = [
+  { value: 'default', image: defaultImage },
+  { value: 'flowers', image: flowersImage },
+  { value: 'stars', image: starsImage },
+  { value: 'sakura', image: sakuraImage },
+  { value: 'night', image: nightImage },
+  { value: 'fern', image: fernImage },
+  { value: 'clouds', image: cloudsImage },
+  { value: 'rock', image: rockImage },
+  { value: 'circle', image: circleImage },
+  { value: 'moon', image: moonImage },
+  { value: 'yacht', image: yachtImage },
+  { value: 'balloon', image: balloonImage },
+  { value: 'canyon', image: canyonImage },
+  { value: 'coast', image: coastImage },
+  { value: 'balloons', image: balloonsImage },
+  { value: 'aurora', image: auroraImage },
+];
+
+const BackgroundRadioButton = ({ value }) => {
+  const selectedImage = backgroundImages.find(
+    imageObj => imageObj.value === value
+  );
+
   return (
     <label className={styles.customRadioBackground}>
       <Field
         type="radio"
-        name={name}
+        name="background"
         className={styles.visuallyHidden}
         value={value}
         required
       />
-      <div
-        className={`${styles.customRadio} ${styles.customBackground}`}
-        style={{ backgroundColor: value }}
-      />
+      <div className={`${styles.customBackground}`}>
+        <img src={selectedImage.image} alt={value} className={styles.img} />
+      </div>
     </label>
   );
 };

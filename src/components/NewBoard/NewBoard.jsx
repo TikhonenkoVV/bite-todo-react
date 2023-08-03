@@ -8,8 +8,8 @@ import IconRadioButton from './IconRadioButton';
 import BackgroundRadioButton from './BackgroundRadioButton';
 
 const iconNames = ['square', 'circle', 'rectangle'];
-const backgroundColors = ['#FF5733', '#33FF57', '#5733FF', '#33FFFF'];
-const backgroundiImages = [
+
+const backgroundImages = [
   'default',
   'flowers',
   'stars',
@@ -48,7 +48,7 @@ const NewBoard = () => {
       }}
     >
       {formik => (
-        <Form>
+        <Form className={styles.form}>
           <h2>New board</h2>
           <div>
             <label>
@@ -65,11 +65,11 @@ const NewBoard = () => {
 
           <p>Background</p>
           <div className={styles.radioBox}>
-            {backgroundColors.map((color, index) => (
+            {backgroundImages.map((image) => (
               <BackgroundRadioButton
-                key={index}
+                key={image}
                 name="background"
-                value={color}
+                value={image}
               />
             ))}
           </div>
