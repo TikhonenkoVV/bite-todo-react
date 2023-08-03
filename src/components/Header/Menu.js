@@ -7,7 +7,6 @@ const Menu = ({ active, setActive }) => {
       className={active ? 'menu active' : 'menu'}
       onClick={() => setActive(false)}
     >
-      <div className="blur"></div>
       <div className="menu__content" onClick={e => e.stopPropagation()}>
         {/* CONTENT SIDE BAR */}
       </div>
