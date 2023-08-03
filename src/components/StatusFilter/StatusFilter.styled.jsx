@@ -50,6 +50,9 @@ export const StatusFilterShowAll = styled.p`
   letter-spacing: -0.24px;
   text-decoration-line: underline;
   color: ${props => (props.selected ? '#fff' : 'rgba(255, 255, 255, 0.5)')};
+  &:hover {
+    color: #fff;
+  }
 `;
 
 export const CloseButton = styled.div`
