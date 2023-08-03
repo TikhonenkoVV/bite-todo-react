@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const DivStyled = styled.div`
   width: 68px;
@@ -76,20 +76,34 @@ const ThemeSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleThemeChange = event => {
+    event.stopPropagation();
     setTheme(event.target.innerText);
     setIsOpen(false);
   };
 
-  const handleClick = () => {
+  const handleClick = event => {
+    event.stopPropagation();
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    const closeMenuOnClickOutside = event => {
+      setIsOpen(false);
+    };
+
+    window.addEventListener('click', closeMenuOnClickOutside);
+
+    return () => {
+      window.removeEventListener('click', closeMenuOnClickOutside);
+    };
+  }, []);
 
   return (
     <DivStyled>
       <BtnSelectStyled onClick={handleClick}>
         {theme === '' ? 'Theme' : theme}
       </BtnSelectStyled>
-      <DivListStyled isOpen={isOpen}>
+      <DivListStyled isOpen={isOpen} onClick={e => e.stopPropagation()}>
         <UlListStyled>
           <LiStyled onClick={handleThemeChange}>Light</LiStyled>
           <LiStyled onClick={handleThemeChange}>Dark</LiStyled>
