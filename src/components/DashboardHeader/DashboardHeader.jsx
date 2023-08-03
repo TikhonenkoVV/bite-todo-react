@@ -2,21 +2,30 @@ import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
 import StatusFilter from 'components/StatusFilter';
 
-import css from './DashboardHeader.module.css';
+import {
+  TestDashboard,
+  DashboardHeaderContainer,
+  DashboardHeaderFilter,
+  DashboardHeaderIcon,
+  DashboardHeaderText,
+  DashboardHeaderTitle,
+} from './DashboardHeader.styled';
 
 const DashboardHeader = () => {
   const { isModalOpen, closeModal, openModal } = useModal();
   return (
     <>
-      <div className={css.testDashboard}>
-        <div className={css.container}>
-          <h2 className={css.dashboardTitle}>Board name</h2>
-          <div className={css.dashboardFilter} onClick={openModal}>
-            <div className={css.filterIcon}></div>
-            <p className={css.filterText}>Fiter</p>
-          </div>
-        </div>
-      </div>
+      <TestDashboard>
+        <DashboardHeaderContainer>
+          <DashboardHeaderTitle>Board name</DashboardHeaderTitle>
+
+          <DashboardHeaderFilter onClick={openModal}>
+            <DashboardHeaderIcon></DashboardHeaderIcon>
+            <DashboardHeaderText>Fiter</DashboardHeaderText>
+          </DashboardHeaderFilter>
+        </DashboardHeaderContainer>
+      </TestDashboard>
+
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <StatusFilter onClose={closeModal}></StatusFilter>

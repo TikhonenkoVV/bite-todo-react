@@ -1,4 +1,6 @@
-.testDashboard {
+import styled from '@emotion/styled';
+
+export const TestDashboard = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -7,37 +9,37 @@
   height: 100px;
   background-color: tomato;
   padding: 14px 20px;
-}
+`;
 
-.container {
+export const DashboardHeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   outline: 1px solid #fff;
-}
+`;
 
-.dashboardTitle {
+export const DashboardHeaderTitle = styled.h2`
   margin: 0;
   padding: 0;
-}
+`;
 
-.dashboardFilter {
+export const DashboardHeaderFilter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
   padding: 0;
   cursor: pointer;
-}
+`;
 
-.filterIcon {
+export const DashboardHeaderIcon = styled.div`
   width: 16px;
   height: 16px;
   background-color: #fff;
   margin-right: 8px;
-}
+`;
 
-.filterText {
+export const DashboardHeaderText = styled.p`
   margin: 0;
   padding: 0;
 
@@ -48,4 +50,4 @@
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-}
+`;
