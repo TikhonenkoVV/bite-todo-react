@@ -14,7 +14,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter basename="/bite-todo-react">
-          <App />
+          <ThemeProvider theme={theme}>
+            <Global styles={GlobalStyles } />
+            <App />
+          </ThemeProvider>
         </BrowserRouter>
       </PersistGate>
     </Provider>
