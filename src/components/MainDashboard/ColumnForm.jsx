@@ -8,7 +8,7 @@ import {
   FormInput,
 } from './ColumnForm.styled';
 
-const ColumnForm = isEditMode => {
+export const ColumnForm = isEditMode => {
   const title = isEditMode ? 'Edit column' : 'Add column';
   const handleSubmit = () => {};
   return (
@@ -30,5 +30,3 @@ const ColumnForm = isEditMode => {
     </FormContainer>
   );
 };
-
-export default ColumnForm;

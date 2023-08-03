@@ -1,18 +1,31 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
+// import { theme } from 'styles/theme';
 
-export const FormTitle = styled.p``;
+export const FormTitle = styled.p`
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.36px;
+  color: #161616;
+`;
 
 export const FormContainer = styled.div`
-  width: 350px;
+  position: relative;
+  max-width: 335px;
   height: 221px;
   padding: 24px;
   border-radius: 8px;
   background: #fcfcfc;
+  @media (min-width: 375px) {
+    min-width: 350px;
+  }
 `;
 
 export const FormInput = styled(Field)`
   padding: 14px 18px;
+  width: 100%;
+  height: 49px;
   font-size: 14px;
   font-weight: 400;
   color: #161616;
@@ -30,6 +43,27 @@ export const FormInput = styled(Field)`
   }
 `;
 
-export const CloseButton = styled.button``;
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  outline: 1px solid red;
+`;
 
-export const AddButton = styled.button``;
+export const AddButton = styled.button`
+  display: block;
+  width: 100%;
+  height: 49px;
+  padding: 10px 0px 11px 0px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  color: #161616;
+  border-radius: 8px;
+  background: #bedbb0;
+  &:hover,
+  &:focus {
+    background: #9dc888;
+  }
+`;
