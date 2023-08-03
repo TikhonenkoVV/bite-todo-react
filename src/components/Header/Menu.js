@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-// import './Menu.css';
+import React from 'react';
 import styled from '@emotion/styled';
 
 const DivBtnBurgerMenuSyled = styled.div`
