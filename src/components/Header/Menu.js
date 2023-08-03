@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Sidebar } from 'components/Sidebar/Sidebar';
 
 const DivBtnBurgerMenuSyled = styled.div`
   @media screen and (max-width: 768px) {
@@ -54,6 +55,7 @@ const Menu = ({ active, setActive }) => {
       onClick={() => setActive(false)}
     >
       <DivSideBarContentStyled onClick={e => e.stopPropagation()}>
+        <Sidebar />
         {/* CONTENT SIDE BAR */}
       </DivSideBarContentStyled>
     </DivBtnBurgerMenuSyled>
