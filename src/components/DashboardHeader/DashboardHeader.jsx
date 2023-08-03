@@ -4,7 +4,6 @@ import StatusFilter from 'components/StatusFilter';
 
 import {
   TestDashboard,
-  DashboardHeaderContainer,
   DashboardHeaderFilter,
   DashboardHeaderIcon,
   DashboardHeaderText,
@@ -16,14 +15,12 @@ const DashboardHeader = ({ name = 'Test dashboard' }) => {
   return (
     <>
       <TestDashboard>
-        <DashboardHeaderContainer>
-          <DashboardHeaderTitle>{name}</DashboardHeaderTitle>
+        <DashboardHeaderTitle>{name}</DashboardHeaderTitle>
 
-          <DashboardHeaderFilter onClick={openModal}>
-            <DashboardHeaderIcon />
-            <DashboardHeaderText>Fiter</DashboardHeaderText>
-          </DashboardHeaderFilter>
-        </DashboardHeaderContainer>
+        <DashboardHeaderFilter onClick={openModal}>
+          <DashboardHeaderIcon />
+          <DashboardHeaderText>Filters</DashboardHeaderText>
+        </DashboardHeaderFilter>
       </TestDashboard>
 
       {isModalOpen && (
