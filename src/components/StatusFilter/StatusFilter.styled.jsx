@@ -17,7 +17,6 @@ export const StatusFilterMainText = styled.p`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.36px;
-  margin: 0;
   width: 100%;
   padding-bottom: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -39,7 +38,6 @@ export const StatusFilterLabel = styled.p`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  margin: 0;
 `;
 
 export const StatusFilterShowAll = styled.p`
@@ -51,7 +49,6 @@ export const StatusFilterShowAll = styled.p`
   line-height: normal;
   letter-spacing: -0.24px;
   text-decoration-line: underline;
-  margin: 0;
   color: ${props => (props.selected ? '#fff' : 'rgba(255, 255, 255, 0.5)')};
 `;
 

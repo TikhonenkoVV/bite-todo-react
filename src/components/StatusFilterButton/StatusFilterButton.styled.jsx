@@ -4,7 +4,6 @@ export const FilterButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
   background-color: transparent;
   border: none;
   outline: none;
@@ -24,9 +23,6 @@ export const FilterIcon = styled.div`
 `;
 
 export const FilterText = styled.p`
-  margin: 0;
-  padding: 0;
-
   font-family: Poppins;
   font-size: 12px;
   font-style: normal;
