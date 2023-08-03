@@ -1,31 +1,37 @@
-.customRadio {
-    position: relative;
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid #000; 
-  }
-  
-  .customRadio::after {
-    content: "";
-    position: absolute;
-    top: 2px; 
-    left: 2px; 
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #000; 
-    opacity: 0; 
-  }
-  
-   .customRadio input[type="radio"]:checked + .customRadio::after {
-    opacity: 1; 
-  }
-  
+.radioBox {
+  display: flex;
+  gap: 30px;
+}
 
-  .customBackground {
-    margin-left: 10px;
-    width: 20px;
-    height: 20px;
-  }
+.customRadioIcon {
+  position: relative;
+  display: block;
+}
+
+.customRadioIcon input[type="radio"]:checked + .icon {
+  color: red; 
+}
+
+.customBackground {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.customRadioBackground input[type="radio"]:checked + .customBackground {
+ border: 2px solid black;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
