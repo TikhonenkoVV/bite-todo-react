@@ -5,6 +5,7 @@ import {
   FormContainer,
   CloseButton,
   AddButton,
+  FormInput,
 } from './ColumnForm.styled';
 
 const ColumnForm = isEditMode => {
@@ -21,7 +22,7 @@ const ColumnForm = isEditMode => {
         onSubmit={handleSubmit}
       >
         <Form>
-          <Field id="title" name="title" placeholder="Title" />
+          <FormInput id="title" name="title" placeholder="Title" />
 
           <AddButton type="submit">Add</AddButton>
         </Form>
