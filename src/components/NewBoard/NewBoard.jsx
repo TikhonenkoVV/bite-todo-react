@@ -3,11 +3,30 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import styles from './NewBoard.module.css';
+import IconRadioButton from './IconRadioButton';
+import BackgroundRadioButton from './BackgroundRadioButton';
 
 const iconNames = ['square', 'circle', 'rectangle'];
 const backgroundColors = ['#FF5733', '#33FF57', '#5733FF', '#33FFFF'];
+const backgroundiImages = [
+  'default',
+  'flowers',
+  'stars',
+  'sakura',
+  'night',
+  'fern',
+  'clouds',
+  'rock',
+  'circle',
+  'moon',
+  'yacht',
+  'balloon',
+  'canyon',
+  'coast',
+  'balloons',
+  'aurora',
+];
 
 const NewBoard = () => {
   const validationSchema = Yup.object().shape({
@@ -30,6 +49,7 @@ const NewBoard = () => {
     >
       {formik => (
         <Form>
+          <h2>New board</h2>
           <div>
             <label>
               <Field type="text" name="title" placeholder="Title" />
@@ -39,35 +59,18 @@ const NewBoard = () => {
           <p>Icons</p>
           <div className={styles.radioBox}>
             {iconNames.map(iconName => (
-              <label key={iconName} className={styles.customRadioIcon}>
-                <Field
-                  type="radio"
-                  name="icon"
-                  value={iconName}
-                  className={styles.visuallyHidden}
-                  required
-                />
-                <span className={styles.icon}>{iconName}</span>
-              </label>
+              <IconRadioButton key={iconName} name="icon" value={iconName} />
             ))}
           </div>
 
           <p>Background</p>
           <div className={styles.radioBox}>
             {backgroundColors.map((color, index) => (
-              <label key={index} className={styles.customRadioBackground}>
-                <Field
-                  type="radio"
-                  name="background"
-                  className={styles.visuallyHidden}
-                  value={color}
-                  required
-                />
-                <div
-                  className={`${styles.customRadio} ${styles.customBackground}`}
-                  style={{ backgroundColor: color }}
-                />
-              </label>
+              <BackgroundRadioButton
+                key={index}
+                name="background"
+                value={color}
+              />
             ))}
           </div>
 
