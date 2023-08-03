@@ -4,6 +4,7 @@ import { Modal } from 'components/Modal';
 import { useModal } from 'hooks/useModal';
 
 import userdefaultimg from '../../img/Header/user.png';
+import EditProfile from './EditProfile';
 
 const DivInfoUserStyled = styled.div`
   display: flex;
@@ -82,7 +83,11 @@ const Profile = () => {
         </DivIconPlus> */}
         </DivUserImgStyled>
       </DivInfoUserStyled>
-      {isModalOpen && <Modal onClose={closeModal}></Modal>}
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <EditProfile />
+        </Modal>
+      )}
     </>
   );
 };
