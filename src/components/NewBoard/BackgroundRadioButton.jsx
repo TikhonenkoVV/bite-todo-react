@@ -1,6 +1,5 @@
 import React from 'react';
-import { Field } from 'formik';
-import styles from './NewBoard.module.css';
+import { RadioButton, RadioImg } from './NewBoard.styled';
 
 import defaultImage from '../../img/modal/default.png';
 import flowersImage from '../../img/modal/flowers.png';
@@ -44,17 +43,9 @@ const BackgroundRadioButton = ({ value }) => {
   );
 
   return (
-    <label className={styles.customRadioBackground}>
-      <Field
-        type="radio"
-        name="background"
-        className={styles.visuallyHidden}
-        value={value}
-        required
-      />
-      <div className={`${styles.customBackground}`}>
-        <img src={selectedImage.image} alt={value} className={styles.img} />
-      </div>
+    <label>
+      <RadioButton type="radio" name="background" value={value} />
+      <RadioImg src={selectedImage.image} alt={value} />
     </label>
   );
 };

@@ -1,14 +1,20 @@
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import React, { useState } from 'react';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import styles from './NewBoard.module.css';
 import IconRadioButton from './IconRadioButton';
 import BackgroundRadioButton from './BackgroundRadioButton';
+import {
+  Title,
+  FormBox,
+  FormInput,
+  Text,
+  RadioIconBox,
+  RadioBackgroundBox,
+} from './NewBoard.styled';
 
 const iconNames = ['square', 'circle', 'rectangle'];
-
 
 const backgroundImages = [
   'default',
@@ -29,7 +35,8 @@ const backgroundImages = [
   'aurora',
 ];
 
-const NewBoard = () => {
+const NewBoard = ({ onClick }) => {
+  
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
     icon: Yup.string().required('An icon must be selected'),
@@ -39,72 +46,72 @@ const NewBoard = () => {
   return (
     <Formik
       initialValues={{
-        icon: '',
+        icon: null,
         title: '',
-        background: '',
+        background: null,
       }}
       validationSchema={validationSchema}
       onSubmit={values => {
         console.log(values);
+        onClick();
       }}
     >
       {formik => (
-        <Form className={styles.form}>
-          <h2>New board</h2>
-          <div>
-            <label>
-              <Field type="text" name="title" placeholder="Title" />
-            </label>
-          </div>
+        <Form>
+          <FormBox>
+            <Title>New board</Title>
 
-          <p>Icons</p>
-          <div className={styles.radioBox}>
-            {iconNames.map(iconName => (
-              <IconRadioButton key={iconName} name="icon" value={iconName} />
-            ))}
-          </div>
+            <FormInput id="title" name="title" placeholder="Title" />
 
-          <p>Background</p>
-          <div className={styles.radioBox}>
-            {backgroundImages.map((image) => (
-              <BackgroundRadioButton
-                key={image}
-                name="background"
-                value={image}
-              />
-            ))}
-          </div>
+            <Text>Icons</Text>
+            <RadioIconBox>
+              {iconNames.map(iconName => (
+                <IconRadioButton key={iconName} name="icon" value={iconName} />
+              ))}
+            </RadioIconBox>
 
-          <button
-            type="submit"
-            onClick={() => {
-              if (Object.keys(formik.errors).length > 0) {
-                toast.error('Please fill out all the fields', {
-                  position: 'top-center',
-                  autoClose: 3000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                });
-              }
-            }}
-          >
-            Create
-          </button>
+            <Text>Background</Text>
+            <RadioBackgroundBox>
+              {backgroundImages.map(image => (
+                <BackgroundRadioButton
+                  key={image}
+                  name="background"
+                  value={image}
+                />
+              ))}
+            </RadioBackgroundBox>
 
-          <ToastContainer
-            position="top-center"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+            <button
+              type="submit"
+              onClick={() => {
+                if (Object.keys(formik.errors).length > 0) {
+                  toast.error('Please fill out all the fields', {
+                    position: 'top-center',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
+                }
+              }}
+            >
+              Create
+            </button>
+
+            <ToastContainer
+              position="top-center"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+          </FormBox>
         </Form>
       )}
     </Formik>

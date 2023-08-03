@@ -3,13 +3,15 @@
 }
 
 .radioBox {
-  display: flex;
+  display: block;
   gap: 30px;
+  flex-wrap: wrap;
 }
 
 .customRadioIcon {
   position: relative;
   display: block;
+
 }
 
 .customRadioIcon input[type="radio"]:checked + .icon {
@@ -17,12 +19,13 @@
 }
 
 .customBackground {
-  margin-left: 10px;
   border-radius: 25%; 
+  box-sizing: border-box;
+  border: 1px solid transparent;
 }
 
 .customRadioBackground input[type="radio"]:checked + .customBackground {
- border: 2px solid black;
+  border: 1px solid #BEDBB0;
 }
 
 .img {
