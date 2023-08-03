@@ -20,6 +20,7 @@ const DivIconPlus = styled.div`
   top: 54px;
   right: 22px;
   text-align: center;
+  cursor: pointer;
 `;
 
 const Profile = () => {
