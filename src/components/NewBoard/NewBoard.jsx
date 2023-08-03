@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
@@ -12,6 +13,7 @@ import {
   Text,
   RadioIconBox,
   RadioBackgroundBox,
+  CloseButton,
 } from './NewBoard.styled';
 
 const iconNames = ['square', 'circle', 'rectangle'];
@@ -36,7 +38,6 @@ const backgroundImages = [
 ];
 
 const NewBoard = ({ onClick }) => {
-  
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
     icon: Yup.string().required('An icon must be selected'),
@@ -59,6 +60,9 @@ const NewBoard = ({ onClick }) => {
       {formik => (
         <Form>
           <FormBox>
+            <CloseButton type="button" onClick={onClick}>
+              X
+            </CloseButton>
             <Title>New board</Title>
 
             <FormInput id="title" name="title" placeholder="Title" />
@@ -66,7 +70,12 @@ const NewBoard = ({ onClick }) => {
             <Text>Icons</Text>
             <RadioIconBox>
               {iconNames.map(iconName => (
-                <IconRadioButton key={iconName} name="icon" value={iconName} />
+                <IconRadioButton
+                  key={iconName}
+                  name="icon"
+                  value={iconName}
+                  checked={formik.values.icon === iconName}
+                />
               ))}
             </RadioIconBox>
 
@@ -77,6 +86,7 @@ const NewBoard = ({ onClick }) => {
                   key={image}
                   name="background"
                   value={image}
+                  checked={formik.values.background === image}
                 />
               ))}
             </RadioBackgroundBox>
@@ -116,6 +126,10 @@ const NewBoard = ({ onClick }) => {
       )}
     </Formik>
   );
+};
+
+NewBoard.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };
 
 export default NewBoard;

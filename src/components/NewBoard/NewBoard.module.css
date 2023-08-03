@@ -9,9 +9,9 @@
 }
 
 .customRadioIcon {
-  position: relative;
+  position: absolute;
   display: block;
-
+outline: none;
 }
 
 .customRadioIcon input[type="radio"]:checked + .icon {

@@ -2,18 +2,22 @@ import styled from '@emotion/styled';
 import { Field } from 'formik';
 
 export const FormBox = styled.div`
+  position: relative;
   box-sizing: border-box;
-  width: 350px;
+  max-width: 335px;
   color: #fff;
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.5);
   background: #151515;
   padding: 24px;
+  @media screen and (min-width: 768px) {
+    max-width: 350px;
+  }
 `;
 
 export const FormInput = styled(Field)`
   display: block;
-  width: 256px;
+  width: 100%;
   border-radius: 8px;
   border: 1px solid #bedbb0;
   opacity: 0.4;
@@ -27,6 +31,15 @@ export const FormInput = styled(Field)`
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.28px;
+  @media screen and (min-width: 768px) {
+    max-width: 302px;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid #bedbb0;
+    opacity: 1;
+  }
 `;
 
 export const Text = styled.p`
@@ -55,14 +68,13 @@ export const Title = styled.h2`
 export const RadioIconBox = styled.div`
   display: flex;
   gap: 8px;
-  opacity: 50%;
 `;
 
 export const RadioBackgroundBox = styled.div`
   display: flex;
   gap: 4px;
   flex-wrap: wrap;
-  width: 300px;
+  max-width: 260px;
   margin-bottom: 40px;
 `;
 
@@ -85,10 +97,17 @@ export const RadioImg = styled.img`
   width: 28px;
   border-radius: 25%;
   box-sizing: border-box;
-  border: 1px solid transparent;
+  border: ${props =>
+    props.checked ? '2px solid #BEDBB0' : '2px solid transparent'};
 `;
 
 export const RadioIcon = styled.label`
-  color: red;
-  
+  opacity: ${props => (props.checked ? '100%' : '50%')};
+  fill: ${props => (props.checked ? 'red' : '#fff')};
+`;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 14px;
+  right: 14px;
 `;

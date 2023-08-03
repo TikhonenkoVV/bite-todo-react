@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { RadioButton, RadioImg } from './NewBoard.styled';
 
 import defaultImage from '../../img/modal/default.png';
@@ -37,7 +38,7 @@ const backgroundImages = [
   { value: 'aurora', image: auroraImage },
 ];
 
-const BackgroundRadioButton = ({ value }) => {
+const BackgroundRadioButton = ({ value, checked }) => {
   const selectedImage = backgroundImages.find(
     imageObj => imageObj.value === value
   );
@@ -45,9 +46,14 @@ const BackgroundRadioButton = ({ value }) => {
   return (
     <label>
       <RadioButton type="radio" name="background" value={value} />
-      <RadioImg src={selectedImage.image} alt={value} />
+      <RadioImg src={selectedImage.image} alt={value} checked={checked}/>
     </label>
   );
+};
+
+BackgroundRadioButton.propTypes = {
+  value: PropTypes.string.isRequired, 
+  checked: PropTypes.bool.isRequired, 
 };
 
 export default BackgroundRadioButton;
