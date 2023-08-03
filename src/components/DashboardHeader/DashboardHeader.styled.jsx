@@ -38,7 +38,6 @@ export const DashboardHeaderText = styled.p`
   color: rgba(255, 255, 255, 0.8);
   font-family: Poppins;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;

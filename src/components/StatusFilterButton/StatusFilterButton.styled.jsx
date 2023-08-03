@@ -4,11 +4,12 @@ export const FilterButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: ${props => (props.selected ? '#fff' : ' rgba(255, 255, 255, 0.5)')};
+
   &:not(:last-of-type) {
-    margin: 0 0 8px 0;
+    margin-bottom: 8px;
   }
+
   &:hover {
     color: #fff;
   }
@@ -28,8 +29,8 @@ export const FilterIcon = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     border: 2px solid #000;
     opacity: ${props => (props.selected ? '1' : ' 0')};
@@ -39,7 +40,6 @@ export const FilterIcon = styled.div`
 export const FilterText = styled.p`
   font-family: Poppins;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.24px;

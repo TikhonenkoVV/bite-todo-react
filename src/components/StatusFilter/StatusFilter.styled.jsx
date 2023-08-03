@@ -13,7 +13,6 @@ export const StatusFilterMainText = styled.p`
   color: #fff;
   font-family: Poppins;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.36px;
@@ -34,7 +33,6 @@ export const StatusFilterLabel = styled.p`
   color: #fff;
   font-family: Poppins;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
@@ -44,12 +42,12 @@ export const StatusFilterShowAll = styled.p`
   cursor: pointer;
   font-family: Poppins;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.24px;
   text-decoration-line: underline;
   color: ${props => (props.selected ? '#fff' : 'rgba(255, 255, 255, 0.5)')};
+
   &:hover {
     color: #fff;
   }
@@ -57,6 +55,9 @@ export const StatusFilterShowAll = styled.p`
 
 export const CloseButton = styled.div`
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 18px;
   height: 18px;
   color: #fff;
