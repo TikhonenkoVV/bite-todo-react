@@ -5,19 +5,11 @@ export const TestDashboard = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 375px;
+  width: 100%;
   height: 200px;
   background-color: #1f1f1f;
   padding: 14px 20px;
 `;
-
-// export const DashboardHeaderContainer = styled.div`
-//   font-family: Poppins;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   outline: 1px solid #fff;
-// `;
 
 export const DashboardHeaderTitle = styled.h2`
   position: absolute;
