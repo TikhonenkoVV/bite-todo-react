@@ -31,7 +31,7 @@ const options = [
   },
 ];
 
-const StatusFilter = () => {
+const StatusFilter = ({ onClose }) => {
   const dispatch = useDispatch();
 
   const handleFilterChange = filter => dispatch(setStatusFilter(filter));
@@ -57,7 +57,7 @@ const StatusFilter = () => {
 
   return (
     <StatusFilterContainer>
-      <CloseButton>X</CloseButton>
+      <CloseButton onClick={() => onClose()}>X</CloseButton>
       <StatusFilterMainText>Filter</StatusFilterMainText>
       <StatusFilterBox>
         <StatusFilterLabel>Label color</StatusFilterLabel>
