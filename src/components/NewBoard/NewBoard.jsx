@@ -9,6 +9,7 @@ import BackgroundRadioButton from './BackgroundRadioButton';
 
 const iconNames = ['square', 'circle', 'rectangle'];
 
+
 const backgroundImages = [
   'default',
   'flowers',
