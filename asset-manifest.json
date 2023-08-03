@@ -1,16 +1,31 @@
 {
   "files": {
     "main.css": "/bite-todo-react/static/css/main.7acaea2f.css",
-    "main.js": "/bite-todo-react/static/js/main.19be0618.js",
+    "main.js": "/bite-todo-react/static/js/main.d7d46b7f.js",
     "static/js/826.fa04f6a8.chunk.js": "/bite-todo-react/static/js/826.fa04f6a8.chunk.js",
+    "static/media/Poppins-Regular.svg": "/bite-todo-react/static/media/Poppins-Regular.3383485fc42dbbbbb52d46dba5485b19.svg",
+    "static/media/Poppins-Medium.svg": "/bite-todo-react/static/media/Poppins-Medium.5dad75f36f319c00263514e7b196ac50.svg",
+    "static/media/Poppins-SemiBold.svg": "/bite-todo-react/static/media/Poppins-SemiBold.24b955c03495ee435e5d5bb09fbba11c.svg",
+    "static/media/Poppins-Regular.eot": "/bite-todo-react/static/media/Poppins-Regular.a20e7b73e43c593ea50d.eot",
+    "static/media/Poppins-Medium.eot": "/bite-todo-react/static/media/Poppins-Medium.cb7e9f5276b4ac8da8ee.eot",
+    "static/media/Poppins-SemiBold.eot": "/bite-todo-react/static/media/Poppins-SemiBold.f6cb6c2a55d055ae7171.eot",
+    "static/media/Poppins-Regular.ttf": "/bite-todo-react/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
+    "static/media/Poppins-Medium.ttf": "/bite-todo-react/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
+    "static/media/Poppins-SemiBold.ttf": "/bite-todo-react/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
+    "static/media/Poppins-Regular.woff": "/bite-todo-react/static/media/Poppins-Regular.387f9003f984ef1cec60.woff",
+    "static/media/Poppins-SemiBold.woff": "/bite-todo-react/static/media/Poppins-SemiBold.71da8e4f0d76b718897c.woff",
+    "static/media/Poppins-Medium.woff": "/bite-todo-react/static/media/Poppins-Medium.7e588a26bdac2428f240.woff",
+    "static/media/Poppins-Regular.woff2": "/bite-todo-react/static/media/Poppins-Regular.ad19729d6a0511212493.woff2",
+    "static/media/Poppins-SemiBold.woff2": "/bite-todo-react/static/media/Poppins-SemiBold.3c3f3613b59d581739fc.woff2",
+    "static/media/Poppins-Medium.woff2": "/bite-todo-react/static/media/Poppins-Medium.563f976db73ca07d8fc3.woff2",
     "static/media/welcome-img-1x.png": "/bite-todo-react/static/media/welcome-img-1x.47ac3097a0f12b998d37.png",
     "index.html": "/bite-todo-react/index.html",
     "main.7acaea2f.css.map": "/bite-todo-react/static/css/main.7acaea2f.css.map",
-    "main.19be0618.js.map": "/bite-todo-react/static/js/main.19be0618.js.map",
+    "main.d7d46b7f.js.map": "/bite-todo-react/static/js/main.d7d46b7f.js.map",
     "826.fa04f6a8.chunk.js.map": "/bite-todo-react/static/js/826.fa04f6a8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.19be0618.js"
+    "static/js/main.d7d46b7f.js"
   ]
 }
