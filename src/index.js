@@ -7,16 +7,14 @@ import { App } from 'components/App';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename='/bite-todo-react'>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <App />
+        <BrowserRouter basename="/bite-todo-react">
+          <App />
+        </BrowserRouter>
       </PersistGate>
     </Provider>
-    </BrowserRouter>
   </React.StrictMode>
 );
-
