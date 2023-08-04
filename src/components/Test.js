@@ -1,8 +1,24 @@
-export default function Test({ onClose}){
-    return (
-        <>
-        <h1>Hello</h1>
-        <button type="button" onClick={onClose}>Close Modal</button>
-        </>
-    )
+export default function Test({ onClose }) {
+  return (
+    <>
+      
+      <button type="button" onClick={onClose}>
+        Close Modal
+      </button>
+    </>
+  );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// import NewBoard from './NewBoard/NewBoard';
+// <NewBoard onClick={onClose} />;
