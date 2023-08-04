@@ -61,6 +61,16 @@ export const Input = styled.input`
   }
 `;
 
+export const InputWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 49px;
+  margin-top: 14px;
+`;
+
 export const Button = styled.button`
   display: flex;
   width: 344px;
@@ -83,8 +93,19 @@ export const Button = styled.button`
 `;
 
 export const Error = styled.p`
-  color:  #ED4337;
+  color: #ed4337;
   font-family: Poppins;
   font-size: 12px;
   margin-top: 8px;
+`;
+
+export const ShowButton = styled.button`
+  position: absolute;
+  right: 18px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
 `;

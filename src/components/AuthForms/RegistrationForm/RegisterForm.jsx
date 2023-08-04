@@ -3,16 +3,20 @@ import {
   AuthNavWrapper,
   Link,
   Input,
+  InputWrapper,
   Button,
   Error,
+  ShowButton,
 } from '../AuthForms.styled';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { register } from 'store/auth/operations';
+import { useState } from 'react';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
+  const [inputType, setInputType] = useState('password');
 
   const formik = useFormik({
     initialValues: {
@@ -38,6 +42,10 @@ const RegisterForm = () => {
     },
   });
 
+  const togglePasswordVisibility = () => {
+    inputType === 'password' ? setInputType('text') : setInputType('password');
+  };
+
   return (
     <Container>
       <AuthNavWrapper>
@@ -53,7 +61,9 @@ const RegisterForm = () => {
           onBlur={formik.handleBlur}
           placeholder="Enter your name"
         />
-        {formik.errors.name && formik.touched.name && <Error>{formik.errors.name}</Error>}
+        {formik.errors.name && formik.touched.name && (
+          <Error>{formik.errors.name}</Error>
+        )}
         <Input
           name="email"
           type="email"
@@ -62,16 +72,26 @@ const RegisterForm = () => {
           onBlur={formik.handleBlur}
           placeholder="Enter your email"
         />
-        {formik.errors.email && formik.touched.email && <Error>{formik.errors.email}</Error>}
-        <Input
-          name="password"
-          type="password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Create a password"
-        />
-        {formik.errors.password && formik.touched.password && <Error>{formik.errors.password}</Error>}
+        {formik.errors.email && formik.touched.email && (
+          <Error>{formik.errors.email}</Error>
+        )}
+        <InputWrapper>
+          <Input
+            name="password"
+            type={inputType}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            placeholder="Create a password"
+          />
+          <ShowButton
+            type="button"
+            onClick={togglePasswordVisibility}
+          ></ShowButton>
+        </InputWrapper>
+        {formik.errors.password && formik.touched.password && (
+          <Error>{formik.errors.password}</Error>
+        )}
         <Button type="submit">Register Now</Button>
       </form>
     </Container>

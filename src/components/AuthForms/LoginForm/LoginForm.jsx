@@ -3,6 +3,7 @@ import {
   AuthNavWrapper,
   Link,
   Input,
+  InputWrapper,
   Button,
   Error,
 } from '../AuthForms.styled';
@@ -51,14 +52,16 @@ const LoginForm = () => {
         {formik.errors.email && formik.touched.email && (
           <Error>{formik.errors.email}</Error>
         )}
-        <Input
-          name="password"
-          type="password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Confirm a password"
-        />
+        <InputWrapper>
+          <Input
+            name="password"
+            type="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            placeholder="Confirm a password"
+          />
+        </InputWrapper>
         {formik.errors.password && formik.touched.password && (
           <Error>{formik.errors.password}</Error>
         )}
