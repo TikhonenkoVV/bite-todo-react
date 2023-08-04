@@ -1,9 +1,9 @@
 import {
   ButtonStyled,
+  CodeStyled,
   DivStyled,
   PNeedHelpStyled,
   PStyled,
-  SpanStyled,
 } from './NeedHelp.styled';
 import flower from 'img/flower-min.jpg';
 
@@ -12,7 +12,7 @@ const NeedHelp = () => {
     <DivStyled>
       <img src={flower} alt="hero" />
       <PStyled>
-        If you need help with <SpanStyled>TaskPro</SpanStyled>, check out our
+        If you need help with <CodeStyled>TaskPro</CodeStyled>, check out our
         support resources or reach out to our customer support team.
       </PStyled>
       <ButtonStyled>
