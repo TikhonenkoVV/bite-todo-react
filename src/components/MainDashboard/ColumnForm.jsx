@@ -1,6 +1,9 @@
 import React from 'react';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import sprite from '../../img/icons/sprite.svg';
+import * as Yup from 'yup';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   FormTitle,
@@ -13,7 +16,7 @@ import {
   ColumnFormCloseIcon,
 } from './ColumnForm.styled';
 
-const ColumnForm = ({ isEditMode, onCloseForm }) => {
+export const ColumnForm = ({ isEditMode, onCloseForm }) => {
   const title = isEditMode ? 'Edit column' : 'Add column';
   const handleSubmit = () => {};
   return (
@@ -47,4 +50,4 @@ const ColumnForm = ({ isEditMode, onCloseForm }) => {
   );
 };
 
-export default ColumnForm;
+// export default ColumnForm;

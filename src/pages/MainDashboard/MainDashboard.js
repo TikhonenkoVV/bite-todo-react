@@ -1,6 +1,6 @@
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
-import ColumnForm from '../../components/MainDashboard';
+import { ColumnForm } from '../../components/MainDashboard';
 import sprite from '../../img/icons/sprite.svg';
 import {
   MainDashboardContainer,
