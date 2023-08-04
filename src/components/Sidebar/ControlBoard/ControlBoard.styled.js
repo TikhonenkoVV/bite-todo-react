@@ -48,3 +48,13 @@ export const ButtonStyled = styled.button`
 
   cursor: pointer;
 `;
+export const NavStyled = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  background-color: #bedbb0;
+
+  cursor: pointer;
+`;
