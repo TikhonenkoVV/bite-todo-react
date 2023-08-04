@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bite-todo-react/static/css/main.f2db3b31.css",
-    "main.js": "/bite-todo-react/static/js/main.4e02b6c6.js",
+    "main.js": "/bite-todo-react/static/js/main.d9a7ae76.js",
     "static/js/310.0e8012c7.chunk.js": "/bite-todo-react/static/js/310.0e8012c7.chunk.js",
     "static/media/Poppins-Regular.svg": "/bite-todo-react/static/media/Poppins-Regular.3383485fc42dbbbbb52d46dba5485b19.svg",
     "static/media/Poppins-Medium.svg": "/bite-todo-react/static/media/Poppins-Medium.5dad75f36f319c00263514e7b196ac50.svg",
@@ -22,11 +22,11 @@
     "static/media/welcome-img-1x.png": "/bite-todo-react/static/media/welcome-img-1x.47ac3097a0f12b998d37.png",
     "index.html": "/bite-todo-react/index.html",
     "main.f2db3b31.css.map": "/bite-todo-react/static/css/main.f2db3b31.css.map",
-    "main.4e02b6c6.js.map": "/bite-todo-react/static/js/main.4e02b6c6.js.map",
+    "main.d9a7ae76.js.map": "/bite-todo-react/static/js/main.d9a7ae76.js.map",
     "310.0e8012c7.chunk.js.map": "/bite-todo-react/static/js/310.0e8012c7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f2db3b31.css",
-    "static/js/main.4e02b6c6.js"
+    "static/js/main.d9a7ae76.js"
   ]
 }
