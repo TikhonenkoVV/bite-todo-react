@@ -1,13 +1,11 @@
 import { lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Layout from './Layout';
-import DashboardHeader from './DashboardHeader';
 
 const Welcome = lazy(() => import('../pages/Welcome'));
 
 export const App = () => {
   return (
-    // <DashboardHeader name={'fsdfsdfs'}></DashboardHeader>
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Welcome />} />

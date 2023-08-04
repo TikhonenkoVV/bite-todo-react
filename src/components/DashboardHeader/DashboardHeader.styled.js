@@ -54,10 +54,10 @@ export const DashboardHeaderFilter = styled.div`
   }
 `;
 
-export const DashboardHeaderIcon = styled.div`
+export const DashboardHeaderIcon = styled.svg`
   width: 16px;
   height: 16px;
-  background-color: rgba(255, 255, 255, 0.8);
+  fill: rgba(255, 255, 255, 0.8);
   margin-right: 8px;
 `;
 

@@ -53,7 +53,7 @@ export const StatusFilterShowAll = styled.p`
   }
 `;
 
-export const CloseButton = styled.div`
+export const CloseButton = styled.svg`
   position: absolute;
   display: flex;
   align-items: center;
@@ -64,4 +64,5 @@ export const CloseButton = styled.div`
   top: 14px;
   right: 14px;
   cursor: pointer;
+  fill: rgba(255, 255, 255, 1);
 `;

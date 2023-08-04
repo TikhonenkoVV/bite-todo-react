@@ -1,8 +1,11 @@
 import StatusFilterButton from 'components/StatusFilterButton';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { selectStatusFilter } from 'store/filter/selectors';
 import { statusFilters } from 'store/filter/constants';
 import { setStatusFilter } from 'store/filter/filterSlice';
+import sprite from '../../img/icons/sprite.svg';
+
 import {
   StatusFilterContainer,
   StatusFilterMainText,
@@ -53,11 +56,14 @@ const StatusFilter = ({ onClose }) => {
     }
   };
 
+  const path = '#icon-x-close';
   const filter = useSelector(selectStatusFilter);
 
   return (
     <StatusFilterContainer>
-      <CloseButton onClick={() => onClose()}>X</CloseButton>
+      <CloseButton onClick={() => onClose()}>
+        <use href={`${sprite}${path}`}></use>
+      </CloseButton>
       <StatusFilterMainText>Filter</StatusFilterMainText>
       <StatusFilterBox>
         <StatusFilterLabel>Label color</StatusFilterLabel>
@@ -82,6 +88,10 @@ const StatusFilter = ({ onClose }) => {
       ))}
     </StatusFilterContainer>
   );
+};
+
+StatusFilter.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };
 
 export default StatusFilter;
