@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import IconRadioButton from './IconRadioButton';
+import { PrimaryButton } from '../PrimaryButton/';
 import BackgroundRadioButton from './BackgroundRadioButton';
 import {
   Title,
@@ -14,6 +15,9 @@ import {
   RadioIconBox,
   RadioBackgroundBox,
   CloseButton,
+  ButtonBox,
+  SvgBox,
+  ButtonText,
 } from './NewBoard.styled';
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
@@ -49,7 +53,15 @@ const backgroundImages = [
 ];
 
 const NewBoard = ({ onClick }) => {
-  const scheme = 'violet';
+  const scheme = 'dark';
+  const buttonStyles = {
+    padding: '10px 0px 11px 0px',
+    borderRadius: '8px',
+    backgroundColor: scheme === 'violet' ? '#5255BC' : '#BEDBB0',
+    color: '#161616',
+    width: '100%',
+  };
+
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
     icon: Yup.string().required('An icon must be selected'),
@@ -76,14 +88,12 @@ const NewBoard = ({ onClick }) => {
               <Svg w={18} h={18} use={`${icons}#icon-x-close`} />
             </CloseButton>
             <Title scheme={scheme}>New board</Title>
-
             <FormInput
               id="title"
               name="title"
               placeholder="Title"
               scheme={scheme}
             />
-
             <Text scheme={scheme}>Icons</Text>
             <RadioIconBox>
               {iconNames.map(iconName => (
@@ -96,7 +106,6 @@ const NewBoard = ({ onClick }) => {
                 />
               ))}
             </RadioIconBox>
-
             <Text scheme={scheme}>Background</Text>
             <RadioBackgroundBox>
               {backgroundImages.map(image => (
@@ -109,37 +118,22 @@ const NewBoard = ({ onClick }) => {
                 />
               ))}
             </RadioBackgroundBox>
-
-            <button
+            <PrimaryButton
               type="submit"
+              styles={buttonStyles}
               onClick={() => {
                 if (Object.keys(formik.errors).length > 0) {
-                  toast.error('Please fill out all the fields', {
-                    position: 'top-center',
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                  });
+                  toast.error('Please fill out all the fields');
                 }
               }}
             >
-              Create
-            </button>
-
-            <ToastContainer
-              position="top-center"
-              autoClose={2000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-            />
+              <ButtonBox>
+                <SvgBox scheme={scheme}>
+                  <Svg w={14} h={14} use={`${icons}#icon-plus`} />
+                </SvgBox>
+                <ButtonText scheme={scheme}>Create </ButtonText>
+              </ButtonBox>
+            </PrimaryButton>
           </FormBox>
         </Form>
       )}

@@ -119,3 +119,25 @@ export const CloseButton = styled.button`
   top: 14px;
   right: 14px;
 `;
+
+export const ButtonBox = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: ${props => (props.scheme === 'violet' ? '#FFF' : '#161616')};
+`;
+
+export const SvgBox = styled.div`
+  display: flex;
+  align-items: center;
+  border-radius: 25%;
+  padding: 7px;
+  background: ${props =>
+    props.scheme === 'violet' ? 'rgba(255, 255, 255, 1)' : '#161616'};
+  color: ${props =>
+    props.scheme === 'violet' ? '#161616' : 'rgba(255, 255, 255, 1)'};
+`;
+
+export const ButtonText = styled.p`
+  color: ${props => (props.scheme === 'violet' ? '#FFF' : '#161616')};
+`;
