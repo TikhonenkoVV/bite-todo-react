@@ -1,6 +1,7 @@
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
 import { ColumnForm } from '../../components/MainDashboard';
+import { ColumnList } from '../../components/MainDashboard/ColunmList';
 import sprite from '../../img/icons/sprite.svg';
 import {
   MainDashboardContainer,
@@ -26,6 +27,7 @@ const MainDashboard = () => {
           <MainDashboardSectionTitle>
             Columns with tasks
           </MainDashboardSectionTitle>
+          <ColumnList />
           <MainDashboardAddColumnButton type="button" onClick={openModal}>
             {/* <MainDashboardIconHolder>
 
