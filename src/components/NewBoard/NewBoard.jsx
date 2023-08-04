@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import IconRadioButton from './IconRadioButton';
+import { PrimaryButton } from '../PrimaryButton/';
 import BackgroundRadioButton from './BackgroundRadioButton';
 import {
   Title,
@@ -49,13 +50,12 @@ const backgroundImages = [
 ];
 
 const NewBoard = ({ onClick }) => {
-  const scheme = 'violet';
+  const scheme = 'dark';
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
     icon: Yup.string().required('An icon must be selected'),
     background: Yup.string().required('A background must be selected'),
   });
-
   return (
     <Formik
       initialValues={{
@@ -128,18 +128,6 @@ const NewBoard = ({ onClick }) => {
             >
               Create
             </button>
-
-            <ToastContainer
-              position="top-center"
-              autoClose={2000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-            />
           </FormBox>
         </Form>
       )}
