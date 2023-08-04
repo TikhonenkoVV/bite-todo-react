@@ -1,33 +1,14 @@
+import { Svg } from 'components/SvgIcon/SvgIcon';
 import { LinkStyled, PStyled } from './Logo.styled';
+import sprite from 'img/icons/sprite.svg';
 
-export const Logo = () => {
+const Logo = () => {
   return (
     <LinkStyled>
-      <svg width="32" height="32">
-        <use></use>
-        <path
-          d="M4 16H28"
-          stroke="white"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M4 8H28"
-          stroke="white"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M4 24H28"
-          stroke="white"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <Svg w={32} h={32} use={`${sprite}#icon-logo-flash-dark`} />
       <PStyled>Task Pro</PStyled>
     </LinkStyled>
   );
 };
+
+export default Logo;

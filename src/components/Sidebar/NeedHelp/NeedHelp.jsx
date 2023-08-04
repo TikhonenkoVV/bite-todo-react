@@ -7,7 +7,7 @@ import {
 } from './NeedHelp.styled';
 import flower from 'img/flower-min.jpg';
 
-export const NeedHelp = () => {
+const NeedHelp = () => {
   return (
     <DivStyled>
       <img src={flower} alt="hero" />
@@ -36,3 +36,5 @@ export const NeedHelp = () => {
     </DivStyled>
   );
 };
+
+export default NeedHelp;

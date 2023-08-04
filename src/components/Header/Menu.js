@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Sidebar } from 'components/Sidebar/Sidebar';
+import Sidebar from 'components/Sidebar';
 
 const DivBtnBurgerMenuSyled = styled.div`
   @media screen and (max-width: 768px) {

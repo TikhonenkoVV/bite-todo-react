@@ -1,9 +1,9 @@
-import { Logo } from './Logo/Logo';
-import { ControlBoard } from './ControlBoard/ControlBoard';
-import { NeedHelp } from './NeedHelp/NeedHelp';
-import { Logout } from './Logout/Logout';
+import Logo from './Logo';
+import ControlBoard from './ControlBoard';
+import NeedHelp from './NeedHelp';
+import Logout from './Logout';
 
-export const Sidebar = () => {
+const Sidebar = () => {
   return (
     <>
       <div>
@@ -17,3 +17,5 @@ export const Sidebar = () => {
     </>
   );
 };
+
+export default Sidebar;
