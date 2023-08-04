@@ -34,7 +34,7 @@ export const DashboardHeaderTitle = styled.h2`
   }
 `;
 
-export const DashboardHeaderFilter = styled.div`
+export const DashboardHeaderFilter = styled.button`
   position: absolute;
   top: 14px;
   right: 20px;
@@ -42,6 +42,8 @@ export const DashboardHeaderFilter = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (min-width: 768px) {
     top: 20px;
@@ -52,17 +54,21 @@ export const DashboardHeaderFilter = styled.div`
     top: 14px;
     right: 24px;
   }
+
+  &:hover,
+  &:focus {
+    color: #fff;
+  }
 `;
 
 export const DashboardHeaderIcon = styled.svg`
   width: 16px;
   height: 16px;
-  fill: rgba(255, 255, 255, 0.8);
+  fill: currentColor;
   margin-right: 8px;
 `;
 
 export const DashboardHeaderText = styled.p`
-  color: rgba(255, 255, 255, 0.8);
   font-family: Poppins;
   font-size: 14px;
   font-weight: 500;

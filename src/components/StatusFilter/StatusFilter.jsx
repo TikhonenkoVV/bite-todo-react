@@ -62,13 +62,16 @@ const StatusFilter = ({ onClose }) => {
   return (
     <StatusFilterContainer>
       <CloseButton onClick={() => onClose()}>
-        <use href={`${sprite}${path}`}></use>
+        <svg width={18} height={18}>
+          <use href={`${sprite}${path}`}></use>
+        </svg>
       </CloseButton>
       <StatusFilterMainText>Filter</StatusFilterMainText>
       <StatusFilterBox>
         <StatusFilterLabel>Label color</StatusFilterLabel>
 
         <StatusFilterShowAll
+          type="button"
           selected={filter === 'Show all'}
           onClick={() => onChangeFilterClick('Show all')}
         >

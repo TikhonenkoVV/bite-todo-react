@@ -20,7 +20,7 @@ const DashboardHeader = ({ name }) => {
       <TestDashboard>
         {name && <DashboardHeaderTitle>{name}</DashboardHeaderTitle>}
 
-        <DashboardHeaderFilter onClick={openModal}>
+        <DashboardHeaderFilter type="button" onClick={openModal}>
           <DashboardHeaderIcon>
             <use href={`${sprite}${path}`}></use>
           </DashboardHeaderIcon>

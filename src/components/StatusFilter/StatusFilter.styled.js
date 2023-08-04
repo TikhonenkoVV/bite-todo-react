@@ -38,7 +38,7 @@ export const StatusFilterLabel = styled.p`
   letter-spacing: -0.28px;
 `;
 
-export const StatusFilterShowAll = styled.p`
+export const StatusFilterShowAll = styled.button`
   cursor: pointer;
   font-family: Poppins;
   font-size: 12px;
@@ -47,22 +47,28 @@ export const StatusFilterShowAll = styled.p`
   letter-spacing: -0.24px;
   text-decoration-line: underline;
   color: ${props => (props.selected ? '#fff' : 'rgba(255, 255, 255, 0.5)')};
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #fff;
   }
 `;
 
-export const CloseButton = styled.svg`
+export const CloseButton = styled.button`
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
   color: #fff;
   top: 14px;
   right: 14px;
   cursor: pointer;
   fill: rgba(255, 255, 255, 1);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    fill: rgba(255, 255, 255, 0.5);
+  }
 `;

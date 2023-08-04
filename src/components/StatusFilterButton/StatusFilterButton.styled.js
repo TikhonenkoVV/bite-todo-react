@@ -5,12 +5,14 @@ export const FilterButton = styled.button`
   align-items: center;
   justify-content: center;
   color: ${props => (props.selected ? '#fff' : ' rgba(255, 255, 255, 0.5)')};
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:not(:last-of-type) {
     margin-bottom: 8px;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #fff;
   }
 `;
