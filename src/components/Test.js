@@ -1,24 +1,19 @@
+import { PrimaryButton } from './PrimaryButton';
+
+const styles = {
+  padding: '14px 130px',
+  backgroundColor: '#161616',
+  color: '#fff',
+  borderRadius: '8px',
+};
+
 export default function Test({ onClose }) {
   return (
     <>
-      
-      <button type="button" onClick={onClose}>
+      <h1>Hello</h1>
+      <PrimaryButton type="button" styles={styles} action={onClose}>
         Close Modal
-      </button>
+      </PrimaryButton>
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// import NewBoard from './NewBoard/NewBoard';
-// <NewBoard onClick={onClose} />;
