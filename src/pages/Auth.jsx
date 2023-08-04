@@ -1,7 +1,7 @@
-import LoginForm from 'components/AuthForms/LoginForm';
-import RegisterForm from 'components/AuthForms/RegistrationForm';
-import { useParams } from 'react-router-dom';
-
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { LoginForm } from 'components/AuthForms/LoginForm';
+import { RegisterForm } from 'components/AuthForms/RegisterForm';
 const REGISTER = 'register';
 const LOGIN = 'login';
 const bgdStyles = {
@@ -12,15 +12,34 @@ const bgdStyles = {
   position: 'relative',
 };
 
-const Auth = () => {
+export const Auth = () => {
   const { actionId } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  });
+
+  const handleKeyDown = e => {
+    if (e.code === 'Escape') {
+      navigate('/');
+    }
+  };
+
+  const handleBackdropClick = e => {
+    if (e.target === e.currentTarget) {
+      navigate('/');
+    }
+  };
 
   return (
-    <div style={bgdStyles}>
+    <div style={bgdStyles} onClick={handleBackdropClick}>
       {actionId === REGISTER && <RegisterForm />}
       {actionId === LOGIN && <LoginForm />}
     </div>
   );
 };
 
-export default Auth;

@@ -4,7 +4,7 @@ import Header from 'components/Header/Header';
 // import Header from '';
 // import Sidebar from '';
 
-const Layout = () => {
+export const Layout = () => {
   return (
     <>
       <Header />
@@ -15,5 +15,3 @@ const Layout = () => {
     </>
   );
 };
-
-export default Layout;

@@ -1,8 +1,8 @@
 // import { lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import Layout from './Layout';
+import { Layout } from './Layout/Layout';
 import Welcome from '../pages/Welcome';
-import Auth from '../pages/Auth';
+import { Auth } from '../pages/Auth';
 
 // const Home = lazy(() => import('../pages/Home'));
 
@@ -18,6 +18,5 @@ export const App = () => {
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
-
   );
 };
