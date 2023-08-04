@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Svg } from 'components/SvgIcon/SvgIcon';
 
 export const MainDashboardSection = styled.section`
   background: #1f1f1f;

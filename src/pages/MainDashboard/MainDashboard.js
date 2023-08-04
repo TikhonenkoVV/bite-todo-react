@@ -1,7 +1,6 @@
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
 import ColumnForm from '../../components/MainDashboard';
-import { Svg } from '../../components/SvgIcon/SvgIcon';
 import sprite from '../../img/icons/sprite.svg';
 import {
   MainDashboardContainer,
@@ -41,7 +40,7 @@ const MainDashboard = () => {
           </MainDashboardAddColumnButton>
           {isModalOpen && (
             <Modal onClose={closeModal}>
-              <ColumnForm />
+              <ColumnForm onCloseForm={closeModal} />
             </Modal>
           )}
         </MainDashboardContainer>
