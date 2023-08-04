@@ -1,5 +1,5 @@
 import { useModal } from 'hooks/useModal';
-import { Modal } from 'components/Modal';
+import { Modal } from 'components/Modal/Modal';
 import StatusFilter from 'components/StatusFilter';
 
 import {
