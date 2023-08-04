@@ -31,3 +31,21 @@ export const MainDashboardSectionTitle = styled.h2`
   clip: rect(0 0 0 0);
   overflow: hidden;
 `;
+
+export const MainDashboardAddColumnButton = styled.button`
+  display: block;
+  height: 49px;
+  padding: 10px 0px 11px 0px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  color: #161616;
+  border-radius: 8px;
+  background: #bedbb0;
+  &:hover,
+  &:focus {
+    background: #9dc888;
+  }
+`;

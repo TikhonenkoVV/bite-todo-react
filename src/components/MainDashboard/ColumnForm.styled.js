@@ -55,6 +55,7 @@ export const AddButton = styled.button`
   width: 100%;
   height: 49px;
   padding: 10px 0px 11px 0px;
+  font-family: Poppins;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;

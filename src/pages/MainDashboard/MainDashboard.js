@@ -1,10 +1,11 @@
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
-import { ColumnForm } from '../../components/MainDashboard';
+import ColumnForm from '../../components/MainDashboard';
 import {
   MainDashboardContainer,
   MainDashboardSection,
   MainDashboardSectionTitle,
+  MainDashboardAddColumnButton,
 } from './MainDashboard.styled';
 import DashboardHeader from 'components/DashboardHeader/DashboardHeader';
 
@@ -22,9 +23,9 @@ const MainDashboard = () => {
           <MainDashboardSectionTitle>
             Columns with tasks
           </MainDashboardSectionTitle>
-          <button type="button" onClick={openModal}>
+          <MainDashboardAddColumnButton type="button" onClick={openModal}>
             Add another column
-          </button>
+          </MainDashboardAddColumnButton>
           {isModalOpen && (
             <Modal onClose={closeModal}>
               <ColumnForm />
