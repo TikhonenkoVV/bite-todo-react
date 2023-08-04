@@ -8,7 +8,7 @@ export const FormBox = styled.div`
   color: #fff;
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.5);
-  background: #151515;
+  background: ${props => (props.scheme === 'dark' ? '#232323' : '#FDFDFD')};
   padding: 24px;
   @media screen and (min-width: 768px) {
     max-width: 350px;
@@ -21,10 +21,11 @@ export const FormInput = styled(Field)`
   border-radius: 8px;
   border: 1px solid #bedbb0;
   opacity: 0.4;
-  background: #1f1f1f;
+  background: ${props => (props.scheme === 'dark' ? '#232323' : '#FDFDFD')};
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   padding: 14px 18px;
-  color: #fff;
+  color: ${props =>
+    props.scheme === 'dark' ? 'rgba(255, 255, 255, 1)' : 'rgba(22, 22, 22, 1)'};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -45,7 +46,7 @@ export const FormInput = styled(Field)`
 export const Text = styled.p`
   margin-top: 24px;
   margin-bottom: 14px;
-  color: #fff;
+  color: ${props => (props.scheme === 'dark' ? '#FFF' : '#161616')};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -55,7 +56,7 @@ export const Text = styled.p`
 `;
 
 export const Title = styled.h2`
-  color: #fff;
+  color: ${props => (props.scheme === 'dark' ? '#FFF' : '#161616')};
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
@@ -102,8 +103,11 @@ export const RadioImg = styled.img`
 `;
 
 export const RadioIcon = styled.label`
+  color: ${props =>
+    props.scheme === 'dark' ? 'rgb(255, 255, 255)' : 'rgb(22, 22, 22)'};
   opacity: ${props => (props.checked ? '100%' : '50%')};
-  fill: ${props => (props.checked ? 'red' : '#fff')};
+  fill: ${props =>
+    props.scheme === 'dark' ? 'rgb(255, 255, 255)' : 'rgba(22, 22, 22)'};
 `;
 
 export const CloseButton = styled.button`

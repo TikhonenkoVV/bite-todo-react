@@ -15,8 +15,19 @@ import {
   RadioBackgroundBox,
   CloseButton,
 } from './NewBoard.styled';
+import icons from '../../img/icons/sprite.svg';
+import { Svg } from '../SvgIcon/SvgIcon';
 
-const iconNames = ['square', 'circle', 'rectangle'];
+const iconNames = [
+  'icon-Project',
+  'icon-star',
+  'icon-loading',
+  'icon-puzzle',
+  'icon-container',
+  'icon-lightning',
+  'icon-colors',
+  'icon-hexagon',
+];
 
 const backgroundImages = [
   'default',
@@ -38,6 +49,7 @@ const backgroundImages = [
 ];
 
 const NewBoard = ({ onClick }) => {
+  const scheme = 'dark';
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
     icon: Yup.string().required('An icon must be selected'),
@@ -59,15 +71,20 @@ const NewBoard = ({ onClick }) => {
     >
       {formik => (
         <Form>
-          <FormBox>
+          <FormBox scheme={scheme}>
             <CloseButton type="button" onClick={onClick}>
-              X
+              <Svg w={18} h={18} use={`${icons}#icon-x-close`} />
             </CloseButton>
-            <Title>New board</Title>
+            <Title scheme={scheme}>New board</Title>
 
-            <FormInput id="title" name="title" placeholder="Title" />
+            <FormInput
+              id="title"
+              name="title"
+              placeholder="Title"
+              scheme={scheme}
+            />
 
-            <Text>Icons</Text>
+            <Text scheme={scheme}>Icons</Text>
             <RadioIconBox>
               {iconNames.map(iconName => (
                 <IconRadioButton
@@ -75,11 +92,12 @@ const NewBoard = ({ onClick }) => {
                   name="icon"
                   value={iconName}
                   checked={formik.values.icon === iconName}
+                  scheme={scheme}
                 />
               ))}
             </RadioIconBox>
 
-            <Text>Background</Text>
+            <Text scheme={scheme}>Background</Text>
             <RadioBackgroundBox>
               {backgroundImages.map(image => (
                 <BackgroundRadioButton
@@ -87,6 +105,7 @@ const NewBoard = ({ onClick }) => {
                   name="background"
                   value={image}
                   checked={formik.values.background === image}
+                  scheme={scheme}
                 />
               ))}
             </RadioBackgroundBox>
