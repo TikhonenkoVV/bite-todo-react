@@ -7,7 +7,8 @@ export const TestDashboard = styled.div`
   transform: translate(-50%, -50%);
   width: 100%;
   height: 200px;
-  background-color: #1f1f1f;
+  background-color: ${props =>
+    props.theme === 'dark' ? '#1f1f1f' : '#F6F6F7'};
   padding: 14px 20px;
 `;
 
@@ -15,7 +16,7 @@ export const DashboardHeaderTitle = styled.h2`
   position: absolute;
   top: 14px;
   left: 20px;
-  color: #fff;
+  color: ${props => (props.theme === 'dark' ? '#fff' : 'rgba(22, 22, 22, 1)')};
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
@@ -42,7 +43,10 @@ export const DashboardHeaderFilter = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.8);
+  color: ${props =>
+    props.theme === 'dark'
+      ? 'rgba(255, 255, 255, 0.8)'
+      : 'rgba(22, 22, 22, 0.8)'};
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (min-width: 768px) {
@@ -57,7 +61,7 @@ export const DashboardHeaderFilter = styled.button`
 
   &:hover,
   &:focus {
-    color: #fff;
+    color: ${props => (props.theme === 'dark' ? '#fff' : '#000')};
   }
 `;
 
