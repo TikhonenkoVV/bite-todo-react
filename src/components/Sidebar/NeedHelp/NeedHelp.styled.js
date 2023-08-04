@@ -1,14 +1,21 @@
 import styled from '@emotion/styled';
+import flower from 'img/flower.png';
 
 export const DivStyled = styled.div`
   padding: 14px;
   margin: 0 14px;
+  width: 197px;
+  height: 238px;
   border-radius: 8px;
   background-color: #1f1f1f;
+
+  background-image: url(${flower});
+  background-repeat: no-repeat;
+  background-position: 14px 14px;
 `;
 
 export const PStyled = styled.p`
-  margin: 14px 0 18px;
+  margin: 106px 0 18px;
 
   font-size: 12px;
   font-weight: 400;
@@ -18,7 +25,6 @@ export const PStyled = styled.p`
 `;
 
 export const CodeStyled = styled.code`
-  display: inline;
   color: #bedbb0;
 `;
 
