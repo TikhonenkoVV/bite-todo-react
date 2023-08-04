@@ -19,7 +19,7 @@ const DivBtnBurgerMenuSyled = styled.div`
 
   @media screen and (min-width: 768px) {
     position: fixed;
-    width: 225px;
+    width: 260px;
     height: 100vh;
     top: 0;
     left: 0;

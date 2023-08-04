@@ -3,6 +3,8 @@ import ThemeSelector from './ThemeSelector';
 import Profile from './Profile';
 import styled from '@emotion/styled';
 import Menu from './Menu';
+import sprite from '../../img/icons/sprite.svg';
+import { Svg } from 'components/SvgIcon/SvgIcon';
 
 const StyledHeader = styled.header`
   font-size: 14px;
@@ -16,6 +18,10 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+    height: 68px;
+  }
 `;
 
 const DivBtnStyle = styled.div`
@@ -37,7 +43,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleKeyPress = event => {
-      if (event.key === 'Escape' && menuActive) {
+      if (event.key === 'Escape' && menuActive && window.innerWidth <= 768) {
         setMenuActive(false);
       }
     };
@@ -70,38 +76,9 @@ const Header = () => {
   return (
     <StyledHeader>
       <DivBtnStyle onClick={() => setMenuActive(!menuActive)}>
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4 16H28"
-            stroke="white"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M4 8H28"
-            stroke="white"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M4 24H28"
-            stroke="white"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <Svg w={32} h={32} use={`${sprite}#icon-burger`} />
       </DivBtnStyle>
       <Menu active={menuActive} setActive={setMenuActive} />
-
       <StyledNav>
         <ThemeSelector />
         <Profile />
