@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import sprite from 'img/icons/sprite.svg';
+import { Modal } from 'components/Modal/Modal';
 import {
   ButtonStyled,
   DivIconStyled,
@@ -37,27 +38,7 @@ export const ControlBoard = () => {
       <DivStyled>
         <PStyled>Create a new board</PStyled>
         <ButtonStyled type="button" onClick={handleOpenModal}>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 10 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <use></use>
-            <path
-              d="M5 2.08325V7.91659"
-              stroke="#161616"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M2.08331 5H7.91665"
-              stroke="#161616"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <SvgStyled w={20} h={20} use={`${sprite}#icon-plus`} />
         </ButtonStyled>
       </DivStyled>
       <UlStyled>
@@ -82,6 +63,7 @@ export const ControlBoard = () => {
           </li>
         ))}
       </UlStyled>
+      {isModalNew && <Modal />}
     </>
   );
 };
