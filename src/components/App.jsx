@@ -3,7 +3,9 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import Layout from './Layout';
 
 const Welcome = lazy(() => import('../pages/Welcome'));
-const MainDashboard = lazy(() => import('../pages/MainDashboard'));
+const MainDashboard = lazy(() =>
+  import('../pages/MainDashboard/MainDashboard')
+);
 
 export const App = () => {
   return (
