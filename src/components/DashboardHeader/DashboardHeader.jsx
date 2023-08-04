@@ -10,12 +10,12 @@ import {
   DashboardHeaderTitle,
 } from './DashboardHeader.styled';
 
-const DashboardHeader = ({ name = 'Test dashboard' }) => {
+const DashboardHeader = ({ name }) => {
   const { isModalOpen, closeModal, openModal } = useModal();
   return (
     <>
       <TestDashboard>
-        <DashboardHeaderTitle>{name}</DashboardHeaderTitle>
+        {name && <DashboardHeaderTitle>{name}</DashboardHeaderTitle>}
 
         <DashboardHeaderFilter onClick={openModal}>
           <DashboardHeaderIcon />
