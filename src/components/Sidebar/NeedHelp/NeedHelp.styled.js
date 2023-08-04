@@ -17,7 +17,7 @@ export const PStyled = styled.p`
   color: #fff;
 `;
 
-export const SpanStyled = styled.p`
+export const CodeStyled = styled.code`
   display: inline;
   color: #bedbb0;
 `;
