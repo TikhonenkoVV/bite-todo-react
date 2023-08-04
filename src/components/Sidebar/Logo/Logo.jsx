@@ -1,9 +1,9 @@
-import { DivStyled, PStyled } from './Logo.styled';
+import { LinkStyled, PStyled } from './Logo.styled';
 
 export const Logo = () => {
   return (
-    <DivStyled>
-      <svg style={{}} width="32" height="32">
+    <LinkStyled>
+      <svg width="32" height="32">
         <use></use>
         <path
           d="M4 16H28"
@@ -28,6 +28,6 @@ export const Logo = () => {
         />
       </svg>
       <PStyled>Task Pro</PStyled>
-    </DivStyled>
+    </LinkStyled>
   );
 };

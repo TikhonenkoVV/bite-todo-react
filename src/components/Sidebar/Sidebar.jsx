@@ -6,10 +6,14 @@ import { Logout } from './Logout/Logout';
 export const Sidebar = () => {
   return (
     <>
-      <Logo />
-      <ControlBoard />
-      <NeedHelp />
-      <Logout />
+      <div>
+        <Logo />
+        <ControlBoard />
+      </div>
+      <div>
+        <NeedHelp />
+        <Logout />
+      </div>
     </>
   );
 };
