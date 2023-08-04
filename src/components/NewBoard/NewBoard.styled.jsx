@@ -19,7 +19,8 @@ export const FormInput = styled(Field)`
   display: block;
   width: 100%;
   border-radius: 8px;
-  border: 1px solid #bedbb0;
+  border: 1px solid
+    ${props => (props.scheme === 'violet' ? '#5255BC' : '#bedbb0')};
   opacity: 0.4;
   background: ${props => (props.scheme === 'dark' ? '#232323' : '#FDFDFD')};
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
@@ -38,7 +39,8 @@ export const FormInput = styled(Field)`
 
   &:focus {
     outline: none;
-    border: 1px solid #bedbb0;
+    border: 1px solid
+      ${props => (props.scheme === 'violet' ? '#5255BC' : '#bedbb0')};
     opacity: 1;
   }
 `;
@@ -99,7 +101,9 @@ export const RadioImg = styled.img`
   border-radius: 25%;
   box-sizing: border-box;
   border: ${props =>
-    props.checked ? '2px solid #BEDBB0' : '2px solid transparent'};
+    props.checked
+      ? `2px solid ${props.scheme === 'violet' ? '#5255BC' : '#bedbb0'}`
+      : '2px solid transparent'};
 `;
 
 export const RadioIcon = styled.label`

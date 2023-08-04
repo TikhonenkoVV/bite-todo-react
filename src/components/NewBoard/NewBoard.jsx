@@ -49,7 +49,7 @@ const backgroundImages = [
 ];
 
 const NewBoard = ({ onClick }) => {
-  const scheme = 'dark';
+  const scheme = 'violet';
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
     icon: Yup.string().required('An icon must be selected'),
