@@ -9,7 +9,8 @@ import { Svg } from 'components/SvgIcon/SvgIcon';
 import sprite from 'img/icons/sprite.svg';
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
-import NewBoard from 'components/NewBoard/NewBoard';
+// import NewBoard from 'components/NewBoard/NewBoard';
+import { FormNeedHelp } from '../FormNeedHelp/FormNeedHelp';
 
 const NeedHelp = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
@@ -26,7 +27,7 @@ const NeedHelp = () => {
       </ButtonStyled>
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          <NewBoard onClick={closeModal} />
+          <FormNeedHelp onClick={closeModal} />
         </Modal>
       )}
     </DivStyled>
