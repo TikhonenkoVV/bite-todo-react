@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import FormProfie from './FormProfie';
 import userdefaultimg from '../../img/Header/user.png';
 import sprite from '../../img/icons/sprite.svg';
+import { Svg } from 'components/SvgIcon/SvgIcon';
 
 const DivStyled = styled.div`
   position: relative;
@@ -10,8 +11,13 @@ const DivStyled = styled.div`
   border: 1px solid rgba(190, 219, 176, 0.5);
   background: #151515;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 768px) {
     width: 335px;
+    height: 440px;
+    padding: 24px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 400px;
     height: 440px;
     padding: 24px;
   }
@@ -67,32 +73,15 @@ const DivIconPlus = styled.div`
   justify-content: center;
 `;
 
+const Icon = styled(Svg)`
+  stroke: white;
+`;
+
 const EditProfile = ({ closeModal }) => {
   return (
     <DivStyled>
       <DivIconClose onClick={closeModal}>
-        {/* <svg
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M13.5 4.5L4.5 13.5"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M4.5 4.5L13.5 13.5"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg> */}
+        <Icon w={18} h={18} use={`${sprite}#icon-x-close`} />
       </DivIconClose>
       <TextStyled>Edit Profile</TextStyled>
       <DivItem>
@@ -101,26 +90,7 @@ const EditProfile = ({ closeModal }) => {
             <img width={68} height={68} src={userdefaultimg} alt="userlogo" />
           </LinkStyled>
           <DivIconPlus>
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 10 10"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 2.08325V7.91659"
-                stroke="#161616"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M2.08331 5H7.91665"
-                stroke="#161616"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <Svg w={10} h={10} use={`${sprite}#icon-plus`} />
           </DivIconPlus>
         </DivUserImgStyled>
       </DivItem>
