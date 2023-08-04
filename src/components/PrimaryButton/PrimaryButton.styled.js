@@ -14,4 +14,5 @@ export const Button = styled.button`
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
+  width: ${props => props.styles.width};
 `;
