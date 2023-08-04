@@ -9,7 +9,6 @@ import { Svg } from 'components/SvgIcon/SvgIcon';
 import sprite from 'img/icons/sprite.svg';
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
-// import NewBoard from 'components/NewBoard/NewBoard';
 import { FormNeedHelp } from '../FormNeedHelp/FormNeedHelp';
 
 const NeedHelp = () => {
