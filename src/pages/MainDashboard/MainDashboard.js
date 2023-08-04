@@ -1,11 +1,15 @@
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
 import ColumnForm from '../../components/MainDashboard';
+import { Svg } from '../../components/SvgIcon/SvgIcon';
+import sprite from '../../img/icons/sprite.svg';
 import {
   MainDashboardContainer,
   MainDashboardSection,
   MainDashboardSectionTitle,
   MainDashboardAddColumnButton,
+  MainDashboardIconContainer,
+  MainDashboardIcon,
 } from './MainDashboard.styled';
 import DashboardHeader from 'components/DashboardHeader/DashboardHeader';
 
@@ -24,7 +28,16 @@ const MainDashboard = () => {
             Columns with tasks
           </MainDashboardSectionTitle>
           <MainDashboardAddColumnButton type="button" onClick={openModal}>
-            Add another column
+            {/* <MainDashboardIconHolder>
+
+            </MainDashboardIconHolder> */}
+
+            <MainDashboardIconContainer>
+              <MainDashboardIcon>
+                <use href={`${sprite}#icon-plus`}></use>
+              </MainDashboardIcon>
+            </MainDashboardIconContainer>
+            <div>Add another column</div>
           </MainDashboardAddColumnButton>
           {isModalOpen && (
             <Modal onClose={closeModal}>
