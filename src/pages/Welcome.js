@@ -3,6 +3,8 @@ import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
 import Test from 'components/Test';
 
+
+
 const Welcome = () => {
   const { isModalOpen, closeModal, openModal } = useModal();
   return (
@@ -33,7 +35,11 @@ const Welcome = () => {
           Pro - Don't wait, start achieving your goals now!
         </p>
       </div>
-      <button type="button" onClick={openModal}>
+      <button
+        type="button"
+        
+        onClick={openModal}
+      >
         showModal
       </button>
       {isModalOpen && (
