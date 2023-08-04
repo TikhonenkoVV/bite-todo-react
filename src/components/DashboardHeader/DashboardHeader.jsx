@@ -1,6 +1,6 @@
 import { useModal } from 'hooks/useModal';
 import PropTypes from 'prop-types';
-import { Modal } from 'components/Modal';
+import { Modal } from 'components/Modal/Modal';
 import StatusFilter from 'components/StatusFilter';
 import sprite from '../../img/icons/sprite.svg';
 
