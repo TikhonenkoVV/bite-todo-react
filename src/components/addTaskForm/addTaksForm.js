@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useDispatch } from 'react';
+import { Formik, useFormik } from 'formik';
+import styled from '@emotion/styled';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment';
 import {
   StyledP,
   StyledDiv,
@@ -10,47 +15,61 @@ import {
   RadioLabel,
   StyledTitelBtn,
   StyledTitleDeadline,
+  Container,
 } from './addTaskForm.styled';
-import styled from '@emotion/styled';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import moment from 'moment';
+import calendarIcon from './chevron-down.svg';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 
-const Container = styled.div`
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-`;
+const StyledCustomDatePicker = styled(DatePicker)`
+  // // position: absolute;
+  // top: 140px;
+  // left: 0;
+  // z-index: 9999;
+  // background-color: red;
+  // // border: 1px solid #ccc;
+  // padding: 5px;
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  // font-family: Poppins;
+  // font-size: 14px;
+  // color: #333;
 
-const StyledDatePicker = styled(DatePicker)`
-  .react-datepicker {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #333;
-    position: relative;
+  // .react-datepicker div {
+  //   width: 200px;
+  //   border: 10px solid #ccc;
+  // }
+
+  .react-datepicker__header {
+    background-color: #8fa1d0;
+    border: none;
   }
 
-  .react-datepicker__input {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
+  .react-datepicker__day {
+    padding: 18px;
   }
+
+  // .react-datepicker__day--selected {
+  //   background-color: #8fa1d0;
+  //   color: #fff;
+  // }
+
+  // .react-datepicker__day--keyboard-selected {
+  //   background-color: #8fa1d0;
+  //   color: #fff;
+  // }
 `;
+
+const initialValues = {
+  title: '',
+  description: '',
+  color: '',
+};
 
 export const AddTasks = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [selectedColor, setSelectedColor] = useState('');
+  const [color, setColor] = useState('');
   const [deadline, setDeadline] = useState('');
+
+  // const dispatch = useDispatch();
 
   const deadlinePickerRef = useRef(null);
 
@@ -60,67 +79,79 @@ export const AddTasks = () => {
     }
   };
 
-  useEffect(() => {
-    if (deadlinePickerRef.current) {
-      deadlinePickerRef.current.setOpen(false);
+  const CurrentDate = () => {
+    const formattedDate = moment().format('MMMM D');
+    return <div>Today, {formattedDate}</div>;
+  };
+
+  const formattedDeadline = deadline
+    ? moment(deadline).format('D MMMM YYYY')
+    : CurrentDate();
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+
+    if (name === 'color') {
+      setColor(value);
+    } else if (name === 'deadline') {
+      setDeadline(value);
     }
-  }, []);
+  };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    const formData = {
-      title,
-      description,
-      selectedColor,
-      deadline,
-    };
-
-    console.log(formData);
-
-    setTitle('');
-    setDescription('');
-    setSelectedColor('');
+  const handleSubmit = (values, { resetForm }) => {
+    if (!formik.values.deadline) {
+      alert('Please select a deadline.');
+      return;
+    }
+    console.log(values);
+    resetForm();
     setDeadline('');
   };
 
-  const handleColorChange = color => {
-    setSelectedColor(color);
+  const formik = useFormik({
+    initialValues: initialValues,
+    onSubmit: handleSubmit,
+  });
+
+  const handleDateChange = date => {
+    if (date && date < new Date()) {
+      alert('Deadline cannot be before today.');
+      return;
+    }
+    formik.setFieldValue('deadline', date);
+    setDeadline(date);
   };
 
   return (
     <StyledDiv>
       <StyledP>Add Card</StyledP>
-      <form>
+
+      <form onSubmit={formik.handleSubmit}>
         <StyledInput
-          id="title"
           type="text"
           name="title"
           placeholder="Title"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
+          value={formik.values.title}
+          onChange={formik.handleChange}
         />
         <StyledTextArea
-          id="description"
           type="text"
           name="description"
           placeholder="Description"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
+          value={formik.values.description}
+          onChange={formik.handleChange}
         />
         <StyledTitelBtn>Label color</StyledTitelBtn>
         <br />
         <RadioGroup>
-          {' '}
           {colors.map((color, index) => (
             <RadioLabel key={index}>
               <RadioInput
                 type="radio"
                 name="color"
                 value={color}
-                checked={selectedColor === color}
-                onChange={() => handleColorChange(color)}
-                color={color}
+                checked={formik.values.color === color}
+                onChange={formik.handleChange}
               />
             </RadioLabel>
           ))}
@@ -128,23 +159,30 @@ export const AddTasks = () => {
 
         <StyledTitleDeadline>
           Deadline
-          <Container onClick={handleDeadlineClick}>
-            {moment().format('D MMMM YYYY')}
+          <Container>
+            {formattedDeadline}
+            <img
+              src={calendarIcon}
+              alt="Calendar Icon"
+              onClick={handleDeadlineClick}
+              style={{
+                marginLeft: '5px',
+                cursor: 'pointer',
+              }}
+            />
           </Container>
-          <StyledDatePicker
-            ref={deadlinePickerRef} // Используйте ref для компонента DatePicker
-            selected={deadline}
-            onChange={date => setDeadline(date)}
+          <StyledCustomDatePicker
+            ref={deadlinePickerRef}
+            name="deadline"
+            selected={formik.values.deadline}
+            onChange={handleDateChange}
             locale="en"
             dateFormat="d MMMM yyyy"
             placeholderText="Выберите дату дедлайна"
-            // defaultValue={moment().format()}
-            // customInput={DatePickerInput}
+            customInput={<div></div>}
           />
         </StyledTitleDeadline>
-        <StyledButton type="submit" onClick={handleSubmit}>
-          Add{' '}
-        </StyledButton>
+        <StyledButton type="submit">Add</StyledButton>
       </form>
     </StyledDiv>
   );

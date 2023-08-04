@@ -22,30 +22,34 @@ export const StyledP = styled.p`
 `;
 
 export const StyledInput = styled.input`
+  border-radius: 8px;
+  border: 1px solid #bedbb0;
+  opacity: 0.4;
+  background: #1f1f1f;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+
   margin-bottom: 10px;
   margin-left: 20px;
-  width: 300px;
-  height: 49px;
+
+  padding: 14px 115px 14px 18px;
   font-size: 14px;
-  border: 1px solid #ccc;
+
   border-radius: 4px;
   color: #ffffff;
-  background-color: #1f1f1f;
-  &:focus {
-    border: 1px solid #a4a4a4;
-  }
 `;
 
 export const StyledTextArea = styled.textarea`
-  margin-bottom: 10px;
   margin-left: 20px;
-  width: 300px;
-  height: 154px;
-  height: 100px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   color: #ffffff;
-  background-color: #1f1f1f;
+  display: flex;
+  padding: 14px 130px 122px 18px;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #bedbb0;
+  opacity: 0.4;
+  background: #1f1f1f;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 `;
 
 export const StyledTitelBtn = styled.label`
@@ -71,6 +75,21 @@ export const StyledButton = styled.button`
   }
 `;
 
+export const Container = styled.div`
+  color: #bedbb0;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  color: #bedbb0;
+  margin-left: 24px;
+  justify-content: left;
+  align-items: center;
+  display: flex;
+`;
+
 export const RadioGroup = styled.div`
   display: flex;
   align-items: center;
@@ -86,27 +105,36 @@ export const RadioLabel = styled.label`
 `;
 
 export const RadioInput = styled.input`
-  background-color: colors;
-
   &::before {
+    margin-right: 10px;
     content: '';
     display: inline-block;
     border-radius: 50%;
-
-    width: ${({ checked }) => (checked ? '6px' : '14px')};
-    height: ${({ checked }) => (checked ? '6px' : '14px')};
-
-    border: ${({ checked }) =>
-      checked ? `3px solid ${colors}` : `0px solid ${colors}`};
-    background-color: ${({ checked, color }) => (checked ? color : color)};
+    width: ${({ checked }) => (checked ? '8px' : '14px')};
+    height: ${({ checked }) => (checked ? '8px' : '14px')};
+    border: ${({ checked, colors }) => (checked ? '1px' : '0px')} solid
+      ${({ colors }) => colors};
+    background-color: ${({ checked, value }) => (checked ? value : value)};
+    transition: width 0.2s ease, height 0.2s ease; /* Добавляем transition */
   }
   &:checked::before {
-    background-color: ${({ color }) => color};
-    border: 1px solid ${({ color }) => color};
-    margin-bottom: 2px;
-    margin-left: 2.5px;
+    margin-bottom: 0.8px;
+    margin-left: 1.6px;
   }
+ }
 `;
+
+// &::before {
+//   margin-right: 10px;
+//   content: '';
+//   display: inline-block;
+//   border-radius: 50%;
+//   width: ${({ checked }) => (checked ? '8px' : '14px')};
+//   height: ${({ checked }) => (checked ? '8px' : '14px')};
+//   border: 1px solid ${({ checked, colors, value }) => (checked ? value : colors)};
+//   background-color: ${({ checked, value }) => (checked ? value : 'transparent')};
+//   transition: width 0.2s ease, height 0.2s ease;
+// }
 
 //  &:focus + &::before {
 //     border: 2px solid #a4a4a4;
