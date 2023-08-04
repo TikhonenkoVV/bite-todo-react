@@ -13,7 +13,6 @@ export const StatusFilterMainText = styled.p`
   color: #fff;
   font-family: Poppins;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.36px;
@@ -34,33 +33,42 @@ export const StatusFilterLabel = styled.p`
   color: #fff;
   font-family: Poppins;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
 `;
 
-export const StatusFilterShowAll = styled.p`
+export const StatusFilterShowAll = styled.button`
   cursor: pointer;
   font-family: Poppins;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.24px;
   text-decoration-line: underline;
   color: ${props => (props.selected ? '#fff' : 'rgba(255, 255, 255, 0.5)')};
-  &:hover {
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
     color: #fff;
   }
 `;
 
-export const CloseButton = styled.div`
+export const CloseButton = styled.button`
   position: absolute;
-  width: 18px;
-  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
   top: 14px;
   right: 14px;
   cursor: pointer;
+  fill: rgba(255, 255, 255, 1);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    fill: rgba(255, 255, 255, 0.5);
+  }
 `;

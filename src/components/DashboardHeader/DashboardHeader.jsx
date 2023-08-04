@@ -1,29 +1,31 @@
 import { useModal } from 'hooks/useModal';
+import PropTypes from 'prop-types';
 import { Modal } from 'components/Modal/Modal';
 import StatusFilter from 'components/StatusFilter';
+import sprite from '../../img/icons/sprite.svg';
 
 import {
   TestDashboard,
-  DashboardHeaderContainer,
   DashboardHeaderFilter,
   DashboardHeaderIcon,
   DashboardHeaderText,
   DashboardHeaderTitle,
 } from './DashboardHeader.styled';
 
-const DashboardHeader = ({ name = 'Test dashboard' }) => {
+const DashboardHeader = ({ name }) => {
   const { isModalOpen, closeModal, openModal } = useModal();
+  const path = '#icon-filter';
   return (
     <>
       <TestDashboard>
-        <DashboardHeaderContainer>
-          <DashboardHeaderTitle>{name}</DashboardHeaderTitle>
+        {name && <DashboardHeaderTitle>{name}</DashboardHeaderTitle>}
 
-          <DashboardHeaderFilter onClick={openModal}>
-            <DashboardHeaderIcon />
-            <DashboardHeaderText>Fiter</DashboardHeaderText>
-          </DashboardHeaderFilter>
-        </DashboardHeaderContainer>
+        <DashboardHeaderFilter type="button" onClick={openModal}>
+          <DashboardHeaderIcon>
+            <use href={`${sprite}${path}`}></use>
+          </DashboardHeaderIcon>
+          <DashboardHeaderText>Filters</DashboardHeaderText>
+        </DashboardHeaderFilter>
       </TestDashboard>
 
       {isModalOpen && (
@@ -33,6 +35,10 @@ const DashboardHeader = ({ name = 'Test dashboard' }) => {
       )}
     </>
   );
+};
+
+DashboardHeader.propTypes = {
+  name: PropTypes.string.isRequired,
 };
 
 export default DashboardHeader;
