@@ -38,10 +38,10 @@ export const Input = styled.input`
   width: 100%;
   height: 49px;
   padding: 14px 18px;
-  margin-bottom: 14px;
+  margin-top: 14px;
 
-  &:last-of-type {
-    margin-bottom: 24px;
+  &:first-of-type {
+    margin-top: 0;
   }
 
   border-radius: 8px;
@@ -74,9 +74,17 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.28px;
+  margin-top: 24px;
 
   &:hover,
   &:focus {
     background: #9dc888;
   }
+`;
+
+export const Error = styled.p`
+  color:  #ED4337;
+  font-family: Poppins;
+  font-size: 12px;
+  margin-top: 8px;
 `;
