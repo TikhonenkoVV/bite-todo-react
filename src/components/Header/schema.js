@@ -1,7 +1,7 @@
 import { object, string } from 'yup';
 
-const passwordRules =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/;
+// const passwordRules =
+//   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/;
 
 const editProfileScheme = object({
   username: string()
@@ -10,10 +10,8 @@ const editProfileScheme = object({
   email: string()
     .email('please enter a valid email address')
     .required('Required'),
-  password: string()
-    .min(6)
-    .matches(passwordRules, { message: 'Please enter a valid password' })
-    .required('Required'),
+  password: string().min(6).required('Required'),
+  // .matches(passwordRules, { message: 'Please enter a valid password' })
 });
 
 export default editProfileScheme;

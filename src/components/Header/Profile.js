@@ -32,18 +32,6 @@ const LinkStyled = styled.a`
   cursor: pointer;
 `;
 
-const DivIconPlus = styled.div`
-  width: 24px;
-  height: 24px;
-  border-radius: 8px;
-  background-color: #bedbb0;
-  position: absolute;
-  top: 54px;
-  right: 22px;
-  text-align: center;
-  cursor: pointer;
-`;
-
 const Profile = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
 
