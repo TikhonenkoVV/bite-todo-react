@@ -107,5 +107,6 @@ export const ShowButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
+  background: transparent;
+  color: rgba(255, 255, 255, 1);
 `;

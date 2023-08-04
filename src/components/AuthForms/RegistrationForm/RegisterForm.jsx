@@ -1,3 +1,9 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { Svg } from 'components/SvgIcon/SvgIcon';
+import { register } from 'store/auth/operations';
 import {
   Container,
   AuthNavWrapper,
@@ -8,15 +14,12 @@ import {
   Error,
   ShowButton,
 } from '../AuthForms.styled';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { register } from 'store/auth/operations';
-import { useState } from 'react';
+import sprite from '../../../img/icons/sprite.svg';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const [inputType, setInputType] = useState('password');
+  const [inputIcon, setInputIcon] = useState('#icon-eye-allow');
 
   const formik = useFormik({
     initialValues: {
@@ -43,7 +46,13 @@ const RegisterForm = () => {
   });
 
   const togglePasswordVisibility = () => {
-    inputType === 'password' ? setInputType('text') : setInputType('password');
+    if (inputType === 'password') {
+      setInputType('text');
+      setInputIcon('#icon-eye-denied');
+    } else {
+      setInputType('password');
+      setInputIcon('#icon-eye-allow');
+    }
   };
 
   return (
@@ -84,10 +93,9 @@ const RegisterForm = () => {
             onBlur={formik.handleBlur}
             placeholder="Create a password"
           />
-          <ShowButton
-            type="button"
-            onClick={togglePasswordVisibility}
-          ></ShowButton>
+          <ShowButton type="button" onClick={togglePasswordVisibility}>
+            <Svg v={'18px'} h={'18px'} use={`${sprite}${inputIcon}`} />
+          </ShowButton>
         </InputWrapper>
         {formik.errors.password && formik.touched.password && (
           <Error>{formik.errors.password}</Error>
