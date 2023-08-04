@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Svg } from 'components/SvgIcon/SvgIcon';
-import { register } from 'store/auth/operations';
+import { register, logIn } from 'store/auth/operations';
+import { selectIsRegistered, selectIsLoggedIn } from 'store/auth/selectors';
 import {
   Container,
   AuthNavWrapper,
@@ -13,11 +15,14 @@ import {
   Button,
   Error,
   ShowButton,
-} from '../AuthForms.styled';
-import sprite from '../../../img/icons/sprite.svg';
+} from './AuthForms.styled';
+import sprite from '../../img/icons/sprite.svg';
 
-const RegisterForm = () => {
+export const RegisterForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isRegistered = useSelector(selectIsRegistered);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [inputType, setInputType] = useState('password');
   const [inputIcon, setInputIcon] = useState('#icon-eye-allow');
 
@@ -42,6 +47,9 @@ const RegisterForm = () => {
     }),
     onSubmit: values => {
       dispatch(register(values));
+      isRegistered &&
+        dispatch(logIn({ email: values.email, password: values.password }));
+      isLoggedIn && navigate('/home', { replace: true });
     },
   });
 
@@ -105,5 +113,3 @@ const RegisterForm = () => {
     </Container>
   );
 };
-
-export default RegisterForm;
