@@ -6,20 +6,21 @@ import {
   Button,
 } from '../AuthForms.styled';
 
-const LoginForm = () => {
+const RegisterForm = () => {
   return (
     <Container>
       <AuthNavWrapper>
-        <Link to="/auth/register">Register</Link>
+        <Link to="/auth/register">Registration</Link>
         <Link to="/auth/login">Log In</Link>
       </AuthNavWrapper>
       <form>
+        <Input placeholder="Enter your name" />
         <Input placeholder="Enter your email" />
-        <Input placeholder="Confirm a password" />
-        <Button>Log In Now</Button>
+        <Input placeholder="Create a password" />
+        <Button>Register Now</Button>
       </form>
     </Container>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
