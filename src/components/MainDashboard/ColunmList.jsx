@@ -1,13 +1,27 @@
 import React from 'react';
 import { Column } from '../MainDashboard/Column';
-const columns = [1, 2, 3];
+import { ColumnListStyled } from './ColunmList.styled';
+const columns = [
+  {
+    id: '1',
+    title: 'To do',
+  },
+  {
+    id: '2',
+    title: 'In progress',
+  },
+  {
+    id: '3',
+    title: 'Done',
+  },
+];
 
 export const ColumnList = () => {
   return (
-    <ul>
-      {columns.map(column => {
-        return <Column />;
+    <ColumnListStyled>
+      {columns.map(({ id, title }) => {
+        return <Column id={id} title={title} />;
       })}
-    </ul>
+    </ColumnListStyled>
   );
 };

@@ -13,6 +13,8 @@ export const MainDashboardContainer = styled.div`
   /* margin: 0 auto; */
 
   @media (min-width: 768px) {
+    display: flex;
+    gap: 34px;
     /* width: 768px; */
     padding: 0 32px;
   }

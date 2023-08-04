@@ -1,9 +1,10 @@
 import React from 'react';
+import { ColumnContainer } from './Column.styled';
 
-export const Column = () => {
+export const Column = ({ id, title }) => {
   return (
-    <>
-      <p>Test</p>
-    </>
+    <ColumnContainer>
+      <p>{title}</p>
+    </ColumnContainer>
   );
 };
