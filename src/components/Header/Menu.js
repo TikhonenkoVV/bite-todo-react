@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Sidebar from 'components/Sidebar';
 
 const DivBtnBurgerMenuSyled = styled.div`
   @media screen and (max-width: 768px) {
@@ -18,7 +19,7 @@ const DivBtnBurgerMenuSyled = styled.div`
 
   @media screen and (min-width: 768px) {
     position: fixed;
-    width: 225px;
+    width: 260px;
     height: 100vh;
     top: 0;
     left: 0;
@@ -32,6 +33,11 @@ const DivBtnBurgerMenuSyled = styled.div`
 `;
 
 const DivSideBarContentStyled = styled.div`
+  padding-top: 14px;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   @media screen and (max-width: 768px) {
     width: 100%;
     height: 100%;
@@ -54,6 +60,7 @@ const Menu = ({ active, setActive }) => {
       onClick={() => setActive(false)}
     >
       <DivSideBarContentStyled onClick={e => e.stopPropagation()}>
+        <Sidebar />
         {/* CONTENT SIDE BAR */}
       </DivSideBarContentStyled>
     </DivBtnBurgerMenuSyled>
