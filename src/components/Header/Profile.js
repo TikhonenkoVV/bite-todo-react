@@ -59,33 +59,11 @@ const Profile = () => {
           <LinkStyled onClick={onClickModalOpen}>
             <img width={32} height={32} src={userdefaultimg} alt="userlogo" />
           </LinkStyled>
-          {/* <DivIconPlus>
-          <svg
-            width="10"
-            height="10"
-            viewBox="0 0 10 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 2.08325V7.91659"
-              stroke="#161616"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M2.08331 5H7.91665"
-              stroke="#161616"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>  
-        </DivIconPlus> */}
         </DivUserImgStyled>
       </DivInfoUserStyled>
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          <EditProfile />
+          <EditProfile closeModal={closeModal} />
         </Modal>
       )}
     </>
