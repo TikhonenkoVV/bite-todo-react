@@ -15,6 +15,7 @@ import {
   AddCardIconContainer,
   AddCardIcon,
 } from './Column.styled';
+import { CardList } from 'components/Card/CardList';
 
 const handleDeleteButtonClick = id => {
   console.log('Delete: id: ', id);
@@ -40,6 +41,7 @@ export const Column = ({ id, title }) => {
           </IconButton>
         </IconContainer>
       </ColumnTitleContainer>
+      <CardList />
       <AddCardButton>
         <AddCardIconContainer>
           <AddCardIcon>

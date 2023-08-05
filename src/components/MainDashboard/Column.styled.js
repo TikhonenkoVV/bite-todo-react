@@ -8,6 +8,7 @@ export const ColumnTitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 14px;
   padding: 18px 20px 17px 20px;
   height: 56px;
   border-radius: 8px;
