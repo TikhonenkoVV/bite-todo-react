@@ -6,6 +6,7 @@ import { Auth } from '../pages/Auth';
 
 export const App = () => {
   return (
+
     <Routes>
       <Route path="/" element={<Welcome />} />
       <Route path="/auth/:actionId" element={<Auth />} />
