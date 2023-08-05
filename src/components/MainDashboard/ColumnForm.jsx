@@ -2,8 +2,6 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import sprite from '../../img/icons/sprite.svg';
 import * as Yup from 'yup';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import {
   FormTitle,
