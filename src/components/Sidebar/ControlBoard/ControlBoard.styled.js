@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const H2styled = styled.h2`
-  margin-top: 70px;
+  margin-top: 116px;
   margin-left: 14px;
 
   font-size: 12px;
