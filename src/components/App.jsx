@@ -1,22 +1,23 @@
-import { lazy } from 'react';
+// import { lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import Layout from './Layout';
+import { Layout } from './Layout/Layout';
+import Welcome from '../pages/Welcome';
+import { Auth } from '../pages/Auth';
 
-
-
-const Welcome = lazy(() => import('../pages/Welcome'));
+// const Home = lazy(() => import('../pages/Home'));
 
 export const App = () => {
   return (
 
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Welcome />} />
-        {/* <Route path='/auth/:actionId' element={<Register />} /> */}
-        {/* <Route path='/home' element={<Home />} /> */}
+      <Route path="/" element={<Welcome />}></Route>
+      <Route path="/auth/:actionId" element={<Auth />} />
+      <Route path="/auth" element={<Navigate to="/auth/register" />} />
+      <Route path="/home" element={<Layout />}>
+        {/* <Route index element={<Home />} /> */}
         {/* <Route path='/home/:boardName' element={<Home />} /> */}
-        <Route path="*" element={<Navigate to="/" />} />
       </Route>
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };
