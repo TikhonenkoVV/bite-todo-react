@@ -20,7 +20,7 @@ export const ColumnList = () => {
   return (
     <ColumnListStyled>
       {columns.map(({ id, title }) => {
-        return <Column id={id} title={title} />;
+        return <Column key={id} id={id} title={title} />;
       })}
     </ColumnListStyled>
   );

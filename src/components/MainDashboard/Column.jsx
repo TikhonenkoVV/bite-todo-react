@@ -1,10 +1,47 @@
 import React from 'react';
-import { ColumnContainer } from './Column.styled';
+import sprite from '../../img/icons/sprite.svg';
+import { useModal } from 'hooks/useModal';
+import { Modal } from 'components/Modal';
+import { ColumnForm } from '../../components/MainDashboard';
+
+import {
+  ColumnContainer,
+  ColumnTitleContainer,
+  ColumnTitle,
+  IconContainer,
+  TitleIcon,
+  IconButton,
+} from './Column.styled';
+
+const handleDeleteButtonClick = id => {
+  console.log('Delete: id: ', id);
+};
 
 export const Column = ({ id, title }) => {
+  const { isModalOpen, closeModal, openModal } = useModal();
+
   return (
     <ColumnContainer>
-      <p>{title}</p>
+      <ColumnTitleContainer>
+        <ColumnTitle>{title}</ColumnTitle>
+        <IconContainer>
+          <IconButton type="button" onClick={openModal}>
+            <TitleIcon>
+              <use href={`${sprite}#icon-pencil`}></use>
+            </TitleIcon>
+          </IconButton>
+          <IconButton type="button" onClick={() => handleDeleteButtonClick(id)}>
+            <TitleIcon>
+              <use href={`${sprite}#icon-trash`}></use>
+            </TitleIcon>
+          </IconButton>
+        </IconContainer>
+      </ColumnTitleContainer>
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <ColumnForm onCloseForm={closeModal} isEditMode={true} />
+        </Modal>
+      )}
     </ColumnContainer>
   );
 };

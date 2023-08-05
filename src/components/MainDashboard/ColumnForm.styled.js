@@ -15,7 +15,6 @@ export const FormTitle = styled.p`
 export const FormContainer = styled.div`
   position: relative;
   max-width: 335px;
-  height: 221px;
   padding: 24px;
   border-radius: 8px;
   background: #151515;
@@ -27,7 +26,6 @@ export const FormContainer = styled.div`
 
 export const FormInput = styled(Field)`
   padding: 14px 18px;
-  margin-bottom: 24px;
   width: 100%;
   height: 49px;
   font-size: 14px;
@@ -82,7 +80,7 @@ export const AddButton = styled.button`
   }
 `;
 
-export const ColumnFormIconContainer = styled.div`
+export const FormIconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,16 +91,26 @@ export const ColumnFormIconContainer = styled.div`
   border-radius: 6px;
 `;
 
-export const ColumnFormIcon = styled.svg`
+export const FormIcon = styled.svg`
   width: 14px;
   height: 14px;
   /* fill: #121212; */
   fill: #fff;
 `;
 
-export const ColumnFormCloseIcon = styled.svg`
+export const FormCloseIcon = styled.svg`
   width: 18px;
   height: 18px;
   /* fill: #121212; */
   fill: #fff;
+`;
+
+export const ValidationError = styled.p`
+  margin-top: 6px;
+  color: #ed4337;
+  font-size: 12px;
+`;
+
+export const TitleContainer = styled.div`
+  margin-bottom: 24px;
 `;

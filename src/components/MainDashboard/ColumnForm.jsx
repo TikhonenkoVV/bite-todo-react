@@ -11,10 +11,19 @@ import {
   CloseButton,
   AddButton,
   FormInput,
-  ColumnFormIconContainer,
-  ColumnFormIcon,
-  ColumnFormCloseIcon,
+  FormIconContainer,
+  FormIcon,
+  FormCloseIcon,
+  ValidationError,
+  TitleContainer,
 } from './ColumnForm.styled';
+
+const ColumnFormSchema = Yup.object().shape({
+  title: Yup.string()
+    .min(2, 'Please write more than 1 symbol!')
+    .max(50, 'Please write less than 50 symbols!')
+    .required('Required'),
+});
 
 export const ColumnForm = ({ isEditMode, onCloseForm }) => {
   const title = isEditMode ? 'Edit column' : 'Add column';
@@ -22,29 +31,36 @@ export const ColumnForm = ({ isEditMode, onCloseForm }) => {
   return (
     <FormContainer>
       <CloseButton type="button" onClick={onCloseForm}>
-        <ColumnFormCloseIcon>
+        <FormCloseIcon>
           <use href={`${sprite}#icon-x-close`}></use>
-        </ColumnFormCloseIcon>
+        </FormCloseIcon>
       </CloseButton>
       <FormTitle>{title}</FormTitle>
       <Formik
         initialValues={{
           title: '',
         }}
+        validationSchema={ColumnFormSchema}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <FormInput id="title" name="title" placeholder="Title" />
-
-          <AddButton type="submit">
-            <ColumnFormIconContainer>
-              <ColumnFormIcon>
-                <use href={`${sprite}#icon-plus`}></use>
-              </ColumnFormIcon>
-            </ColumnFormIconContainer>
-            <div>Add</div>
-          </AddButton>
-        </Form>
+        {({ errors, touched }) => (
+          <Form>
+            <TitleContainer>
+              <FormInput id="title" name="title" placeholder="Title" />
+              {errors.title && touched.title ? (
+                <ValidationError>{errors.title}</ValidationError>
+              ) : null}
+            </TitleContainer>
+            <AddButton type="submit">
+              <FormIconContainer>
+                <FormIcon>
+                  <use href={`${sprite}#icon-plus`}></use>
+                </FormIcon>
+              </FormIconContainer>
+              <div>Add</div>
+            </AddButton>
+          </Form>
+        )}
       </Formik>
     </FormContainer>
   );
