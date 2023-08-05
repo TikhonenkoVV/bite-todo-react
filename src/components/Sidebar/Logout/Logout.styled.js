@@ -15,13 +15,13 @@ export const ButtonStyled = styled.button`
   }
 `;
 
-export const Container = styled.div`
-  color: #bedbb0;
-  &:hover,
-  &:focus {
-    color: #9dc888;
-  }
-`;
+// export const Container = styled.div`
+//   color: #bedbb0;
+//   &:hover,
+//   &:focus {
+//     color: #9dc888;
+//   }
+// `;
 
 export const PStyled = styled.p`
   font-family: Poppins;
