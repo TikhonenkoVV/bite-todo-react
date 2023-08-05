@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // треба додати url
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = 'https://bite-todo-rest-api.onrender.com/api';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
