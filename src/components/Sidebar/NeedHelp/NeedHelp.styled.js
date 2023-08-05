@@ -3,7 +3,7 @@ import flower from 'img/flower.png';
 
 export const DivStyled = styled.div`
   padding: 14px;
-  margin: 0 14px;
+  margin-left: 14px;
   width: 197px;
   height: 238px;
   border-radius: 8px;
@@ -19,6 +19,7 @@ export const DivStyled = styled.div`
   background-repeat: no-repeat;
   background-position: 14px 14px;
   @media screen and (min-width: 768px) {
+    margin-left: 24px;
     padding: 20px;
     width: 212px;
     height: 272px;
