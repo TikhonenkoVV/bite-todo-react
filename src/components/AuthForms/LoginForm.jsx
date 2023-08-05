@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'store/auth/operations';
+import { selectIsLoggedIn } from 'store/auth/selectors';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import {
   Container,
@@ -13,11 +15,13 @@ import {
   Button,
   Error,
   ShowButton,
-} from '../AuthForms.styled';
-import sprite from '../../../img/icons/sprite.svg';
+} from './AuthForms.styled';
+import sprite from '../../img/icons/sprite.svg';
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [inputType, setInputType] = useState('password');
   const [inputIcon, setInputIcon] = useState('#icon-eye-allow');
 
@@ -37,6 +41,7 @@ const LoginForm = () => {
     }),
     onSubmit: values => {
       dispatch(logIn(values));
+      isLoggedIn && navigate("/home", { replace: true });
     },
   });
 
@@ -90,4 +95,3 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
