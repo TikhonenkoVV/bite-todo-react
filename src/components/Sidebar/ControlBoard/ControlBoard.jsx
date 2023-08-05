@@ -3,6 +3,7 @@ import sprite from 'img/icons/sprite.svg';
 import { Modal } from 'components/Modal/Modal';
 import { useEditModal, useModal } from 'hooks/useModal';
 import NewBoard from '../../NewBoard/NewBoard';
+import EditBoard from '../../NewBoard/EditBoard';
 import {
   ButtonStyled,
   DivIconStyled,
@@ -72,7 +73,7 @@ export const ControlBoard = () => {
       )}
       {isModalEditOpen && (
         <Modal onClose={closeEditModal}>
-          <NewBoard onClick={closeEditModal} />
+          <EditBoard onClick={closeEditModal} id={isActiveBoard}/>
         </Modal>
       )}
     </>

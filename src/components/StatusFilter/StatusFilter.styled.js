@@ -5,12 +5,17 @@ export const StatusFilterContainer = styled.div`
   width: 300px;
   height: 234px;
   border-radius: 8px;
-  background: #151515;
+  background-color: ${props =>
+    props.theme === 'dark' ? '#151515' : '#FCFCFC'};
   padding: 24px;
+  box-shadow: ${props =>
+    props.theme === 'dark'
+      ? 'none'
+      : '0px 4px 16px 0px rgba(22, 22, 22, 0.05)'};
 `;
 
 export const StatusFilterMainText = styled.p`
-  color: #fff;
+  color: ${props => (props.theme === 'dark' ? '#fff' : 'rgba(22, 22, 22, 1)')};
   font-family: Poppins;
   font-size: 18px;
   font-weight: 500;
@@ -30,7 +35,7 @@ export const StatusFilterBox = styled.div`
 `;
 
 export const StatusFilterLabel = styled.p`
-  color: #fff;
+  color: ${props => (props.theme === 'dark' ? '#fff' : 'rgba(22, 22, 22, 1)')};
   font-family: Poppins;
   font-size: 14px;
   font-weight: 500;
@@ -46,12 +51,24 @@ export const StatusFilterShowAll = styled.button`
   line-height: normal;
   letter-spacing: -0.24px;
   text-decoration-line: underline;
-  color: ${props => (props.selected ? '#fff' : 'rgba(255, 255, 255, 0.5)')};
+  color: ${props => {
+    if (props.theme === 'dark') {
+      return props.selected ? '#fff' : 'rgba(255, 255, 255, 0.5)';
+    }
+    return props.selected ? 'rgba(22, 22, 22, 1)' : 'rgba(22, 22, 22, 0.5)';
+  }};
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
-    color: #fff;
+    color: ${props =>
+      props.theme === 'dark' ? '#fff' : 'rgba(22, 22, 22, 1)'};
+  }
+`;
+
+export const StatusFilterItem = styled.li`
+  &:not(:last-of-type) {
+    margin-bottom: 8px;
   }
 `;
 
@@ -64,11 +81,15 @@ export const CloseButton = styled.button`
   top: 14px;
   right: 14px;
   cursor: pointer;
-  fill: rgba(255, 255, 255, 1);
+  fill: ${props =>
+    props.theme === 'dark' ? 'rgba(255, 255, 255, 1)' : 'rgba(22, 22, 22, 1)'};
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
-    fill: rgba(255, 255, 255, 0.5);
+    fill: ${props =>
+      props.theme === 'dark'
+        ? 'rgba(255, 255, 255, 0.5)'
+        : 'rgba(22, 22, 22, 0.5)'};
   }
 `;

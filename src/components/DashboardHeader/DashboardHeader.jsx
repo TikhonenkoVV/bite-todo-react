@@ -12,25 +12,25 @@ import {
   DashboardHeaderTitle,
 } from './DashboardHeader.styled';
 
-const DashboardHeader = ({ name }) => {
+const DashboardHeader = ({ name, theme = 'dark' }) => {
   const { isModalOpen, closeModal, openModal } = useModal();
   const path = '#icon-filter';
   return (
     <>
-      <TestDashboard>
-        {name && <DashboardHeaderTitle>{name}</DashboardHeaderTitle>}
+      {name && (
+        <DashboardHeaderTitle theme={theme}>{name}</DashboardHeaderTitle>
+      )}
 
-        <DashboardHeaderFilter type="button" onClick={openModal}>
-          <DashboardHeaderIcon>
-            <use href={`${sprite}${path}`}></use>
-          </DashboardHeaderIcon>
-          <DashboardHeaderText>Filters</DashboardHeaderText>
-        </DashboardHeaderFilter>
-      </TestDashboard>
+      <DashboardHeaderFilter type="button" theme={theme} onClick={openModal}>
+        <DashboardHeaderIcon>
+          <use href={`${sprite}${path}`}></use>
+        </DashboardHeaderIcon>
+        <DashboardHeaderText>Filters</DashboardHeaderText>
+      </DashboardHeaderFilter>
 
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          <StatusFilter onClose={closeModal}></StatusFilter>
+          <StatusFilter theme={theme} onClose={closeModal}></StatusFilter>
         </Modal>
       )}
     </>
@@ -38,7 +38,8 @@ const DashboardHeader = ({ name }) => {
 };
 
 DashboardHeader.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  theme: PropTypes.string.isRequired,
 };
 
 export default DashboardHeader;
