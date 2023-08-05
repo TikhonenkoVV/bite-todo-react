@@ -41,7 +41,7 @@ export const LoginForm = () => {
     }),
     onSubmit: values => {
       dispatch(logIn(values));
-      isLoggedIn && navigate("/home", { replace: true });
+      isLoggedIn && navigate('/home', { replace: true });
     },
   });
 
@@ -94,4 +94,3 @@ export const LoginForm = () => {
     </Container>
   );
 };
-
