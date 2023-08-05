@@ -1,20 +1,21 @@
 import styled from '@emotion/styled';
 
 export const StyledDiv = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 24px;
+  position: relative;
+  box-sizing: border-box;
+  max-width: 335px;
+  color: #fff;
   border-radius: 8px;
+  border: 1px solid rgba(190, 219, 176, 0.5);
   background: #151515;
-
-  width: 335px;
-  min-height: 335px;
+  padding: 24px;
+  font-family: Poppins;
+  @media screen and (min-width: 768px) {
+    max-width: 400px;
+  }
 `;
 
 export const StyledP = styled.p`
-  font-family: Poppins;
   color: #ffffff;
   font-size: 18px;
   letter-spacing: -0.02em;
@@ -34,8 +35,6 @@ export const StyledInput = styled.input`
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 
   color: #fff;
-  font-family: Poppins;
-  font-size: 14px;
   letter-spacing: -0.02em;
 
   &:focus {
@@ -57,8 +56,6 @@ export const StyledTextArea = styled.textarea`
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 
   color: #fff;
-  font-family: Poppins;
-  font-size: 14px;
   letter-spacing: -0.02em;
 
   &:focus {
@@ -76,9 +73,8 @@ export const StyledButton = styled.button`
   border-radius: 8px;
   background: #bedbb0;
   color: #161616;
-  font-family: Poppins;
-  font-size: 14px;
   font-weight: 500;
+  font-size: 14px;
   letter-spacing: -0.02em;
   margin-top: 24px;
 

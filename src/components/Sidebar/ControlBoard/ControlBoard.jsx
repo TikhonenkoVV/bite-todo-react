@@ -17,7 +17,7 @@ import {
 } from './ControlBoard.styled';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 
-export const ControlBoard = () => {
+const ControlBoard = () => {
   const [isActiveBoard, setActiveBoard] = useState('');
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
@@ -37,7 +37,7 @@ export const ControlBoard = () => {
       <DivStyled>
         <PStyled>Create a new board</PStyled>
         <ButtonStyled type="button" onClick={openModal}>
-          <Svg w={20} h={20} use={`${sprite}#icon-plus`} />
+          <Svg w={18} h={18} use={`${sprite}#icon-plus`} />
         </ButtonStyled>
       </DivStyled>
       <UlStyled>
@@ -73,7 +73,7 @@ export const ControlBoard = () => {
       )}
       {isModalEditOpen && (
         <Modal onClose={closeEditModal}>
-          <EditBoard onClick={closeEditModal} id={isActiveBoard}/>
+          <EditBoard onClick={closeEditModal} id={isActiveBoard} />
         </Modal>
       )}
     </>

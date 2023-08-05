@@ -6,14 +6,16 @@ export const LinkStyled = styled(Link)`
   display: flex;
   column-gap: 8px;
   align-items: center;
+  @media screen and (min-width: 768px) {
+    margin-left: 24px;
+  }
 `;
 
 export const PStyled = styled.p`
+  font-family: Poppins;
   font-size: 16px;
   font-weight: 600;
-  line-height: 1.5;
   letter-spacing: -0.04em;
-  color: #fff;
 
   cursor: pointer;
 `;
