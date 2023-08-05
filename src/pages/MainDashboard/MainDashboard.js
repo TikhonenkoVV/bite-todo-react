@@ -24,7 +24,7 @@ const MainDashboard = () => {
   return (
     <MainDashboardSection>
       <FilterContainer>
-        <DashboardHeader name={boardName} />
+        <DashboardHeader name={boardName} theme={'dark'} />
       </FilterContainer>
       <MainDashboardContainer>
         {boardName ? (
