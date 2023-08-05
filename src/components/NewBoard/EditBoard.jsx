@@ -52,7 +52,7 @@ const backgroundImages = [
   'aurora',
 ];
 
-const EditBoard = ({ onClick }) => {
+const EditBoard = ({ onClick, id }) => {
   const scheme = 'dark';
   const buttonStyles = {
     padding: '10px 0px 11px 0px',
@@ -66,7 +66,7 @@ const EditBoard = ({ onClick }) => {
     icon: 'icon-star',
     title: 'clouds',
     background: 'clouds',
-  }
+  };
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
@@ -100,7 +100,6 @@ const EditBoard = ({ onClick }) => {
               placeholder="Title"
               scheme={scheme}
               value={formik.values.title}
-              edit={true}
             />
             <Text scheme={scheme}>Icons</Text>
             <RadioIconBox>
@@ -151,6 +150,7 @@ const EditBoard = ({ onClick }) => {
 
 EditBoard.propTypes = {
   onClick: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default EditBoard;

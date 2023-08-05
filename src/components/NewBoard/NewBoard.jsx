@@ -89,10 +89,12 @@ const NewBoard = ({ onClick }) => {
             </CloseButton>
             <Title scheme={scheme}>New board</Title>
             <FormInput
+              type="text"
               id="title"
               name="title"
               placeholder="Title"
               scheme={scheme}
+              value={formik.values.title}
             />
             <Text scheme={scheme}>Icons</Text>
             <RadioIconBox>
