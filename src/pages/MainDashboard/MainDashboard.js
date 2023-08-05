@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
 import { ColumnForm } from '../../components/MainDashboard';
