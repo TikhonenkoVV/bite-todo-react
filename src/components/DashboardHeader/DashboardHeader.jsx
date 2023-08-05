@@ -17,18 +17,16 @@ const DashboardHeader = ({ name, theme = 'dark' }) => {
   const path = '#icon-filter';
   return (
     <>
-      <TestDashboard theme={theme}>
-        {name && (
-          <DashboardHeaderTitle theme={theme}>{name}</DashboardHeaderTitle>
-        )}
+      {name && (
+        <DashboardHeaderTitle theme={theme}>{name}</DashboardHeaderTitle>
+      )}
 
-        <DashboardHeaderFilter type="button" theme={theme} onClick={openModal}>
-          <DashboardHeaderIcon>
-            <use href={`${sprite}${path}`}></use>
-          </DashboardHeaderIcon>
-          <DashboardHeaderText>Filters</DashboardHeaderText>
-        </DashboardHeaderFilter>
-      </TestDashboard>
+      <DashboardHeaderFilter type="button" theme={theme} onClick={openModal}>
+        <DashboardHeaderIcon>
+          <use href={`${sprite}${path}`}></use>
+        </DashboardHeaderIcon>
+        <DashboardHeaderText>Filters</DashboardHeaderText>
+      </DashboardHeaderFilter>
 
       {isModalOpen && (
         <Modal onClose={closeModal}>

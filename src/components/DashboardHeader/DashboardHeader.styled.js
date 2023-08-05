@@ -31,7 +31,7 @@ export const DashboardHeaderTitle = styled.h2`
 
   @media (min-width: 1440px) {
     top: 10px;
-    left: 24px;
+    left: 284px;
   }
 `;
 
