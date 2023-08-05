@@ -26,28 +26,26 @@ import {
   PlusIconContainer,
   StyledFormikColorNotification,
 } from './AddTaskForm.styled.js';
-import calendarIcon from './chevron-down.svg';
-// import { useModal } from 'hooks/useModal';
-// import { Modal } from 'components/Modal';
-// import Test from 'components/Test';
+
+
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 
-const StyledCustomCalendar = styled(DatePicker)`
-  &.custom-datepicker {
-    .react-datepicker-wrapper & .react-datepicker__day--keyboard-selected,
-    .react-datepicker-wrapper & .react-datepicker__day--today,
-    .react-datepicker-wrapper & .react-datepicker__day--weekend {
-      background-color: red !important;
-      color: white !important;
-    }
+// const StyledCustomCalendar = styled(DatePicker)`
+//   &.custom-datepicker {
+//     .react-datepicker-wrapper & .react-datepicker__day--keyboard-selected,
+//     .react-datepicker-wrapper & .react-datepicker__day--today,
+//     .react-datepicker-wrapper & .react-datepicker__day--weekend {
+//       background-color: red !important;
+//       color: white !important;
+//     }
 
-    .react-datepicker-wrapper & .react-datepicker__day--selected {
-      background-color: red;
-      color: white;
-    }
-  }
-`;
+//     .react-datepicker-wrapper & .react-datepicker__day--selected {
+//       background-color: red;
+//       color: white;
+//     }
+//   }
+// `;
 
 const initialValues = {
   title: '',
@@ -60,7 +58,6 @@ export const AddTasks = ({ onClose, children }) => {
   const [deadline, setDeadline] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const dispatch = useDispatch();
 
   const deadlinePickerRef = useRef(null);
 
@@ -95,15 +92,6 @@ export const AddTasks = ({ onClose, children }) => {
     ? moment(deadline).format('D MMMM YYYY')
     : CurrentDate();
 
-  // const handleChange = event => {
-  //   const { name, value } = event.target;
-
-  //   if (name === 'color') {
-  //     setColor(value);
-  //   } else if (name === 'deadline') {
-  //     setDeadline(value);
-  //   }
-  // };
 
   const handleSubmit = (values, { resetForm }) => {
     if (!formik.values.deadline) {
