@@ -13,11 +13,11 @@ import {
   H3Styled,
   NavStyled,
   PStyled,
-  SvgStyled,
   UlStyled,
 } from './ControlBoard.styled';
+import { Svg } from 'components/SvgIcon/SvgIcon';
 
-export const ControlBoard = () => {
+const ControlBoard = () => {
   const [isActiveBoard, setActiveBoard] = useState('');
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
@@ -37,7 +37,7 @@ export const ControlBoard = () => {
       <DivStyled>
         <PStyled>Create a new board</PStyled>
         <ButtonStyled type="button" onClick={openModal}>
-          <SvgStyled w={20} h={20} use={`${sprite}#icon-plus`} />
+          <Svg w={18} h={18} use={`${sprite}#icon-plus`} />
         </ButtonStyled>
       </DivStyled>
       <UlStyled>
@@ -49,16 +49,16 @@ export const ControlBoard = () => {
           >
             <NavStyled>
               <DivNameStyled>
-                <SvgStyled w={18} h={18} use={`${sprite}#icon-puzzle`} />
+                <Svg w={18} h={18} use={`${sprite}#icon-puzzle`} />
                 <H3Styled>{board.title}</H3Styled>
               </DivNameStyled>
               {isActiveBoard === board.id && (
                 <DivIconStyled>
                   <button type="button" onClick={openEditModal}>
-                    <SvgStyled w={16} h={16} use={`${sprite}#icon-pencil`} />
+                    <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
                   </button>
                   <button type="button">
-                    <SvgStyled w={16} h={16} use={`${sprite}#icon-trash`} />
+                    <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
                   </button>
                 </DivIconStyled>
               )}
@@ -73,7 +73,7 @@ export const ControlBoard = () => {
       )}
       {isModalEditOpen && (
         <Modal onClose={closeEditModal}>
-          <EditBoard onClick={closeEditModal} id={isActiveBoard}/>
+          <EditBoard onClick={closeEditModal} id={isActiveBoard} />
         </Modal>
       )}
     </>
