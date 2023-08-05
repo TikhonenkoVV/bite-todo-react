@@ -1,12 +1,5 @@
 import styled from '@emotion/styled';
 
-export const UlStyled = styled.ul`
-  display: flex;
-  flex-direction: column;
-  row-gap: 4px;
-  list-style-type: none;
-`;
-
 export const H2styled = styled.h2`
   margin-top: 70px;
   margin-left: 14px;
@@ -54,6 +47,13 @@ export const ButtonStyled = styled.button`
   color: black;
 
   cursor: pointer;
+`;
+
+export const UlStyled = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  list-style-type: none;
 `;
 
 export const NavStyled = styled.nav`
