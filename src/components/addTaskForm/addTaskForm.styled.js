@@ -1,22 +1,26 @@
 import styled from '@emotion/styled';
-import { colors } from './addTaksForm';
+import { colors } from './AddTaskForm';
 
 export const StyledDiv = styled.div`
   width: 350px;
-  height: 550px;
+  height: 522px;
   background-color: #151515;
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 10px;
 `;
 
+export const StyledBtnClose = styled.button`
+  width: 18px;
+  height: 18px;
+  margin-left: 212px;
+`;
+
 export const StyledP = styled.p`
   display: inline-block;
-
   color: #ffffff;
   font-size: 18px;
   margin-bottom: 24px;
-
   margin-top: 24px;
   margin-left: 24px;
 `;
@@ -27,22 +31,20 @@ export const StyledInput = styled.input`
   opacity: 0.4;
   background: #1f1f1f;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-
   margin-bottom: 10px;
   margin-left: 20px;
-
   padding: 14px 115px 14px 18px;
   font-size: 14px;
-
   border-radius: 4px;
   color: #ffffff;
 `;
 
 export const StyledTextArea = styled.textarea`
+  resize: none;
   margin-left: 20px;
   color: #ffffff;
   display: flex;
-  padding: 14px 130px 122px 18px;
+  padding: 14px 113px 122px 18px;
   align-items: center;
   flex-shrink: 0;
   border-radius: 8px;
@@ -50,6 +52,7 @@ export const StyledTextArea = styled.textarea`
   opacity: 0.4;
   background: #1f1f1f;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  margin-bottom: 24px;
 `;
 
 export const StyledTitelBtn = styled.label`
@@ -59,20 +62,16 @@ export const StyledTitelBtn = styled.label`
 `;
 
 export const StyledButton = styled.button`
-  padding: 8px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 24px;
   width: 302px;
-  height: 49px;
-  margin-left: 20px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 100px;
-  &:hover {
-    background-color: #45a049;
-  }
+  padding: 10px 0px 11px 0px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #bedbb0;
 `;
 
 export const Container = styled.div`
@@ -105,40 +104,38 @@ export const RadioLabel = styled.label`
 `;
 
 export const RadioInput = styled.input`
+margin-bottom: 14px;
+
   &::before {
-    margin-right: 10px;
+    
     content: '';
     display: inline-block;
     border-radius: 50%;
-    width: ${({ checked }) => (checked ? '8px' : '14px')};
-    height: ${({ checked }) => (checked ? '8px' : '14px')};
+    width: ${({ checked }) => (checked ? '10px' : '14px')};
+    height: ${({ checked }) => (checked ? '10px' : '14px')};
     border: ${({ checked, colors }) => (checked ? '1px' : '0px')} solid
       ${({ colors }) => colors};
     background-color: ${({ checked, value }) => (checked ? value : value)};
     transition: width 0.2s ease, height 0.2s ease; /* Добавляем transition */
   }
   &:checked::before {
-    margin-bottom: 0.8px;
-    margin-left: 1.6px;
+    margin-bottom: 3.2px;
+    margin-left: 1.5px;
+    background-color: ${({ checked, value }) => (checked ? value : value)};
   }
  }
 `;
 
-// &::before {
-//   margin-right: 10px;
-//   content: '';
-//   display: inline-block;
-//   border-radius: 50%;
-//   width: ${({ checked }) => (checked ? '8px' : '14px')};
-//   height: ${({ checked }) => (checked ? '8px' : '14px')};
-//   border: 1px solid ${({ checked, colors, value }) => (checked ? value : colors)};
-//   background-color: ${({ checked, value }) => (checked ? value : 'transparent')};
-//   transition: width 0.2s ease, height 0.2s ease;
-// }
-
-//  &:focus + &::before {
-//     border: 2px solid #a4a4a4;
-//   }
+export const PlusIconContainer = styled.div`
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  background-color: #161616;
+  border-radius: 20%;
+`;
 
 export const StyledTitleDeadline = styled.span`
   color: rgba(255, 255, 255, 0.5);
@@ -149,4 +146,22 @@ export const StyledTitleDeadline = styled.span`
   line-height: normal;
   letter-spacing: -0.24px;
   margin-left: 24px;
+`;
+
+export const StyledFormikTitleNotification = styled.div`
+  margin-left: 24px;
+  margin-bottom: 5px;
+  color: red;
+`;
+
+export const StyledFormikDescriptionNotification = styled.div`
+  margin-top: -15px;
+  margin-left: 24px;
+  color: red;
+`;
+
+export const StyledFormikColorNotification = styled.div`
+  margin-top: -5px;
+  margin-left: 24px;
+  color: red;
 `;
