@@ -1,14 +1,17 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
+  DivIconClose,
   StyledButton,
   StyledDiv,
   StyledInput,
   StyledP,
   StyledTextArea,
 } from './FormNeedHelp.styled';
+import sprite from 'img/icons/sprite.svg';
+import { Svg } from 'components/SvgIcon/SvgIcon';
 
-export const FormNeedHelp = () => {
+export const FormNeedHelp = ({ closeModal }) => {
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -29,7 +32,10 @@ export const FormNeedHelp = () => {
 
   return (
     <StyledDiv>
-      <StyledP>Need Help</StyledP>
+      <DivIconClose onClick={closeModal}>
+        <Svg w={18} h={18} use={`${sprite}#icon-x-close`} />
+      </DivIconClose>
+      <StyledP>Need help</StyledP>
       <form onSubmit={formik.handleSubmit}>
         <StyledInput
           name="email"

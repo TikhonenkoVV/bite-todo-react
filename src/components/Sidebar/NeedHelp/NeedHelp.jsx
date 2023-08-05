@@ -26,7 +26,7 @@ const NeedHelp = () => {
       </ButtonStyled>
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          <FormNeedHelp onClick={closeModal} />
+          <FormNeedHelp closeModal={closeModal} />
         </Modal>
       )}
     </DivStyled>
