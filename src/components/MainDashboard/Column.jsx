@@ -11,6 +11,9 @@ import {
   IconContainer,
   TitleIcon,
   IconButton,
+  AddCardButton,
+  AddCardIconContainer,
+  AddCardIcon,
 } from './Column.styled';
 
 const handleDeleteButtonClick = id => {
@@ -37,6 +40,14 @@ export const Column = ({ id, title }) => {
           </IconButton>
         </IconContainer>
       </ColumnTitleContainer>
+      <AddCardButton>
+        <AddCardIconContainer>
+          <AddCardIcon>
+            <use href={`${sprite}#icon-plus`}></use>
+          </AddCardIcon>
+        </AddCardIconContainer>
+        <div>Add another card</div>
+      </AddCardButton>
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <ColumnForm onCloseForm={closeModal} isEditMode={true} />

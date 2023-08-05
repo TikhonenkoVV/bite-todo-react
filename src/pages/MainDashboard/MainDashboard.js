@@ -10,36 +10,34 @@ import {
   MainDashboardAddColumnButton,
   MainDashboardIconContainer,
   MainDashboardIcon,
+  FilterContainer,
+  ContentHolder,
 } from './MainDashboard.styled';
 import DashboardHeader from 'components/DashboardHeader/DashboardHeader';
 
 const MainDashboard = () => {
   const { isModalOpen, closeModal, openModal } = useModal();
   return (
-    <main>
-      {/* <MainDashboardSection>
-        <MainDashboardContainer>
-          <DashboardHeader />
-        </MainDashboardContainer>
-      </MainDashboardSection> */}
+    <>
       <MainDashboardSection>
+        {/* <FilterContainer>
+          <DashboardHeader name={'Test'} />
+        </FilterContainer> */}
         <MainDashboardContainer>
           <MainDashboardSectionTitle>
             Columns with tasks
           </MainDashboardSectionTitle>
-          <ColumnList />
-          <MainDashboardAddColumnButton type="button" onClick={openModal}>
-            {/* <MainDashboardIconHolder>
-
-            </MainDashboardIconHolder> */}
-
-            <MainDashboardIconContainer>
-              <MainDashboardIcon>
-                <use href={`${sprite}#icon-plus`}></use>
-              </MainDashboardIcon>
-            </MainDashboardIconContainer>
-            <div>Add another column</div>
-          </MainDashboardAddColumnButton>
+          <ContentHolder>
+            <ColumnList />
+            <MainDashboardAddColumnButton type="button" onClick={openModal}>
+              <MainDashboardIconContainer>
+                <MainDashboardIcon>
+                  <use href={`${sprite}#icon-plus`}></use>
+                </MainDashboardIcon>
+              </MainDashboardIconContainer>
+              <div>Add another column</div>
+            </MainDashboardAddColumnButton>
+          </ContentHolder>
           {isModalOpen && (
             <Modal onClose={closeModal}>
               <ColumnForm onCloseForm={closeModal} />
@@ -47,7 +45,7 @@ const MainDashboard = () => {
           )}
         </MainDashboardContainer>
       </MainDashboardSection>
-    </main>
+    </>
   );
 };
 

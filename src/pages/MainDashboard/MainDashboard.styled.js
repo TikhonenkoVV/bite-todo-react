@@ -9,19 +9,20 @@ export const MainDashboardContainer = styled.div`
   /* width: 375px; */
   min-height: calc(100vh - 68px);
   height: 100%;
-  padding: 0 20px;
+  padding: 74px 20px 0 20px;
   /* margin: 0 auto; */
+  overflow-x: auto;
 
   @media (min-width: 768px) {
     display: flex;
     gap: 34px;
     /* width: 768px; */
-    padding: 0 32px;
+    padding: 80px 32px 0 32px;
   }
 
   @media (min-width: 1440px) {
     /* width: 1440px; */
-    padding: 0 24px 0 284px;
+    padding: 48px 24px 0 284px;
   }
 `;
 
@@ -43,6 +44,7 @@ export const MainDashboardAddColumnButton = styled.button`
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 335px;
   height: 56px;
   padding: 14px 78px;
   font-family: Poppins;
@@ -79,4 +81,14 @@ export const MainDashboardIcon = styled.svg`
   height: 14px;
   fill: #121212;
   /* fill: #fff; */
+`;
+
+export const FilterContainer = styled.div`
+  position: absolute;
+  width: 100%;
+`;
+
+export const ContentHolder = styled.div`
+  display: flex;
+  gap: 34px;
 `;

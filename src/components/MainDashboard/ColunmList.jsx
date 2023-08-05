@@ -14,6 +14,18 @@ const columns = [
     id: '3',
     title: 'Done',
   },
+  {
+    id: '4',
+    title: 'To do',
+  },
+  {
+    id: '5',
+    title: 'In progress',
+  },
+  {
+    id: '6',
+    title: 'Done',
+  },
 ];
 
 export const ColumnList = () => {
