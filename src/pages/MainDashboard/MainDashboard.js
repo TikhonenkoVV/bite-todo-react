@@ -19,8 +19,8 @@ import DashboardHeader from 'components/DashboardHeader/DashboardHeader';
 
 const MainDashboard = () => {
   const { boardName } = useParams();
-  console.log(boardName);
   const { isModalOpen, closeModal, openModal } = useModal();
+
   return (
     <MainDashboardSection>
       <FilterContainer>

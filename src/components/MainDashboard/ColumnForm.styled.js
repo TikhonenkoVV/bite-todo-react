@@ -18,6 +18,7 @@ export const FormContainer = styled.div`
   padding: 24px;
   border-radius: 8px;
   background: #151515;
+  border: 1px solid rgba(190, 219, 176, 0.5);
   /* background: #fcfcfc; */
   @media (min-width: 768px) {
     min-width: 350px;

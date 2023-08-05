@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import sprite from '../../img/icons/sprite.svg';
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
@@ -16,25 +16,40 @@ import {
   AddCardIcon,
 } from './Column.styled';
 import { CardList } from 'components/Card/CardList';
-
-const handleDeleteButtonClick = id => {
-  console.log('Delete: id: ', id);
-};
+//import { AddTasks } from 'components/addTaskForm/AddTaskForm';
 
 export const Column = ({ id, title }) => {
+  const [isEditCardMode, setIsEditCardMode] = useState(false);
   const { isModalOpen, closeModal, openModal } = useModal();
+
+  const handleDeleteButtonClick = id => {
+    console.log('Delete: id: ', id);
+  };
+
+  const handleAddCardButtonClick = () => {
+    setIsEditCardMode(false);
+    openModal();
+  };
+
+  const handleEditCardButtonClick = () => {
+    setIsEditCardMode(true);
+    openModal();
+  };
 
   return (
     <ColumnContainer>
       <ColumnTitleContainer>
         <ColumnTitle>{title}</ColumnTitle>
         <IconContainer>
-          <IconButton type="button" onClick={openModal}>
+          <IconButton
+            type="button"
+            onClick={() => handleEditCardButtonClick(openModal)}
+          >
             <TitleIcon>
               <use href={`${sprite}#icon-pencil`}></use>
             </TitleIcon>
           </IconButton>
-          <IconButton type="button" onClick={() => handleDeleteButtonClick(id)}>
+          <IconButton type="button" onClick={handleDeleteButtonClick}>
             <TitleIcon>
               <use href={`${sprite}#icon-trash`}></use>
             </TitleIcon>
@@ -42,7 +57,7 @@ export const Column = ({ id, title }) => {
         </IconContainer>
       </ColumnTitleContainer>
       <CardList />
-      <AddCardButton>
+      <AddCardButton onClick={handleAddCardButtonClick}>
         <AddCardIconContainer>
           <AddCardIcon>
             <use href={`${sprite}#icon-plus`}></use>
@@ -50,9 +65,14 @@ export const Column = ({ id, title }) => {
         </AddCardIconContainer>
         <div>Add another card</div>
       </AddCardButton>
-      {isModalOpen && (
+      {isModalOpen && isEditCardMode && (
         <Modal onClose={closeModal}>
           <ColumnForm onCloseForm={closeModal} isEditMode={true} />
+        </Modal>
+      )}
+      {isModalOpen && !isEditCardMode && (
+        <Modal onClose={closeModal}>
+          {/* <AddTasks onClose={closeModal} /> */}
         </Modal>
       )}
     </ColumnContainer>
