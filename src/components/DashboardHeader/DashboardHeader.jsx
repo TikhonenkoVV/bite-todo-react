@@ -5,7 +5,6 @@ import StatusFilter from 'components/StatusFilter';
 import sprite from '../../img/icons/sprite.svg';
 
 import {
-  TestDashboard,
   DashboardHeaderFilter,
   DashboardHeaderIcon,
   DashboardHeaderText,
