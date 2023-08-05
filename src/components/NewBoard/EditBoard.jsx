@@ -150,7 +150,7 @@ const EditBoard = ({ onClick, id }) => {
 
 EditBoard.propTypes = {
   onClick: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default EditBoard;

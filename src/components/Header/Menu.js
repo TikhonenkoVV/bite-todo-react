@@ -50,6 +50,7 @@ const DivSideBarContentStyled = styled.div`
     height: 100%;
     background-color: black;
     transition: transform 0.4s;
+    padding-top: 24px;
   }
 `;
 

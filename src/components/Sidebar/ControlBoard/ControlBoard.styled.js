@@ -1,15 +1,7 @@
 import styled from '@emotion/styled';
-import { Svg } from 'components/SvgIcon/SvgIcon';
-
-export const UlStyled = styled.ul`
-  display: flex;
-  flex-direction: column;
-  row-gap: 4px;
-  list-style-type: none;
-`;
 
 export const H2styled = styled.h2`
-  margin-top: 70px;
+  margin-top: 116px;
   margin-left: 14px;
 
   font-size: 12px;
@@ -52,8 +44,16 @@ export const ButtonStyled = styled.button`
   height: 36px;
   border-radius: 6px;
   background-color: #bedbb0;
+  color: black;
 
   cursor: pointer;
+`;
+
+export const UlStyled = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  list-style-type: none;
 `;
 
 export const NavStyled = styled.nav`
@@ -73,10 +73,6 @@ export const DivNameStyled = styled.div`
   align-items: center;
   column-gap: 4px;
   margin-left: 14px;
-`;
-
-export const SvgStyled = styled(Svg)`
-  fill: black;
 `;
 
 export const H3Styled = styled.h3`
