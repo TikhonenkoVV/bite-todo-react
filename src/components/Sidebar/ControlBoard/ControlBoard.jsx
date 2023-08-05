@@ -10,15 +10,15 @@ import {
   DivNameStyled,
   DivStyled,
   H2styled,
-  H3Styled,
-  NavStyled,
   PStyled,
+  LiStyled,
+  TextStyled,
   UlStyled,
 } from './ControlBoard.styled';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 
 const ControlBoard = () => {
-  const [isActiveBoard, setActiveBoard] = useState('');
+  const [idActiveBoard, setActiveBoard] = useState('');
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
 
@@ -42,17 +42,20 @@ const ControlBoard = () => {
       </DivStyled>
       <UlStyled>
         {boards.map(board => (
-          <li
-            key={board.id}
-            id={board.id}
-            onClick={() => handleActiveBoard(board.id)}
-          >
-            <NavStyled>
-              <DivNameStyled>
+          <nav>
+            <LiStyled
+              key={board.id}
+              id={board.id}
+              onClick={() => handleActiveBoard(board.id)}
+              className={board.id === idActiveBoard && 'active'}
+            >
+              <DivNameStyled className={board.id === idActiveBoard && 'active'}>
                 <Svg w={18} h={18} use={`${sprite}#icon-puzzle`} />
-                <H3Styled>{board.title}</H3Styled>
+                <TextStyled className={board.id === idActiveBoard && 'active'}>
+                  {board.title}
+                </TextStyled>
               </DivNameStyled>
-              {isActiveBoard === board.id && (
+              {idActiveBoard === board.id && (
                 <DivIconStyled>
                   <button type="button" onClick={openEditModal}>
                     <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
@@ -62,8 +65,8 @@ const ControlBoard = () => {
                   </button>
                 </DivIconStyled>
               )}
-            </NavStyled>
-          </li>
+            </LiStyled>
+          </nav>
         ))}
       </UlStyled>
       {isModalOpen && (
@@ -73,7 +76,7 @@ const ControlBoard = () => {
       )}
       {isModalEditOpen && (
         <Modal onClose={closeEditModal}>
-          <EditBoard onClick={closeEditModal} id={isActiveBoard} />
+          <EditBoard onClick={closeEditModal} id={idActiveBoard} />
         </Modal>
       )}
     </>
