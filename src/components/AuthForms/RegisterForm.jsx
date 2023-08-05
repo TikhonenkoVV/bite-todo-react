@@ -51,14 +51,17 @@ export const RegisterForm = () => {
   });
 
   useEffect(() => {
-    if (isRegistered)
+    if (isRegistered) {
       dispatch(
         logIn({ email: formik.values.email, password: formik.values.password })
       );
+    }
   }, [isRegistered, formik, dispatch]);
 
   useEffect(() => {
-    if (isLoggedIn) navigate('/home', { replace: true });
+    if (isLoggedIn) {
+      navigate('/home', { replace: true });
+    }
   }, [isLoggedIn, navigate]);
 
   const togglePasswordVisibility = () => {

@@ -1,6 +1,7 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { refreshToken } from 'store/auth/operations';
+import { refreshUser, refreshToken } from 'store/auth/operations';
+import { selectAuthError } from 'store/auth/selectors';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import Welcome from '../pages/Welcome/Welcome';
@@ -9,11 +10,19 @@ import MainDashboard from '../pages/MainDashboard/MainDashboard';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const authError = useSelector(selectAuthError);
 
   useEffect(() => {
-    dispatch(refreshToken());
+    dispatch(refreshUser());
   }, [dispatch]);
-  
+
+  useEffect(() => {
+    if (authError === 'Token expired') {
+      dispatch(refreshToken());
+      dispatch(refreshUser());
+    }
+  }, [dispatch, authError]);
+
   return (
     <Routes>
       <Route path="/" element={<Welcome />} />

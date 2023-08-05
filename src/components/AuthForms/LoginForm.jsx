@@ -45,7 +45,9 @@ export const LoginForm = () => {
   });
 
   useEffect(() => {
-    if (isLoggedIn) navigate('/home', { replace: true });
+    if (isLoggedIn) {
+      navigate('/home', { replace: true });
+    }
   }, [isLoggedIn, navigate]);
 
   const togglePasswordVisibility = () => {
