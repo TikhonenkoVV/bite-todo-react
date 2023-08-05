@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import IconRadioButton from './IconRadioButton';
-import { PrimaryButton } from '../PrimaryButton/';
+import { PrimaryButton } from '../PrimaryButton';
 import BackgroundRadioButton from './BackgroundRadioButton';
 import {
   Title,
@@ -52,7 +52,7 @@ const backgroundImages = [
   'aurora',
 ];
 
-const NewBoard = ({ onClick }) => {
+const EditBoard = ({ onClick, id }) => {
   const scheme = 'dark';
   const buttonStyles = {
     padding: '10px 0px 11px 0px',
@@ -60,6 +60,12 @@ const NewBoard = ({ onClick }) => {
     backgroundColor: scheme === 'violet' ? '#5255BC' : '#BEDBB0',
     color: '#161616',
     width: '100%',
+  };
+
+  const userObject = {
+    icon: 'icon-star',
+    title: 'clouds',
+    background: 'clouds',
   };
 
   const validationSchema = Yup.object().shape({
@@ -71,9 +77,9 @@ const NewBoard = ({ onClick }) => {
   return (
     <Formik
       initialValues={{
-        icon: null,
-        title: '',
-        background: null,
+        icon: `${userObject.icon}`,
+        title: `${userObject.title}`,
+        background: `${userObject.background}`,
       }}
       validationSchema={validationSchema}
       onSubmit={values => {
@@ -87,9 +93,8 @@ const NewBoard = ({ onClick }) => {
             <CloseButton type="button" onClick={onClick}>
               <Svg w={18} h={18} use={`${icons}#icon-x-close`} />
             </CloseButton>
-            <Title scheme={scheme}>New board</Title>
+            <Title scheme={scheme}>Edit board</Title>
             <FormInput
-              type="text"
               id="title"
               name="title"
               placeholder="Title"
@@ -133,7 +138,7 @@ const NewBoard = ({ onClick }) => {
                 <SvgBox scheme={scheme}>
                   <Svg w={14} h={14} use={`${icons}#icon-plus`} />
                 </SvgBox>
-                <ButtonText scheme={scheme}>Create </ButtonText>
+                <ButtonText scheme={scheme}>Edit</ButtonText>
               </ButtonBox>
             </PrimaryButton>
           </FormBox>
@@ -143,8 +148,9 @@ const NewBoard = ({ onClick }) => {
   );
 };
 
-NewBoard.propTypes = {
+EditBoard.propTypes = {
   onClick: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
-export default NewBoard;
+export default EditBoard;
