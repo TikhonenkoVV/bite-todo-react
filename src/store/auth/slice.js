@@ -1,9 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser } from './operations';
+import {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  refreshToken,
+} from './operations';
 
 const initialState = {
   user: { name: '', email: '', profilePic: '' },
-  token: null,
+  accessToken: null,
+  refreshToken: null,
   isRegistered: false,
   isLoggedIn: false,
   isLoggingIn: false,
@@ -11,7 +18,7 @@ const initialState = {
   error: null,
 };
 
-// isLoggingIn , isRefreshing додано для того, щоб можна було показати loader. 
+// isLoggingIn , isRefreshing додано для того, щоб можна було показати loader.
 
 const authSlice = createSlice({
   name: 'auth',
@@ -23,7 +30,6 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
         state.isRegistered = true;
         state.error = null;
       })
@@ -38,7 +44,8 @@ const authSlice = createSlice({
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.accessToken = action.payload.tokens.accessToken;
+        state.refreshToken = action.payload.tokens.refreshToken;
         state.isLoggingIn = false;
         state.isLoggedIn = true;
         state.error = null;
@@ -51,7 +58,8 @@ const authSlice = createSlice({
       })
       .addCase(logOut.fulfilled, state => {
         state.user = { name: '', email: '', profilePic: '' };
-        state.token = null;
+        state.accessToken = null;
+        state.refreshToken = null;
         state.isLoggedIn = false;
         state.error = null;
       })
@@ -68,6 +76,14 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
         state.isLoggedIn = false;
+        state.error = action.payload;
+      })
+      .addCase(refreshToken.fulfilled, (state, action) => {
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
+        state.error = null;
+      })
+      .addCase(refreshToken.rejected, (state, action) => {
         state.error = action.payload;
       });
   },

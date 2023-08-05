@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import sprite from 'img/icons/sprite.svg';
 import { Modal } from 'components/Modal/Modal';
+import { useEditModal, useModal } from 'hooks/useModal';
+import NewBoard from '../../NewBoard/NewBoard';
+import EditBoard from '../../NewBoard/EditBoard';
 import {
   ButtonStyled,
   DivIconStyled,
@@ -15,20 +18,16 @@ import {
 } from './ControlBoard.styled';
 
 export const ControlBoard = () => {
-  const [isModalNew, setIsModalNew] = useState(false);
   const [isActiveBoard, setActiveBoard] = useState('');
-  // const [isModalEdit, setIsModalEdit] = useState(false);
+  const { isModalOpen, openModal, closeModal } = useModal();
+  const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
+
   const boards = [
     { id: '1', title: 'title first', svg: 'name' },
     { id: '2', title: 'title two', svg: 'name' },
   ];
 
-  const handleOpenModal = () => {
-    setIsModalNew(true);
-  };
-
   const handleActiveBoard = id => {
-    console.log(id);
     setActiveBoard(id);
   };
 
@@ -37,7 +36,7 @@ export const ControlBoard = () => {
       <H2styled>My boards</H2styled>
       <DivStyled>
         <PStyled>Create a new board</PStyled>
-        <ButtonStyled type="button" onClick={handleOpenModal}>
+        <ButtonStyled type="button" onClick={openModal}>
           <SvgStyled w={20} h={20} use={`${sprite}#icon-plus`} />
         </ButtonStyled>
       </DivStyled>
@@ -55,15 +54,28 @@ export const ControlBoard = () => {
               </DivNameStyled>
               {isActiveBoard === board.id && (
                 <DivIconStyled>
-                  <SvgStyled w={16} h={16} use={`${sprite}#icon-pencil`} />
-                  <SvgStyled w={16} h={16} use={`${sprite}#icon-trash`} />
+                  <button type="button" onClick={openEditModal}>
+                    <SvgStyled w={16} h={16} use={`${sprite}#icon-pencil`} />
+                  </button>
+                  <button type="button">
+                    <SvgStyled w={16} h={16} use={`${sprite}#icon-trash`} />
+                  </button>
                 </DivIconStyled>
               )}
             </NavStyled>
           </li>
         ))}
       </UlStyled>
-      {isModalNew && <Modal />}
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <NewBoard onClick={closeModal} />
+        </Modal>
+      )}
+      {isModalEditOpen && (
+        <Modal onClose={closeEditModal}>
+          <EditBoard onClick={closeEditModal} id={isActiveBoard}/>
+        </Modal>
+      )}
     </>
   );
 };
