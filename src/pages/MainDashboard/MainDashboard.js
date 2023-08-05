@@ -23,9 +23,9 @@ const MainDashboard = () => {
   const { isModalOpen, closeModal, openModal } = useModal();
   return (
     <MainDashboardSection>
-      {/* <FilterContainer>
-          <DashboardHeader name={'Test'} />
-        </FilterContainer> */}
+      <FilterContainer>
+        <DashboardHeader name={boardName} />
+      </FilterContainer>
       <MainDashboardContainer>
         {boardName ? (
           <>
