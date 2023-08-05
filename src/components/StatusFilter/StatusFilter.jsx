@@ -13,6 +13,7 @@ import {
   StatusFilterBox,
   StatusFilterShowAll,
   CloseButton,
+  StatusFilterItem,
 } from './StatusFilter.styled';
 
 const options = [
@@ -34,7 +35,7 @@ const options = [
   },
 ];
 
-const StatusFilter = ({ onClose }) => {
+const StatusFilter = ({ onClose, theme }) => {
   const dispatch = useDispatch();
 
   const handleFilterChange = filter => dispatch(setStatusFilter(filter));
@@ -60,41 +61,46 @@ const StatusFilter = ({ onClose }) => {
   const filter = useSelector(selectStatusFilter);
 
   return (
-    <StatusFilterContainer>
-      <CloseButton onClick={() => onClose()}>
+    <StatusFilterContainer theme={theme}>
+      <CloseButton theme={theme} onClick={() => onClose()}>
         <svg width={18} height={18}>
           <use href={`${sprite}${path}`}></use>
         </svg>
       </CloseButton>
-      <StatusFilterMainText>Filter</StatusFilterMainText>
+      <StatusFilterMainText theme={theme}>Filter</StatusFilterMainText>
       <StatusFilterBox>
-        <StatusFilterLabel>Label color</StatusFilterLabel>
+        <StatusFilterLabel theme={theme}>Label color</StatusFilterLabel>
 
         <StatusFilterShowAll
           type="button"
+          theme={theme}
           selected={filter === 'Show all'}
           onClick={() => onChangeFilterClick('Show all')}
         >
           Show all
         </StatusFilterShowAll>
       </StatusFilterBox>
-
-      {options.map(({ text, color }, index) => (
-        <StatusFilterButton
-          selected={filter === text}
-          onClick={() => onChangeFilterClick(text)}
-          key={index}
-          color={color}
-        >
-          {text}
-        </StatusFilterButton>
-      ))}
+      <ul>
+        {options.map(({ text, color }, index) => (
+          <StatusFilterItem key={index}>
+            <StatusFilterButton
+              selected={filter === text}
+              onClick={() => onChangeFilterClick(text)}
+              color={color}
+              theme={theme}
+            >
+              {text}
+            </StatusFilterButton>
+          </StatusFilterItem>
+        ))}
+      </ul>
     </StatusFilterContainer>
   );
 };
 
 StatusFilter.propTypes = {
   onClose: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired,
 };
 
 export default StatusFilter;

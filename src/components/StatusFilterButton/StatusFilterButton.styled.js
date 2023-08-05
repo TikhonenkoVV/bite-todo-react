@@ -4,16 +4,18 @@ export const FilterButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${props => (props.selected ? '#fff' : ' rgba(255, 255, 255, 0.5)')};
+  color: ${props => {
+    if (props.theme === 'dark') {
+      return props.selected ? '#fff' : 'rgba(255, 255, 255, 0.5)';
+    }
+    return props.selected ? 'rgba(22, 22, 22, 1)' : 'rgba(22, 22, 22, 0.5)';
+  }};
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:not(:last-of-type) {
-    margin-bottom: 8px;
-  }
 
   &:hover,
   &:focus {
-    color: #fff;
+    color: ${props =>
+      props.theme === 'dark' ? '#fff' : 'rgba(22, 22, 22, 1)'};
   }
 `;
 
@@ -23,7 +25,11 @@ export const FilterIcon = styled.div`
   height: 14px;
   border-radius: 50%;
   margin-right: 8px;
-  background-color: ${props => props.color};
+  background-color: ${props => {
+    return props.theme !== 'dark' && props.text === 'Without priority'
+      ? 'rgba(22, 22, 22, 0.3)'
+      : props.color;
+  }};
 
   &::before {
     content: '';
@@ -34,7 +40,8 @@ export const FilterIcon = styled.div`
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    border: 2px solid #000;
+    border: ${props =>
+      props.theme === 'dark' ? '2px solid #000' : '2px solid #fff'};
     opacity: ${props => (props.selected ? '1' : ' 0')};
   }
 `;
