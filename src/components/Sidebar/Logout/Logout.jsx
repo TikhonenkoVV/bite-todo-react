@@ -2,9 +2,9 @@ import { Svg } from 'components/SvgIcon/SvgIcon';
 import sprite from 'img/icons/sprite.svg';
 import { ButtonStyled, Container, PStyled } from './Logout.styled';
 
-const Logout = () => {
+const Logout = ({ logOut }) => {
   return (
-    <ButtonStyled type="button">
+    <ButtonStyled onClick={logOut} type="button">
       <Container>
         <Svg w={32} h={32} use={`${sprite}#icon-logout`} />
       </Container>
