@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
@@ -41,9 +41,12 @@ export const LoginForm = () => {
     }),
     onSubmit: values => {
       dispatch(logIn(values));
-      isLoggedIn && navigate('/home', { replace: true });
     },
   });
+
+  useEffect(() => {
+    if (isLoggedIn) navigate('/home', { replace: true });
+  }, [isLoggedIn, navigate]);
 
   const togglePasswordVisibility = () => {
     if (inputType === 'password') {

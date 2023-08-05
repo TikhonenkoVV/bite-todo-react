@@ -1,12 +1,19 @@
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshToken } from 'store/auth/operations';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import Welcome from '../pages/Welcome/Welcome';
 import { Auth } from '../pages/Auth';
 
-
 export const App = () => {
-  return (
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(refreshToken());
+  }, [dispatch]);
+
+  return (
     <Routes>
       <Route path="/" element={<Welcome />} />
       <Route path="/auth/:actionId" element={<Auth />} />
