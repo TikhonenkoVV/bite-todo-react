@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import sprite from 'img/icons/sprite.svg';
 import { Modal } from 'components/Modal/Modal';
 import { useEditModal, useModal } from 'hooks/useModal';
@@ -16,16 +16,22 @@ import {
   UlStyled,
 } from './ControlBoard.styled';
 import { Svg } from 'components/SvgIcon/SvgIcon';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectBoards } from 'store/boards/selectors';
+import { getBoards } from 'store/boards/operations';
 
 const ControlBoard = () => {
   const [idActiveBoard, setActiveBoard] = useState('');
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
 
+  const dispatch = useDispatch();
+
   const boards = useSelector(selectBoards);
-  console.log(boards);
+
+  useEffect(() => {
+    dispatch(getBoards());
+  }, [dispatch]);
 
   const handleActiveBoard = id => {
     setActiveBoard(id);

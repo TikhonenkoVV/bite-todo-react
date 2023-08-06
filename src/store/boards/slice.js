@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { add, edit } from './operations';
+import { add, edit, getBoards } from './operations';
 
 const initialState = {
   boards: [],
@@ -12,6 +12,17 @@ const boardsSlice = createSlice({
   initialState,
   extraReducers: buider => {
     buider
+      .addCase(getBoards.pending, (state, { payload }) => {
+        state.isLoadingBords = true;
+      })
+      .addCase(getBoards.fulfilled, (state, { payload }) => {
+        state.boards = payload.boards;
+        state.error = null;
+      })
+      .addCase(getBoards.rejected, (state, { payload }) => {
+        state.isLoadingBords = true;
+        state.error = payload;
+      })
       .addCase(add.pending, (state, { payload }) => {
         state.isLoadingBords = true;
       })
