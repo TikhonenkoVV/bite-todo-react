@@ -17,8 +17,8 @@ import {
 } from './ControlBoard.styled';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoards } from 'store/boards/selectors';
-import { getBoards } from 'store/boards/operations';
+import { selectBoardsState } from 'store/boards/selectors';
+import { deleteBoards, getBoards } from 'store/boards/operations';
 
 const ControlBoard = () => {
   const [idActiveBoard, setActiveBoard] = useState('');
@@ -27,7 +27,8 @@ const ControlBoard = () => {
 
   const dispatch = useDispatch();
 
-  const boards = useSelector(selectBoards);
+  // const { boards, isLoading, error } = useSelector(selectBoardsState);
+  const { boards } = useSelector(selectBoardsState);
 
   useEffect(() => {
     dispatch(getBoards());
@@ -35,6 +36,10 @@ const ControlBoard = () => {
 
   const handleActiveBoard = id => {
     setActiveBoard(id);
+  };
+
+  const handleDeleteBoard = id => {
+    dispatch(deleteBoards(id));
   };
 
   return (
@@ -64,7 +69,10 @@ const ControlBoard = () => {
                 <button type="button" onClick={openEditModal}>
                   <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
                 </button>
-                <button type="button">
+                <button
+                  type="button"
+                  onClick={() => handleDeleteBoard(board._id)}
+                >
                   <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
                 </button>
               </DivIconStyled>
