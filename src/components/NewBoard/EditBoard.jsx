@@ -88,7 +88,6 @@ const EditBoard = ({ onClick, id }) => {
       }}
       validationSchema={validationSchema}
       onSubmit={values => {
-        console.log(values);
         dispatch(edit(values));
         onClick();
       }}
