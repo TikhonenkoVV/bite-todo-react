@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
 import { ColumnForm } from '../../components/MainDashboard';
@@ -16,15 +17,20 @@ import {
   ContentHolder,
 } from './MainDashboard.styled';
 import DashboardHeader from 'components/DashboardHeader/DashboardHeader';
+import { selectBoardsState } from 'store/boards/selectors';
 
 const MainDashboard = () => {
   const { boardName } = useParams();
   const { isModalOpen, closeModal, openModal } = useModal();
+  const { boards } = useSelector(selectBoardsState);
+  const selectedBoard = boardName
+    ? boards.find(board => board.title === boardName.trim())
+    : null;
 
   return (
     <MainDashboardSection>
       <FilterContainer>
-        <DashboardHeader name={boardName} theme={'dark'} />
+        <DashboardHeader name={selectedBoard?.title} theme={'dark'} />
       </FilterContainer>
       <MainDashboardContainer>
         {boardName ? (
@@ -33,7 +39,7 @@ const MainDashboard = () => {
               Columns with tasks
             </MainDashboardSectionTitle>
             <ContentHolder>
-              <ColumnList />
+              <ColumnList boardId={selectedBoard?._id} />
               <MainDashboardAddColumnButton type="button" onClick={openModal}>
                 <MainDashboardIconContainer>
                   <MainDashboardIcon>
@@ -45,7 +51,10 @@ const MainDashboard = () => {
             </ContentHolder>
             {isModalOpen && (
               <Modal onClose={closeModal}>
-                <ColumnForm onCloseForm={closeModal} />
+                <ColumnForm
+                  onCloseForm={closeModal}
+                  boardId={selectedBoard?._id}
+                />
               </Modal>
             )}
           </>

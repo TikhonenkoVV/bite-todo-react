@@ -1,38 +1,25 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Column } from '../MainDashboard/Column';
 import { ColumnListStyled } from './ColunmList.styled';
-const columns = [
-  {
-    id: '1',
-    title: 'To do',
-  },
-  {
-    id: '2',
-    title: 'In progress',
-  },
-  {
-    id: '3',
-    title: 'Done',
-  },
-  {
-    id: '4',
-    title: 'To do',
-  },
-  {
-    id: '5',
-    title: 'In progress',
-  },
-  {
-    id: '6',
-    title: 'Done',
-  },
-];
+import { selectColumns } from 'store/columns/selectors';
+import { getColumns } from 'store/columns/operations';
 
-export const ColumnList = () => {
+export const ColumnList = ({ boardId }) => {
+  const dispatch = useDispatch();
+  const columns = useSelector(selectColumns);
+
+  useEffect(() => {
+    if (!boardId) {
+      return;
+    }
+    dispatch(getColumns(boardId));
+  }, [boardId, dispatch]);
+
   return (
     <ColumnListStyled>
-      {columns.map(({ id, title }) => {
-        return <Column key={id} id={id} title={title} />;
+      {columns.map(({ _id, title }) => {
+        return <Column key={_id} id={_id} boardId={boardId} title={title} />;
       })}
     </ColumnListStyled>
   );
