@@ -23,7 +23,7 @@ import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { edit } from 'store/boards/operations';
-import { selectBoards } from 'store/boards/selectors';
+import { selectBoardsState } from 'store/boards/selectors';
 
 const iconNames = [
   'icon-Project',
@@ -66,14 +66,15 @@ const EditBoard = ({ onClick, id }) => {
     width: '100%',
   };
 
-  const boards = useSelector(selectBoards);
+  const { boards } = useSelector(selectBoardsState);
 
-
-
-  const board = boards.find(board => board._id === id)
+  const board = boards.find(board => board._id === id);
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Title is required'),
+    title: Yup.string()
+      .required('Title is required')
+      .min(2, 'Must be not less than 2 characters')
+      .max(32, 'Must be 32 characters or less'),
     background: Yup.string().required('A background must be selected'),
     dashboardIcon: Yup.string().required('An icon must be selected'),
   });

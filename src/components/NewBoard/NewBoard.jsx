@@ -67,7 +67,10 @@ const NewBoard = ({ onClick }) => {
   };
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Title is required'),
+    title: Yup.string()
+      .required('Title is required')
+      .min(2, 'Must be not less than 2 characters')
+      .max(32, 'Must be 32 characters or less'),
     background: Yup.string().required('A background must be selected'),
     dashboardIcon: Yup.string().required('An icon must be selected'),
   });
