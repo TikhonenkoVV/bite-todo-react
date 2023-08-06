@@ -1,14 +1,13 @@
 import React from 'react';
-import {
-  CardListContainer,
-  CardListItemStyled,
-  CardListStyled,
-} from './CardList.styled';
+import { CardListContainer, CardListStyled } from './CardList.styled';
+import { Card } from './Card';
 
 const cards = [
   {
     id: '1',
-    title: 'Test 1',
+    title: 'The Watch Spot Design',
+    description:
+      "Create a visually stunning and eye-catching watch dial design that embodies our brand's essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.",
   },
   {
     id: '2',
@@ -36,8 +35,8 @@ export const CardList = () => {
   return (
     <CardListContainer>
       <CardListStyled>
-        {cards.map(({ id, title }) => {
-          return <CardListItemStyled key={id}>{title}</CardListItemStyled>;
+        {cards.map(({ id, title, description }) => {
+          return <Card key={id} title={title} description={description} />;
         })}
       </CardListStyled>
     </CardListContainer>
