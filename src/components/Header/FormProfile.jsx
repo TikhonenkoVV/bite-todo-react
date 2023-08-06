@@ -12,12 +12,15 @@ import {
 } from './FormProfile.styled';
 import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
+import { useDispatch } from 'react-redux';
+import { updateUser } from 'store/auth/operations';
 
 const iconAllow = '#icon-eye-allow';
 const iconDenied = '#icon-eye-denied';
 
 
 const FormProfie = () => {
+  const dispatch = useDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -26,8 +29,9 @@ const FormProfie = () => {
       <Formik
         initialValues={{ name: '', email: '', password: '' }}
         validationSchema={userEditScheme}
-        onSubmit={values => {
-          console.log(values);
+        onSubmit={(values, {resetFrom}) => {
+          dispatch(updateUser(values))
+          resetFrom();
         }}
       >
         {({ isSubmitting }) => {
