@@ -21,6 +21,8 @@ import {
 } from './NewBoard.styled';
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
+import { useDispatch } from 'react-redux';
+import { edit } from 'store/boards/operations';
 
 const iconNames = [
   'icon-Project',
@@ -53,6 +55,7 @@ const backgroundImages = [
 ];
 
 const EditBoard = ({ onClick, id }) => {
+  const dispatch = useDispatch();
   const scheme = 'dark';
   const buttonStyles = {
     padding: '10px 0px 11px 0px',
@@ -62,28 +65,30 @@ const EditBoard = ({ onClick, id }) => {
     width: '100%',
   };
 
-  const userObject = {
-    icon: 'icon-star',
-    title: 'clouds',
-    background: 'clouds',
-  };
+  // const userObject = {
+  //   icon: 'icon-star',
+  //   title: 'clouds',
+  //   background: 'clouds',
+  // };
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
-    icon: Yup.string().required('An icon must be selected'),
     background: Yup.string().required('A background must be selected'),
+    dashboardIcon: Yup.string().required('An icon must be selected'),
   });
 
   return (
     <Formik
       initialValues={{
-        icon: `${userObject.icon}`,
-        title: `${userObject.title}`,
-        background: `${userObject.background}`,
+        id,
+        title: '',
+        background: null,
+        dashboardIcon: null,
       }}
       validationSchema={validationSchema}
       onSubmit={values => {
         console.log(values);
+        dispatch(edit(values));
         onClick();
       }}
     >
@@ -106,9 +111,9 @@ const EditBoard = ({ onClick, id }) => {
               {iconNames.map(iconName => (
                 <IconRadioButton
                   key={iconName}
-                  name="icon"
+                  name="dashboardIcon"
                   value={iconName}
-                  checked={formik.values.icon === iconName}
+                  checked={formik.values.dashboardIcon === iconName}
                   scheme={scheme}
                 />
               ))}

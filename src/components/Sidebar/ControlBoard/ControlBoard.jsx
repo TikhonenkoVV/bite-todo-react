@@ -16,16 +16,16 @@ import {
   UlStyled,
 } from './ControlBoard.styled';
 import { Svg } from 'components/SvgIcon/SvgIcon';
+import { useSelector } from 'react-redux';
+import { selectBoards } from 'store/boards/selectors';
 
 const ControlBoard = () => {
   const [idActiveBoard, setActiveBoard] = useState('');
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
 
-  const boards = [
-    { id: '1', title: 'title first', svg: 'name' },
-    { id: '2', title: 'title two', svg: 'name' },
-  ];
+  const boards = useSelector(selectBoards);
+  console.log(boards);
 
   const handleActiveBoard = id => {
     setActiveBoard(id);
@@ -42,31 +42,28 @@ const ControlBoard = () => {
       </DivStyled>
       <UlStyled>
         {boards.map(board => (
-          <nav>
-            <LiStyled
-              key={board.id}
-              id={board.id}
-              onClick={() => handleActiveBoard(board.id)}
-              className={board.id === idActiveBoard && 'active'}
-            >
-              <DivNameStyled className={board.id === idActiveBoard && 'active'}>
-                <Svg w={18} h={18} use={`${sprite}#icon-puzzle`} />
-                <TextStyled className={board.id === idActiveBoard && 'active'}>
-                  {board.title}
-                </TextStyled>
-              </DivNameStyled>
-              {idActiveBoard === board.id && (
-                <DivIconStyled>
-                  <button type="button" onClick={openEditModal}>
-                    <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
-                  </button>
-                  <button type="button">
-                    <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
-                  </button>
-                </DivIconStyled>
-              )}
-            </LiStyled>
-          </nav>
+          <LiStyled
+            key={board._id}
+            onClick={() => handleActiveBoard(board._id)}
+            className={board._id === idActiveBoard && 'active'}
+          >
+            <DivNameStyled className={board._id === idActiveBoard && 'active'}>
+              <Svg w={18} h={18} use={`${sprite}#${board.dashboardIcon}`} />
+              <TextStyled className={board._id === idActiveBoard && 'active'}>
+                {board.title}
+              </TextStyled>
+            </DivNameStyled>
+            {idActiveBoard === board._id && (
+              <DivIconStyled>
+                <button type="button" onClick={openEditModal}>
+                  <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
+                </button>
+                <button type="button">
+                  <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
+                </button>
+              </DivIconStyled>
+            )}
+          </LiStyled>
         ))}
       </UlStyled>
       {isModalOpen && (
