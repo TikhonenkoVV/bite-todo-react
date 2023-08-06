@@ -25,11 +25,10 @@ const columnsSlice = createSlice({
         state.error = payload;
       })
       .addCase(addColumn.pending, (state, { payload }) => {
-        state.isLoadingBords = true;
+        state.isLoading = true;
       })
       .addCase(addColumn.fulfilled, (state, { payload }) => {
-        console.log(payload);
-        state.columns.push(payload);
+        state.columns.push(payload.column);
         state.isLoading = false;
         state.error = null;
       })
@@ -42,9 +41,9 @@ const columnsSlice = createSlice({
       })
       .addCase(editColumn.fulfilled, (state, { payload }) => {
         state.columns = state.columns.filter(
-          column => column._id !== payload._id
+          column => column._id !== payload.column._id
         );
-        state.columns.push(payload);
+        state.columns.push(payload.column);
         state.isLoading = false;
         state.error = null;
       })
