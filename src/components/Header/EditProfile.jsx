@@ -6,14 +6,19 @@ import { Svg } from 'components/SvgIcon/SvgIcon';
 import {
   DivStyled,
   DivIconClose,
-  Icon, TextStyled, DivItem, DivUserImgStyled, LinkStyled, DivIconPlus
+  TextStyled,
+  DivItem,
+  DivUserImgStyled,
+  LinkStyled,
+  DivIconPlus,
+  IconStyled
 } from './EditProfile.styled';
 
 const EditProfile = ({ closeModal }) => {
   return (
     <DivStyled>
       <DivIconClose onClick={closeModal}>
-        <Icon w={18} h={18} use={`${sprite}#icon-x-close`} />
+        <IconStyled  w={18} h={18} use={`${sprite}#icon-x-close`} />
       </DivIconClose>
       <TextStyled>Edit Profile</TextStyled>
       <DivItem>

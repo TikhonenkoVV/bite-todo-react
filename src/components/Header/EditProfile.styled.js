@@ -9,12 +9,10 @@ export const DivStyled = styled.div`
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
   @media screen and (max-width: 768px) {
     width: 335px;
-    height: 440px;
     padding: 24px;
   }
   @media screen and (min-width: 768px) {
     width: 400px;
-    height: 440px;
     padding: 24px;
   }
 `;
@@ -24,6 +22,7 @@ export const DivIconClose = styled.div`
   top: 14px;
   right: 14px;
   cursor: pointer;
+  color: #ffffff;
 `;
 
 export const TextStyled = styled.p`
@@ -69,6 +68,6 @@ export const DivIconPlus = styled.div`
   justify-content: center;
 `;
 
-export const Icon = styled(Svg)`
-  stroke: white;
+export const IconStyled = styled(Svg)`
+  fill: #ffffff;
 `;
