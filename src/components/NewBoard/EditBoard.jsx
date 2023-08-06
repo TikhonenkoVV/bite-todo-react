@@ -88,7 +88,14 @@ const EditBoard = ({ onClick, id }) => {
         dashboardIcon: board.dashboardIcon,
       }}
       validationSchema={validationSchema}
-      onSubmit={values => {
+      onSubmit={(values, formik) => {
+        if (boards.find(board => board.title === values.title)) {
+          formik.setFieldError(
+            'title',
+            'A board with this title already exists'
+          );
+          return;
+        }
         dispatch(edit(values));
         onClick();
       }}
