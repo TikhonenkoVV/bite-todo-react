@@ -33,7 +33,7 @@ const MainDashboard = () => {
               Columns with tasks
             </MainDashboardSectionTitle>
             <ContentHolder>
-              <ColumnList />
+              <ColumnList boardName={boardName} />
               <MainDashboardAddColumnButton type="button" onClick={openModal}>
                 <MainDashboardIconContainer>
                   <MainDashboardIcon>
