@@ -1,5 +1,6 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
+import { addColumn, editColumn } from '../../store/columns/operations';
 import sprite from '../../img/icons/sprite.svg';
 import * as Yup from 'yup';
 
@@ -18,14 +19,25 @@ import {
 
 const ColumnFormSchema = Yup.object().shape({
   title: Yup.string()
-    .min(2, 'Please write more than 1 symbol!')
-    .max(50, 'Please write less than 50 symbols!')
+    .min(2, 'Please write more than 2 symbol!')
+    .max(32, 'Please write less than 32 symbols!')
     .required('Required'),
 });
 
-export const ColumnForm = ({ isEditMode, onCloseForm }) => {
+export const ColumnForm = ({ id, boardId, isEditMode, onCloseForm }) => {
   const title = isEditMode ? 'Edit column' : 'Add column';
-  const handleSubmit = () => {};
+  const dispatch = useDispatch();
+
+  const handleSubmit = ({ title }, { resetForm }) => {
+    if (isEditMode) {
+      dispatch(editColumn({ boardId, id, title }));
+    } else {
+      dispatch(addColumn({ boardId, title }));
+    }
+    resetForm();
+    onCloseForm();
+  };
+
   return (
     <FormContainer>
       <CloseButton type="button" onClick={onCloseForm}>
@@ -39,7 +51,7 @@ export const ColumnForm = ({ isEditMode, onCloseForm }) => {
           title: '',
         }}
         validationSchema={ColumnFormSchema}
-        onSubmit={handleSubmit}
+        onSubmit={(values, actions) => handleSubmit(values, actions)}
       >
         {({ errors, touched }) => (
           <Form>
@@ -63,5 +75,3 @@ export const ColumnForm = ({ isEditMode, onCloseForm }) => {
     </FormContainer>
   );
 };
-
-// export default ColumnForm;

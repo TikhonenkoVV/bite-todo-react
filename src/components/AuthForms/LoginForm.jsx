@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'store/auth/operations';
-import { selectIsLoggedIn } from 'store/auth/selectors';
+import { selectIsLoggedIn, selectIsLoggingIn } from 'store/auth/selectors';
 import { Svg } from 'components/SvgIcon/SvgIcon';
+import { Loader } from 'components/Loader/Loader';
 import {
   Container,
   AuthNavWrapper,
@@ -22,6 +23,7 @@ export const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggingIn = useSelector(selectIsLoggingIn);
   const [inputType, setInputType] = useState('password');
   const [inputIcon, setInputIcon] = useState('#icon-eye-allow');
 
@@ -61,41 +63,46 @@ export const LoginForm = () => {
   };
 
   return (
-    <Container>
-      <AuthNavWrapper>
-        <Link to="/auth/register">Register</Link>
-        <Link to="/auth/login">Log In</Link>
-      </AuthNavWrapper>
-      <form onSubmit={formik.handleSubmit}>
-        <Input
-          name="email"
-          type="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Enter your email"
-        />
-        {formik.errors.email && formik.touched.email && (
-          <Error>{formik.errors.email}</Error>
-        )}
-        <InputWrapper>
-          <Input
-            name="password"
-            type={inputType}
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="Confirm a password"
-          />
-          <ShowButton type="button" onClick={togglePasswordVisibility}>
-            <Svg v={'18px'} h={'18px'} use={`${sprite}${inputIcon}`} />
-          </ShowButton>
-        </InputWrapper>
-        {formik.errors.password && formik.touched.password && (
-          <Error>{formik.errors.password}</Error>
-        )}
-        <Button type="submit">Log In Now</Button>
-      </form>
-    </Container>
+    <>
+      {!isLoggingIn && (
+        <Container>
+          <AuthNavWrapper>
+            <Link to="/auth/register">Register</Link>
+            <Link to="/auth/login">Log In</Link>
+          </AuthNavWrapper>
+          <form onSubmit={formik.handleSubmit}>
+            <Input
+              name="email"
+              type="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter your email"
+            />
+            {formik.errors.email && formik.touched.email && (
+              <Error>{formik.errors.email}</Error>
+            )}
+            <InputWrapper>
+              <Input
+                name="password"
+                type={inputType}
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder="Confirm a password"
+              />
+              <ShowButton type="button" onClick={togglePasswordVisibility}>
+                <Svg v={'18px'} h={'18px'} use={`${sprite}${inputIcon}`} />
+              </ShowButton>
+            </InputWrapper>
+            {formik.errors.password && formik.touched.password && (
+              <Error>{formik.errors.password}</Error>
+            )}
+            <Button type="submit">Log In Now</Button>
+          </form>
+        </Container>
+      )}
+      {isLoggingIn && <Loader fill={'#fff'} />}
+    </>
   );
 };

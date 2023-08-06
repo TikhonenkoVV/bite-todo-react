@@ -139,3 +139,10 @@ export const SvgBox = styled.div`
 export const ButtonText = styled.p`
   color: ${props => (props.scheme === 'violet' ? '#FFF' : '#161616')};
 `;
+
+export const Error = styled.p`
+  color: #ed4337;
+  font-family: Poppins;
+  font-size: 12px;
+  margin-top: 8px;
+`;

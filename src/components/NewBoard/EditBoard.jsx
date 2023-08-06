@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import IconRadioButton from './IconRadioButton';
 import { PrimaryButton } from '../PrimaryButton';
@@ -18,11 +17,13 @@ import {
   ButtonBox,
   SvgBox,
   ButtonText,
+  Error,
 } from './NewBoard.styled';
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { edit } from 'store/boards/operations';
+import { selectBoardsState } from 'store/boards/selectors';
 
 const iconNames = [
   'icon-Project',
@@ -65,14 +66,15 @@ const EditBoard = ({ onClick, id }) => {
     width: '100%',
   };
 
-  // const userObject = {
-  //   icon: 'icon-star',
-  //   title: 'clouds',
-  //   background: 'clouds',
-  // };
+  const { boards } = useSelector(selectBoardsState);
+
+  const board = boards.find(board => board._id === id);
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Title is required'),
+    title: Yup.string()
+      .required('Title is required')
+      .min(2, 'Must be not less than 2 characters')
+      .max(32, 'Must be 32 characters or less'),
     background: Yup.string().required('A background must be selected'),
     dashboardIcon: Yup.string().required('An icon must be selected'),
   });
@@ -81,9 +83,9 @@ const EditBoard = ({ onClick, id }) => {
     <Formik
       initialValues={{
         id,
-        title: '',
-        background: null,
-        dashboardIcon: null,
+        title: board.title,
+        background: board.background,
+        dashboardIcon: board.dashboardIcon,
       }}
       validationSchema={validationSchema}
       onSubmit={values => {
@@ -105,6 +107,9 @@ const EditBoard = ({ onClick, id }) => {
               scheme={scheme}
               value={formik.values.title}
             />
+            {formik.errors.title && formik.touched.title && (
+              <Error>{formik.errors.title}</Error>
+            )}
             <Text scheme={scheme}>Icons</Text>
             <RadioIconBox>
               {iconNames.map(iconName => (
@@ -117,6 +122,9 @@ const EditBoard = ({ onClick, id }) => {
                 />
               ))}
             </RadioIconBox>
+            {formik.errors.dashboardIcon && formik.touched.dashboardIcon && (
+              <Error>{formik.errors.dashboardIcon}</Error>
+            )}
             <Text scheme={scheme}>Background</Text>
             <RadioBackgroundBox>
               {backgroundImages.map(image => (
@@ -129,15 +137,10 @@ const EditBoard = ({ onClick, id }) => {
                 />
               ))}
             </RadioBackgroundBox>
-            <PrimaryButton
-              type="submit"
-              styles={buttonStyles}
-              onClick={() => {
-                if (Object.keys(formik.errors).length > 0) {
-                  toast.error('Please fill out all the fields');
-                }
-              }}
-            >
+            {formik.errors.background && formik.touched.background && (
+              <Error>{formik.errors.background}</Error>
+            )}
+            <PrimaryButton type="submit" styles={buttonStyles}>
               <ButtonBox>
                 <SvgBox scheme={scheme}>
                   <Svg w={14} h={14} use={`${icons}#icon-plus`} />
