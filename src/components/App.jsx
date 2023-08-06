@@ -26,9 +26,12 @@ export const App = () => {
   }, [dispatch, authError]);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/home', { replace: true });
-    }
+    // if (isLoggedIn) {
+    //   console.log(isLoggedIn);
+    // }
+    // if (isLoggedIn) {
+    //   navigate('/home', { replace: true });
+    // }
   }, [isLoggedIn, navigate]);
 
   return (
