@@ -60,7 +60,7 @@ export const GlobalStyles = css`
 
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     min-height: 100vh;
 
     font-style: normal;
