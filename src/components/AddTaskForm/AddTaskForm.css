@@ -22,7 +22,6 @@
     color: white;
 }
 
-/* Стили для ячеек дат */
 .react-datepicker__day {
     color: white;
     cursor: pointer;
@@ -30,19 +29,16 @@
     border-radius: 50%;
 }
 
-/* Стили для выбранного дня (когда дата выбрана) */
 .react-datepicker__day--selected,
 .react-datepicker__day--today.react-datepicker__day--selected {
     background-color: #8BD48E;
 }
 
-/* Стили для текста даты (когда дата не выбрана) */
 .react-datepicker__day--today:not(.react-datepicker__day--selected):hover {
     background-color: #8BD48E;
     color: black;
 }
 
-/* Стили для выбранной даты при наведении */
 .react-datepicker__day--selected:hover {
     background-color: #8BD48E;
 }
