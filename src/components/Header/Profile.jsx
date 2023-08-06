@@ -1,39 +1,19 @@
-import styled from '@emotion/styled';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Modal } from 'components/Modal';
 import { useModal } from 'hooks/useModal';
 
 import userdefaultimg from '../../img/Header/user.png';
 import EditProfile from './EditProfile';
-
-const DivInfoUserStyled = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
-
-const DivUserImgStyled = styled.div`
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background-color: #1f1f1f;
-  position: relative;
-`;
-
-const TextStyled = styled.span`
-  font-size: 14px;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.28px;
-`;
-
-const LinkStyled = styled.a`
-  text-decoration: none;
-  cursor: pointer;
-`;
+import { DivInfoUserStyled, TextStyled, DivUserImgStyled, LinkStyled } from './Profile.styled';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'store/auth/selectors';
 
 const Profile = () => {
+  const {name} = useSelector(selectUser)
+
   const { isModalOpen, openModal, closeModal } = useModal();
+
+  useEffect(()=>{}, [])
 
   const onClickModalOpen = () => {
     openModal();
@@ -42,7 +22,7 @@ const Profile = () => {
   return (
     <>
       <DivInfoUserStyled>
-        <TextStyled>Name</TextStyled>
+        <TextStyled>{name}</TextStyled>
         <DivUserImgStyled>
           <LinkStyled onClick={onClickModalOpen}>
             <img width={32} height={32} src={userdefaultimg} alt="userlogo" />
