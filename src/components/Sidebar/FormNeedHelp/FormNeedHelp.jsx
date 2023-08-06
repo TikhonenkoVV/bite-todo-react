@@ -25,6 +25,7 @@ export const FormNeedHelp = ({ closeModal }) => {
         .required('Required'),
     }),
     onSubmit: values => {
+      console.log(values);
       // dispatch(logIn(values)); send data
       //  closse modal
     },

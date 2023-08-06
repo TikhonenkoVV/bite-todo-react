@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { add, edit, getBoards } from './operations';
+import { add, deleteBoards, edit, getBoards } from './operations';
 
 const initialState = {
   boards: [],
-  isLoadingBords: false,
-  errorBorads: null,
+  isLoading: false,
+  error: null,
 };
 
 const boardsSlice = createSlice({
@@ -13,39 +13,52 @@ const boardsSlice = createSlice({
   extraReducers: buider => {
     buider
       .addCase(getBoards.pending, (state, { payload }) => {
-        state.isLoadingBords = true;
+        state.isLoading = true;
       })
       .addCase(getBoards.fulfilled, (state, { payload }) => {
         state.boards = payload.boards;
         state.error = null;
       })
       .addCase(getBoards.rejected, (state, { payload }) => {
-        state.isLoadingBords = true;
+        state.isLoading = false;
         state.error = payload;
       })
       .addCase(add.pending, (state, { payload }) => {
-        state.isLoadingBords = true;
+        state.isLoading = true;
       })
       .addCase(add.fulfilled, (state, { payload }) => {
         state.boards.push(payload.board);
         state.error = null;
       })
       .addCase(add.rejected, (state, { payload }) => {
-        state.isLoadingBords = true;
+        state.isLoading = false;
         state.error = payload;
       })
       .addCase(edit.pending, (state, { payload }) => {
-        state.isLoadingBords = true;
+        state.isLoading = true;
       })
       .addCase(edit.fulfilled, (state, { payload }) => {
-        state.boards = state.boards.filter(
+        const index = state.boards.findIndex(
           board => board._id === payload.board._id
         );
-        state.boards.push(payload.board);
+        state.boards[index] = payload.board;
         state.error = null;
       })
       .addCase(edit.rejected, (state, { payload }) => {
-        state.isLoadingBords = true;
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(deleteBoards.pending, (state, { payload }) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteBoards.fulfilled, (state, { payload }) => {
+        state.boards = state.boards.filter(
+          board => board._id !== payload.board._id
+        );
+        state.error = null;
+      })
+      .addCase(deleteBoards.rejected, (state, { payload }) => {
+        state.isLoading = false;
         state.error = payload;
       });
   },
