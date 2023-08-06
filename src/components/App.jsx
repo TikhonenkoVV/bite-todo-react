@@ -27,9 +27,6 @@ export const App = () => {
 
   useEffect(() => {
     // if (isLoggedIn) {
-    //   console.log(isLoggedIn);
-    // }
-    // if (isLoggedIn) {
     //   navigate('/home', { replace: true });
     // }
   }, [isLoggedIn, navigate]);

@@ -40,6 +40,7 @@ const ControlBoard = () => {
   useEffect(() => {
     if (idActiveBoard === '' && boards.length > 0) {
       const lastAddBoardName = boards[0].title;
+      setActiveBoard(boards[0]._id);
       navigate(`/home/${lastAddBoardName}`, { replace: true });
     }
   }, [boards, idActiveBoard, navigate]);
