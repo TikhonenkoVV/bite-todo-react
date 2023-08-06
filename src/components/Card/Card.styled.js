@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 export const CardStyled = styled.li`
   position: relative;
   height: 154px;
-  /* width: 100%; */
-  width: 334px;
+  width: 100%;
   padding: 14px 24px;
   border-radius: 8px;
   background-color: ${props => props.theme['dark'].cardColor};
@@ -29,6 +28,7 @@ export const CardTitleStyled = styled.h3`
 `;
 
 export const CardDescriptionStyled = styled.p`
+  width: 290px;
   height: 2rem;
   margin-bottom: 34px;
   font-size: 12px;
@@ -43,8 +43,19 @@ export const CardDescriptionStyled = styled.p`
 `;
 
 export const CardFooter = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+  }
 `;
 
 export const CardParamsWrapper = styled.div`
@@ -79,6 +90,7 @@ export const PriorityStatus = styled.p`
 
 export const DeadlineDate = styled.p`
   font-size: 10px;
+  line-height: 1.5;
   color: ${props => props.theme['dark'].cardMajorColor};
 `;
 
