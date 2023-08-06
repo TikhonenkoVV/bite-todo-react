@@ -62,7 +62,6 @@ const Menu = ({ active, setActive }) => {
     >
       <DivSideBarContentStyled onClick={e => e.stopPropagation()}>
         <Sidebar />
-        {/* CONTENT SIDE BAR */}
       </DivSideBarContentStyled>
     </DivBtnBurgerMenuSyled>
   );

@@ -21,6 +21,8 @@ import {
 } from './NewBoard.styled';
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
+import { useDispatch } from 'react-redux';
+import { add } from 'store/boards/operations';
 
 const iconNames = [
   'icon-Project',
@@ -53,6 +55,8 @@ const backgroundImages = [
 ];
 
 const NewBoard = ({ onClick }) => {
+  const dispatch = useDispatch();
+
   const scheme = 'dark';
   const buttonStyles = {
     padding: '10px 0px 11px 0px',
@@ -64,20 +68,20 @@ const NewBoard = ({ onClick }) => {
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
-    icon: Yup.string().required('An icon must be selected'),
     background: Yup.string().required('A background must be selected'),
+    dashboardIcon: Yup.string().required('An icon must be selected'),
   });
 
   return (
     <Formik
       initialValues={{
-        icon: null,
         title: '',
         background: null,
+        dashboardIcon: null,
       }}
       validationSchema={validationSchema}
       onSubmit={values => {
-        console.log(values);
+        dispatch(add(values));
         onClick();
       }}
     >
@@ -101,9 +105,9 @@ const NewBoard = ({ onClick }) => {
               {iconNames.map(iconName => (
                 <IconRadioButton
                   key={iconName}
-                  name="icon"
+                  name="dashboardIcon"
                   value={iconName}
-                  checked={formik.values.icon === iconName}
+                  checked={formik.values.dashboardIcon === iconName}
                   scheme={scheme}
                 />
               ))}

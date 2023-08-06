@@ -1,20 +1,25 @@
 import styled from '@emotion/styled';
 
 export const H2styled = styled.h2`
-  margin-top: 116px;
+  margin-top: 70px;
   margin-left: 14px;
 
+  font-family: Poppins;
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.5;
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.5);
+  @media screen and (min-width: 768px) {
+    margin-top: 60px;
+    margin-left: 24px;
+  }
 `;
 
 export const DivStyled = styled.div`
   margin-top: 8px;
-  margin-bottom: 58px;
+  margin-bottom: 40px;
   margin-left: 14px;
+  margin-right: 14px;
   height: 70px;
   width: 197px;
   display: flex;
@@ -24,14 +29,16 @@ export const DivStyled = styled.div`
   border-top: 1px solid;
   border-bottom: 1px solid;
   border-color: rgba(255, 255, 255, 0.1);
+  @media screen and (min-width: 768px) {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 `;
 
 export const PStyled = styled.p`
   width: 76px;
 
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
+  font-family: Poppins;
   letter-spacing: -0.02em;
   color: #fff;
 `;
@@ -44,7 +51,7 @@ export const ButtonStyled = styled.button`
   height: 36px;
   border-radius: 6px;
   background-color: #bedbb0;
-  color: black;
+  color: #121212;
 
   cursor: pointer;
 `;
@@ -53,19 +60,21 @@ export const UlStyled = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 4px;
-  list-style-type: none;
 `;
 
-export const NavStyled = styled.nav`
+export const LiStyled = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   width: 100%;
   height: 70px;
-  background-color: #1f1f1f;
 
   cursor: pointer;
+
+  &.active {
+    background-color: #1f1f1f;
+  }
 `;
 
 export const DivNameStyled = styled.div`
@@ -73,14 +82,27 @@ export const DivNameStyled = styled.div`
   align-items: center;
   column-gap: 4px;
   margin-left: 14px;
+  margin-right: 14px;
+
+  color: rgba(255, 255, 255, 0.5);
+
+  &.active {
+    background-color: #1f1f1f;
+    color: #fff;
+  }
+  @media screen and (min-width: 768px) {
+    column-gap: 8px;
+    margin-left: 24px;
+  }
 `;
 
-export const H3Styled = styled.h3`
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
+export const TextStyled = styled.p`
+  color: rgba(255, 255, 255, 0.5);
+  font-family: Poppins;
   letter-spacing: -0.02em;
-  color: #fff;
+  &.active {
+    color: #fff;
+  }
 `;
 
 export const DivIconStyled = styled.div`
@@ -90,6 +112,7 @@ export const DivIconStyled = styled.div`
   column-gap: 8px;
   padding-right: 18px;
   height: 100%;
+  color: rgba(255, 255, 255, 0.5);
 
   &::after {
     content: '';

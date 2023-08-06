@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import sprite from 'img/icons/sprite.svg';
 import { Modal } from 'components/Modal/Modal';
 import { useEditModal, useModal } from 'hooks/useModal';
@@ -10,22 +10,28 @@ import {
   DivNameStyled,
   DivStyled,
   H2styled,
-  H3Styled,
-  NavStyled,
   PStyled,
+  LiStyled,
+  TextStyled,
   UlStyled,
 } from './ControlBoard.styled';
 import { Svg } from 'components/SvgIcon/SvgIcon';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectBoards } from 'store/boards/selectors';
+import { getBoards } from 'store/boards/operations';
 
 const ControlBoard = () => {
-  const [isActiveBoard, setActiveBoard] = useState('');
+  const [idActiveBoard, setActiveBoard] = useState('');
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
 
-  const boards = [
-    { id: '1', title: 'title first', svg: 'name' },
-    { id: '2', title: 'title two', svg: 'name' },
-  ];
+  const dispatch = useDispatch();
+
+  const boards = useSelector(selectBoards);
+
+  useEffect(() => {
+    dispatch(getBoards());
+  }, [dispatch]);
 
   const handleActiveBoard = id => {
     setActiveBoard(id);
@@ -42,28 +48,28 @@ const ControlBoard = () => {
       </DivStyled>
       <UlStyled>
         {boards.map(board => (
-          <li
-            key={board.id}
-            id={board.id}
-            onClick={() => handleActiveBoard(board.id)}
+          <LiStyled
+            key={board._id}
+            onClick={() => handleActiveBoard(board._id)}
+            className={board._id === idActiveBoard && 'active'}
           >
-            <NavStyled>
-              <DivNameStyled>
-                <Svg w={18} h={18} use={`${sprite}#icon-puzzle`} />
-                <H3Styled>{board.title}</H3Styled>
-              </DivNameStyled>
-              {isActiveBoard === board.id && (
-                <DivIconStyled>
-                  <button type="button" onClick={openEditModal}>
-                    <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
-                  </button>
-                  <button type="button">
-                    <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
-                  </button>
-                </DivIconStyled>
-              )}
-            </NavStyled>
-          </li>
+            <DivNameStyled className={board._id === idActiveBoard && 'active'}>
+              <Svg w={18} h={18} use={`${sprite}#${board.dashboardIcon}`} />
+              <TextStyled className={board._id === idActiveBoard && 'active'}>
+                {board.title}
+              </TextStyled>
+            </DivNameStyled>
+            {idActiveBoard === board._id && (
+              <DivIconStyled>
+                <button type="button" onClick={openEditModal}>
+                  <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
+                </button>
+                <button type="button">
+                  <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
+                </button>
+              </DivIconStyled>
+            )}
+          </LiStyled>
         ))}
       </UlStyled>
       {isModalOpen && (
@@ -73,7 +79,7 @@ const ControlBoard = () => {
       )}
       {isModalEditOpen && (
         <Modal onClose={closeEditModal}>
-          <EditBoard onClick={closeEditModal} id={isActiveBoard} />
+          <EditBoard onClick={closeEditModal} id={idActiveBoard} />
         </Modal>
       )}
     </>
