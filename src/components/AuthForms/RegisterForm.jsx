@@ -5,7 +5,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { register, logIn } from 'store/auth/operations';
-import { selectIsRegistered, selectIsLoggedIn } from 'store/auth/selectors';
+import {
+  selectIsRegistered,
+  selectIsLoggedIn,
+  selectIsLoggingIn,
+} from 'store/auth/selectors';
 import {
   Container,
   AuthNavWrapper,
@@ -16,6 +20,7 @@ import {
   Error,
   ShowButton,
 } from './AuthForms.styled';
+import { Loader } from 'components/Loader/Loader';
 import sprite from '../../img/icons/sprite.svg';
 
 export const RegisterForm = () => {
@@ -23,6 +28,7 @@ export const RegisterForm = () => {
   const navigate = useNavigate();
   const isRegistered = useSelector(selectIsRegistered);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggingIn = useSelector(selectIsLoggingIn);
   const [inputType, setInputType] = useState('password');
   const [inputIcon, setInputIcon] = useState('#icon-eye-allow');
 
@@ -75,52 +81,57 @@ export const RegisterForm = () => {
   };
 
   return (
-    <Container>
-      <AuthNavWrapper>
-        <Link to="/auth/register">Registration</Link>
-        <Link to="/auth/login">Log In</Link>
-      </AuthNavWrapper>
-      <form onSubmit={formik.handleSubmit}>
-        <Input
-          name="name"
-          type="text"
-          value={formik.values.name}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Enter your name"
-        />
-        {formik.errors.name && formik.touched.name && (
-          <Error>{formik.errors.name}</Error>
-        )}
-        <Input
-          name="email"
-          type="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Enter your email"
-        />
-        {formik.errors.email && formik.touched.email && (
-          <Error>{formik.errors.email}</Error>
-        )}
-        <InputWrapper>
-          <Input
-            name="password"
-            type={inputType}
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="Create a password"
-          />
-          <ShowButton type="button" onClick={togglePasswordVisibility}>
-            <Svg v={'18px'} h={'18px'} use={`${sprite}${inputIcon}`} />
-          </ShowButton>
-        </InputWrapper>
-        {formik.errors.password && formik.touched.password && (
-          <Error>{formik.errors.password}</Error>
-        )}
-        <Button type="submit">Register Now</Button>
-      </form>
-    </Container>
+    <>
+      {!isLoggingIn && (
+        <Container>
+          <AuthNavWrapper>
+            <Link to="/auth/register">Registration</Link>
+            <Link to="/auth/login">Log In</Link>
+          </AuthNavWrapper>
+          <form onSubmit={formik.handleSubmit}>
+            <Input
+              name="name"
+              type="text"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter your name"
+            />
+            {formik.errors.name && formik.touched.name && (
+              <Error>{formik.errors.name}</Error>
+            )}
+            <Input
+              name="email"
+              type="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter your email"
+            />
+            {formik.errors.email && formik.touched.email && (
+              <Error>{formik.errors.email}</Error>
+            )}
+            <InputWrapper>
+              <Input
+                name="password"
+                type={inputType}
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder="Create a password"
+              />
+              <ShowButton type="button" onClick={togglePasswordVisibility}>
+                <Svg v={'18px'} h={'18px'} use={`${sprite}${inputIcon}`} />
+              </ShowButton>
+            </InputWrapper>
+            {formik.errors.password && formik.touched.password && (
+              <Error>{formik.errors.password}</Error>
+            )}
+            <Button type="submit">Register Now</Button>
+          </form>
+        </Container>
+      )}
+      {isLoggingIn && <Loader fill={'#fff'} />}
+    </>
   );
 };
