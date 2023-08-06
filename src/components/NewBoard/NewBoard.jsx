@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import IconRadioButton from './IconRadioButton';
 import { PrimaryButton } from '../PrimaryButton/';
@@ -18,6 +17,7 @@ import {
   ButtonBox,
   SvgBox,
   ButtonText,
+  Error,
 } from './NewBoard.styled';
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
@@ -100,6 +100,9 @@ const NewBoard = ({ onClick }) => {
               scheme={scheme}
               value={formik.values.title}
             />
+            {formik.errors.title && formik.touched.title && (
+              <Error>{formik.errors.title}</Error>
+            )}
             <Text scheme={scheme}>Icons</Text>
             <RadioIconBox>
               {iconNames.map(iconName => (
@@ -112,6 +115,9 @@ const NewBoard = ({ onClick }) => {
                 />
               ))}
             </RadioIconBox>
+            {formik.errors.dashboardIcon && formik.touched.dashboardIcon && (
+              <Error>{formik.errors.dashboardIcon}</Error>
+            )}
             <Text scheme={scheme}>Background</Text>
             <RadioBackgroundBox>
               {backgroundImages.map(image => (
@@ -124,15 +130,10 @@ const NewBoard = ({ onClick }) => {
                 />
               ))}
             </RadioBackgroundBox>
-            <PrimaryButton
-              type="submit"
-              styles={buttonStyles}
-              onClick={() => {
-                if (Object.keys(formik.errors).length > 0) {
-                  toast.error('Please fill out all the fields');
-                }
-              }}
-            >
+            {formik.errors.background && formik.touched.background && (
+              <Error>{formik.errors.background}</Error>
+            )}
+            <PrimaryButton type="submit" styles={buttonStyles}>
               <ButtonBox>
                 <SvgBox scheme={scheme}>
                   <Svg w={14} h={14} use={`${icons}#icon-plus`} />
