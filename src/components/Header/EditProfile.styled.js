@@ -1,11 +1,7 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import FormProfie from './FormProfie';
-import userdefaultimg from '../../img/Header/user.png';
-import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 
-const DivStyled = styled.div`
+export const DivStyled = styled.div`
   position: relative;
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.5);
@@ -23,14 +19,14 @@ const DivStyled = styled.div`
   }
 `;
 
-const DivIconClose = styled.div`
+export const DivIconClose = styled.div`
   position: absolute;
   top: 14px;
   right: 14px;
   cursor: pointer;
 `;
 
-const TextStyled = styled.p`
+export const TextStyled = styled.p`
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -40,12 +36,12 @@ const TextStyled = styled.p`
   margin-bottom: 24px;
 `;
 
-const DivItem = styled.div`
+export const DivItem = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-const DivUserImgStyled = styled.div`
+export const DivUserImgStyled = styled.div`
   width: 68px;
   height: 68px;
   border-radius: 8px;
@@ -54,12 +50,12 @@ const DivUserImgStyled = styled.div`
   margin-bottom: 25px;
 `;
 
-const LinkStyled = styled.a`
+export const LinkStyled = styled.a`
   text-decoration: none;
   cursor: pointer;
 `;
 
-const DivIconPlus = styled.div`
+export const DivIconPlus = styled.div`
   width: 24px;
   height: 24px;
   border-radius: 8px;
@@ -73,30 +69,6 @@ const DivIconPlus = styled.div`
   justify-content: center;
 `;
 
-const Icon = styled(Svg)`
+export const Icon = styled(Svg)`
   stroke: white;
 `;
-
-const EditProfile = ({ closeModal }) => {
-  return (
-    <DivStyled>
-      <DivIconClose onClick={closeModal}>
-        <Icon w={18} h={18} use={`${sprite}#icon-x-close`} />
-      </DivIconClose>
-      <TextStyled>Edit Profile</TextStyled>
-      <DivItem>
-        <DivUserImgStyled>
-          <LinkStyled>
-            <img width={68} height={68} src={userdefaultimg} alt="userlogo" />
-          </LinkStyled>
-          <DivIconPlus>
-            <Svg w={10} h={10} use={`${sprite}#icon-plus`} />
-          </DivIconPlus>
-        </DivUserImgStyled>
-      </DivItem>
-      <FormProfie />
-    </DivStyled>
-  );
-};
-
-export default EditProfile;
