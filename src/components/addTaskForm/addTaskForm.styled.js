@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { colors } from './AddTaskForm';
+// import { colors } from './AddTaskForm';
 
 export const StyledDiv = styled.div`
   width: 350px;
@@ -152,16 +152,19 @@ export const StyledFormikTitleNotification = styled.div`
   margin-left: 24px;
   margin-bottom: 5px;
   color: red;
+  font-size: 12px;
 `;
 
 export const StyledFormikDescriptionNotification = styled.div`
   margin-top: -15px;
   margin-left: 24px;
   color: red;
+  font-size: 12px;
 `;
 
 export const StyledFormikColorNotification = styled.div`
   margin-top: -5px;
   margin-left: 24px;
   color: red;
+  font-size: 12px;
 `;
