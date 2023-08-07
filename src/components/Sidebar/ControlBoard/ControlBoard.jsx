@@ -65,7 +65,7 @@ const ControlBoard = () => {
           <Svg w={18} h={18} use={`${sprite}#icon-plus`} />
         </ButtonStyled>
       </DivStyled>
-      <Scrollbars style={{ width: 200, height: '100vw' }}>
+      <Scrollbars style={{ width: '100% ', height: 'calc(100% - 575px)' }}>
         <UlStyled>
           {boards.map(board => (
             <LiStyled
