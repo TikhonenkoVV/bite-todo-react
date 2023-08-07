@@ -24,7 +24,16 @@ export const Auth = () => {
 
   useEffect(() => {
     if (authError.message === 'Unable to fetch user') return;
-    
+
+    Notify.init({
+      fontFamily: 'Poppins',
+      timeout: 4000,
+      clickToClose: true,
+      warning: {
+        background: '#ff5549',
+      },
+    });
+
     if (authError.message) {
       switch (authError.status) {
         case 401:
