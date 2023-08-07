@@ -73,7 +73,7 @@ export const refreshUser = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message: "Unable to fetch user",
+        message: 'Unable to fetch user',
         status: error.response.status,
       });
     }
@@ -132,5 +132,4 @@ export const updateAvatar = createAsyncThunk(
       });
     }
   }
-
-)
+);
