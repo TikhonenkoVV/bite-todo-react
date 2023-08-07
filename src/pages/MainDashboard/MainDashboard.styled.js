@@ -22,7 +22,7 @@ export const MainDashboardContainer = styled.div`
 
   @media (min-width: 1440px) {
     /* width: 1440px; */
-    padding: 48px 24px 0 284px;
+    /* padding: 48px 24px 0 284px; */
   }
 `;
 
