@@ -16,10 +16,8 @@ const initialState = {
   isLoggedIn: false,
   isLoggingIn: false,
   isRefreshing: false,
-  error: null,
+  error: { message: '', status: '' },
 };
-
-// isLoggingIn , isRefreshing додано для того, щоб можна було показати loader.
 
 const authSlice = createSlice({
   name: 'auth',
@@ -28,11 +26,11 @@ const authSlice = createSlice({
     buider
       .addCase(register.pending, (state, action) => {
         state.isRegistered = false;
-        state.error = null;
+        state.error = { message: '', status: '' };
       })
       .addCase(register.fulfilled, (state, action) => {
         state.isRegistered = true;
-        state.error = null;
+        state.error = { message: '', status: '' };
       })
       .addCase(register.rejected, (state, action) => {
         state.isRegistered = false;
@@ -41,7 +39,7 @@ const authSlice = createSlice({
       .addCase(logIn.pending, (state, action) => {
         state.isLoggingIn = true;
         state.isLoggedIn = false;
-        state.error = null;
+        state.error = { message: '', status: '' };
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -49,7 +47,7 @@ const authSlice = createSlice({
         state.refreshToken = action.payload.tokens.refreshToken;
         state.isLoggingIn = false;
         state.isLoggedIn = true;
-        state.error = null;
+        state.error = { message: '', status: '' };
       })
       .addCase(logIn.rejected, (state, action) => {
         state.user = { name: '', email: '', profilePic: '' };
@@ -62,17 +60,17 @@ const authSlice = createSlice({
         state.accessToken = null;
         state.refreshToken = null;
         state.isLoggedIn = false;
-        state.error = null;
+        state.error = { message: '', status: '' };
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
-        state.error = null;
+        state.error = { message: '', status: '' };
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
-        state.error = null;
+        state.error = { message: '', status: '' };
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
@@ -82,18 +80,18 @@ const authSlice = createSlice({
       .addCase(refreshToken.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
-        state.error = null;
+        state.error = { message: '', status: '' };
       })
       .addCase(refreshToken.rejected, (state, action) => {
         state.error = action.payload;
       })
       .addCase(updateUser.pending, state => {
         state.isRefreshing = true;
-        state.error = null;
+        state.error = { message: '', status: '' };
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
         state.user = payload;
-        state.error = null;
+        state.error = { message: '', status: '' };
       })
       .addCase(updateUser.rejected, (state, { payload }) => {
         state.error = payload;

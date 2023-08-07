@@ -4,7 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'store/auth/operations';
-import { selectIsLoggedIn, selectIsLoggingIn } from 'store/auth/selectors';
+import {
+  selectIsLoggedIn,
+  selectIsLoggingIn,
+} from 'store/auth/selectors';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { Loader } from 'components/Loader/Loader';
 import {

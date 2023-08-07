@@ -1,4 +1,4 @@
-import React, { useState,  useRef, } from 'react';
+import React, { useState, useRef } from 'react';
 import { useFormik } from 'formik';
 import styled from '@emotion/styled';
 import DatePicker from 'react-datepicker';
@@ -29,8 +29,6 @@ import {
   StyledFormikColorNotification,
 } from './AddTaskForm.styled.js';
 
-
-
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 
 const StyledCustomCalendar = styled(DatePicker)`
@@ -55,11 +53,10 @@ const initialValues = {
   color: '',
 };
 
-export const AddTasks = ({columnId,taskData  }) => {
-
+export const AddTasks = ({ columnId, taskData }) => {
   const [deadline, setDeadline] = useState('');
 
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const deadlinePickerRef = useRef(null);
 
@@ -94,10 +91,9 @@ const dispatch = useDispatch();
     ? moment(deadline).format('D MMMM YYYY')
     : CurrentDate();
 
-
-const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     try {
-      await dispatch(addTask(columnId, values)); 
+      await dispatch(addTask(columnId, values));
       console.log('Task added successfully!');
       resetForm();
       setDeadline('');
@@ -125,7 +121,7 @@ const handleSubmit = async (values, { resetForm }) => {
     <StyledDiv>
       <StyledP>Add Card</StyledP>
 
-      <StyledBtnClose >
+      <StyledBtnClose>
         <svg
           className="icon"
           width="18"
@@ -183,37 +179,37 @@ const handleSubmit = async (values, { resetForm }) => {
           </StyledFormikColorNotification>
         ) : null}
 
-<StyledTitleDeadline>
-  Deadline
-  <Container>
-    {formattedDeadline}
-    <svg
-      className="icon"
-      width="14"
-      height="14"
-      aria-hidden="true"
-      role="presentation"
-      fill="#BEDBB0"
-      onClick={handleDeadlineClick}
-      style={{
-        marginLeft: '5px',
-        cursor: 'pointer',
-      }}
-    >
-      <use xlinkHref={`${sprite}#icon-chevron-down`} />
-    </svg>
-  </Container>
-  <StyledCustomCalendar
-    className="custom-datepicker"
-    ref={deadlinePickerRef}
-    name="deadline"
-    selected={formik.values.deadline}
-    onChange={handleDateChange}
-    locale="en"
-    dateFormat="d MMMM yyyy"
-    customInput={<div></div>}
-  />
-</StyledTitleDeadline>
+        <StyledTitleDeadline>
+          Deadline
+          <Container>
+            {formattedDeadline}
+            <svg
+              className="icon"
+              width="14"
+              height="14"
+              aria-hidden="true"
+              role="presentation"
+              fill="#BEDBB0"
+              onClick={handleDeadlineClick}
+              style={{
+                marginLeft: '5px',
+                cursor: 'pointer',
+              }}
+            >
+              <use xlinkHref={`${sprite}#icon-chevron-down`} />
+            </svg>
+          </Container>
+          <StyledCustomCalendar
+            className="custom-datepicker"
+            ref={deadlinePickerRef}
+            name="deadline"
+            selected={formik.values.deadline}
+            onChange={handleDateChange}
+            locale="en"
+            dateFormat="d MMMM yyyy"
+            customInput={<div></div>}
+          />
+        </StyledTitleDeadline>
         <StyledButton type="submit">
           <PlusIconContainer>
             <svg

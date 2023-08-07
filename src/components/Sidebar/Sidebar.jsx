@@ -20,7 +20,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     // if (!isLoggedIn) {
-    //   navigate('/welcome', { replace: true });
+    //   navigate('/', { replace: true });
     // }
   }, [isLoggedIn, navigate]);
 

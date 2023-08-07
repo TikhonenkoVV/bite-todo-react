@@ -1,7 +1,8 @@
-import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { LoginForm } from 'components/AuthForms/LoginForm';
 import { RegisterForm } from 'components/AuthForms/RegisterForm';
+
 const REGISTER = 'register';
 const LOGIN = 'login';
 const bgdStyles = {
@@ -42,4 +43,3 @@ export const Auth = () => {
     </div>
   );
 };
-
