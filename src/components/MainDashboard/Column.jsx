@@ -16,9 +16,9 @@ import {
   AddCardIcon,
 } from './Column.styled';
 import { CardList } from 'components/Card/CardList';
-//import { AddTasks } from 'components/AddTaskForm/AddTaskForm';
+import { AddTasks } from 'components/AddTaskForm/AddTaskForm';
 
-export const Column = ({ id, boardId, title }) => {
+export const Column = ({ id, boardId, title, cards }) => {
   const [isEditCardMode, setIsEditCardMode] = useState(false);
   const { isModalOpen, closeModal, openModal } = useModal();
 
@@ -56,7 +56,7 @@ export const Column = ({ id, boardId, title }) => {
           </IconButton>
         </IconContainer>
       </ColumnTitleContainer>
-      <CardList />
+      {cards && <CardList cards={cards} />}
       <AddCardButton onClick={handleAddCardButtonClick}>
         <AddCardIconContainer>
           <AddCardIcon>
@@ -72,12 +72,13 @@ export const Column = ({ id, boardId, title }) => {
             boardId={boardId}
             onCloseForm={closeModal}
             isEditMode={true}
+            cards={cards}
           />
         </Modal>
       )}
       {isModalOpen && !isEditCardMode && (
         <Modal onClose={closeModal}>
-          {/* <AddTasks onClose={closeModal} /> */}
+          <AddTasks boardId={boardId} columnId={id} closeModal={closeModal} />
         </Modal>
       )}
     </ColumnContainer>

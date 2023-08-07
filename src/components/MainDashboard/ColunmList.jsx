@@ -18,8 +18,16 @@ export const ColumnList = ({ boardId }) => {
 
   return (
     <ColumnListStyled>
-      {columns.map(({ _id, title }) => {
-        return <Column key={_id} id={_id} boardId={boardId} title={title} />;
+      {columns.map(({ _id, title, cards }) => {
+        return (
+          <Column
+            key={_id}
+            id={_id}
+            boardId={boardId}
+            title={title}
+            cards={cards}
+          />
+        );
       })}
     </ColumnListStyled>
   );

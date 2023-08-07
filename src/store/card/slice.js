@@ -16,7 +16,7 @@ const taskSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addTask.fulfilled, (state, { payload }) => {
-        state.task.push(payload);
+        state.task.push(payload.task);
         state.isLoading = false;
         state.error = null;
       })

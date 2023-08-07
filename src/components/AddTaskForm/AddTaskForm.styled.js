@@ -113,13 +113,13 @@ export const RadioInput = styled.input`
     height: ${({ checked }) => (checked ? '10px' : '14px')};
     border: ${({ checked, colors }) => (checked ? '1px' : '0px')} solid
       ${({ colors }) => colors};
-    background-color: ${({ checked, value }) => (checked ? value : value)};
+    background-color: ${({ checked, color }) => (checked ? color : color)};
     transition: width 0.2s ease, height 0.2s ease; /* Добавляем transition */
   }
   &:checked::before {
     margin-bottom: 3.2px;
     margin-left: 1.5px;
-    background-color: ${({ checked, value }) => (checked ? value : value)};
+    background-color: ${({ checked, color }) => (checked ? color : color)};
   }
 `;
 
