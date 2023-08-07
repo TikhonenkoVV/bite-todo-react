@@ -8,6 +8,8 @@ import * as Yup from 'yup';
 import sprite from '../../img/icons/sprite.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import './AddTaskForm.css';
+import { useDispatch } from 'react-redux';
+import { addTask } from '../../store/card/operation';
 import {
   StyledP,
   StyledDiv,
@@ -53,11 +55,11 @@ const initialValues = {
   color: '',
 };
 
-export const AddTasks = ({ onClose, children }) => {
+export const AddTasks = ({columnId,taskData  }) => {
 
   const [deadline, setDeadline] = useState('');
 
-
+const dispatch = useDispatch();
 
   const deadlinePickerRef = useRef(null);
 
@@ -93,14 +95,15 @@ export const AddTasks = ({ onClose, children }) => {
     : CurrentDate();
 
 
-  const handleSubmit = (values, { resetForm }) => {
-    if (!formik.values.deadline) {
-      alert('Please select a deadline.');
-      return;
+const handleSubmit = async (values, { resetForm }) => {
+    try {
+      await dispatch(addTask(columnId, values)); 
+      console.log('Task added successfully!');
+      resetForm();
+      setDeadline('');
+    } catch (error) {
+      console.error('Error:', error);
     }
-    console.log(values);
-    resetForm();
-    setDeadline('');
   };
 
   const formik = useFormik({
@@ -117,14 +120,6 @@ export const AddTasks = ({ onClose, children }) => {
     formik.setFieldValue('deadline', date);
     setDeadline(date);
   };
-
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  // };
 
   return (
     <StyledDiv>
