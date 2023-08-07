@@ -132,5 +132,4 @@ export const updateAvatar = createAsyncThunk(
       });
     }
   }
-
-)
+);
