@@ -21,9 +21,3 @@ export const CardListStyled = styled.ul`
   gap: 8px;
   color: #fff;
 `;
-
-export const CardListItemStyled = styled.li`
-  height: 154px;
-  width: 100%;
-  outline: 1px solid red;
-`;

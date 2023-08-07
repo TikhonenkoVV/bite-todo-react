@@ -1,42 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ThemeSelector from './ThemeSelector';
 import Profile from './Profile';
-import styled from '@emotion/styled';
 import Menu from './Menu';
 import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
-
-const StyledHeader = styled.header`
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
-  background-color: #161616;
-  color: #ffffff;
-  padding: 18px 32px;
-  height: 60px;
-  max-width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @media screen and (min-width: 768px) {
-    height: 68px;
-  }
-`;
-
-const DivBtnStyle = styled.div`
-  @media screen and (max-width: 768px) {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-  }
-`;
-
-const StyledNav = styled.nav`
-  display: flex;
-  align-items: center;
-  gap: 24px;
-`;
+import { StyledHeader, DivBtnStyle, StyledNav } from './Header.styled';
 
 const Header = () => {
   const [menuActive, setMenuActive] = useState(false);

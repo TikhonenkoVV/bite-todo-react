@@ -1,17 +1,17 @@
-import { object, string } from 'yup';
+import * as yup from 'yup';
 
-// const passwordRules =
-//   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/;
-
-const editProfileScheme = object({
-  username: string()
-    .min(3, 'User must be at least 3 characters long')
-    .required('Required'),
-  email: string()
-    .email('please enter a valid email address')
-    .required('Required'),
-  password: string().min(6).required('Required'),
-  // .matches(passwordRules, { message: 'Please enter a valid password' })
+export const userEditScheme = yup.object({
+  name: yup
+    .string()
+    .min(2, 'Must be not less than 2 characters')
+    .max(32, 'Must be 32 characters or less'),
+  email: yup.string().email('Invalid email address'),
+  password: yup
+    .string()
+    .trim('Password cannot include spaces')
+    .strict(true)
+    .min(8, 'Must be not less than 8 characters')
+    .max(64, 'Must be 64 characters or less'),
 });
 
-export default editProfileScheme;
+export default userEditScheme;

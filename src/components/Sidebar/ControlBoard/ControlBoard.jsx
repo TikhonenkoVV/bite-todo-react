@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import sprite from 'img/icons/sprite.svg';
 import { Modal } from 'components/Modal/Modal';
 import { useEditModal, useModal } from 'hooks/useModal';
@@ -24,17 +25,28 @@ const ControlBoard = () => {
   const [idActiveBoard, setActiveBoard] = useState('');
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
-
+  console.log('count');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // const { boards, isLoading, error } = useSelector(selectBoardsState);
-  const { boards } = useSelector(selectBoardsState);
 
   useEffect(() => {
     dispatch(getBoards());
   }, [dispatch]);
 
-  const handleActiveBoard = id => {
+  const { boards } = useSelector(selectBoardsState);
+
+  useEffect(() => {
+    if (idActiveBoard === '' && boards.length > 0) {
+      const lastAddBoardName = boards[0].title;
+      setActiveBoard(boards[0]._id);
+      navigate(`/home/${lastAddBoardName}`, { replace: true });
+    }
+  }, [boards, idActiveBoard, navigate]);
+
+  const handleActiveBoard = (id, boardName) => {
+    navigate(`/home/${boardName}`, { replace: true });
     setActiveBoard(id);
   };
 
@@ -55,7 +67,7 @@ const ControlBoard = () => {
         {boards.map(board => (
           <LiStyled
             key={board._id}
-            onClick={() => handleActiveBoard(board._id)}
+            onClick={() => handleActiveBoard(board._id, board.title)}
             className={board._id === idActiveBoard && 'active'}
           >
             <DivNameStyled className={board._id === idActiveBoard && 'active'}>
