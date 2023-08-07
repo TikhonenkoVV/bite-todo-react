@@ -17,6 +17,7 @@
     "modern-normalize": "^2.0.0",
     "moment": "^2.29.4",
     "nanoid": "^4.0.2",
+    "notiflix": "^3.2.6",
     "react": "^18.1.0",
     "react-datepicker": "^4.16.0",
     "react-dom": "^18.1.0",
