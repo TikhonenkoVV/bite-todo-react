@@ -30,6 +30,8 @@ export const App = () => {
       dispatch(refreshUser());
     }
 
+    if (authError.message === 'Unable to fetch user') return;
+
     Notify.init({
       fontFamily: 'Poppins',
       timeout: 4000,
