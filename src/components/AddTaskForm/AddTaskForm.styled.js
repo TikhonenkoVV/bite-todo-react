@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-// import { colors } from './AddTaskForm';
 
 export const StyledDiv = styled.div`
   width: 350px;
