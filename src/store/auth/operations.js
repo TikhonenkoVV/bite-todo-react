@@ -61,10 +61,7 @@ export const refreshUser = createAsyncThunk(
     const persistedToken = state.auth.accessToken;
 
     if (persistedToken === null) {
-      return thunkAPI.rejectWithValue({
-        message: 'Please log in again',
-        status: '',
-      });
+      return;
     }
 
     try {
