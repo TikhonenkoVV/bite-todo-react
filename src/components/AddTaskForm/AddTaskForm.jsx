@@ -27,7 +27,7 @@ import {
   StyledBtnClose,
   PlusIconContainer,
   StyledFormikColorNotification,
-} from './AddTaskForm.styled.js';
+} from './AddTaskForm.styled';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 
