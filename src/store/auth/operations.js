@@ -73,7 +73,7 @@ export const refreshUser = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message: error.message,
+        message: "Unable to fetch user",
         status: error.response.status,
       });
     }
