@@ -21,8 +21,9 @@ import {
 } from './NewBoard.styled';
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { add } from 'store/boards/operations';
+import { selectBoardsState } from 'store/boards/selectors';
 
 const iconNames = [
   'icon-Project',
@@ -66,6 +67,8 @@ const NewBoard = ({ onClick }) => {
     width: '100%',
   };
 
+  const { boards } = useSelector(selectBoardsState);
+
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .required('Title is required')
@@ -83,7 +86,14 @@ const NewBoard = ({ onClick }) => {
         dashboardIcon: null,
       }}
       validationSchema={validationSchema}
-      onSubmit={values => {
+      onSubmit={(values, formik) => {
+        if (boards.find(board => board.title === values.title)) {
+          formik.setFieldError(
+            'title',
+            'A board with this title already exists'
+          );
+          return;
+        }
         dispatch(add(values));
         onClick();
       }}
