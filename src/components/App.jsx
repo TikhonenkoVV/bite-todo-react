@@ -28,7 +28,6 @@ export const App = () => {
     }
   }, [dispatch, authError]);
 
-
   return isRefreshing ? (
     <Loader />
   ) : (
