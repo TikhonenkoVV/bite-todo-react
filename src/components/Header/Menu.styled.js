@@ -1,8 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import Sidebar from 'components/Sidebar';
 
-const DivBtnBurgerMenuSyled = styled.div`
+export const DivBtnBurgerMenuStyled = styled.div`
   @media screen and (max-width: 768px) {
     position: fixed;
     width: 225px;
@@ -32,7 +30,7 @@ const DivBtnBurgerMenuSyled = styled.div`
   }
 `;
 
-const DivSideBarContentStyled = styled.div`
+export const DivSideBarContentStyled = styled.div`
   padding-top: 14px;
   padding-bottom: 24px;
   display: flex;
@@ -53,18 +51,3 @@ const DivSideBarContentStyled = styled.div`
     padding-top: 24px;
   }
 `;
-
-const Menu = ({ active, setActive }) => {
-  return (
-    <DivBtnBurgerMenuSyled
-      className={active ? 'menu active' : 'menu'}
-      onClick={() => setActive(false)}
-    >
-      <DivSideBarContentStyled onClick={e => e.stopPropagation()}>
-        <Sidebar />
-      </DivSideBarContentStyled>
-    </DivBtnBurgerMenuSyled>
-  );
-};
-
-export default Menu;

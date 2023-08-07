@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import { theme } from 'styles/theme';
 
 import eotRegular from '../fonts/Poppins-Regular.eot';
 import eotMedium from '../fonts/Poppins-Medium.eot';
@@ -60,14 +59,10 @@ export const GlobalStyles = css`
 
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     min-height: 100vh;
 
     font-style: normal;
-  }
-
-  body.light {
-    background: ${theme.light.background};
   }
 
   h1,

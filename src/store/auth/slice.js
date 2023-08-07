@@ -5,6 +5,7 @@ import {
   logOut,
   refreshUser,
   refreshToken,
+  updateUser,
 } from './operations';
 
 const initialState = {
@@ -85,6 +86,17 @@ const authSlice = createSlice({
       })
       .addCase(refreshToken.rejected, (state, action) => {
         state.error = action.payload;
+      })
+      .addCase(updateUser.pending, state => {
+        state.isRefreshing = true;
+        state.error = null;
+      })
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
+        state.error = null;
+      })
+      .addCase(updateUser.rejected, (state, { payload }) => {
+        state.error = payload;
       });
   },
 });
