@@ -8,9 +8,7 @@ import Logo from './Logo';
 import ControlBoard from './ControlBoard';
 import NeedHelp from './NeedHelp';
 import Logout from './Logout';
-import { ContainerSidebar,  WrapperBottom } from './Sidebar.styled';
-
-
+import { ContainerSidebar, WrapperBottom } from './Sidebar.styled';
 
 const Sidebar = ({ menuActive }) => {
   const dispatch = useDispatch();
@@ -22,15 +20,15 @@ const Sidebar = ({ menuActive }) => {
   };
 
   useEffect(() => {
-    // if (!isLoggedIn) {
-    //   navigate('/', { replace: true });
-    // }
+    if (!isLoggedIn) {
+      navigate('/', { replace: true });
+    }
   }, [isLoggedIn, navigate]);
 
   return (
     <ContainerSidebar menuActive={menuActive}>
-        <Logo />
-        <ControlBoard />
+      <Logo />
+      <ControlBoard />
       <WrapperBottom>
         <NeedHelp />
         <Logout logOut={handleLogout} />
