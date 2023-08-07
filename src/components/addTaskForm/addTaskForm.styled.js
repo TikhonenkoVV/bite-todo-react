@@ -104,10 +104,9 @@ export const RadioLabel = styled.label`
 `;
 
 export const RadioInput = styled.input`
-margin-bottom: 14px;
+  margin-bottom: 14px;
 
   &::before {
-    
     content: '';
     display: inline-block;
     border-radius: 50%;
@@ -123,7 +122,6 @@ margin-bottom: 14px;
     margin-left: 1.5px;
     background-color: ${({ checked, value }) => (checked ? value : value)};
   }
- }
 `;
 
 export const PlusIconContainer = styled.div`
