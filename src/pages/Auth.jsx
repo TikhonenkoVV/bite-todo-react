@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { selectAuthError } from 'store/auth/selectors';
 import { LoginForm } from 'components/AuthForms/LoginForm';
 import { RegisterForm } from 'components/AuthForms/RegisterForm';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const REGISTER = 'register';
 const LOGIN = 'login';
@@ -16,6 +19,36 @@ const bgdStyles = {
 export const Auth = () => {
   const { actionId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const authError = useSelector(selectAuthError);
+
+  useEffect(() => {
+    if (authError.message === 'Unable to fetch user') return;
+
+    Notify.init({
+      fontFamily: 'Poppins',
+      timeout: 4000,
+      clickToClose: true,
+      warning: {
+        background: '#ff5549',
+      },
+    });
+
+    if (authError.message) {
+      switch (authError.status) {
+        case 401:
+          Notify.warning('Invalid email or password');
+          break;
+
+        case 409:
+          Notify.warning('This user is already registered');
+          break;
+
+        default:
+          Notify.warning(`${authError.message}`);
+      }
+    }
+  }, [dispatch, authError]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);

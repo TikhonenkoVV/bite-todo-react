@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { PrivateRoute } from './privateRoute';
 import { RestrictedRoute } from './restrictedRoute';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser, refreshToken } from 'store/auth/operations';
-import { selectAuthError, selectIsLoggedIn } from 'store/auth/selectors';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { selectAuthError } from 'store/auth/selectors';
 import { Loader } from './Loader/Loader';
 import { Layout } from './Layout/Layout';
 import Welcome from '../pages/Welcome/Welcome';
@@ -15,9 +14,7 @@ import MainDashboard from '../pages/MainDashboard/MainDashboard';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const authError = useSelector(selectAuthError);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
@@ -29,39 +26,7 @@ export const App = () => {
       dispatch(refreshToken());
       dispatch(refreshUser());
     }
-
-    if (authError.message === 'Unable to fetch user') return;
-
-    Notify.init({
-      fontFamily: 'Poppins',
-      timeout: 4000,
-      clickToClose: true,
-      warning: {
-        background: '#ff5549',
-      },
-    });
-
-    if (authError.message) {
-      switch (authError.status) {
-        case 401:
-          Notify.warning('Invalid email or password');
-          break;
-
-        case 409:
-          Notify.warning('This user is already registered');
-          break;
-
-        default:
-          Notify.warning(`${authError.message}`);
-      }
-    }
   }, [dispatch, authError]);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/home', { replace: true });
-    }
-  }, [isLoggedIn, navigate]);
 
   return isRefreshing ? (
     <Loader />
