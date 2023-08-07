@@ -8,17 +8,18 @@ import { StyledHeader, DivBtnStyle, StyledNav } from './Header.styled';
 const Header = ({ menuActive, setMenuActive, toggleMenu }) => {
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [menuActive]);
-
-  const handleKeyDown = e => {
+    const handleKeyDown = e => {
     if (e.code === 'Escape' && window.innerWidth <= 767) {
       setMenuActive(false)
     }
   };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [menuActive, setMenuActive]);
+
+  
 
   useEffect(() => {
     const handleResize = () => {
