@@ -1,12 +1,14 @@
 import styled from '@emotion/styled';
 
+const currTheme = 'dark';
+
 export const CardStyled = styled.li`
   position: relative;
   height: 154px;
   width: 100%;
   padding: 14px 24px;
   border-radius: 8px;
-  background-color: ${props => props.theme['dark'].cardColor};
+  background-color: ${props => props.theme.colors[currTheme].card};
   overflow: hidden;
   &::before {
     content: '';
@@ -15,7 +17,7 @@ export const CardStyled = styled.li`
     left: 0;
     width: 4px;
     height: 100%;
-    background-color: #8fa1d0;
+    background-color: ${props => props.theme.priority[props.color]};
   }
 `;
 
@@ -24,7 +26,7 @@ export const CardTitleStyled = styled.h3`
   font-size: 14px;
   line-height: 1.5;
   font-weight: 600;
-  color: ${props => props.theme['dark'].cardMajorColor};
+  color: ${props => props.theme.colors[currTheme].cardMajorText};
 `;
 
 export const CardDescriptionStyled = styled.p`
@@ -34,7 +36,7 @@ export const CardDescriptionStyled = styled.p`
   font-size: 12px;
   font-weight: 400;
   line-height: 1.3333;
-  color: ${props => props.theme['dark'].cardMinorColor};
+  color: ${props => props.theme.colors[currTheme].cardMinorText};
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -45,15 +47,15 @@ export const CardDescriptionStyled = styled.p`
 export const CardFooter = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-between;
+  align-items: flex-end;
   &::before {
     content: '';
     position: absolute;
     top: -14px;
     left: 0;
     width: 100%;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.1);
+    height: 1px;
+    background-color: ${props => props.theme.colors[currTheme].cardDecor};
     z-index: 1;
   }
 `;
@@ -67,15 +69,16 @@ export const CardParamsTitle = styled.p`
   margin-bottom: 4px;
   font-size: 8px;
   line-height: 1.5;
-  color: ${props => props.theme['dark'].cardMinorColor};
+  color: ${props => props.theme.colors[currTheme].cardMinorText};
 `;
 
 export const PriorityStatus = styled.p`
   position: relative;
   margin-left: 16px;
+  text-transform: capitalize;
   font-size: 10px;
   line-height: 1.5;
-  color: ${props => props.theme['dark'].cardMajorColor};
+  color: ${props => props.theme.colors[currTheme].cardMajorText};
   &::before {
     content: '';
     position: absolute;
@@ -84,17 +87,42 @@ export const PriorityStatus = styled.p`
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #8fa1d0;
+    background-color: ${props => props.theme.priority[props.color]};
   }
 `;
 
 export const DeadlineDate = styled.p`
   font-size: 10px;
   line-height: 1.5;
-  color: ${props => props.theme['dark'].cardMajorColor};
+  color: ${props => props.theme.colors[currTheme].cardMajorText};
 `;
 
 export const ToolsWrapper = styled.div`
   display: flex;
   gap: 8px;
+`;
+
+export const ToolsButtonBell = styled.button`
+  position: relative;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  margin-right: 12px;
+  color: #888888;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -50%);
+    background-image: radial-gradient(circle, #bedbb070 0%, #bedbb000 70%);
+  }
+`;
+
+export const ToolsButton = styled.button`
+  width: 16px;
+  height: 16px;
+  color: #888888;
 `;

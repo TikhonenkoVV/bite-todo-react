@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import { theme } from 'styles/theme';
 
 import eotRegular from '../fonts/Poppins-Regular.eot';
 import eotMedium from '../fonts/Poppins-Medium.eot';
@@ -64,10 +63,6 @@ export const GlobalStyles = css`
     min-height: 100vh;
 
     font-style: normal;
-  }
-
-  body.light {
-    background: ${theme.light.background};
   }
 
   h1,

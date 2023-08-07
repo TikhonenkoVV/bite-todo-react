@@ -7,43 +7,39 @@ import {
   CardTitleStyled,
   DeadlineDate,
   PriorityStatus,
+  ToolsButton,
+  ToolsButtonBell,
   ToolsWrapper,
 } from './Card.styled';
 import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 
-export const Card = ({
-  key,
-  title,
-  description,
-  priority = 'Low',
-  deadline = '12/05/2023',
-}) => {
+export const Card = ({ title, description, priority, deadline }) => {
   return (
-    <CardStyled key={key}>
+    <CardStyled color={priority}>
       <CardTitleStyled>{title}</CardTitleStyled>
       <CardDescriptionStyled>{description}</CardDescriptionStyled>
       <CardFooter>
         <CardParamsWrapper>
           <div>
-            <CardParamsTitle>{priority}</CardParamsTitle>
-            <PriorityStatus>Low</PriorityStatus>
+            <CardParamsTitle>Priority</CardParamsTitle>
+            <PriorityStatus color={priority}>{priority}</PriorityStatus>
           </div>
           <div>
             <CardParamsTitle>Deadline</CardParamsTitle>
             <DeadlineDate>{deadline}</DeadlineDate>
           </div>
         </CardParamsWrapper>
+        <ToolsButtonBell type="button">
+          <Svg w={16} h={16} use={`${sprite}#icon-bell`} />
+        </ToolsButtonBell>
         <ToolsWrapper>
-          <button type="button">
-            <Svg w={16} h={16} use={`${sprite}#icon-bell`} />
-          </button>
-          <button type="button">
+          <ToolsButton type="button">
             <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
-          </button>
-          <button type="button">
+          </ToolsButton>
+          <ToolsButton type="button">
             <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
-          </button>
+          </ToolsButton>
         </ToolsWrapper>
       </CardFooter>
     </CardStyled>
