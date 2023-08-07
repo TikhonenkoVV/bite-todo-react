@@ -20,20 +20,33 @@ export const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (authError === 'Token expired') {
+    if (authError.message === 'Token expired') {
       dispatch(refreshToken());
       dispatch(refreshUser());
     }
-    if (authError) {
-      Notify.init({
-        fontFamily: 'Poppins',
-        timeout: 4000,
-        clickToClose: true,
-        warning: {
-          background: '#ff5549',
-        },
-      });
-      Notify.warning(`${authError}`);
+
+    Notify.init({
+      fontFamily: 'Poppins',
+      timeout: 4000,
+      clickToClose: true,
+      warning: {
+        background: '#ff5549',
+      },
+    });
+
+    if (authError.message) {
+      switch (authError.status) {
+        case 401:
+          Notify.warning('Invalid email or password');
+          break;
+
+        case 409:
+          Notify.warning('This user is already registered');
+          break;
+
+        default:
+          Notify.warning(`${authError.message}`);
+      }
     }
   }, [dispatch, authError]);
 

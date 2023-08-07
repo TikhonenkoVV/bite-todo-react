@@ -18,7 +18,10 @@ export const register = createAsyncThunk(
     try {
       await axios.post('/auth/register', credentials);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue({
+        message: error.message,
+        status: error.response.status,
+      });
     }
   }
 );
@@ -31,7 +34,10 @@ export const logIn = createAsyncThunk(
       setAuthHeader(data.tokens.accessToken);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue({
+        message: error.message,
+        status: error.response.status,
+      });
     }
   }
 );
@@ -41,7 +47,10 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     await axios.post('/auth/logout');
     clearAuthHeader();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue({
+      message: error.message,
+      status: error.response.status,
+    });
   }
 });
 
@@ -52,7 +61,10 @@ export const refreshUser = createAsyncThunk(
     const persistedToken = state.auth.accessToken;
 
     if (persistedToken === null) {
-      return thunkAPI.rejectWithValue('Please log in again');
+      return thunkAPI.rejectWithValue({
+        message: 'Please log in again',
+        status: '',
+      });
     }
 
     try {
@@ -60,7 +72,10 @@ export const refreshUser = createAsyncThunk(
       const { data } = await axios.get('/auth/current');
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue({
+        message: error.message,
+        status: error.response.status,
+      });
     }
   }
 );
@@ -81,7 +96,10 @@ export const refreshToken = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue({
+        message: error.message,
+        status: error.response.status,
+      });
     }
   }
 );
@@ -93,7 +111,10 @@ export const updateUser = createAsyncThunk(
       const { data } = await axios.patch('/auth', userData);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue({
+        message: error.message,
+        status: error.response.status,
+      });
     }
   }
 );
