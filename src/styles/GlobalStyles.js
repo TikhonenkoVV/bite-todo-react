@@ -55,14 +55,17 @@ export const GlobalStyles = css`
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
+    width: 100vw;
   }
 
   body {
+    width: 100vw;
     margin: 0;
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
 
     font-style: normal;
+    overflow: hidden;
   }
 
   h1,

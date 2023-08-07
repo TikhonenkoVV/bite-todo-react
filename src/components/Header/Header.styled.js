@@ -14,15 +14,19 @@ export const StyledHeader = styled.header`
   align-items: center;
 
   @media screen and (min-width: 768px) {
+    justify-content: right;
+    grid-column: 2;
     height: 68px;
   }
 `;
 
 export const DivBtnStyle = styled.div`
-  @media screen and (max-width: 768px) {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
+  display: block;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    display: none;
   }
 `;
 

@@ -8,8 +8,11 @@ import Logo from './Logo';
 import ControlBoard from './ControlBoard';
 import NeedHelp from './NeedHelp';
 import Logout from './Logout';
+import { ContainerSidebar,  WrapperBottom } from './Sidebar.styled';
 
-const Sidebar = () => {
+
+
+const Sidebar = ({ menuActive }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -25,16 +28,14 @@ const Sidebar = () => {
   }, [isLoggedIn, navigate]);
 
   return (
-    <>
-      <div>
+    <ContainerSidebar menuActive={menuActive}>
         <Logo />
         <ControlBoard />
-      </div>
-      <div>
+      <WrapperBottom>
         <NeedHelp />
         <Logout logOut={handleLogout} />
-      </div>
-    </>
+      </WrapperBottom>
+    </ContainerSidebar>
   );
 };
 
