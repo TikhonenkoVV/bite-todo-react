@@ -118,3 +118,19 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+export const updateAvatar = createAsyncThunk(
+  'auth/updateAvatar',
+  async (avatar, thunkAPI) => {
+    try {
+      const { data } = await axios.patch('/auth/avatars', avatar);
+      return data.avatarURL;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({
+        message: error.message,
+        status: error.response.status,
+      });
+    }
+  }
+
+)
