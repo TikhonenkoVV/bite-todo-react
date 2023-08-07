@@ -1,27 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ThemeSelector from './ThemeSelector';
 import Profile from './Profile';
-import Menu from './Menu';
-import sprite from '../../img/icons/sprite.svg';
+import sprite from '../../img/icons/sprite.svg'
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { StyledHeader, DivBtnStyle, StyledNav } from './Header.styled';
 
-const Header = () => {
-  const [menuActive, setMenuActive] = useState(false);
+const Header = ({ menuActive, setMenuActive, toggleMenu }) => {
 
   useEffect(() => {
-    const handleKeyPress = event => {
-      if (event.key === 'Escape' && menuActive && window.innerWidth <= 768) {
-        setMenuActive(false);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-
+    window.addEventListener('keydown', handleKeyDown);
     return () => {
-      window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [menuActive]);
+
+  const handleKeyDown = e => {
+    if (e.code === 'Escape' && window.innerWidth <= 767) {
+      setMenuActive(false)
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -39,14 +36,13 @@ const Header = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [setMenuActive]);
 
   return (
-    <StyledHeader>
-      <DivBtnStyle onClick={() => setMenuActive(!menuActive)}>
+      <StyledHeader>
+      <DivBtnStyle onClick={toggleMenu}>
         <Svg w={32} h={32} use={`${sprite}#icon-burger`} />
       </DivBtnStyle>
-      <Menu active={menuActive} setActive={setMenuActive} />
       <StyledNav>
         <ThemeSelector />
         <Profile />
