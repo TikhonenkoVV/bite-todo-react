@@ -1,3 +1,10 @@
+const sizes = {
+  onlymobile: '374px',
+  mobile: '375px',
+  tablet: '768px',
+  desktop: '1440px',
+};
+
 export const theme = Object.freeze({
   colors: {
     dark: {
@@ -45,5 +52,11 @@ export const theme = Object.freeze({
     low: '#8FA1D0',
     medium: '#E09CB5',
     high: '#BEDBB0',
+  },
+  devices: {
+    onlymobile: `(max-width: ${sizes.onlymobile})`,
+    mobile: `(min-width: ${sizes.mobile})`,
+    tablet: `(min-width: ${sizes.tablet})`,
+    desktop: `(min-width: ${sizes.desktop})`,
   },
 });
