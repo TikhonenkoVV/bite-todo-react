@@ -41,9 +41,9 @@ const columnsSlice = createSlice({
       })
       .addCase(editColumn.fulfilled, (state, { payload }) => {
         state.columns = state.columns.filter(
-          column => column._id !== payload.column._id
+          column => column._id !== payload._id
         );
-        state.columns.push(payload.column);
+        state.columns.push(payload);
         state.isLoading = false;
         state.error = null;
       })

@@ -5,7 +5,7 @@ export const getColumns = createAsyncThunk(
   'columns/get',
   async (boardId, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/boards/${boardId}/columns`);
+      const { data } = await axios.get(`/boards/${boardId}/columnstasks`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -29,12 +29,12 @@ export const addColumn = createAsyncThunk(
 
 export const editColumn = createAsyncThunk(
   'columns/edit',
-  async ({ boardId, id, title }, thunkAPI) => {
+  async ({ boardId, id, title, cards }, thunkAPI) => {
     try {
       const { data } = await axios.put(`/boards/${boardId}/columns/${id}`, {
         title,
       });
-      return data;
+      return { ...data.column, cards };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
