@@ -24,15 +24,15 @@ const ColumnFormSchema = Yup.object().shape({
     .required('Required'),
 });
 
-export const ColumnForm = ({ id, boardId, isEditMode, onCloseForm }) => {
+export const ColumnForm = ({ id, boardId, cards, isEditMode, onCloseForm }) => {
   const title = isEditMode ? 'Edit column' : 'Add column';
   const dispatch = useDispatch();
 
   const handleSubmit = ({ title }, { resetForm }) => {
     if (isEditMode) {
-      dispatch(editColumn({ boardId, id, title }));
+      dispatch(editColumn({ boardId, id, title, cards }));
     } else {
-      dispatch(addColumn({ boardId, title }));
+      dispatch(addColumn({ boardId, title, cards: [] }));
     }
     resetForm();
     onCloseForm();

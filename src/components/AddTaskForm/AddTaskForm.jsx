@@ -30,6 +30,7 @@ import {
 } from './AddTaskForm.styled';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
+const priorities = ['without', 'low', 'high', 'medium'];
 
 const StyledCustomCalendar = styled(DatePicker)`
   &.custom-datepicker {
@@ -50,10 +51,10 @@ const StyledCustomCalendar = styled(DatePicker)`
 const initialValues = {
   title: '',
   description: '',
-  color: '',
+  priority: '',
 };
 
-export const AddTasks = ({ columnId, taskData }) => {
+export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
   const [deadline, setDeadline] = useState('');
 
   const dispatch = useDispatch();
@@ -69,7 +70,7 @@ export const AddTasks = ({ columnId, taskData }) => {
       .required('Description is required')
       .min(10, 'Description must contain at least 10 characters')
       .max(500, 'Description must not exceed 500 characters'),
-    color: Yup.string().required('Please select a color'),
+    priority: Yup.string().required('Please select a color'),
     deadline: Yup.date()
       .nullable()
       .required('Please select a deadline date')
@@ -93,10 +94,11 @@ export const AddTasks = ({ columnId, taskData }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      await dispatch(addTask(columnId, values));
+      await dispatch(addTask({ ...values, boardId, columnId }));
       console.log('Task added successfully!');
       resetForm();
       setDeadline('');
+      closeModal();
     } catch (error) {
       console.error('Error:', error);
     }
@@ -121,7 +123,7 @@ export const AddTasks = ({ columnId, taskData }) => {
     <StyledDiv>
       <StyledP>Add Card</StyledP>
 
-      <StyledBtnClose>
+      <StyledBtnClose onClick={closeModal}>
         <svg
           className="icon"
           width="18"
@@ -161,21 +163,22 @@ export const AddTasks = ({ columnId, taskData }) => {
         <StyledTitelBtn>Label color</StyledTitelBtn>
         <br />
         <RadioGroup>
-          {colors.map((color, index) => (
+          {priorities.map((priority, index) => (
             <RadioLabel key={index}>
               <RadioInput
                 type="radio"
-                name="color"
-                value={color}
-                checked={formik.values.color === color}
+                name="priority"
+                color={colors[index]}
+                value={priority}
+                checked={formik.values.priority === priority}
                 onChange={formik.handleChange}
               />
             </RadioLabel>
           ))}
         </RadioGroup>
-        {formik.touched.color && formik.errors.color ? (
+        {formik.touched.priority && formik.errors.priority ? (
           <StyledFormikColorNotification>
-            {formik.errors.color}
+            {formik.errors.priority}
           </StyledFormikColorNotification>
         ) : null}
 
