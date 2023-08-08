@@ -14,12 +14,14 @@ import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { useDispatch } from 'react-redux';
 import { updateUser } from 'store/auth/operations';
+import { updateAvatar } from 'store/auth/operations';
+
 
 const iconAllow = '#icon-eye-allow';
 const iconDenied = '#icon-eye-denied';
 
 
-const FormProfie = () => {
+const FormProfie = ({ avatarFile, onAvatarChange }) => {
   const dispatch = useDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -29,9 +31,22 @@ const FormProfie = () => {
       <Formik
         initialValues={{ name: '', email: '', password: '' }}
         validationSchema={userEditScheme}
-        onSubmit={(values, {resetFrom}) => {
-          dispatch(updateUser(values))
-          resetFrom();
+        // onSubmit={(values, {resetForm}) => {
+        //   dispatch(updateUser(values))
+        //   resetForm();
+        // }}
+        onSubmit={(values, {resetForm}) => {
+
+          if (avatarFile) {
+            const formData = new FormData();
+            formData.append('avatar', avatarFile);
+            dispatch(updateAvatar(formData));
+          }
+
+          dispatch(updateUser(values));
+          onAvatarChange(null);
+          resetForm();
+
         }}
       >
         {({ isSubmitting }) => {
