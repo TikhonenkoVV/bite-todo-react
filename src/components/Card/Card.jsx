@@ -17,9 +17,17 @@ import { useState } from 'react';
 import { Modal } from 'components/Modal';
 import { EditTask } from 'components/AddTaskForm/EditTaskForm';
 
-export const Card = ({ title, description, priority, deadline,boardId,columnId,taskData }) => {
- 
-   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+export const Card = ({
+  _id,
+  title,
+  description,
+  priority,
+  deadline,
+  boardId,
+  columnId,
+  taskData,
+}) => {
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const openEditModal = () => {
     setIsEditModalOpen(true);
@@ -28,7 +36,7 @@ export const Card = ({ title, description, priority, deadline,boardId,columnId,t
   const closeEditModal = () => {
     setIsEditModalOpen(false);
   };
- 
+
   return (
     <CardStyled color={priority}>
       <CardTitleStyled>{title}</CardTitleStyled>
@@ -48,7 +56,7 @@ export const Card = ({ title, description, priority, deadline,boardId,columnId,t
           <Svg w={16} h={16} use={`${sprite}#icon-bell`} />
         </ToolsButtonBell>
         <ToolsWrapper>
-           <ToolsButton type="button" onClick={openEditModal}>
+          <ToolsButton type="button" onClick={openEditModal}>
             <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
           </ToolsButton>
           {isEditModalOpen && (
@@ -56,6 +64,7 @@ export const Card = ({ title, description, priority, deadline,boardId,columnId,t
               <EditTask
                 boardId={boardId}
                 columnId={columnId}
+                taskId={_id}
                 taskData={taskData}
                 title={title}
                 description={description}

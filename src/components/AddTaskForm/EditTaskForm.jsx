@@ -9,7 +9,7 @@ import sprite from '../../img/icons/sprite.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import './AddTaskForm.css';
 import { useDispatch } from 'react-redux';
-import { editTask } from '../../store/card/operation';
+import { editTask } from '../../store/columns/operations';
 import {
   StyledP,
   StyledDiv,
@@ -56,6 +56,7 @@ export const EditTask = ({
   title,
   description,
   priority,
+  taskId,
   // deadline,
 }) => {
   const initialValues = {
@@ -103,9 +104,8 @@ export const EditTask = ({
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      await dispatch(editTask({ ...values, boardId, columnId }));
-      console.log('Task change successfully!');
-
+      console.log(boardId, columnId);
+      await dispatch(editTask({ ...values, boardId, columnId, taskId }));
       resetForm();
       setDeadline('');
       closeModal();

@@ -58,3 +58,22 @@ export const addTask = createAsyncThunk(
     }
   }
 );
+
+export const editTask = createAsyncThunk(
+  'tasks/editTask',
+  async (
+    { title, description, priority, deadline, boardId, columnId, taskId },
+    thunkAPI
+  ) => {
+    try {
+      console.log(title, description, priority, deadline, boardId, columnId);
+      const { data } = await axios.put(
+        `/boards/${boardId}/columns/${columnId}/tasks/${taskId}`,
+        { title, description, priority, deadline }
+      );
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

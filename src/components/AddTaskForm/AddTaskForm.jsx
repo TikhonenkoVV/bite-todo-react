@@ -68,25 +68,25 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
 
   const deadlinePickerRef = useRef(null);
 
-const validationSchema = Yup.object().shape({
-  title: Yup.string()
-    .required('Title is required')
-    .min(3, 'Title must contain at least 3 characters')
-    .max(50, 'Title must not exceed 50 characters'),
-  description: Yup.string()
-    .required('Description is required')
-    .min(10, 'Description must contain at least 10 characters')
-    .max(500, 'Description must not exceed 500 characters'),
-  priority: Yup.string().required('Please select a color'),
-  deadline: Yup.date()
-    .nullable()
-    .required('Please select a deadline date')
-    .min(new Date(), 'Deadline cannot be earlier than today')
-    .test('future', 'Please select a future date', value => {
-      const currentDate = new Date();
-      return value && value > currentDate;
-    }),
-});
+  const validationSchema = Yup.object().shape({
+    title: Yup.string()
+      .required('Title is required')
+      .min(3, 'Title must contain at least 3 characters')
+      .max(50, 'Title must not exceed 50 characters'),
+    description: Yup.string()
+      .required('Description is required')
+      .min(10, 'Description must contain at least 10 characters')
+      .max(500, 'Description must not exceed 500 characters'),
+    priority: Yup.string().required('Please select a color'),
+    deadline: Yup.date()
+      .nullable()
+      .required('Please select a deadline date')
+      .min(new Date(), 'Deadline cannot be earlier than today')
+      .test('future', 'Please select a future date', value => {
+        const currentDate = new Date();
+        return value && value > currentDate;
+      }),
+  });
 
   const handleDeadlineClick = () => {
     if (deadlinePickerRef.current) {
@@ -101,7 +101,7 @@ const validationSchema = Yup.object().shape({
 
   const formattedDeadline = deadline
     ? moment(deadline).format('D MMMM YYYY')
-    : CurrentDate() ;
+    : CurrentDate();
 
   // const handleSubmit = async (values, { resetForm }) => {
   //   try {
@@ -115,7 +115,7 @@ const validationSchema = Yup.object().shape({
   //   }
   // };
 
-    const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     try {
       if (!formik.values.deadline) {
         alert('Please select a deadline date.');
