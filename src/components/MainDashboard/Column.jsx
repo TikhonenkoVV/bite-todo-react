@@ -71,17 +71,14 @@ export const Column = ({ _id, title, createdAt, cards, owner }) => {
             id={_id}
             boardId={owner}
             onCloseForm={closeModal}
+            columnTitle={title}
             isEditMode={true}
-            cards={cards}
           />
         </Modal>
       )}
       {isModalOpen && !isEditCardMode && (
         <Modal onClose={closeModal}>
-          <AddTasks
-            column={{ _id, title, createdAt, owner, cards }}
-            closeModal={closeModal}
-          />
+          <AddTasks boardId={owner} columnId={_id} closeModal={closeModal} />
         </Modal>
       )}
     </ColumnContainer>

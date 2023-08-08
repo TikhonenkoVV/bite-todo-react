@@ -24,15 +24,21 @@ const ColumnFormSchema = Yup.object().shape({
     .required('Required'),
 });
 
-export const ColumnForm = ({ id, boardId, cards, isEditMode, onCloseForm }) => {
+export const ColumnForm = ({
+  id,
+  boardId,
+  isEditMode,
+  onCloseForm,
+  columnTitle = '',
+}) => {
   const title = isEditMode ? 'Edit column' : 'Add column';
   const dispatch = useDispatch();
 
   const handleSubmit = ({ title }, { resetForm }) => {
     if (isEditMode) {
-      dispatch(editColumn({ boardId, id, title, cards }));
+      dispatch(editColumn({ boardId, id, title }));
     } else {
-      dispatch(addColumn({ boardId, title, cards: [] }));
+      dispatch(addColumn({ boardId, title }));
     }
     resetForm();
     onCloseForm();
@@ -48,7 +54,7 @@ export const ColumnForm = ({ id, boardId, cards, isEditMode, onCloseForm }) => {
       <FormTitle>{title}</FormTitle>
       <Formik
         initialValues={{
-          title: '',
+          title: columnTitle,
         }}
         validationSchema={ColumnFormSchema}
         onSubmit={(values, actions) => handleSubmit(values, actions)}

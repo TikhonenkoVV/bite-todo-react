@@ -54,13 +54,12 @@ const initialValues = {
   priority: '',
 };
 
-export const AddTasks = ({ column, taskData, closeModal }) => {
+export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
   const [deadline, setDeadline] = useState('');
 
   const dispatch = useDispatch();
 
   const deadlinePickerRef = useRef(null);
-  console.log(column);
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -95,8 +94,7 @@ export const AddTasks = ({ column, taskData, closeModal }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      await dispatch(addTask({ ...values, column }));
-      console.log('Task added successfully!');
+      await dispatch(addTask({ ...values, boardId, columnId }));
       resetForm();
       setDeadline('');
       closeModal();

@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getColumns, addColumn, editColumn, addTask } from './operations';
-import { parseDate } from 'utils/dateTimeUtils';
 
 const initialState = {
   columns: [],
@@ -41,17 +40,10 @@ const columnsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(editColumn.fulfilled, (state, { payload }) => {
-        const columns = state.columns.filter(
-          column => column._id !== payload._id
+        const column = state.columns.find(
+          column => column._id === payload.column._id
         );
-        columns.push(payload);
-        columns.forEach(a =>
-          console.log(parseDate(a.createdAt), typeof parseDate(a.createdAt))
-        );
-        columns.sort((a, b) =>
-          parseDate(a.createdAt) > parseDate(b.createdAt) ? 1 : -1
-        );
-        state.columns = columns;
+        column.title = payload.column.title;
         state.isLoading = false;
         state.error = null;
       })
@@ -63,9 +55,8 @@ const columnsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addTask.fulfilled, (state, { payload }) => {
-        console.log(payload.column.cards);
         const column = state.columns.find(
-          column => column._id === payload.column._id
+          column => column._id === payload.task.owner
         );
         column.cards.push(payload.task);
         state.isLoading = false;
