@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// треба додати url
 axios.defaults.baseURL = 'https://bite-todo-rest-api.onrender.com/api';
 
 const setAuthHeader = token => {
@@ -19,7 +18,7 @@ export const register = createAsyncThunk(
       await axios.post('/auth/register', credentials);
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message: error.message,
+        message: error.response.data.message,
         status: error.response.status,
       });
     }
@@ -35,7 +34,7 @@ export const logIn = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message: error.message,
+        message: error.response.data.message,
         status: error.response.status,
       });
     }
@@ -48,7 +47,7 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue({
-      message: error.message,
+      message: error.response.data.message,
       status: error.response.status,
     });
   }
@@ -73,7 +72,7 @@ export const refreshUser = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message: 'Unable to fetch user',
+        message: error.response.data.message,
         status: error.response.status,
       });
     }
@@ -97,7 +96,7 @@ export const refreshToken = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message: error.message,
+        message: error.response.data.message,
         status: error.response.status,
       });
     }
@@ -112,7 +111,7 @@ export const updateUser = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message: error.message,
+        message: error.response.data.message,
         status: error.response.status,
       });
     }
@@ -127,7 +126,7 @@ export const updateAvatar = createAsyncThunk(
       return data.avatarURL;
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message: error.message,
+        message: error.response.data.message,
         status: error.response.status,
       });
     }

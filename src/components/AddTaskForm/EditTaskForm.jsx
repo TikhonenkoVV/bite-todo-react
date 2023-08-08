@@ -9,7 +9,7 @@ import sprite from '../../img/icons/sprite.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import './AddTaskForm.css';
 import { useDispatch } from 'react-redux';
-import { addTask } from '../../store/columns/operations';
+import { editTask } from '../../store/columns/operations';
 import {
   StyledP,
   StyledDiv,
@@ -32,13 +32,6 @@ import {
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 const priorities = ['without', 'low', 'high', 'medium'];
 
-// const priorities = [
-//   { name: 'low', color: '#8FA1D0' },
-//   { name: 'medium', color: '#E09CB5' },
-//   { name: 'high', color: '#BEDBB0' },
-//   { name: 'without', color: '#808080' },
-// ];
-
 const StyledCustomCalendar = styled(DatePicker)`
   &.custom-datepicker {
     .react-datepicker-wrapper & .react-datepicker__day--keyboard-selected,
@@ -55,13 +48,23 @@ const StyledCustomCalendar = styled(DatePicker)`
   }
 `;
 
-const initialValues = {
-  title: '',
-  description: '',
-  priority: '',
-};
+export const EditTask = ({
+  boardId,
+  columnId,
+  taskData,
+  closeModal,
+  title,
+  description,
+  priority,
+  taskId,
+  // deadline,
+}) => {
+  const initialValues = {
+    title: title,
+    description: description,
+    priority: priority,
+  };
 
-export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
   const [deadline, setDeadline] = useState('');
 
   const dispatch = useDispatch();
@@ -81,11 +84,7 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
     deadline: Yup.date()
       .nullable()
       .required('Please select a deadline date')
-      .min(new Date(), 'Deadline cannot be earlier than today')
-      .test('future', 'Please select a future date', value => {
-        const currentDate = new Date();
-        return value && value > currentDate;
-      }),
+      .min(new Date(), 'Deadline cannot be earlier than today'),
   });
 
   const handleDeadlineClick = () => {
@@ -103,25 +102,9 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
     ? moment(deadline).format('D MMMM YYYY')
     : CurrentDate();
 
-  // const handleSubmit = async (values, { resetForm }) => {
-  //   try {
-  //     await dispatch(addTask({ ...values, boardId, columnId }));
-  //     console.log('Task added successfully!');
-  //     resetForm();
-  //     setDeadline('');
-  //     closeModal();
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // };
-
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      if (!formik.values.deadline) {
-        alert('Please select a deadline date.');
-        return;
-      }
-      await dispatch(addTask({ ...values, boardId, columnId }));
+      await dispatch(editTask({ ...values, boardId, columnId, taskId }));
       resetForm();
       setDeadline('');
       closeModal();
@@ -147,7 +130,7 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
 
   return (
     <StyledDiv>
-      <StyledP>Add Card</StyledP>
+      <StyledP>Edit Card</StyledP>
 
       <StyledBtnClose onClick={closeModal}>
         <svg
@@ -252,7 +235,7 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
               <use xlinkHref={`${sprite}#icon-plus`} />
             </svg>
           </PlusIconContainer>
-          Add
+          Edit
         </StyledButton>
       </form>
     </StyledDiv>
