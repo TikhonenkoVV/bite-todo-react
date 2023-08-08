@@ -8,8 +8,10 @@ import { DivInfoUserStyled, TextStyled, DivUserImgStyled, LinkStyled } from './P
 import { useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
 
+const baseUrl = 'https://bite-todo-rest-api.onrender.com/api/auth'
+
 const Profile = () => {
-  const {name} = useSelector(selectUser)
+  const {name, avatarURL} = useSelector(selectUser)
 
   const { isModalOpen, openModal, closeModal } = useModal();
 
@@ -25,7 +27,7 @@ const Profile = () => {
         <TextStyled>{name}</TextStyled>
         <DivUserImgStyled>
           <LinkStyled onClick={onClickModalOpen}>
-            <img width={32} height={32} src={userdefaultimg} alt="userlogo" />
+            <img width={32} height={32} src={avatarURL ? `${baseUrl}/${avatarURL}` : userdefaultimg} alt="userlogo" />
           </LinkStyled>
         </DivUserImgStyled>
       </DivInfoUserStyled>

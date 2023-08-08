@@ -16,7 +16,7 @@ import {
   AddCardIcon,
 } from './Column.styled';
 import { CardList } from 'components/Card/CardList';
-import { AddTasks } from 'components/AddTaskForm/AddTaskForm';
+import { AddTasks } from 'components/addTaskForm/AddTaskForm';
 
 export const Column = ({ id, boardId, title, cards }) => {
   const [isEditCardMode, setIsEditCardMode] = useState(false);

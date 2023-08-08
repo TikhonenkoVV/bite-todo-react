@@ -49,10 +49,10 @@ export const DivUserImgStyled = styled.div`
   margin-bottom: 25px;
 `;
 
-export const LinkStyled = styled.a`
-  text-decoration: none;
-  cursor: pointer;
-`;
+// export const LinkStyled = styled.div`
+//   text-decoration: none;
+//   cursor: pointer;
+// `;
 
 export const DivIconPlus = styled.div`
   width: 24px;

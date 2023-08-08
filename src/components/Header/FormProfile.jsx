@@ -19,7 +19,7 @@ const iconAllow = '#icon-eye-allow';
 const iconDenied = '#icon-eye-denied';
 
 
-const FormProfie = () => {
+const FormProfie = ({ avatarFile, onAvatarChange }) => {
   const dispatch = useDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -32,6 +32,18 @@ const FormProfie = () => {
         onSubmit={(values, {resetFrom}) => {
           dispatch(updateUser(values))
           resetFrom();
+
+        //   if (avatarFile) {
+        //     const formData = new FormData();
+        //     formData.append('avatar', avatarFile);
+        //     dispatch(updateAvatar(formData));
+        //   }
+
+        //   dispatch(updateUser(values));
+        //   onAvatarChange(null);
+        //   resetFrom();
+        // }}
+
         }}
       >
         {({ isSubmitting }) => {
