@@ -131,7 +131,7 @@ export const EditTask = ({
 
   return (
     <StyledDiv>
-      <StyledP>Add Card</StyledP>
+      <StyledP>Edit Card</StyledP>
 
       <StyledBtnClose onClick={closeModal}>
         <svg

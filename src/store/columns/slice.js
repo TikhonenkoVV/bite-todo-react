@@ -5,6 +5,7 @@ import {
   editColumn,
   addTask,
   editTask,
+  deleteTask,
 } from './operations';
 
 const initialState = {
@@ -87,6 +88,20 @@ const columnsSlice = createSlice({
         state.error = null;
       })
       .addCase(editTask.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(deleteTask.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(deleteTask.fulfilled, (state, { payload }) => {
+        const { columnId, taskId } = payload;
+        const column = state.columns.find(column => column._id === columnId);
+        column.cards = column.cards.filter(card => card._id !== taskId);
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(deleteTask.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });

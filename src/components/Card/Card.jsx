@@ -14,8 +14,10 @@ import {
 import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Modal } from 'components/Modal';
 import { EditTask } from 'components/AddTaskForm/EditTaskForm';
+import { deleteTask } from '../../store/columns/operations';
 
 export const Card = ({
   _id,
@@ -28,6 +30,7 @@ export const Card = ({
   taskData,
 }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const openEditModal = () => {
     setIsEditModalOpen(true);
@@ -35,6 +38,10 @@ export const Card = ({
 
   const closeEditModal = () => {
     setIsEditModalOpen(false);
+  };
+
+  const handleDeleteTaskButtonClick = async () => {
+    await dispatch(deleteTask({ boardId, columnId, taskId: _id }));
   };
 
   return (
@@ -73,7 +80,7 @@ export const Card = ({
               />
             </Modal>
           )}
-          <ToolsButton type="button">
+          <ToolsButton type="button" onClick={handleDeleteTaskButtonClick}>
             <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
           </ToolsButton>
         </ToolsWrapper>
