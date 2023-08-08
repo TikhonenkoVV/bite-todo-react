@@ -18,8 +18,9 @@ export const register = createAsyncThunk(
     try {
       await axios.post('/auth/register', credentials);
     } catch (error) {
+      console.log(error.response.data.message);
       return thunkAPI.rejectWithValue({
-        message: error.message,
+        message: error.response.data.message,
         status: error.response.status,
       });
     }
@@ -34,8 +35,9 @@ export const logIn = createAsyncThunk(
       setAuthHeader(data.tokens.accessToken);
       return data;
     } catch (error) {
+      console.log(error.response.data.message);
       return thunkAPI.rejectWithValue({
-        message: error.message,
+        message: error.response.data.message,
         status: error.response.status,
       });
     }
@@ -48,7 +50,7 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue({
-      message: error.message,
+      message: error.response.data.message,
       status: error.response.status,
     });
   }
@@ -72,8 +74,9 @@ export const refreshUser = createAsyncThunk(
       const { data } = await axios.get('/auth/current');
       return data;
     } catch (error) {
+      console.log(error.response.data.message);
       return thunkAPI.rejectWithValue({
-        message: 'Unable to fetch user',
+        message: error.response.data.message,
         status: error.response.status,
       });
     }
@@ -97,7 +100,7 @@ export const refreshToken = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message: error.message,
+        message: error.response.data.message,
         status: error.response.status,
       });
     }
@@ -112,7 +115,7 @@ export const updateUser = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message: error.message,
+        message: error.response.data.message,
         status: error.response.status,
       });
     }
@@ -127,7 +130,7 @@ export const updateAvatar = createAsyncThunk(
       return data.avatarURL;
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message: error.message,
+        message: error.response.data.message,
         status: error.response.status,
       });
     }

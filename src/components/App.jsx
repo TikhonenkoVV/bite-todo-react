@@ -7,6 +7,7 @@ import { useAuth } from 'hooks/useAuth';
 import { refreshUser, refreshToken } from 'store/auth/operations';
 import { selectAuthError } from 'store/auth/selectors';
 import { Loader } from './Loader/Loader';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Layout } from './Layout/Layout';
 import Welcome from '../pages/Welcome/Welcome';
 import { Auth } from '../pages/Auth';
@@ -22,10 +23,35 @@ export const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (authError.message === 'Token expired') {
+    const { message, status } = authError;
+    if (!message) return;
+
+    if (message === 'Token expired') {
       dispatch(refreshToken());
       dispatch(refreshUser());
     }
+
+    if (message === 'Unable to fetch user') return;
+
+    Notify.init({
+      fontFamily: 'Poppins',
+      timeout: 4000,
+      clickToClose: true,
+      warning: {
+        background: '#ff5549',
+      },
+    });
+
+    if (
+      message === 'Invalid token' ||
+      message === 'Unsupported token' ||
+      (status === 401 && message !== 'Email or password invalid')
+    ) {
+      Notify.warning('Please login again');
+      return;
+    }
+
+    Notify.warning(`${authError.message}`);
   }, [dispatch, authError]);
 
   return isRefreshing ? (
