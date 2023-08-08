@@ -13,7 +13,7 @@ import {
   IconStyled,
   AvatarImg
 } from './EditProfile.styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { updateAvatar } from 'store/auth/operations';
 import { selectUser } from 'store/auth/selectors';
 
