@@ -10,13 +10,14 @@ import {
 } from './operations';
 
 const initialState = {
-  user: { name: '', email: '', avatar: '' },
+  user: { name: '', email: '', avatar: '', theme: 'dark' },
   accessToken: null,
   refreshToken: null,
   isRegistered: false,
   isLoggedIn: false,
   isLoggingIn: false,
   isRefreshing: false,
+  isTokenRefreshed: false,
   error: { message: '', status: '' },
 };
 
@@ -51,17 +52,20 @@ const authSlice = createSlice({
         state.error = { message: '', status: '' };
       })
       .addCase(logIn.rejected, (state, { payload }) => {
-        state.user = { name: '', email: '', avatar: '' };
+        state.user = { name: '', email: '', avatar: '', theme: 'dark' };
         state.isLoggingIn = false;
         state.isLoggedIn = false;
         state.error = payload;
       })
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: '', email: '', avatar: '' };
+        state.user = { name: '', email: '', avatar: '', theme: 'dark' };
         state.accessToken = null;
         state.refreshToken = null;
         state.isLoggedIn = false;
         state.error = { message: '', status: '' };
+      })
+      .addCase(logOut.rejected, (state, { payload }) => {
+        state.error = payload;
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
@@ -78,13 +82,19 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.error = payload;
       })
+      .addCase(refreshToken.pending, (state, { payload }) => {
+        state.error = { message: '', status: '' };
+        state.isTokenRefreshed = false;
+      })
       .addCase(refreshToken.fulfilled, (state, { payload }) => {
         state.accessToken = payload.accessToken;
         state.refreshToken = payload.refreshToken;
+        state.isTokenRefreshed = true;
         state.error = { message: '', status: '' };
       })
       .addCase(refreshToken.rejected, (state, { payload }) => {
         state.error = payload;
+        state.isTokenRefreshed = false;
       })
       .addCase(updateUser.pending, state => {
         state.isRefreshing = true;
