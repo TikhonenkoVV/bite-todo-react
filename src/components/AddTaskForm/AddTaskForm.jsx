@@ -9,7 +9,7 @@ import sprite from '../../img/icons/sprite.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import './AddTaskForm.css';
 import { useDispatch } from 'react-redux';
-import { addTask } from '../../store/card/operation';
+import { addTask } from '../../store/columns/operations';
 import {
   StyledP,
   StyledDiv,
@@ -122,7 +122,6 @@ const validationSchema = Yup.object().shape({
         return;
       }
       await dispatch(addTask({ ...values, boardId, columnId }));
-      console.log('Task added successfully!');
       resetForm();
       setDeadline('');
       closeModal();

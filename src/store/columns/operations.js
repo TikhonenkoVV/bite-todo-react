@@ -29,12 +29,30 @@ export const addColumn = createAsyncThunk(
 
 export const editColumn = createAsyncThunk(
   'columns/edit',
-  async ({ boardId, id, title, cards }, thunkAPI) => {
+  async ({ boardId, id, title }, thunkAPI) => {
     try {
       const { data } = await axios.put(`/boards/${boardId}/columns/${id}`, {
         title,
       });
-      return { ...data.column, cards };
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const addTask = createAsyncThunk(
+  'tasks/addTask',
+  async (
+    { title, description, priority, deadline, boardId, columnId },
+    thunkAPI
+  ) => {
+    try {
+      const { data } = await axios.post(
+        `/boards/${boardId}/columns/${columnId}/tasks`,
+        { title, description, priority, deadline }
+      );
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
