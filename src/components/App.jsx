@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { PrivateRoute } from './privateRoute';
 import { RestrictedRoute } from './restrictedRoute';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser, refreshToken } from 'store/auth/operations';
-import { selectAuthError, selectIsTokenRefreshed } from 'store/auth/selectors';
 import { Loader } from './Loader/Loader';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Layout } from './Layout/Layout';
@@ -15,13 +14,15 @@ import MainDashboard from '../pages/MainDashboard/MainDashboard';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const authError = useSelector(selectAuthError);
-  const isTokenRefreshed = useSelector(selectIsTokenRefreshed);
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, authError, isTokenRefreshed } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isTokenRefreshed) dispatch(refreshUser());
+  }, [dispatch, isTokenRefreshed]);
 
   useEffect(() => {
     const { message, status } = authError;
@@ -29,7 +30,6 @@ export const App = () => {
 
     if (message === 'Token expired') {
       dispatch(refreshToken());
-      isTokenRefreshed && dispatch(refreshUser());
       return;
     }
 
@@ -54,7 +54,7 @@ export const App = () => {
     }
 
     Notify.warning(`${authError.message}`);
-  }, [dispatch, authError, isTokenRefreshed]);
+  }, [dispatch, authError]);
 
   return isRefreshing ? (
     <Loader />

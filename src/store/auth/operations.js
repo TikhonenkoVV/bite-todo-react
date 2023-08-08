@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// треба додати url
 axios.defaults.baseURL = 'https://bite-todo-rest-api.onrender.com/api';
 
 const setAuthHeader = token => {
@@ -18,7 +17,6 @@ export const register = createAsyncThunk(
     try {
       await axios.post('/auth/register', credentials);
     } catch (error) {
-      console.log(error.response.data.message);
       return thunkAPI.rejectWithValue({
         message: error.response.data.message,
         status: error.response.status,
@@ -35,7 +33,6 @@ export const logIn = createAsyncThunk(
       setAuthHeader(data.tokens.accessToken);
       return data;
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue({
         message: error.response.data.message,
         status: error.response.status,
@@ -74,7 +71,6 @@ export const refreshUser = createAsyncThunk(
       const { data } = await axios.get('/auth/current');
       return data;
     } catch (error) {
-      console.log(error.response.data.message);
       return thunkAPI.rejectWithValue({
         message: error.response.data.message,
         status: error.response.status,
