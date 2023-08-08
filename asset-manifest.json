@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bite-todo-react/static/css/main.e91735fb.css",
-    "main.js": "/bite-todo-react/static/js/main.78d92070.js",
+    "main.js": "/bite-todo-react/static/js/main.9fc18021.js",
     "static/media/Poppins-Regular.svg": "/bite-todo-react/static/media/Poppins-Regular.3383485fc42dbbbbb52d46dba5485b19.svg",
     "static/media/Poppins-Medium.svg": "/bite-todo-react/static/media/Poppins-Medium.5dad75f36f319c00263514e7b196ac50.svg",
     "static/media/Poppins-SemiBold.svg": "/bite-todo-react/static/media/Poppins-SemiBold.24b955c03495ee435e5d5bb09fbba11c.svg",
@@ -11,20 +11,22 @@
     "static/media/Poppins-Regular.ttf": "/bite-todo-react/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Poppins-Medium.ttf": "/bite-todo-react/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
     "static/media/Poppins-SemiBold.ttf": "/bite-todo-react/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
+    "static/media/welcome-img@3x.png": "/bite-todo-react/static/media/welcome-img@3x.d49456ebafdeb94926e7.png",
     "static/media/Poppins-Regular.woff": "/bite-todo-react/static/media/Poppins-Regular.387f9003f984ef1cec60.woff",
     "static/media/Poppins-SemiBold.woff": "/bite-todo-react/static/media/Poppins-SemiBold.71da8e4f0d76b718897c.woff",
     "static/media/Poppins-Medium.woff": "/bite-todo-react/static/media/Poppins-Medium.7e588a26bdac2428f240.woff",
+    "static/media/welcome-img@2x.png": "/bite-todo-react/static/media/welcome-img@2x.f33dd9f78c86e3c62848.png",
     "static/media/Poppins-Regular.woff2": "/bite-todo-react/static/media/Poppins-Regular.ad19729d6a0511212493.woff2",
     "static/media/Poppins-SemiBold.woff2": "/bite-todo-react/static/media/Poppins-SemiBold.3c3f3613b59d581739fc.woff2",
     "static/media/Poppins-Medium.woff2": "/bite-todo-react/static/media/Poppins-Medium.563f976db73ca07d8fc3.woff2",
     "static/media/sprite.svg": "/bite-todo-react/static/media/sprite.a9d3a5dd3e99780ac75d4de43249a3b3.svg",
-    "static/media/welcome-img-1x.png": "/bite-todo-react/static/media/welcome-img-1x.47ac3097a0f12b998d37.png",
+    "static/media/welcome-img.png": "/bite-todo-react/static/media/welcome-img.835630e4674731f85657.png",
     "index.html": "/bite-todo-react/index.html",
     "main.e91735fb.css.map": "/bite-todo-react/static/css/main.e91735fb.css.map",
-    "main.78d92070.js.map": "/bite-todo-react/static/js/main.78d92070.js.map"
+    "main.9fc18021.js.map": "/bite-todo-react/static/js/main.9fc18021.js.map"
   },
   "entrypoints": [
     "static/css/main.e91735fb.css",
-    "static/js/main.78d92070.js"
+    "static/js/main.9fc18021.js"
   ]
 }
