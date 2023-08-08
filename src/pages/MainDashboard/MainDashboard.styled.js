@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const MainDashboardSection = styled.section`
+  position: relative;
   background: #1f1f1f;
   /* background: #f6f6f7; */
 `;
