@@ -102,9 +102,11 @@ const authSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
         state.user = payload;
+        state.isRefreshing = false;
         state.error = { message: '', status: '' };
       })
       .addCase(updateUser.rejected, (state, { payload }) => {
+        state.isRefreshing = false;
         state.error = payload;
       })
       .addCase(updateAvatar.fulfilled, (state, { payload }) => {
