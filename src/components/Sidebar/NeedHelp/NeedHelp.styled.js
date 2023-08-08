@@ -3,7 +3,7 @@ import flower from 'img/flower.png';
 
 export const DivStyled = styled.div`
   padding: 14px;
-  margin-left: 14px;
+  margin: 0 auto;
   width: 197px;
   height: 238px;
   border-radius: 8px;

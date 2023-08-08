@@ -10,7 +10,6 @@ export const ContainerSidebar = styled.aside`
   background-color: #121212;
   z-index: 1000;
   padding-top: 14px;
-  padding-bottom: 24px;
   color: #ffffff;
 
   @media screen and (min-width: 768px) {
@@ -26,4 +25,7 @@ export const WrapperBottom = styled.div`
   margin-bottom: 24px;
   position: absolute;
   bottom: 0;
+  @media screen and (min-width: 1440px) {
+    position: static;
+  }
 `;

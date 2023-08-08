@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   grid-template-columns: auto;
 
   @media screen and (min-width: 1440px) {
+    position: static;
     grid-template-columns: 260px auto;
     grid-template-rows: 64px auto;
   }
