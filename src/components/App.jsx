@@ -5,7 +5,7 @@ import { PrivateRoute } from './privateRoute';
 import { RestrictedRoute } from './restrictedRoute';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser, refreshToken } from 'store/auth/operations';
-import { selectAuthError } from 'store/auth/selectors';
+import { selectAuthError, selectIsTokenRefreshed } from 'store/auth/selectors';
 import { Loader } from './Loader/Loader';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Layout } from './Layout/Layout';
@@ -16,6 +16,7 @@ import MainDashboard from '../pages/MainDashboard/MainDashboard';
 export const App = () => {
   const dispatch = useDispatch();
   const authError = useSelector(selectAuthError);
+  const isTokenRefreshed = useSelector(selectIsTokenRefreshed);
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
@@ -28,7 +29,8 @@ export const App = () => {
 
     if (message === 'Token expired') {
       dispatch(refreshToken());
-      dispatch(refreshUser());
+      isTokenRefreshed && dispatch(refreshUser());
+      return;
     }
 
     if (message === 'Unable to fetch user') return;
@@ -52,7 +54,7 @@ export const App = () => {
     }
 
     Notify.warning(`${authError.message}`);
-  }, [dispatch, authError]);
+  }, [dispatch, authError, isTokenRefreshed]);
 
   return isRefreshing ? (
     <Loader />

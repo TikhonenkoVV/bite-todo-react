@@ -11,3 +11,5 @@ export const selectIsRefreshing = state => state.auth.isRefreshing;
 export const selectAuthError = state => state.auth.error;
 
 export const selectTheme = state => state.auth.user.theme;
+
+export const selectIsTokenRefreshed = state => state.auth.isTokenRefreshed;

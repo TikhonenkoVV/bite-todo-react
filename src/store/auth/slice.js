@@ -17,6 +17,7 @@ const initialState = {
   isLoggedIn: false,
   isLoggingIn: false,
   isRefreshing: false,
+  isTokenRefreshed: false,
   error: { message: '', status: '' },
 };
 
@@ -63,6 +64,9 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.error = { message: '', status: '' };
       })
+      .addCase(logOut.rejected, (state, { payload }) => {
+        state.error = payload;
+      })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
         state.error = { message: '', status: '' };
@@ -81,10 +85,12 @@ const authSlice = createSlice({
       .addCase(refreshToken.fulfilled, (state, { payload }) => {
         state.accessToken = payload.accessToken;
         state.refreshToken = payload.refreshToken;
+        state.isTokenRefreshed = true;
         state.error = { message: '', status: '' };
       })
       .addCase(refreshToken.rejected, (state, { payload }) => {
         state.error = payload;
+        state.isTokenRefreshed = false;
       })
       .addCase(updateUser.pending, state => {
         state.isRefreshing = true;

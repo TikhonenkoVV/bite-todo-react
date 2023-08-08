@@ -35,7 +35,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(data.tokens.accessToken);
       return data;
     } catch (error) {
-      console.log(error.response.data.message);
+      console.log(error);
       return thunkAPI.rejectWithValue({
         message: error.response.data.message,
         status: error.response.status,
