@@ -14,12 +14,23 @@ import {
 import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Modal } from 'components/Modal';
 import { EditTask } from 'components/AddTaskForm/EditTaskForm';
+import { deleteTask } from '../../store/columns/operations';
 
-export const Card = ({ title, description, priority, deadline,boardId,columnId,taskData }) => {
- 
-   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+export const Card = ({
+  _id,
+  title,
+  description,
+  priority,
+  deadline,
+  boardId,
+  columnId,
+  taskData,
+}) => {
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const openEditModal = () => {
     setIsEditModalOpen(true);
@@ -28,7 +39,11 @@ export const Card = ({ title, description, priority, deadline,boardId,columnId,t
   const closeEditModal = () => {
     setIsEditModalOpen(false);
   };
- 
+
+  const handleDeleteTaskButtonClick = async () => {
+    await dispatch(deleteTask({ boardId, columnId, taskId: _id }));
+  };
+
   return (
     <CardStyled color={priority}>
       <CardTitleStyled>{title}</CardTitleStyled>
@@ -48,7 +63,7 @@ export const Card = ({ title, description, priority, deadline,boardId,columnId,t
           <Svg w={16} h={16} use={`${sprite}#icon-bell`} />
         </ToolsButtonBell>
         <ToolsWrapper>
-           <ToolsButton type="button" onClick={openEditModal}>
+          <ToolsButton type="button" onClick={openEditModal}>
             <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
           </ToolsButton>
           {isEditModalOpen && (
@@ -56,6 +71,7 @@ export const Card = ({ title, description, priority, deadline,boardId,columnId,t
               <EditTask
                 boardId={boardId}
                 columnId={columnId}
+                taskId={_id}
                 taskData={taskData}
                 title={title}
                 description={description}
@@ -64,7 +80,7 @@ export const Card = ({ title, description, priority, deadline,boardId,columnId,t
               />
             </Modal>
           )}
-          <ToolsButton type="button">
+          <ToolsButton type="button" onClick={handleDeleteTaskButtonClick}>
             <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
           </ToolsButton>
         </ToolsWrapper>

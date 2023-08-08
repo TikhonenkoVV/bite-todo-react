@@ -56,7 +56,7 @@ export const Column = ({ _id, title, createdAt, cards, owner }) => {
           </IconButton>
         </IconContainer>
       </ColumnTitleContainer>
-      {cards && <CardList cards={cards} />}
+      {cards && <CardList boardId={owner} cards={cards} />}
       <AddCardButton onClick={handleAddCardButtonClick}>
         <AddCardIconContainer>
           <AddCardIcon>

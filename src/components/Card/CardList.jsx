@@ -53,18 +53,21 @@ import { Card } from './Card';
 //   },
 // ];
 
-export const CardList = ({ cards }) => {
+export const CardList = ({ boardId, cards }) => {
   return (
     <CardListContainer>
       <CardListStyled>
-        {cards.map(({ _id, title, description, priority, deadline }) => {
+        {cards.map(({ _id, title, description, priority, deadline, owner }) => {
           return (
             <Card
               key={_id}
+              _id={_id}
               title={title}
               description={description}
               priority={priority}
               deadline={deadline}
+              boardId={boardId}
+              columnId={owner}
             />
           );
         })}

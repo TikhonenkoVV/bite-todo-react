@@ -58,3 +58,35 @@ export const addTask = createAsyncThunk(
     }
   }
 );
+
+export const editTask = createAsyncThunk(
+  'tasks/editTask',
+  async (
+    { title, description, priority, deadline, boardId, columnId, taskId },
+    thunkAPI
+  ) => {
+    try {
+      const { data } = await axios.put(
+        `/boards/${boardId}/columns/${columnId}/tasks/${taskId}`,
+        { title, description, priority, deadline }
+      );
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteTask = createAsyncThunk(
+  'tasks/deleteTask',
+  async ({ boardId, columnId, taskId }, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(
+        `/boards/${boardId}/columns/${columnId}/tasks/${taskId}`
+      );
+      return { ...data, boardId, columnId, taskId };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
