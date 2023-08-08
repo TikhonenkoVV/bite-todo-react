@@ -104,7 +104,6 @@ export const EditTask = ({
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      console.log(boardId, columnId);
       await dispatch(editTask({ ...values, boardId, columnId, taskId }));
       resetForm();
       setDeadline('');
