@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FormProfile from './FormProfile';
 import userdefaultimg from '../../img/Header/user.png';
 import sprite from '../../img/icons/sprite.svg';
@@ -10,36 +10,37 @@ import {
   DivItem,
   DivUserImgStyled,
   DivIconPlus,
-  IconStyled
+  IconStyled,
+  AvatarImg
 } from './EditProfile.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateAvatar } from 'store/auth/operations';
+// import { updateAvatar } from 'store/auth/operations';
 import { selectUser } from 'store/auth/selectors';
 
-const baseUrl = 'https://bite-todo-rest-api.onrender.com/api/auth'
+const baseUrl = 'https://bite-todo-rest-api.onrender.com'
 
 const EditProfile = ({ closeModal }) => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const { avatarURL } = useSelector(selectUser)
-  // const [avatarFile, setAvatarFile] = useState(null);
+  const [avatarFile, setAvatarFile] = useState(null);
   console.log(avatarURL);
 
-
-  const handleAvatarChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const formData = new FormData();
-      formData.append('avatar', file);
-      dispatch(updateAvatar(formData));
-    }
-  }
 
   // const handleAvatarChange = (e) => {
   //   const file = e.target.files[0];
   //   if (file) {
-  //     setAvatarFile(file);
+  //     const formData = new FormData();
+  //     formData.append('avatar', file);
+  //     dispatch(updateAvatar(formData));
   //   }
-  // };
+  // }
+
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setAvatarFile(file);
+    }
+  };
 
 
 
@@ -51,7 +52,7 @@ const EditProfile = ({ closeModal }) => {
       <TextStyled>Edit Profile</TextStyled>
       <DivItem>
         <DivUserImgStyled>
-          <img width={68} height={68} src={avatarURL ? `${baseUrl}/${avatarURL}` : userdefaultimg} alt="userlogo" />
+          <AvatarImg width={68} height={68} src={`${baseUrl}/${avatarURL}` || userdefaultimg} alt="userlogo" />
           <input type="file" accept="image/*" onChange={handleAvatarChange} hidden id="avatarInput" />
           <DivIconPlus onClick={() => document.getElementById('avatarInput').click()}>
               <Svg w={10} h={10} use={`${sprite}#icon-plus`} />
@@ -59,7 +60,7 @@ const EditProfile = ({ closeModal }) => {
         </DivUserImgStyled>
       </DivItem>
       <FormProfile
-        // avatarFile={avatarFile} onAvatarChange={handleAvatarChange}
+        avatarFile={avatarFile} onAvatarChange={handleAvatarChange}
       />
     </DivStyled>
   );

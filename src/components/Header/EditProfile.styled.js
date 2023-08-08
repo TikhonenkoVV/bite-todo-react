@@ -49,10 +49,9 @@ export const DivUserImgStyled = styled.div`
   margin-bottom: 25px;
 `;
 
-// export const LinkStyled = styled.div`
-//   text-decoration: none;
-//   cursor: pointer;
-// `;
+export const AvatarImg = styled.img`
+  border-radius: 8px;
+`;
 
 export const DivIconPlus = styled.div`
   width: 24px;

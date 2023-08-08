@@ -25,3 +25,7 @@ export const LinkStyled = styled.a`
   text-decoration: none;
   cursor: pointer;
 `;
+
+export const AvatarImg = styled.img`
+  border-radius: 8px;
+`;
