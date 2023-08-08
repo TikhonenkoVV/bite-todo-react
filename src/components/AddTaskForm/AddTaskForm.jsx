@@ -9,7 +9,7 @@ import sprite from '../../img/icons/sprite.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import './AddTaskForm.css';
 import { useDispatch } from 'react-redux';
-import { addTask } from '../../store/card/operation';
+import { addTask } from '../../store/columns/operations';
 import {
   StyledP,
   StyledDiv,
@@ -54,12 +54,13 @@ const initialValues = {
   priority: '',
 };
 
-export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
+export const AddTasks = ({ column, taskData, closeModal }) => {
   const [deadline, setDeadline] = useState('');
 
   const dispatch = useDispatch();
 
   const deadlinePickerRef = useRef(null);
+  console.log(column);
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -94,7 +95,7 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      await dispatch(addTask({ ...values, boardId, columnId }));
+      await dispatch(addTask({ ...values, column }));
       console.log('Task added successfully!');
       resetForm();
       setDeadline('');

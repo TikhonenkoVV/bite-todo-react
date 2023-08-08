@@ -40,3 +40,20 @@ export const editColumn = createAsyncThunk(
     }
   }
 );
+
+export const addTask = createAsyncThunk(
+  'tasks/addTask',
+  async ({ title, description, priority, deadline, column }, thunkAPI) => {
+    console.log(title, description, priority, deadline, column);
+
+    try {
+      const { data } = await axios.post(
+        `/boards/${column.owner}/columns/${column._id}/tasks`,
+        { title, description, priority, deadline }
+      );
+      return { ...data, column };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
