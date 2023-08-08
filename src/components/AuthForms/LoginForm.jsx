@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'store/auth/operations';
-import {
-  selectIsLoggedIn,
-  selectIsLoggingIn,
-} from 'store/auth/selectors';
+import { useAuth } from 'hooks/useAuth';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { Loader } from 'components/Loader/Loader';
 import {
@@ -25,8 +22,7 @@ import sprite from '../../img/icons/sprite.svg';
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoggingIn = useSelector(selectIsLoggingIn);
+  const { isLoggedIn, isLoggingIn } = useAuth();
   const [inputType, setInputType] = useState('password');
   const [inputIcon, setInputIcon] = useState('#icon-eye-allow');
 

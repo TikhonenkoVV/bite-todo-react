@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { register, logIn } from 'store/auth/operations';
-import {
-  selectIsRegistered,
-  selectIsLoggedIn,
-  selectIsLoggingIn,
-} from 'store/auth/selectors';
+import { useAuth } from 'hooks/useAuth';
 import {
   Container,
   AuthNavWrapper,
@@ -26,9 +22,7 @@ import sprite from '../../img/icons/sprite.svg';
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isRegistered = useSelector(selectIsRegistered);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoggingIn = useSelector(selectIsLoggingIn);
+  const { isRegistered, isLoggedIn, isLoggingIn } = useAuth();
   const [inputType, setInputType] = useState('password');
   const [inputIcon, setInputIcon] = useState('#icon-eye-allow');
 
