@@ -3,6 +3,7 @@ import {
   getColumns,
   addColumn,
   editColumn,
+  deleteColumn,
   addTask,
   editTask,
   deleteTask,
@@ -55,6 +56,20 @@ const columnsSlice = createSlice({
         state.error = null;
       })
       .addCase(editColumn.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(deleteColumn.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(deleteColumn.fulfilled, (state, { payload }) => {
+        state.columns = state.columns.filter(
+          column => column._id !== payload.column._id
+        );
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(deleteColumn.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })

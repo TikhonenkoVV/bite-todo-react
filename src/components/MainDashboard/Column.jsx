@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { deleteColumn } from '../../store/columns/operations';
 import sprite from '../../img/icons/sprite.svg';
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
@@ -21,9 +24,17 @@ import { AddTasks } from 'components/AddTaskForm/AddTaskForm';
 export const Column = ({ _id, title, createdAt, cards, owner }) => {
   const [isEditCardMode, setIsEditCardMode] = useState(false);
   const { isModalOpen, closeModal, openModal } = useModal();
+  const dispatch = useDispatch();
+  const hasCards = cards && cards.length > 0;
 
-  const handleDeleteButtonClick = id => {
-    console.log('Delete: id: ', id);
+  const handleDeleteButtonClick = async () => {
+    if (hasCards) {
+      Notify.warning(
+        'It is impossible to remove column when exists one or more cards.'
+      );
+      return;
+    }
+    await dispatch(deleteColumn({ boardId: owner, columnId: _id }));
   };
 
   const handleAddCardButtonClick = () => {
