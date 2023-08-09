@@ -13,7 +13,6 @@ export const Wrapper = styled.div`
 `;
 
 export const WrapperMain = styled.main`
-  overflow-x: auto;
   width: 100%;
   height: 100%;
   @media screen and (min-width: 1440px) {

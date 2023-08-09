@@ -16,6 +16,7 @@ import {
   FilterContainer,
   ContentHolder,
 } from './MainDashboard.styled';
+// import { Scrollbars } from 'react-custom-scrollbars-2';
 import DashboardHeader from 'components/DashboardHeader/DashboardHeader';
 import { selectBoardsState } from 'store/boards/selectors';
 
@@ -32,6 +33,7 @@ const MainDashboard = () => {
       <FilterContainer>
         <DashboardHeader name={selectedBoard?.title} theme={'dark'} />
       </FilterContainer>
+      {/* <Scrollbars style={{ width: '100%', height: '100%' }}> */}
       <MainDashboardContainer>
         {boardName ? (
           <>
@@ -62,6 +64,7 @@ const MainDashboard = () => {
           <CreateBoard />
         )}
       </MainDashboardContainer>
+      {/* </Scrollbars> */}
     </MainDashboardSection>
   );
 };
