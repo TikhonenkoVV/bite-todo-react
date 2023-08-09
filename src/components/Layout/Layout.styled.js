@@ -6,13 +6,13 @@ export const Wrapper = styled.div`
   grid-template-columns: auto;
 
   @media screen and (min-width: 1440px) {
-    position: static;
     grid-template-columns: 260px auto;
     grid-template-rows: 64px auto;
   }
 `;
 
 export const WrapperMain = styled.main`
+  overflow-x: auto;
   width: 100%;
   height: 100%;
   @media screen and (min-width: 1440px) {
