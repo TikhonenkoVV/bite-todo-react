@@ -25,6 +25,7 @@ export const RegisterForm = () => {
   const { isRegistered, isLoggedIn, isLoggingIn } = useAuth();
   const [inputType, setInputType] = useState('password');
   const [inputIcon, setInputIcon] = useState('#icon-eye-allow');
+  const [loginData, setLoginData] = useState({});
 
   const formik = useFormik({
     initialValues: {
@@ -47,16 +48,15 @@ export const RegisterForm = () => {
     }),
     onSubmit: values => {
       dispatch(register(values));
+      setLoginData({ email: values.email, password: values.password });
     },
   });
 
   useEffect(() => {
     if (isRegistered) {
-      dispatch(
-        logIn({ email: formik.values.email, password: formik.values.password })
-      );
+      dispatch(logIn(loginData));
     }
-  }, [isRegistered, formik, dispatch]);
+  }, [isRegistered, loginData, dispatch]);
 
   useEffect(() => {
     if (isLoggedIn) {
