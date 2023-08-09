@@ -30,14 +30,7 @@ import {
 } from './AddTaskForm.styled';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
-const priorities = ['without', 'low', 'high', 'medium'];
-
-// const priorities = [
-//   { name: 'low', color: '#8FA1D0' },
-//   { name: 'medium', color: '#E09CB5' },
-//   { name: 'high', color: '#BEDBB0' },
-//   { name: 'without', color: '#808080' },
-// ];
+const priorities = [ 'low', 'medium','high' ,'without'];
 
 const StyledCustomCalendar = styled(DatePicker)`
   &.custom-datepicker {
@@ -61,8 +54,10 @@ const initialValues = {
   priority: '',
 };
 
-export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
+export const AddTasks = ({ boardId, columnId, closeModal }) => {
   const [deadline, setDeadline] = useState('');
+
+
 
   const dispatch = useDispatch();
 
@@ -71,11 +66,11 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .required('Title is required')
-      .min(3, 'Title must contain at least 3 characters')
-      .max(50, 'Title must not exceed 50 characters'),
+      .min(1, 'Title must contain at least 3 characters')
+      .max(32, 'Title must not exceed 50 characters'),
     description: Yup.string()
       .required('Description is required')
-      .min(10, 'Description must contain at least 10 characters')
+      .min(1, 'Description must contain at least 10 characters')
       .max(500, 'Description must not exceed 500 characters'),
     priority: Yup.string().required('Please select a color'),
     deadline: Yup.date()
@@ -91,6 +86,7 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
   const handleDeadlineClick = () => {
     if (deadlinePickerRef.current) {
       deadlinePickerRef.current.setOpen(true);
+      
     }
   };
 
@@ -103,25 +99,50 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
     ? moment(deadline).format('D MMMM YYYY')
     : CurrentDate();
 
-  // const handleSubmit = async (values, { resetForm }) => {
-  //   try {
-  //     await dispatch(addTask({ ...values, boardId, columnId }));
-  //     console.log('Task added successfully!');
-  //     resetForm();
-  //     setDeadline('');
-  //     closeModal();
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // };
+//   const handleSubmit = async (values, { resetForm }) => {
+//   console.log(values);
+//   try {
+//     if (!values.deadline) {
+//       alert("Пожалуйста, укажите дату дедлайна.");
+//       return;
+//     }
+
+//     await dispatch(editTask({ ...values, boardId, columnId, taskId }));
+//     resetForm();
+//     setDeadline('');
+//     closeModal();
+//   } catch (error) {
+//     console.error('Error:', error);
+//   }
+// };
 
   const handleSubmit = async (values, { resetForm }) => {
+    console.log("formir", formik.values.deadline);
+    console.log("deadline values", values.deadline);
+    console.log("deadline", deadline);
     try {
-      if (!formik.values.deadline) {
+      
+      
+        if (!formik.values.deadline) {
         alert('Please select a deadline date.');
         return;
       }
-      await dispatch(addTask({ ...values, boardId, columnId }));
+      
+
+    if (deadline === '') {
+      alert('Please select a deadline date.');
+      return;
+      }
+      
+      if (!values.deadline) {
+         alert("Пожалуйста, укажите дату дедлайна.");
+       return;
+       }
+console.log ( deadline, values.deadline)
+      const formattedDeadline = moment(formik.values.deadline).format('DD/MM/YYYY');
+      await dispatch(addTask({ ...values, boardId, columnId, deadline: formattedDeadline }));
+      
+      
       resetForm();
       setDeadline('');
       closeModal();
@@ -137,6 +158,7 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
   });
 
   const handleDateChange = date => {
+    console.log(date);
     if (date && date < new Date()) {
       alert('Deadline cannot be before today.');
       return;
@@ -144,6 +166,8 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
     formik.setFieldValue('deadline', date);
     setDeadline(date);
   };
+
+   
 
   return (
     <StyledDiv>
@@ -236,6 +260,7 @@ export const AddTasks = ({ boardId, columnId, taskData, closeModal }) => {
             onChange={handleDateChange}
             locale="en"
             dateFormat="d MMMM yyyy"
+            showTimeSelect={false}
             customInput={<div></div>}
           />
         </StyledTitleDeadline>

@@ -46,3 +46,7 @@
 .react-datepicker__day:active {
     background-color: #8BD48E;
 }
+.react-datepicker__day:hover {
+    /* color: red; */
+    background-color: red;
+}
