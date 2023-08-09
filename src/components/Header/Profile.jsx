@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Modal } from 'components/Modal';
 import { useModal } from 'hooks/useModal';
 
@@ -15,8 +15,6 @@ const Profile = () => {
 
   const { isModalOpen, openModal, closeModal } = useModal();
 
-  useEffect(()=>{}, [])
-
   const onClickModalOpen = () => {
     openModal();
   };
@@ -27,7 +25,7 @@ const Profile = () => {
         <TextStyled>{name}</TextStyled>
         <DivUserImgStyled>
           <LinkStyled onClick={onClickModalOpen}>
-            <AvatarImg width={32} height={32} src={`${baseUrl}/${avatarURL}` || userdefaultimg} alt="userlogo" />
+            <AvatarImg width={32} height={32} src={avatarURL ? `${baseUrl}/${avatarURL}` : userdefaultimg} alt="userlogo" />
           </LinkStyled>
         </DivUserImgStyled>
       </DivInfoUserStyled>
