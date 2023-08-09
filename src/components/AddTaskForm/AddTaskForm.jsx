@@ -135,7 +135,7 @@ export const AddTasks = ({ boardId, columnId, closeModal }) => {
       }
       
       if (!values.deadline) {
-         alert("Пожалуйста, укажите дату дедлайна.");
+         alert("Please select a deadline date.");
        return;
        }
 console.log ( deadline, values.deadline)
