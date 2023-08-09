@@ -31,10 +31,6 @@ const FormProfie = ({ avatarFile, onAvatarChange }) => {
       <Formik
         initialValues={{ name: '', email: '', password: '' }}
         validationSchema={userEditScheme}
-        // onSubmit={(values, {resetForm}) => {
-        //   dispatch(updateUser(values))
-        //   resetForm();
-        // }}
         onSubmit={(values, {resetForm}) => {
 
           if (avatarFile) {
