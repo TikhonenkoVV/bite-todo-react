@@ -10,8 +10,8 @@ import { selectUser } from 'store/auth/selectors';
 
 const Header = ({ menuActive, setMenuActive, toggleMenu }) => {
 
-  const { avatarURL } = useSelector(selectUser)
-  console.log(avatarURL);
+  const user = useSelector(selectUser)
+  console.log(user);
 
   useEffect(() => {
     const handleKeyDown = e => {
