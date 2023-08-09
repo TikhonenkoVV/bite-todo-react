@@ -18,6 +18,7 @@ import { useDispatch } from 'react-redux';
 import { Modal } from 'components/Modal';
 import { EditTask } from 'components/AddTaskForm/EditTaskForm';
 import { deleteTask } from '../../store/columns/operations';
+import moment from 'moment';
 
 export const Card = ({
   _id,
@@ -44,6 +45,8 @@ export const Card = ({
     await dispatch(deleteTask({ boardId, columnId, taskId: _id }));
   };
 
+  const formattedDeadline = moment(deadline).format('DD/MM/YYYY');
+
   return (
     <CardStyled color={priority}>
       <CardTitleStyled>{title}</CardTitleStyled>
@@ -56,7 +59,7 @@ export const Card = ({
           </div>
           <div>
             <CardParamsTitle>Deadline</CardParamsTitle>
-            <DeadlineDate>{deadline}</DeadlineDate>
+            <DeadlineDate>{formattedDeadline}</DeadlineDate>
           </div>
         </CardParamsWrapper>
         <ToolsButtonBell type="button">
@@ -75,6 +78,7 @@ export const Card = ({
                 taskData={taskData}
                 title={title}
                 description={description}
+                deadline={deadline}
                 priority={priority}
                 closeModal={closeEditModal}
               />
