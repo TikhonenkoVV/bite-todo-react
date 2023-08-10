@@ -12,7 +12,7 @@ export const MainDashboardContainer = styled.div`
   height: 100%;
   padding: 74px 20px 0 20px;
   /* margin: 0 auto; */
-  /* overflow-x: auto; */
+  overflow-x: auto;
 
   @media (min-width: 768px) {
     display: flex;

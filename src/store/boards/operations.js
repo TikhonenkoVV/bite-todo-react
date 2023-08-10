@@ -49,3 +49,16 @@ export const deleteBoards = createAsyncThunk(
     }
   }
 );
+
+export const sendNeedHelp = createAsyncThunk(
+  'needHelp/send',
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await axios.post(`/auth/help`);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
