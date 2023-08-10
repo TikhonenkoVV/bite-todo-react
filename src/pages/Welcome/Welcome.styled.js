@@ -44,6 +44,37 @@ export const ImgSetStyled = styled.picture`
   }
 `;
 
+export const LogoStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: ${props => props.styles.gap};
+`;
+
+export const IconWrapperStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${props => props.styles.width};
+  height: ${props => props.styles.height};
+
+  @media screen and ${theme.devices.tablet} {
+    width: ${props => props.styles.widthTab};
+    height: ${props => props.styles.heightTab};
+  }
+`;
+
+export const LogoTextStyled = styled.p`
+font-family: Poppins;
+  font-size: ${props => props.styles.fontSize};
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.5;
+  text-transform: capitalize;
+@media screen and ${theme.devices.tablet} {
+    font-size: ${props => props.styles.fontSizeTab}
+`;
+
 export const HeroTextStyled = styled.p`
   color: #161616;
   text-align: center;
@@ -72,20 +103,20 @@ export const LinkButtonStyled = styled(NavLink)`
   align-items: center;
   border-radius: 8px;
   background-color: #161616;
-  color: #ffffff;  
+  color: #ffffff;
   font-weight: 500;
   @media screen and ${theme.devices.tablet} {
     width: 344px;
   }
   &:hover {
     color: #161616;
-    background-color: #9DC888;
+    background-color: #9dc888;
   }
 `;
- export const LinkStyled = styled(NavLink)`
- font-weight: 500;
- &:hover {
-  color: #9DC888;
-  
-}
- `
+
+export const LinkStyled = styled(NavLink)`
+  font-weight: 500;
+  &:hover {
+    color: #9dc888;
+  }
+`;

@@ -9,24 +9,29 @@ import {
   ImgWrapperStyled,
   LinkWrapperStyled,
   ImgSetStyled,
+  LogoStyled,
+  IconWrapperStyled,
+  LogoTextStyled,
   HeroTextStyled,
   LinkButtonStyled,
   LinkStyled,
 } from './Welcome.styled';
 import { Loader } from 'components/Loader/Loader';
+import { Svg } from 'components/SvgIcon/SvgIcon';
+import sprite from 'img/icons/sprite.svg';
 // import Logo from '../../components/Sidebar/Logo/Logo';
 
-// const logoStyles = {
-//   marginLeft: 0,
-//   columnGap: '14px',
-//   fontSize: '28px',
-//   fontSizeTab: '40px',
-//   lineHeight: 1.5,
-//   width: '40px',
-//   height: '40px',
-//   widthTab: '48px',
-//   heightTab: '48px',
-// };
+const logoStyles = {
+  gap: '14px',
+  fontSize: '28px',
+  fontSizeTab: '40px',
+  width: '40px',
+  height: '40px',
+  widthTab: '48px',
+  heightTab: '48px',
+  defaultWidth: '100%',
+  defaultHeighth: '100%',
+};
 
 const Welcome = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -45,8 +50,19 @@ const Welcome = () => {
                   alt="The guy is working on a laptop"
                 />
               </ImgSetStyled>
-              {/* <Logo styles={logoStyles} /> */}
             </ImgWrapperStyled>
+
+            <LogoStyled styles={logoStyles}>
+              <IconWrapperStyled styles={logoStyles}>
+                <Svg
+                  w={logoStyles.defaultWidth}
+                  h={logoStyles.defaultHeighth}
+                  use={`${sprite}#icon-logo-flash-dark`}
+                />
+              </IconWrapperStyled>
+              <LogoTextStyled styles={logoStyles}>Task pro</LogoTextStyled>
+            </LogoStyled>
+
             <HeroTextStyled>
               Supercharge your productivity and take control of your tasks with
               Task Pro - Don't wait, start achieving your goals now!
