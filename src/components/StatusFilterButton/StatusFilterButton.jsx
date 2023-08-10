@@ -6,19 +6,13 @@ import {
   FilterText,
 } from './StatusFilterButton.styled';
 
-const StatusFilterButton = ({
-  selected,
-  color,
-  theme,
-  children,
-  ...otherProps
-}) => {
+const StatusFilterButton = ({ selected, color, theme, children, onClick }) => {
   return (
     <FilterButton
       theme={theme}
       selected={selected}
       type="button"
-      {...otherProps}
+      onClick={onClick}
     >
       <FilterIcon
         text={children}
@@ -36,6 +30,7 @@ StatusFilterButton.propTypes = {
   color: PropTypes.string.isRequired,
   theme: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default StatusFilterButton;

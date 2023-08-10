@@ -16,6 +16,5 @@ export const PStyled = styled.p`
   font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.04em;
-
   cursor: pointer;
 `;

@@ -74,7 +74,7 @@ const StatusFilter = ({ onClose, theme }) => {
         <StatusFilterShowAll
           type="button"
           theme={theme}
-          selected={filter === 'Show all'}
+          selected={!filter.priority}
           onClick={() => onChangeFilterClick('Show all')}
         >
           Show all
@@ -84,7 +84,7 @@ const StatusFilter = ({ onClose, theme }) => {
         {options.map(({ text, color }, index) => (
           <StatusFilterItem key={index}>
             <StatusFilterButton
-              selected={filter === text}
+              selected={filter.statusText === text}
               onClick={() => onChangeFilterClick(text)}
               color={color}
               theme={theme}

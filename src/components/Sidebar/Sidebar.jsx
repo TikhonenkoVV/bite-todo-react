@@ -10,9 +10,11 @@ import { ContainerSidebar, WrapperBottom } from './Sidebar.styled';
 const Sidebar = ({ menuActive }) => {
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    dispatch(logOut());
+  const handleLogout = async () => {
+      await dispatch(logOut());
+      window.location.reload();
   };
+
   return (
     <ContainerSidebar menuActive={menuActive}>
       <Logo />

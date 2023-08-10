@@ -3,31 +3,11 @@ import { useSelector } from 'react-redux';
 import { CardListContainer, CardListStyled } from './CardList.styled';
 import { Card } from './Card';
 import { selectStatusFilter } from 'store/filter/selectors';
-import { statusFilters } from 'store/filter/constants';
-
-const getPriority = status => {
-  let priority = null;
-  for (const propName in statusFilters) {
-    if (
-      statusFilters.hasOwnProperty(propName) &&
-      statusFilters[propName] === status
-    ) {
-      priority = propName;
-      break;
-    }
-  }
-  if (!priority || priority === 'all') {
-    return null;
-  }
-
-  return priority === 'none' ? 'without' : priority;
-};
 
 export const CardList = ({ boardId, cards }) => {
   const status = useSelector(selectStatusFilter);
-  const priority = getPriority(status);
-  const filteredCards = priority
-    ? cards.filter(card => card.priority === priority)
+  const filteredCards = status.priority
+    ? cards.filter(card => card.priority === status.priority)
     : cards;
 
   return (

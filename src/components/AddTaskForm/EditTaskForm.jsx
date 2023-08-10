@@ -30,7 +30,7 @@ import {
 } from './AddTaskForm.styled';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
-const priorities = ['without', 'low', 'high', 'medium'];
+const priorities = [ 'low', 'medium','high' ,'without'];
 
 const StyledCustomCalendar = styled(DatePicker)`
   &.custom-datepicker {
@@ -51,21 +51,22 @@ const StyledCustomCalendar = styled(DatePicker)`
 export const EditTask = ({
   boardId,
   columnId,
-  taskData,
   closeModal,
   title,
   description,
   priority,
   taskId,
-  // deadline,
+  deadline: initialDeadline, 
 }) => {
+  const [deadline, setDeadline] = useState(initialDeadline); 
+
   const initialValues = {
     title: title,
     description: description,
     priority: priority,
   };
 
-  const [deadline, setDeadline] = useState('');
+ 
 
   const dispatch = useDispatch();
 
@@ -74,15 +75,14 @@ export const EditTask = ({
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .required('Title is required')
-      .min(3, 'Title must contain at least 3 characters')
-      .max(50, 'Title must not exceed 50 characters'),
+      .min(1, 'Title must contain at least 3 characters')
+      .max(32, 'Title must not exceed 50 characters'),
     description: Yup.string()
       .required('Description is required')
-      .min(10, 'Description must contain at least 10 characters')
+      .min(1, 'Description must contain at least 10 characters')
       .max(500, 'Description must not exceed 500 characters'),
     priority: Yup.string().required('Please select a color'),
     deadline: Yup.date()
-      .nullable()
       .required('Please select a deadline date')
       .min(new Date(), 'Deadline cannot be earlier than today'),
   });
@@ -101,17 +101,24 @@ export const EditTask = ({
   const formattedDeadline = deadline
     ? moment(deadline).format('D MMMM YYYY')
     : CurrentDate();
-
+  
+  
   const handleSubmit = async (values, { resetForm }) => {
-    try {
-      await dispatch(editTask({ ...values, boardId, columnId, taskId }));
-      resetForm();
-      setDeadline('');
-      closeModal();
-    } catch (error) {
-      console.error('Error:', error);
+  console.log(values);
+  try {
+    if (!values.deadline) {
+      alert("Пожалуйста, укажите дату дедлайна.");
+      return;
     }
-  };
+
+    await dispatch(editTask({ ...values, boardId, columnId, taskId }));
+    resetForm();
+    setDeadline('');
+    closeModal();
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
 
   const formik = useFormik({
     initialValues: initialValues,

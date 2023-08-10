@@ -4,7 +4,8 @@ export const userEditScheme = yup.object({
   name: yup
     .string()
     .min(2, 'Must be not less than 2 characters')
-    .max(32, 'Must be 32 characters or less'),
+    .max(32, 'Must be 32 characters or less')
+    .matches(/^[^@]*$/, "Username cannot contain '@' character"),
   email: yup.string().email('Invalid email address'),
   password: yup
     .string()
