@@ -1,8 +1,8 @@
 import { Icon } from './SvgIcon.styled';
 
-export const Svg = ({ w, h, use, styles }) => {
+export const Svg = ({ w, h, use }) => {
   return (
-    <Icon width={w} height={h} styles={styles}>
+    <Icon width={w} height={h}>
       <use href={use} />
     </Icon>
   );
