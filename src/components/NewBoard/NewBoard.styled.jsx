@@ -19,12 +19,14 @@ export const FormInput = styled(Field)`
   display: block;
   width: 100%;
   border-radius: 8px;
-  border: 1px solid ${props => (props.scheme === 'violet' ? '#5255BC' : '#bedbb0')};
-  opacity: ${props => (props.value  ? '1' : '0.4')};
+  border: 1px solid
+    ${props => (props.scheme === 'violet' ? '#5255BC' : '#bedbb0')};
+  opacity: ${props => (props.value ? '1' : '0.4')};
   background: ${props => (props.scheme === 'dark' ? '#232323' : '#FDFDFD')};
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   padding: 14px 18px;
-  color: ${props => (props.scheme === 'dark' ? 'rgba(255, 255, 255, 1)' : 'rgba(22, 22, 22, 1)')};
+  color: ${props =>
+    props.scheme === 'dark' ? 'rgba(255, 255, 255, 1)' : 'rgba(22, 22, 22, 1)'};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -68,6 +70,7 @@ export const Title = styled.h2`
 
 export const RadioIconBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 `;
 
@@ -102,6 +105,10 @@ export const RadioImg = styled.img`
     props.checked
       ? `2px solid ${props.scheme === 'violet' ? '#5255BC' : '#bedbb0'}`
       : '2px solid transparent'};
+
+  &:hover {
+    border: ${props => (props.scheme === 'violet' ? '#5255BC' : '#BEDBB0')};
+  }
 `;
 
 export const RadioIcon = styled.label`
@@ -110,6 +117,11 @@ export const RadioIcon = styled.label`
   opacity: ${props => (props.checked ? '100%' : '50%')};
   fill: ${props =>
     props.scheme === 'dark' ? 'rgb(255, 255, 255)' : 'rgba(22, 22, 22)'};
+
+  &:hover {
+    color: ${props => (props.scheme === 'violet' ? '#5255BC' : '#BEDBB0')};
+    opacity: 100%;
+  }
 `;
 
 export const CloseButton = styled.button`
