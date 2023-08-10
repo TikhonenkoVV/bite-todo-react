@@ -14,19 +14,19 @@ import {
   LinkStyled,
 } from './Welcome.styled';
 import { Loader } from 'components/Loader/Loader';
-import Logo from '../../components/Sidebar/Logo/Logo';
+// import Logo from '../../components/Sidebar/Logo/Logo';
 
-const logoStyles = {
-  marginLeft: 0,
-  columnGap: '14px',
-  fontSize: '28px',
-  fontSizeTab: '40px',
-  lineHeight: 1.5,
-  width: '40px',
-  height: '40px',
-  widthTab: '48px',
-  heightTab: '48px',
-};
+// const logoStyles = {
+//   marginLeft: 0,
+//   columnGap: '14px',
+//   fontSize: '28px',
+//   fontSizeTab: '40px',
+//   lineHeight: 1.5,
+//   width: '40px',
+//   height: '40px',
+//   widthTab: '48px',
+//   heightTab: '48px',
+// };
 
 const Welcome = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -45,7 +45,7 @@ const Welcome = () => {
                   alt="The guy is working on a laptop"
                 />
               </ImgSetStyled>
-              <Logo styles={logoStyles} />
+              {/* <Logo styles={logoStyles} /> */}
             </ImgWrapperStyled>
             <HeroTextStyled>
               Supercharge your productivity and take control of your tasks with
