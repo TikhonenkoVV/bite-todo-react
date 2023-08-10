@@ -5,11 +5,17 @@ import sprite from '../../img/icons/sprite.svg'
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { StyledHeader, DivBtnStyle, StyledNav } from './Header.styled';
 
+import { useSelector } from 'react-redux';
+import { selectUser } from 'store/auth/selectors';
+
 const Header = ({ menuActive, setMenuActive, toggleMenu }) => {
+
+  const user = useSelector(selectUser)
+  console.log(user);
 
   useEffect(() => {
     const handleKeyDown = e => {
-    if (e.code === 'Escape' && window.innerWidth <= 767) {
+    if (e.code === 'Escape' && window.innerWidth <= 1439) {
       setMenuActive(false)
     }
   };
@@ -23,7 +29,7 @@ const Header = ({ menuActive, setMenuActive, toggleMenu }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1439) {
         setMenuActive(true);
       } else {
         setMenuActive(false);

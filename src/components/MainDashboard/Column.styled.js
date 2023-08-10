@@ -36,7 +36,7 @@ export const TitleIcon = styled.svg`
   width: 16px;
   height: 16px;
   /* fill: #121212; */
-  fill: #fff;
+  fill: rgba(255, 255, 255, 0.5);
 `;
 
 export const IconButton = styled.button`

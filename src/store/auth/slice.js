@@ -10,7 +10,12 @@ import {
 } from './operations';
 
 const initialState = {
-  user: { name: '', email: '', avatar: '', theme: 'dark' },
+  user: {
+    name: '',
+    email: '',
+    avatarURL: '',
+    theme: 'dark',
+  },
   accessToken: null,
   refreshToken: null,
   isRegistered: false,
@@ -52,13 +57,13 @@ const authSlice = createSlice({
         state.error = { message: '', status: '' };
       })
       .addCase(logIn.rejected, (state, { payload }) => {
-        state.user = { name: '', email: '', avatar: '', theme: 'dark' };
+        state.user = { name: '', email: '', avatarURL: '', theme: 'dark' };
         state.isLoggingIn = false;
         state.isLoggedIn = false;
         state.error = payload;
       })
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: '', email: '', avatar: '', theme: 'dark' };
+        state.user = { name: '', email: '', avatarURL: '', theme: 'dark' };
         state.accessToken = null;
         state.refreshToken = null;
         state.isLoggedIn = false;
@@ -110,7 +115,8 @@ const authSlice = createSlice({
         state.error = payload;
       })
       .addCase(updateAvatar.fulfilled, (state, { payload }) => {
-        state.user.avatar = payload;
+        console.log(payload);
+        state.user.avatarURL = payload;
         state.error = { message: '', status: '' };
       })
       .addCase(updateAvatar.rejected, (state, { payload }) => {
