@@ -1,11 +1,13 @@
-import axios from 'axios';
+import { biteTodoInnstance } from 'store/auth/operations';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getColumns = createAsyncThunk(
   'columns/get',
   async (boardId, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/boards/${boardId}/columnstasks`);
+      const { data } = await biteTodoInnstance.get(
+        `/boards/${boardId}/columnstasks`
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -17,9 +19,12 @@ export const addColumn = createAsyncThunk(
   'columns/add',
   async ({ boardId, title }, thunkAPI) => {
     try {
-      const { data } = await axios.post(`/boards/${boardId}/columns`, {
-        title,
-      });
+      const { data } = await biteTodoInnstance.post(
+        `/boards/${boardId}/columns`,
+        {
+          title,
+        }
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -31,9 +36,12 @@ export const editColumn = createAsyncThunk(
   'columns/edit',
   async ({ boardId, id, title }, thunkAPI) => {
     try {
-      const { data } = await axios.put(`/boards/${boardId}/columns/${id}`, {
-        title,
-      });
+      const { data } = await biteTodoInnstance.put(
+        `/boards/${boardId}/columns/${id}`,
+        {
+          title,
+        }
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -45,7 +53,7 @@ export const deleteColumn = createAsyncThunk(
   'columns/delete',
   async ({ boardId, columnId }, thunkAPI) => {
     try {
-      const { data } = await axios.delete(
+      const { data } = await biteTodoInnstance.delete(
         `/boards/${boardId}/columns/${columnId}`
       );
       return data;
@@ -62,7 +70,7 @@ export const addTask = createAsyncThunk(
     thunkAPI
   ) => {
     try {
-      const { data } = await axios.post(
+      const { data } = await biteTodoInnstance.post(
         `/boards/${boardId}/columns/${columnId}/tasks`,
         { title, description, priority, deadline }
       );
@@ -80,7 +88,7 @@ export const editTask = createAsyncThunk(
     thunkAPI
   ) => {
     try {
-      const { data } = await axios.put(
+      const { data } = await biteTodoInnstance.put(
         `/boards/${boardId}/columns/${columnId}/tasks/${taskId}`,
         { title, description, priority, deadline }
       );
@@ -95,7 +103,7 @@ export const deleteTask = createAsyncThunk(
   'tasks/deleteTask',
   async ({ boardId, columnId, taskId }, thunkAPI) => {
     try {
-      const { data } = await axios.delete(
+      const { data } = await biteTodoInnstance.delete(
         `/boards/${boardId}/columns/${columnId}/tasks/${taskId}`
       );
       return { ...data, boardId, columnId, taskId };
