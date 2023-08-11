@@ -24,7 +24,7 @@ import {
 } from './ControlBoard.styled';
 
 const ControlBoard = () => {
-  const [idActiveBoard, setActiveBoard] = useState('');
+  const [idActiveBoard, setIdActiveBoard] = useState('');
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
   const dispatch = useDispatch();
@@ -40,16 +40,23 @@ const ControlBoard = () => {
   }, [dispatch, isLoggedIn]);
 
   useEffect(() => {
-    if (idActiveBoard === '' && boards.length > 0) {
-      const lastAddBoardName = boards[0].title;
-      setActiveBoard(boards[0]._id);
-      navigate(`/home/${lastAddBoardName}`, { replace: true });
+    if (boards.length > 0) {
+      setIdActiveBoard(boards[0]._id);
+    }
+  }, [boards]);
+
+  useEffect(() => {
+    if (idActiveBoard && boards.length > 0) {
+      const activeBoard = boards.find(board => board._id === idActiveBoard);
+      if (activeBoard) {
+        const titleActiveBoard = activeBoard.title;
+        navigate(`/home/${titleActiveBoard}`, { replace: true });
+      }
     }
   }, [boards, idActiveBoard, navigate]);
 
-  const handleActiveBoard = (id, boardName) => {
-    navigate(`/home/${boardName}`, { replace: true });
-    setActiveBoard(id);
+  const handleActiveBoard = id => {
+    setIdActiveBoard(id);
   };
 
   const handleDeleteBoard = id => {

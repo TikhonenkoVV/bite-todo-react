@@ -28,7 +28,7 @@ const boardsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(add.fulfilled, (state, { payload }) => {
-        state.boards.push(payload.board);
+        state.boards.unshift(payload.board);
         state.error = null;
       })
       .addCase(add.rejected, (state, { payload }) => {

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Scrollbars } from 'react-custom-scrollbars-2';
 
 export const MainDashboardSection = styled.section`
   position: relative;
@@ -7,7 +6,7 @@ export const MainDashboardSection = styled.section`
   /* background: #f6f6f7; */
 `;
 
-export const MainDashboardContainer = styled(Scrollbars)`
+export const MainDashboardContainer = styled.div`
   /* width: 375px; */
   min-height: calc(100vh - 62px);
   padding: 74px 20px 0 20px;
