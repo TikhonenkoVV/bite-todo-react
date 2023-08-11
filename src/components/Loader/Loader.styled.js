@@ -7,6 +7,7 @@ export const LoaderBackdrop = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #000000d0;
+  z-index: 4;
 `;
 
 export const Spiner = styled.svg`

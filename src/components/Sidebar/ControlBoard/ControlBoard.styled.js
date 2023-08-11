@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Scrollbars from 'react-custom-scrollbars-2';
+import { theme } from 'styles';
 
 export const H2styled = styled.h2`
   margin-top: 70px;
@@ -10,7 +11,7 @@ export const H2styled = styled.h2`
   font-weight: 400;
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.5);
-  @media screen and (min-width: 768px) {
+  @media screen and ${theme.devices.tablet} {
     margin-top: 60px;
     margin-left: 24px;
   }
@@ -30,7 +31,7 @@ export const DivStyled = styled.div`
   border-top: 1px solid;
   border-bottom: 1px solid;
   border-color: rgba(255, 255, 255, 0.1);
-  @media screen and (min-width: 768px) {
+  @media screen and ${theme.devices.tablet} {
     margin-left: 24px;
     margin-right: 24px;
   }
@@ -91,7 +92,7 @@ export const DivNameStyled = styled.div`
     background-color: #1f1f1f;
     color: #fff;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and ${theme.devices.tablet} {
     column-gap: 8px;
     margin-left: 24px;
   }
