@@ -9,7 +9,7 @@ import { Loader } from './Loader/Loader';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Layout } from './Layout/Layout';
 import Welcome from '../pages/Welcome/Welcome';
-import { Auth } from '../pages/Auth';
+import { Auth } from '../pages/Auth/Auth';
 import MainDashboard from '../pages/MainDashboard/MainDashboard';
 
 export const App = () => {
