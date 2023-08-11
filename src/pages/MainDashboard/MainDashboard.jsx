@@ -28,7 +28,7 @@ const MainDashboard = () => {
     : null;
 
   return (
-    <MainDashboardSection>
+    <MainDashboardSection theme={'dark'} background={selectedBoard?.background || 'default'}>
       <FilterContainer>
         <DashboardHeader name={selectedBoard?.title} theme={'dark'} />
       </FilterContainer>

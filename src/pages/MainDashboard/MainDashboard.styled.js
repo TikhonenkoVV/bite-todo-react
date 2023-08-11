@@ -1,9 +1,42 @@
 import styled from '@emotion/styled';
 
 export const MainDashboardSection = styled.section`
-  position: relative;
-  background: #1f1f1f;
-  /* background: #f6f6f7; */
+position: relative;
+background-color: ${props => {
+  switch (props.theme) {
+    case 'dark':
+      return '#1f1f1f';
+    case 'violet':
+      return '#ECEDFD';
+    case 'white':
+      return '#F6F6F7';
+    default:
+      return '#1f1f1f';
+  }
+}};
+background-image: ${props =>
+  props.background !== 'default' ? `url("https://picsum.photos/1200/800")` : 'none'};
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+
+@media (min-width: 768px) {
+  background-size: cover;
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-size: cover;
+  }
+}
+
+@media (max-width: 1440px) {
+  background-size: contain;
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-size: cover;
+  }
+}
 `;
 
 export const MainDashboardContainer = styled.div`
