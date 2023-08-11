@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { PrivateRoute } from './privateRoute';
@@ -10,7 +11,10 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Layout } from './Layout/Layout';
 import Welcome from '../pages/Welcome/Welcome';
 import { Auth } from '../pages/Auth/Auth';
-import MainDashboard from '../pages/MainDashboard/MainDashboard';
+
+const MainDashboard = lazy(() =>
+  import('../pages/MainDashboard/MainDashboard')
+);
 
 export const App = () => {
   const dispatch = useDispatch();
