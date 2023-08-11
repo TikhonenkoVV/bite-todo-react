@@ -19,7 +19,7 @@ import {
 import { Loader } from 'components/Loader/Loader';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import sprite from 'img/icons/sprite.svg';
-// import Logo from '../../components/Sidebar/Logo/Logo';
+
 
 const logoStyles = {
   gap: '14px',
@@ -51,7 +51,6 @@ const Welcome = () => {
                 />
               </ImgSetStyled>
             </ImgWrapperStyled>
-
             <LogoStyled styles={logoStyles}>
               <IconWrapperStyled styles={logoStyles}>
                 <Svg
@@ -62,7 +61,6 @@ const Welcome = () => {
               </IconWrapperStyled>
               <LogoTextStyled styles={logoStyles}>Task pro</LogoTextStyled>
             </LogoStyled>
-
             <HeroTextStyled>
               Supercharge your productivity and take control of your tasks with
               Task Pro - Don't wait, start achieving your goals now!
