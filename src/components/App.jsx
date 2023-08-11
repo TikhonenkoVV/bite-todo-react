@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { lazy } from "react";
+import { lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { PrivateRoute } from './privateRoute';
@@ -12,7 +12,9 @@ import { Layout } from './Layout/Layout';
 import Welcome from '../pages/Welcome/Welcome';
 import { Auth } from '../pages/Auth/Auth';
 
-const MainDashboard = lazy(() => import("../pages/MainDashboard/MainDashboard"));
+const MainDashboard = lazy(() =>
+  import('../pages/MainDashboard/MainDashboard')
+);
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -75,14 +77,12 @@ export const App = () => {
           index
           element={
             <PrivateRoute redirectTo="/" component={<MainDashboard />} />
-            // <MainDashboard />
           }
         />
         <Route
           path="/home/:boardName"
           element={
             <PrivateRoute redirectTo="/" component={<MainDashboard />} />
-            // <MainDashboard />
           }
         />
       </Route>
