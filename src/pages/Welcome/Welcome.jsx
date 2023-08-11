@@ -8,29 +8,24 @@ import {
   HeroStyled,
   ImgWrapperStyled,
   LinkWrapperStyled,
-  ImgSetStyled,
-  LogoStyled,
-  IconWrapperStyled,
-  LogoTextStyled,
+  ImgSetStyled,  
   HeroTextStyled,
   LinkButtonStyled,
   LinkStyled,
 } from './Welcome.styled';
 import { Loader } from 'components/Loader/Loader';
-import { Svg } from 'components/SvgIcon/SvgIcon';
-import sprite from 'img/icons/sprite.svg';
+import Logo from '../../components/Sidebar/Logo/Logo'
 
 
-const logoStyles = {
-  gap: '14px',
-  fontSize: '28px',
-  fontSizeTab: '40px',
-  width: '40px',
-  height: '40px',
-  widthTab: '48px',
-  heightTab: '48px',
-  defaultWidth: '100%',
-  defaultHeighth: '100%',
+const logoStyles = {  
+  columnGap: 14,
+  fontSize: 28,
+  fontSizeTab: 40,
+  lineHeight: 1.5,
+  width: 40,
+  height: 40,
+  widthTab: 48,
+  heightTab: 48,  
 };
 
 const Welcome = () => {
@@ -51,16 +46,7 @@ const Welcome = () => {
                 />
               </ImgSetStyled>
             </ImgWrapperStyled>
-            <LogoStyled styles={logoStyles}>
-              <IconWrapperStyled styles={logoStyles}>
-                <Svg
-                  w={logoStyles.defaultWidth}
-                  h={logoStyles.defaultHeighth}
-                  use={`${sprite}#icon-logo-flash-dark`}
-                />
-              </IconWrapperStyled>
-              <LogoTextStyled styles={logoStyles}>Task pro</LogoTextStyled>
-            </LogoStyled>
+            <Logo styles= {logoStyles}/>            
             <HeroTextStyled>
               Supercharge your productivity and take control of your tasks with
               Task Pro - Don't wait, start achieving your goals now!

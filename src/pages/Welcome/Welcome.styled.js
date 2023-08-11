@@ -44,37 +44,6 @@ export const ImgSetStyled = styled.picture`
   }
 `;
 
-export const LogoStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: ${props => props.styles.gap};
-`;
-
-export const IconWrapperStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: ${props => props.styles.width};
-  height: ${props => props.styles.height};
-
-  @media screen and ${theme.devices.tablet} {
-    width: ${props => props.styles.widthTab};
-    height: ${props => props.styles.heightTab};
-  }
-`;
-
-export const LogoTextStyled = styled.p`
-font-family: Poppins;
-  font-size: ${props => props.styles.fontSize};
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1.5;
-  text-transform: capitalize;
-@media screen and ${theme.devices.tablet} {
-    font-size: ${props => props.styles.fontSizeTab}
-`;
-
 export const HeroTextStyled = styled.p`
   color: #161616;
   text-align: center;
