@@ -21,7 +21,6 @@ const boardsSlice = createSlice({
       })
       .addCase(getBoards.rejected, (state, { payload }) => {
         state.isLoading = false;
-        console.log(payload);
         state.error = payload;
       })
       .addCase(add.pending, (state, { payload }) => {
