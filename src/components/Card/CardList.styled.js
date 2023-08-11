@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const CardListContainer = styled.div`
   max-height: calc(100vh - 312px);
-  color: #fff;
+  height: 100%;
   margin-bottom: 14px;
   overflow-y: auto;
 
@@ -19,5 +19,4 @@ export const CardListStyled = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: #fff;
 `;
