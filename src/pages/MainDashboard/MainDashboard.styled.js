@@ -8,9 +8,9 @@ export const MainDashboardSection = styled.section`
 
 export const MainDashboardContainer = styled.div`
   /* width: 375px; */
-  min-height: calc(100vh - 68px);
+  min-height: calc(100vh - 64px);
   height: 100%;
-  padding: 74px 20px 0 20px;
+  padding: 74px 20px 24px 20px;
   /* margin: 0 auto; */
   overflow-x: auto;
 
@@ -18,10 +18,11 @@ export const MainDashboardContainer = styled.div`
     display: flex;
     gap: 34px;
     /* width: 768px; */
-    padding: 80px 32px 0 32px;
+    padding: 80px 32px 52px 32px;
   }
 
   @media (min-width: 1440px) {
+    padding: 48px 32px 16px 24px;
     /* width: 1440px; */
     /* padding: 48px 24px 0 284px; */
   }
@@ -92,4 +93,20 @@ export const FilterContainer = styled.div`
 export const ContentHolder = styled.div`
   display: flex;
   gap: 34px;
+`;
+
+export const TrackHorizontal = styled.div`
+  background-color: rgba(255, 255, 255, 0.1);
+  left: 24px;
+  bottom: 8px;
+  right: 24px;
+  border-radius: 12px;
+  // width: '100%',
+  min-height: 12px;
+  overflow-x: auto;
+`;
+
+export const ThumbHorizontal = styled.div`
+  border-radius: 12px;
+  background-color: #121212;
 `;

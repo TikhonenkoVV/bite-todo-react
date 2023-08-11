@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const ColumnContainer = styled.div`
-  min-width: 335px;
+  max-width: 335px;
 `;
 
 export const ColumnTitleContainer = styled.div`
