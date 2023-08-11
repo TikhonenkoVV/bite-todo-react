@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bite-todo-react/static/css/main.95193718.css",
-    "main.js": "/bite-todo-react/static/js/main.b6230fa9.js",
+    "main.js": "/bite-todo-react/static/js/main.18520485.js",
     "static/media/Poppins-Regular.svg": "/bite-todo-react/static/media/Poppins-Regular.3383485fc42dbbbbb52d46dba5485b19.svg",
     "static/media/Poppins-Medium.svg": "/bite-todo-react/static/media/Poppins-Medium.5dad75f36f319c00263514e7b196ac50.svg",
     "static/media/Poppins-SemiBold.svg": "/bite-todo-react/static/media/Poppins-SemiBold.24b955c03495ee435e5d5bb09fbba11c.svg",
@@ -23,10 +23,10 @@
     "static/media/welcome-img.png": "/bite-todo-react/static/media/welcome-img.835630e4674731f85657.png",
     "index.html": "/bite-todo-react/index.html",
     "main.95193718.css.map": "/bite-todo-react/static/css/main.95193718.css.map",
-    "main.b6230fa9.js.map": "/bite-todo-react/static/js/main.b6230fa9.js.map"
+    "main.18520485.js.map": "/bite-todo-react/static/js/main.18520485.js.map"
   },
   "entrypoints": [
     "static/css/main.95193718.css",
-    "static/js/main.b6230fa9.js"
+    "static/js/main.18520485.js"
   ]
 }
