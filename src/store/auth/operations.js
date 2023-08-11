@@ -1,21 +1,23 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://bite-todo-rest-api.onrender.com/api';
+export const biteTodoInnstance = axios.create({
+  baseURL: 'https://bite-todo-rest-api.onrender.com/api',
+});
 
 const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  biteTodoInnstance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
+  biteTodoInnstance.defaults.headers.common.Authorization = '';
 };
 
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      await axios.post('/auth/register', credentials);
+      await biteTodoInnstance.post('/auth/register', credentials);
     } catch (error) {
       return thunkAPI.rejectWithValue({
         message: error.response.data.message,
@@ -29,7 +31,7 @@ export const logIn = createAsyncThunk(
   'auth/logIn',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/auth/login', credentials);
+      const { data } = await biteTodoInnstance.post('/auth/login', credentials);
       setAuthHeader(data.tokens.accessToken);
       return data;
     } catch (error) {
@@ -43,7 +45,7 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
   try {
-    await axios.post('/auth/logout');
+    await biteTodoInnstance.post('/auth/logout');
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue({
@@ -68,7 +70,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const { data } = await axios.get('/auth/current');
+      const { data } = await biteTodoInnstance.get('/auth/current');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue({
@@ -90,7 +92,7 @@ export const refreshToken = createAsyncThunk(
     }
 
     try {
-      const { data } = await axios.post('/auth/refresh', {
+      const { data } = await biteTodoInnstance.post('/auth/refresh', {
         refreshToken: persistToken,
       });
       return data;
@@ -107,7 +109,7 @@ export const updateUser = createAsyncThunk(
   'auth/updateUser',
   async (userData, thunkAPI) => {
     try {
-      const { data } = await axios.patch('/auth', userData);
+      const { data } = await biteTodoInnstance.patch('/auth', userData);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue({
@@ -122,7 +124,7 @@ export const updateAvatar = createAsyncThunk(
   'auth/updateAvatar',
   async (avatar, thunkAPI) => {
     try {
-      const { data } = await axios.patch('/auth/avatars', avatar);
+      const { data } = await biteTodoInnstance.patch('/auth/avatars', avatar);
       return data.avatarURL;
     } catch (error) {
       return thunkAPI.rejectWithValue({
