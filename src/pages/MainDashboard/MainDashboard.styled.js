@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Scrollbars } from 'react-custom-scrollbars-2';
 
 export const MainDashboardSection = styled.section`
   position: relative;
@@ -6,19 +7,18 @@ export const MainDashboardSection = styled.section`
   /* background: #f6f6f7; */
 `;
 
-export const MainDashboardContainer = styled.div`
+export const MainDashboardContainer = styled(Scrollbars)`
   /* width: 375px; */
-  min-height: calc(100vh - 68px);
-  height: 100%;
+  min-height: calc(100vh - 62px);
   padding: 74px 20px 0 20px;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   overflow-x: auto;
 
   @media (min-width: 768px) {
     display: flex;
     gap: 34px;
     /* width: 768px; */
-    padding: 80px 32px 0 32px;
+    padding: 100px 32px 0 32px;
   }
 
   @media (min-width: 1440px) {

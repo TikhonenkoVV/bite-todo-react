@@ -18,7 +18,6 @@ import {
 } from './MainDashboard.styled';
 import DashboardHeader from 'components/DashboardHeader/DashboardHeader';
 import { selectBoardsState } from 'store/boards/selectors';
-// import { Scrollbars } from 'react-custom-scrollbars-2';
 
 const MainDashboard = () => {
   const { boardName } = useParams();
@@ -34,36 +33,34 @@ const MainDashboard = () => {
         <DashboardHeader name={selectedBoard?.title} theme={'dark'} />
       </FilterContainer>
       <MainDashboardContainer>
-        {/* <Scrollbars style={{ width: '100% ', height: '100%' }}> */}
-          {boardName ? (
-            <>
-              <MainDashboardSectionTitle>
-                Columns with tasks
-              </MainDashboardSectionTitle>
-              <ContentHolder>
-                <ColumnList boardId={selectedBoard?._id} />
-                <MainDashboardAddColumnButton type="button" onClick={openModal}>
-                  <MainDashboardIconContainer>
-                    <MainDashboardIcon>
-                      <use href={`${sprite}#icon-plus`}></use>
-                    </MainDashboardIcon>
-                  </MainDashboardIconContainer>
-                  <div>Add another column</div>
-                </MainDashboardAddColumnButton>
-              </ContentHolder>
-              {isModalOpen && (
-                <Modal onClose={closeModal}>
-                  <ColumnForm
-                    onCloseForm={closeModal}
-                    boardId={selectedBoard?._id}
-                  />
-                </Modal>
-              )}
-            </>
-          ) : (
-            <CreateBoard />
-          )}
-        {/* </Scrollbars> */}
+        {boardName ? (
+          <>
+            <MainDashboardSectionTitle>
+              Columns with tasks
+            </MainDashboardSectionTitle>
+            <ContentHolder>
+              <ColumnList boardId={selectedBoard?._id} />
+              <MainDashboardAddColumnButton type="button" onClick={openModal}>
+                <MainDashboardIconContainer>
+                  <MainDashboardIcon>
+                    <use href={`${sprite}#icon-plus`}></use>
+                  </MainDashboardIcon>
+                </MainDashboardIconContainer>
+                <div>Add another column</div>
+              </MainDashboardAddColumnButton>
+            </ContentHolder>
+            {isModalOpen && (
+              <Modal onClose={closeModal}>
+                <ColumnForm
+                  onCloseForm={closeModal}
+                  boardId={selectedBoard?._id}
+                />
+              </Modal>
+            )}
+          </>
+        ) : (
+          <CreateBoard />
+        )}
       </MainDashboardContainer>
     </MainDashboardSection>
   );
