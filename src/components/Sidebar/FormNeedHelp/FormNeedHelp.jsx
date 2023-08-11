@@ -12,7 +12,7 @@ import sprite from 'img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 // import { fetchSendNeedHelp } from 'services/fetchSendNeedHelp';
 // import { useState } from 'react';
-import { sendNeedHelp } from 'store/boards/operations';
+// import { sendNeedHelp } from 'store/boards/operations';
 
 export const FormNeedHelp = ({ closeModal }) => {
   // const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +34,7 @@ export const FormNeedHelp = ({ closeModal }) => {
     onSubmit: values => {
       // setIsLoading(true);
       console.log('values:', values);
-      sendNeedHelp(values);
+      // sendNeedHelp(values);
       // fetchSendNeedHelp(values)
       //   .then(data => console.log('then:', data))
       //   .catch(err => setError(err.message))

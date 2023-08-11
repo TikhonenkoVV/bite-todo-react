@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Scrollbars from 'react-custom-scrollbars-2';
 
 export const H2styled = styled.h2`
   margin-top: 70px;
@@ -124,4 +125,11 @@ export const DivIconStyled = styled.div`
     border-radius: 8px 0 0 4px;
     background-color: #bedbb0;
   }
+`;
+
+export const ScrollStyled = styled(Scrollbars)`
+  right: 0;
+  left: auto;
+  width: 16px;
+  border-radius: 4px;
 `;

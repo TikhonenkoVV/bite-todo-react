@@ -16,7 +16,7 @@ const boardsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getBoards.fulfilled, (state, { payload }) => {
-        state.boards = payload.boards;
+        state.boards = payload.boards.reverse();
         state.error = null;
       })
       .addCase(getBoards.rejected, (state, { payload }) => {

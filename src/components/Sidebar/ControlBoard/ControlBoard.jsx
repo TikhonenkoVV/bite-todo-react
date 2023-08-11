@@ -5,10 +5,10 @@ import { Modal } from 'components/Modal/Modal';
 import { useEditModal, useModal } from 'hooks/useModal';
 import NewBoard from '../../NewBoard/NewBoard';
 import EditBoard from '../../NewBoard/EditBoard';
-import { Scrollbars } from 'react-custom-scrollbars-2';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardsState } from 'store/boards/selectors';
+import { selectColumns } from 'store/columns/selectors';
 import { selectIsLoggedIn } from 'store/auth/selectors';
 import { deleteBoards, getBoards } from 'store/boards/operations';
 import {
@@ -21,10 +21,12 @@ import {
   LiStyled,
   TextStyled,
   UlStyled,
+  ScrollStyled,
 } from './ControlBoard.styled';
 
 const ControlBoard = () => {
   const [idActiveBoard, setIdActiveBoard] = useState('');
+  const [lengthBoard, setlengthBoard] = useState(0);
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
   const dispatch = useDispatch();
@@ -32,6 +34,7 @@ const ControlBoard = () => {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const { boards } = useSelector(selectBoardsState);
+  const columns = useSelector(selectColumns);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -40,10 +43,14 @@ const ControlBoard = () => {
   }, [dispatch, isLoggedIn]);
 
   useEffect(() => {
+    if (boards.length > 0 && boards.length === lengthBoard) {
+      return;
+    }
     if (boards.length > 0) {
       setIdActiveBoard(boards[0]._id);
+      setlengthBoard(boards.length);
     }
-  }, [boards]);
+  }, [boards, lengthBoard]);
 
   useEffect(() => {
     if (idActiveBoard && boards.length > 0) {
@@ -53,6 +60,10 @@ const ControlBoard = () => {
         navigate(`/home/${titleActiveBoard}`, { replace: true });
       }
     }
+    if (boards.length === 0) {
+      setIdActiveBoard('');
+      navigate(`/home`, { replace: true });
+    }
   }, [boards, idActiveBoard, navigate]);
 
   const handleActiveBoard = id => {
@@ -60,7 +71,10 @@ const ControlBoard = () => {
   };
 
   const handleDeleteBoard = id => {
-    dispatch(deleteBoards(id));
+    console.log(columns);
+    if (!columns.length) {
+      dispatch(deleteBoards(id));
+    }
   };
 
   return (
@@ -72,7 +86,7 @@ const ControlBoard = () => {
           <Svg w={18} h={18} use={`${sprite}#icon-plus`} />
         </ButtonStyled>
       </DivStyled>
-      <Scrollbars style={{ width: '100% ', height: 'calc(100% - 575px)' }}>
+      <ScrollStyled style={{ width: '100% ', height: 'calc(100% - 575px)' }}>
         <UlStyled>
           {boards.map(board => (
             <LiStyled
@@ -104,7 +118,7 @@ const ControlBoard = () => {
             </LiStyled>
           ))}
         </UlStyled>
-      </Scrollbars>
+      </ScrollStyled>
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <NewBoard onClick={closeModal} />
