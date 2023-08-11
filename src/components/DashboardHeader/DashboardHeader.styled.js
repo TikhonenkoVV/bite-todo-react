@@ -29,10 +29,9 @@ export const DashboardHeaderTitle = styled.h2`
     left: 32px;
   }
 
-  /* @media (min-width: 1440px) {
+  @media (min-width: 1440px) {
     top: 10px;
-    left: 284px;
-  } */
+  }
 `;
 
 export const DashboardHeaderFilter = styled.button`
