@@ -13,7 +13,32 @@ export const CardList = ({ boardId, cards }) => {
 
   return (
     <CardListContainer>
-      <Scrollbars thumbMinSize={10}>
+      <Scrollbars
+        renderTrackVertical={({ style, ...props }) => (
+          <div
+            {...props}
+            style={{
+              ...style,
+              backgroundColor: 'rgba(255, 255, 255, 0.10)',
+              right: '0',
+              bottom: '0',
+              top: '2px',
+              borderRadius: '12px',
+              width: '8px',
+            }}
+          />
+        )}
+        renderThumbVertical={({ style, ...props }) => (
+          <div
+            {...props}
+            style={{
+              ...style,
+              borderRadius: '12px',
+              backgroundColor: '#121212',
+            }}
+          />
+        )}
+      >
         <CardListStyled>
           {filteredCards.map(
             ({ _id, title, description, priority, deadline, owner }) => {
