@@ -32,7 +32,7 @@ const MainDashboard = () => {
   const hasCards = columns.some(column => column.cards.length > 0);
 
   return (
-    <MainDashboardSection>
+    <MainDashboardSection theme={'dark'} background={selectedBoard?.background || 'default'}>
       <FilterContainer>
         <DashboardHeader
           name={selectedBoard?.title}

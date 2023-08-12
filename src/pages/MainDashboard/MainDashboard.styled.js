@@ -2,8 +2,63 @@ import styled from '@emotion/styled';
 
 export const MainDashboardSection = styled.section`
   position: relative;
-  background: #1f1f1f;
-  /* background: #f6f6f7; */
+  background-color: ${props => {
+    switch (props.theme) {
+      case 'dark':
+        return '#1f1f1f';
+      case 'violet':
+        return '#ECEDFD';
+      case 'white':
+        return '#F6F6F7';
+      default:
+        return '#1f1f1f';
+    }
+  }};
+  background-image: ${props =>
+    props.background !== 'default'
+      ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}.jpg")`
+      : 'none'};
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+        background-image: ${props =>
+          props.background !== 'default'
+            ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}%402x.jpg")`
+            : 'none'};
+    }
+
+  @media (min-width: 768px) {
+    background-image: ${props =>
+      props.background !== 'default'
+        ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Tablet/${props.background}.jpg")`
+        : 'none'};
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+        background-image: ${props =>
+          props.background !== 'default'
+            ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Tablet/${props.background}%402x.jpg")`
+            : 'none'};
+    }
+  }
+
+  @media (min-width: 1440px) {
+    background-image: ${props =>
+      props.background !== 'default'
+        ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Desktop/${props.background}.jpg")`
+        : 'none'};
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+        background-image: ${props =>
+          props.background !== 'default'
+            ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Desktop/${props.background}.jpg")`
+            : 'none'};
+    }
+  }
 `;
 
 export const MainDashboardContainer = styled.div`
