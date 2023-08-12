@@ -30,7 +30,7 @@ import {
 } from './AddTaskForm.styled';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
-const priorities = [ 'low', 'medium','high' ,'without'];
+const priorities = ['low', 'medium', 'high', 'without'];
 
 const StyledCustomCalendar = styled(DatePicker)`
   &.custom-datepicker {
@@ -56,8 +56,6 @@ const initialValues = {
 
 export const AddTasks = ({ boardId, columnId, closeModal }) => {
   const [deadline, setDeadline] = useState('');
-
-
 
   const dispatch = useDispatch();
 
@@ -86,7 +84,6 @@ export const AddTasks = ({ boardId, columnId, closeModal }) => {
   const handleDeadlineClick = () => {
     if (deadlinePickerRef.current) {
       deadlinePickerRef.current.setOpen(true);
-      
     }
   };
 
@@ -99,50 +96,53 @@ export const AddTasks = ({ boardId, columnId, closeModal }) => {
     ? moment(deadline).format('D MMMM YYYY')
     : CurrentDate();
 
-//   const handleSubmit = async (values, { resetForm }) => {
-//   console.log(values);
-//   try {
-//     if (!values.deadline) {
-//       alert("Пожалуйста, укажите дату дедлайна.");
-//       return;
-//     }
+  //   const handleSubmit = async (values, { resetForm }) => {
+  //   console.log(values);
+  //   try {
+  //     if (!values.deadline) {
+  //       alert("Пожалуйста, укажите дату дедлайна.");
+  //       return;
+  //     }
 
-//     await dispatch(editTask({ ...values, boardId, columnId, taskId }));
-//     resetForm();
-//     setDeadline('');
-//     closeModal();
-//   } catch (error) {
-//     console.error('Error:', error);
-//   }
-// };
+  //     await dispatch(editTask({ ...values, boardId, columnId, taskId }));
+  //     resetForm();
+  //     setDeadline('');
+  //     closeModal();
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  // };
 
   const handleSubmit = async (values, { resetForm }) => {
-    console.log("formir", formik.values.deadline);
-    console.log("deadline values", values.deadline);
-    console.log("deadline", deadline);
+    console.log('formir', formik.values.deadline);
+    console.log('deadline values', values.deadline);
+    console.log('deadline', deadline);
     try {
-      
-      
-        if (!formik.values.deadline) {
+      if (!formik.values.deadline) {
         alert('Please select a deadline date.');
         return;
       }
-      
 
-    if (deadline === '') {
-      alert('Please select a deadline date.');
-      return;
+      if (deadline === '') {
+        alert('Please select a deadline date.');
+        return;
       }
-      
+
       if (!values.deadline) {
-         alert("Please select a deadline date.");
-       return;
-       }
-console.log ( deadline, values.deadline)
-      const formattedDeadline = moment(formik.values.deadline).format('DD/MM/YYYY');
-      await dispatch(addTask({ ...values, boardId, columnId, deadline: formattedDeadline }));
-      
-      
+        alert('Please select a deadline date.');
+        return;
+      }
+      console.log(deadline, values.deadline);
+
+      await dispatch(
+        addTask({
+          ...values,
+          boardId,
+          columnId,
+          deadline: formik.values.deadline,
+        })
+      );
+
       resetForm();
       setDeadline('');
       closeModal();
@@ -166,8 +166,6 @@ console.log ( deadline, values.deadline)
     formik.setFieldValue('deadline', date);
     setDeadline(date);
   };
-
-   
 
   return (
     <StyledDiv>
