@@ -95,18 +95,6 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
     ? moment(deadline).format('D MMMM YYYY')
     : CurrentDate();
 
-// const handleSubmit = async (values, { resetForm }) => {
-//   try {
-//     const formattedDeadline = moment(values.deadline).format('DD/MM/YYYY');
-//     await dispatch(addTask({ ...values, boardId, columnId, deadline: formattedDeadline }));
-
-//     resetForm();
-//     setDeadline('');
-//     closeModal();
-//   } catch (error) {
-//     console.error('Error:', error);
-//   }
-// };
   
   const handleSubmit = async (values, { resetForm }) => {
     try {

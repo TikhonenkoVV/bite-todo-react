@@ -10,7 +10,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './AddTaskForm.css';
 import { useDispatch } from 'react-redux';
 import { editTask } from '../../store/columns/operations';
-import { parseISO } from 'date-fns';
 import {
   StyledP,
   StyledDiv,
