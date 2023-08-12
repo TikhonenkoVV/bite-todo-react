@@ -6,13 +6,13 @@ export const biteTodoInnstance = axios.create({
 });
 
 export const setTheme = createAsyncThunk(
-  'auth/selectTheme',
-  async (theme, thunkAPI) => {
+  'theme/selectTheme',
+  async (theme, { rejectWithValue }) => {
     try {
       const { data } = await biteTodoInnstance.patch('/auth/theme', theme);
       return data.theme;
     } catch (error) {
-      return thunkAPI.rejectWithValue({
+      return rejectWithValue({
         message: error.message,
         status: error.response.status,
       });
