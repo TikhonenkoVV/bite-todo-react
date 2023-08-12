@@ -7,7 +7,6 @@ import { Backdrop, Wrapper, WrapperMain } from './Layout.styled';
 
 export const Layout = () => {
   const [menuActive, setMenuActive] = useState(false);
-
   const toggleMenu = () => {
     setMenuActive(prevMenuActive => !prevMenuActive);
   };

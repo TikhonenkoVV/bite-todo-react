@@ -1,15 +1,17 @@
 import styled from '@emotion/styled';
-import { theme } from '../../../styles/theme';
-
+import { theme } from 'styles';
 
 export const LogoStyled = styled.div`
-  margin-left: ${props => props.styles.marginLeft ? `${props.styles.marginLeft}px` : 0};
+  margin-left: ${props =>
+    props.styles.marginLeft ? `${props.styles.marginLeft}px` : 0};
   display: flex;
-  column-gap: ${props => props.styles.columnGap ? `${props.styles.columnGap}px` : '8px'};
+  column-gap: ${props =>
+    props.styles.columnGap ? `${props.styles.columnGap}px` : '8px'};
   align-items: center;
 
   @media screen and ${theme.devices.tablet} {
-    margin-left: ${props => props.styles.marginLeftTab ? `${props.styles.marginLeftTab}px` : 0};
+    margin-left: ${props =>
+      props.styles.marginLeftTab ? `${props.styles.marginLeftTab}px` : 0};
   }
 `;
 
@@ -22,21 +24,26 @@ export const IconWrapperStyled = styled.div`
 
   @media screen and ${theme.devices.tablet} {
     width: ${props =>
-      props.styles.widthTab ? `${props.styles.widthTab}px` : `${props.styles.width}px`};
+      props.styles.widthTab
+        ? `${props.styles.widthTab}px`
+        : `${props.styles.width}px`};
     height: ${props =>
-      props.styles.heightTab ? `${props.styles.heightTab}px` : `${props.styles.height}px`}};
+      props.styles.heightTab
+        ? `${props.styles.heightTab}px`
+        : `${props.styles.height}px`}};
   }
 `;
 
 export const PStyled = styled.p`
   font-family: Poppins;
-  font-size: ${props => props.styles.fontSize ? `${props.styles.fontSize}px` : '16px'};
+  font-size: ${props =>
+    props.styles.fontSize ? `${props.styles.fontSize}px` : '16px'};
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: ${props =>
     props.styles.lineHeight ? props.styles.lineHeight : 1.15};
   text-transform: capitalize;
-  
+
   @media screen and ${theme.devices.tablet} {
     font-size: ${props =>
       props.styles.fontSizeTab

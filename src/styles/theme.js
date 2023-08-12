@@ -3,6 +3,7 @@ const sizes = {
   mobile: '375px',
   tablet: '768px',
   desktop: '1440px',
+  notdesktop: '1339px',
 };
 
 export const theme = Object.freeze({
@@ -67,6 +68,7 @@ export const theme = Object.freeze({
     mobile: `(min-width: ${sizes.mobile})`,
     tablet: `(min-width: ${sizes.tablet})`,
     desktop: `(min-width: ${sizes.desktop})`,
+    notdesktop: `(max-width: ${sizes.desktop})`,
   },
   baseTransition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
 });

@@ -1,10 +1,6 @@
 import PropTypes from 'prop-types';
 
-import {
-  FilterButton,
-  FilterIcon,
-  FilterText,
-} from './StatusFilterButton.styled';
+import { FilterButton } from './StatusFilterButton.styled';
 
 const StatusFilterButton = ({ selected, color, theme, children, onClick }) => {
   return (
@@ -13,14 +9,10 @@ const StatusFilterButton = ({ selected, color, theme, children, onClick }) => {
       selected={selected}
       type="button"
       onClick={onClick}
+      color={color}
+      text={children}
     >
-      <FilterIcon
-        text={children}
-        selected={selected}
-        color={color}
-        theme={theme}
-      ></FilterIcon>
-      <FilterText>{children}</FilterText>
+      {children}
     </FilterButton>
   );
 };
