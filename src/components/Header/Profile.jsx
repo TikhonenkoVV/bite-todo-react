@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Modal } from 'components/Modal';
 import { useModal } from 'hooks/useModal';
 
@@ -18,10 +18,6 @@ const Profile = () => {
   const onClickModalOpen = () => {
     openModal();
   };
-
-  // useEffect(() => {
-  //   console.log("Rerender profile", avatarURL);
-  // }, [avatarURL])
 
   return (
     <>
