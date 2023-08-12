@@ -1,14 +1,12 @@
 import styled from '@emotion/styled';
 
-const currTheme = 'dark';
-
 export const CardStyled = styled.li`
   position: relative;
   height: 154px;
   width: 100%;
   padding: 14px 24px;
   border-radius: 8px;
-  background-color: ${props => props.theme.colors[currTheme].card};
+  background-color: ${props => props.theme.colors.card};
   overflow: hidden;
   &::before {
     content: '';
@@ -26,7 +24,7 @@ export const CardTitleStyled = styled.h3`
   font-size: 14px;
   line-height: 1.5;
   font-weight: 600;
-  color: ${props => props.theme.colors[currTheme].cardMajorText};
+  color: ${props => props.theme.colors.cardMajorText};
 `;
 
 export const CardDescriptionStyled = styled.p`
@@ -36,7 +34,7 @@ export const CardDescriptionStyled = styled.p`
   font-size: 12px;
   font-weight: 400;
   line-height: 1.3333;
-  color: ${props => props.theme.colors[currTheme].cardMinorText};
+  color: ${props => props.theme.colors.cardMinorText};
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -55,7 +53,7 @@ export const CardFooter = styled.div`
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: ${props => props.theme.colors[currTheme].cardDecor};
+    background-color: ${props => props.theme.colors.cardDecor};
     z-index: 1;
   }
 `;
@@ -69,7 +67,7 @@ export const CardParamsTitle = styled.p`
   margin-bottom: 4px;
   font-size: 8px;
   line-height: 1.5;
-  color: ${props => props.theme.colors[currTheme].cardMinorText};
+  color: ${props => props.theme.colors.cardMinorText};
 `;
 
 export const PriorityStatus = styled.p`
@@ -78,7 +76,7 @@ export const PriorityStatus = styled.p`
   text-transform: capitalize;
   font-size: 10px;
   line-height: 1.5;
-  color: ${props => props.theme.colors[currTheme].cardMajorText};
+  color: ${props => props.theme.colors.cardMajorText};
   &::before {
     content: '';
     position: absolute;
@@ -94,7 +92,7 @@ export const PriorityStatus = styled.p`
 export const DeadlineDate = styled.p`
   font-size: 10px;
   line-height: 1.5;
-  color: ${props => props.theme.colors[currTheme].cardMajorText};
+  color: ${props => props.theme.colors.cardMajorText};
 `;
 
 export const ToolsWrapper = styled.div`

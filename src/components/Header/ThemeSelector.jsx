@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateUser } from 'store/auth/operations';
 import {
   DivStyled,
   BtnSelectStyled,
   DivListStyled,
   UlListStyled,
-  LiStyled
+  LiStyled,
 } from './ThemeSelector.styled';
-
 
 const ThemeSelector = () => {
   const [theme, setTheme] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleThemeChange = event => {
     event.stopPropagation();
     setTheme(event.target.innerText);
     setIsOpen(false);
+    dispatch(updateUser({ theme }));
   };
 
   const handleClick = event => {
@@ -42,7 +45,7 @@ const ThemeSelector = () => {
       </BtnSelectStyled>
       <DivListStyled isOpen={isOpen} onClick={e => e.stopPropagation()}>
         <UlListStyled>
-          <LiStyled onClick={handleThemeChange} >Light</LiStyled>
+          <LiStyled onClick={handleThemeChange}>Light</LiStyled>
           <LiStyled onClick={handleThemeChange}>Dark</LiStyled>
           <LiStyled onClick={handleThemeChange}>Violet</LiStyled>
         </UlListStyled>
