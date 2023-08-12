@@ -22,13 +22,13 @@ export const MainDashboardSection = styled.section`
   background-repeat: no-repeat;
   background-position: center;
   @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-        background-image: ${props =>
-          props.background !== 'default'
-            ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}%402x.jpg")`
-            : 'none'};
-    }
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: ${props =>
+      props.background !== 'default'
+        ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}%402x.jpg")`
+        : 'none'};
+  }
 
   @media (min-width: 768px) {
     background-image: ${props =>
@@ -38,10 +38,10 @@ export const MainDashboardSection = styled.section`
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-        background-image: ${props =>
-          props.background !== 'default'
-            ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Tablet/${props.background}%402x.jpg")`
-            : 'none'};
+      background-image: ${props =>
+        props.background !== 'default'
+          ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Tablet/${props.background}%402x.jpg")`
+          : 'none'};
     }
   }
 
@@ -53,10 +53,10 @@ export const MainDashboardSection = styled.section`
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-        background-image: ${props =>
-          props.background !== 'default'
-            ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Desktop/${props.background}.jpg")`
-            : 'none'};
+      background-image: ${props =>
+        props.background !== 'default'
+          ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Desktop/${props.background}.jpg")`
+          : 'none'};
     }
   }
 `;
@@ -148,22 +148,13 @@ export const FilterContainer = styled.div`
 `;
 
 export const ContentHolder = styled.div`
+  width: 100%;
+`;
+
+export const ContentWrapper = styled.div`
+  width: max-content;
+  height: 100%;
   display: flex;
+  flex-flow: row nowrap;
   gap: 34px;
-`;
-
-export const TrackHorizontal = styled.div`
-  background-color: rgba(255, 255, 255, 0.1);
-  left: 24px;
-  bottom: 8px;
-  right: 24px;
-  border-radius: 12px;
-  // width: '100%',
-  min-height: 12px;
-  overflow-x: auto;
-`;
-
-export const ThumbHorizontal = styled.div`
-  border-radius: 12px;
-  background-color: #121212;
 `;

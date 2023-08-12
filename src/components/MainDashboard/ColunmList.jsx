@@ -22,19 +22,19 @@ export const ColumnList = ({ boardId }) => {
     return <Loader fill={'#fff'} />;
   }
   return (
-    <ColumnListStyled>
-      {columns.map(({ _id, title, createdAt, owner, cards }) => {
-        return (
-          <Column
-            key={_id}
-            owner={owner}
-            _id={_id}
-            title={title}
-            createdAt={createdAt}
-            cards={cards}
-          />
-        );
-      })}
-    </ColumnListStyled>
+        <ColumnListStyled>
+          {columns.map(({ _id, title, createdAt, owner, cards }) => {
+            return (
+              <Column
+                key={_id}
+                owner={owner}
+                _id={_id}
+                title={title}
+                createdAt={createdAt}
+                cards={cards}
+              />
+            );
+          })}
+        </ColumnListStyled>
   );
 };
