@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { theme } from 'styles';
+import { devices } from 'styles';
 
 export const StyledDiv = styled.div`
   position: relative;
@@ -11,7 +11,7 @@ export const StyledDiv = styled.div`
   background: #151515;
   padding: 24px;
   font-family: Poppins;
-  @media screen and ${theme.devices.tablet} {
+  @media screen and ${devices.tablet} {
     max-width: 400px;
   }
 `;

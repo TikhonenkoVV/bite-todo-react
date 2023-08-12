@@ -4,9 +4,8 @@ import {
   BtnSelectStyled,
   DivListStyled,
   UlListStyled,
-  LiStyled
+  LiStyled,
 } from './ThemeSelector.styled';
-
 
 const ThemeSelector = () => {
   const [theme, setTheme] = useState('');
@@ -42,7 +41,7 @@ const ThemeSelector = () => {
       </BtnSelectStyled>
       <DivListStyled isOpen={isOpen} onClick={e => e.stopPropagation()}>
         <UlListStyled>
-          <LiStyled onClick={handleThemeChange} >Light</LiStyled>
+          <LiStyled onClick={handleThemeChange}>Light</LiStyled>
           <LiStyled onClick={handleThemeChange}>Dark</LiStyled>
           <LiStyled onClick={handleThemeChange}>Violet</LiStyled>
         </UlListStyled>

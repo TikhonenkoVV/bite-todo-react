@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { theme } from '../../styles/theme';
+import { baseTransition } from '../../styles/theme';
 
 export const Button = styled.button`
   display: flex;
@@ -16,7 +16,7 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 500;
   width: ${props => props.styles.width};
-  transition: color, background-color ${theme.baseTransition};
+  transition: color, background-color ${baseTransition};
 
   &:hover {
     background-color: ${props => props.styles.backgroundColor};

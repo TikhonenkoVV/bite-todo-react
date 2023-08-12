@@ -1,15 +1,13 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
 
-const currTheme = 'dark';
-
 export const FormTitle = styled.p`
   margin-bottom: 24px;
   font-size: 18px;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.36px;
-  color: ${props => props.theme.colors[currTheme].formTitleColor};
+  color: ${props => props.theme.colors.formTitleColor};
 `;
 
 export const FormContainer = styled.div`
