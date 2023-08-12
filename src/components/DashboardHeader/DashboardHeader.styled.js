@@ -60,7 +60,10 @@ export const DashboardHeaderFilter = styled.button`
 
   &:hover,
   &:focus {
-    color: ${props => (props.theme === 'dark' ? '#fff' : '#000')};
+    color: ${props => {
+      if (props.disabled) return;
+      return props.theme === 'dark' ? '#fff' : '#000';
+    }};
   }
 `;
 

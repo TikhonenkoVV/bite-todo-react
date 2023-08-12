@@ -18,6 +18,7 @@ import {
 } from './MainDashboard.styled';
 import DashboardHeader from 'components/DashboardHeader/DashboardHeader';
 import { selectBoardsState } from 'store/boards/selectors';
+import { selectColumns } from 'store/columns/selectors';
 
 const MainDashboard = () => {
   const { boardName } = useParams();
@@ -27,10 +28,19 @@ const MainDashboard = () => {
     ? boards.find(board => board.title === boardName.trim())
     : null;
 
+  const columns = useSelector(selectColumns);
+  const isAnyCardInTheColumns = columns.every(
+    column => column.cards.length === 0
+  );
+
   return (
     <MainDashboardSection>
       <FilterContainer>
-        <DashboardHeader name={selectedBoard?.title} theme={'dark'} />
+        <DashboardHeader
+          name={selectedBoard?.title}
+          disabled={isAnyCardInTheColumns}
+          theme={'dark'}
+        />
       </FilterContainer>
       <MainDashboardContainer>
         {boardName ? (

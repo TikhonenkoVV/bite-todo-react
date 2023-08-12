@@ -11,7 +11,7 @@ import {
   DashboardHeaderTitle,
 } from './DashboardHeader.styled';
 
-const DashboardHeader = ({ name, theme = 'dark' }) => {
+const DashboardHeader = ({ name, disabled, theme = 'dark' }) => {
   const { isModalOpen, closeModal, openModal } = useModal();
   const path = '#icon-filter';
   return (
@@ -20,7 +20,12 @@ const DashboardHeader = ({ name, theme = 'dark' }) => {
         <DashboardHeaderTitle theme={theme}>{name}</DashboardHeaderTitle>
       )}
 
-      <DashboardHeaderFilter type="button" theme={theme} onClick={openModal}>
+      <DashboardHeaderFilter
+        type="button"
+        theme={theme}
+        onClick={openModal}
+        disabled={disabled}
+      >
         <DashboardHeaderIcon>
           <use href={`${sprite}${path}`}></use>
         </DashboardHeaderIcon>
@@ -38,6 +43,7 @@ const DashboardHeader = ({ name, theme = 'dark' }) => {
 
 DashboardHeader.propTypes = {
   name: PropTypes.string,
+  disabled: PropTypes.bool.isRequired,
   theme: PropTypes.string.isRequired,
 };
 
