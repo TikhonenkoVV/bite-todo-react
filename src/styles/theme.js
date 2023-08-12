@@ -34,6 +34,21 @@ export const theme = Object.freeze({
       addColumnButtonHoverBackground: '#000', //Add column button hover Background,
       iconContainerBackground: '#fff', //Icon container Background,
       addColumnIconFill: '#121212', // Add column icon fill
+      backgroundModal: '#151515', // Background modal
+      borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
+      boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
+      closeModalBtn: '#FFFFFF', // Close modal
+      backgroundUserImgWrapper: '#1F1F1F', // Background user wrapper
+      backgroundAddIcon: '#bedbb0', // Background add icon
+      textColorForm: '#FFFFFF', // Text color form
+      borderInputColor: '#bedbb0', // Border input color
+      errorColor: '#ed4337', // Error color
+      eyeShowPassColor: 'rgba(255, 255, 255, 1)', // Eye show password color
+      wrapperSelectorColor: 'rgba(255, 255, 255, 0.8)', // Wrapper selector color
+      backgroundSelector: '#161616', // Background color selector
+      borderSelectorColor: 'rgba(255, 255, 255, 0.5)', // Border selector
+      textSelectorColor: 'rgba(255, 255, 255, 0.5)', // Text selector color
+      hoverSelectorColor: '#bedbb0', // Hover selector color
     },
   },
   light: {
@@ -63,6 +78,22 @@ export const theme = Object.freeze({
       addColumnButtonHoverBackground: '#e5e5e5', //Add column button hover Background,
       iconContainerBackground: '#000', //Icon container Background,
       addColumnIconFill: '#fff', // Add column icon fill
+      backgroundModal: '#FCFCFC', // Background modal
+      // borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
+      boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
+      closeModalBtn: '#161616', // Close modal
+      backgroundUserImgWrapper: '#F6F6F7', // Background user wrapper
+      backgroundAddIcon: '#bedbb0', // Background add icon
+      textColorForm: '#161616', // Text color form
+      borderInputColor: '#BEDBB0', // Border input color
+      errorColor: '#ed4337', // Error color
+      eyeShowPassColor: '#BEDBB0', // eye show password color
+      wrapperSelectorColor: 'rgba(255, 255, 255, 0.8)', // Wrapper selector color
+      backgroundSelector: '#FCFCFC', // Background color selector
+      borderSelectorColor: '#BEDBB0', // Border selector
+      textSelectorColor: '#161616', // Text selector color
+      hoverSelectorColor: '#BEDBB0', // Hover selector color
+      boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
     },
   },
   violet: {
@@ -92,6 +123,22 @@ export const theme = Object.freeze({
       addColumnButtonHoverBackground: '#e5e5e5', //Add column button hover Background,
       iconContainerBackground: '#5255BC;', //Icon container Background,
       addColumnIconFill: '#fff', // Add column icon fill
+      backgroundModal: '#FCFCFC', // Background modal
+      // borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
+      boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
+      closeModalBtn: '#161616', // Close modal
+      backgroundUserImgWrapper: '#ECEDFD', // Background user wrapper
+      backgroundAddIcon: '#ECEDFD', // Background add icon
+      textColorForm: '#161616', // Text color form
+      borderInputColor: '##5255BC', // Border input color
+      errorColor: '#ed4337', // Error color
+      eyeShowPassColor: '#BEDBB0', // eye show password color
+      wrapperSelectorColor: 'rgba(255, 255, 255, 0.8)', // Wrapper selector color
+      backgroundSelector: '#FCFCFC', // Background color selector
+      borderSelectorColor: '#ECEDFD', // Border selector
+      textSelectorColor: '#161616', // Text selector color
+      hoverSelectorColor: '#5255BC', // Hover selector color
+      boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
     },
   },
 });

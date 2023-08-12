@@ -10,7 +10,6 @@ import {
   DivItem,
   DivUserImgStyled,
   DivIconPlus,
-  IconStyled,
   AvatarImg
 } from './EditProfile.styled';
 import { useSelector } from 'react-redux';
@@ -41,7 +40,7 @@ const EditProfile = ({ closeModal }) => {
   return (
     <DivStyled>
       <DivIconClose onClick={closeModal}>
-        <IconStyled  w={18} h={18} use={`${sprite}#icon-x-close`} />
+        <Svg  w={18} h={18} use={`${sprite}#icon-x-close`} />
       </DivIconClose>
       <TextStyled>Edit Profile</TextStyled>
       <DivItem>
