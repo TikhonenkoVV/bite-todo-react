@@ -54,13 +54,10 @@ const initialValues = {
   priority: '',
 };
 
-export const AddTasks = ({ boardId, columnId, closeModal }) => {
+export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
   const [deadline, setDeadline] = useState('');
 
-
-
   const dispatch = useDispatch();
-
   const deadlinePickerRef = useRef(null);
 
   const validationSchema = Yup.object().shape({
@@ -86,7 +83,6 @@ export const AddTasks = ({ boardId, columnId, closeModal }) => {
   const handleDeadlineClick = () => {
     if (deadlinePickerRef.current) {
       deadlinePickerRef.current.setOpen(true);
-      
     }
   };
 
@@ -99,15 +95,11 @@ export const AddTasks = ({ boardId, columnId, closeModal }) => {
     ? moment(deadline).format('D MMMM YYYY')
     : CurrentDate();
 
-//   const handleSubmit = async (values, { resetForm }) => {
-//   console.log(values);
+// const handleSubmit = async (values, { resetForm }) => {
 //   try {
-//     if (!values.deadline) {
-//       alert("Пожалуйста, укажите дату дедлайна.");
-//       return;
-//     }
+//     const formattedDeadline = moment(values.deadline).format('DD/MM/YYYY');
+//     await dispatch(addTask({ ...values, boardId, columnId, deadline: formattedDeadline }));
 
-//     await dispatch(editTask({ ...values, boardId, columnId, taskId }));
 //     resetForm();
 //     setDeadline('');
 //     closeModal();
@@ -115,34 +107,12 @@ export const AddTasks = ({ boardId, columnId, closeModal }) => {
 //     console.error('Error:', error);
 //   }
 // };
-
+  
   const handleSubmit = async (values, { resetForm }) => {
-    console.log("formir", formik.values.deadline);
-    console.log("deadline values", values.deadline);
-    console.log("deadline", deadline);
     try {
       
-      
-        if (!formik.values.deadline) {
-        alert('Please select a deadline date.');
-        return;
-      }
-      
-
-    if (deadline === '') {
-      alert('Please select a deadline date.');
-      return;
-      }
-      
-      if (!values.deadline) {
-         alert("Пожалуйста, укажите дату дедлайна.");
-       return;
-       }
-console.log ( deadline, values.deadline)
-      const formattedDeadline = moment(formik.values.deadline).format('DD/MM/YYYY');
-      await dispatch(addTask({ ...values, boardId, columnId, deadline: formattedDeadline }));
-      
-      
+      setDeadline(values.deadline);
+      await dispatch(addTask({ ...values, boardId, columnId, taskId }));
       resetForm();
       setDeadline('');
       closeModal();
@@ -150,12 +120,6 @@ console.log ( deadline, values.deadline)
       console.error('Error:', error);
     }
   };
-
-  const formik = useFormik({
-    initialValues: initialValues,
-    onSubmit: handleSubmit,
-    validationSchema: validationSchema,
-  });
 
   const handleDateChange = date => {
     console.log(date);
@@ -167,7 +131,11 @@ console.log ( deadline, values.deadline)
     setDeadline(date);
   };
 
-   
+  const formik = useFormik({
+    initialValues: initialValues,
+    onSubmit: handleSubmit,
+    validationSchema: validationSchema,
+  });
 
   return (
     <StyledDiv>

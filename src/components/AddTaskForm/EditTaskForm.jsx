@@ -10,6 +10,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './AddTaskForm.css';
 import { useDispatch } from 'react-redux';
 import { editTask } from '../../store/columns/operations';
+import { parseISO } from 'date-fns';
 import {
   StyledP,
   StyledDiv,
@@ -58,15 +59,13 @@ export const EditTask = ({
   taskId,
   deadline: initialDeadline, 
 }) => {
-  const [deadline, setDeadline] = useState(initialDeadline); 
-
   const initialValues = {
     title: title,
     description: description,
     priority: priority,
   };
 
- 
+   const [deadline, setDeadline] = useState(initialDeadline);
 
   const dispatch = useDispatch();
 
@@ -94,31 +93,25 @@ export const EditTask = ({
   };
 
   const CurrentDate = () => {
-    const formattedDate = moment().format('MMMM D');
+    const formattedDate = moment(deadline).format('MMMM D');
     return <div>Today, {formattedDate}</div>;
   };
 
-  const formattedDeadline = deadline
-    ? moment(deadline).format('D MMMM YYYY')
-    : CurrentDate();
-  
-  
   const handleSubmit = async (values, { resetForm }) => {
-  console.log(values);
-  try {
-    if (!values.deadline) {
-      alert("Пожалуйста, укажите дату дедлайна.");
-      return;
-    }
+    console.log(values);
+    try {
+      if (!values.deadline) {
+        alert("!!!!!!!!");
+        return;
+      }
 
-    await dispatch(editTask({ ...values, boardId, columnId, taskId }));
-    resetForm();
-    setDeadline('');
-    closeModal();
-  } catch (error) {
-    console.error('Error:', error);
-  }
-};
+      await dispatch(editTask({ ...values, boardId, columnId, taskId }));
+      resetForm();
+      closeModal();
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -127,6 +120,7 @@ export const EditTask = ({
   });
 
   const handleDateChange = date => {
+    console.log(date);
     if (date && date < new Date()) {
       alert('Deadline cannot be before today.');
       return;
@@ -134,6 +128,14 @@ export const EditTask = ({
     formik.setFieldValue('deadline', date);
     setDeadline(date);
   };
+
+  const formattedDeadline = formik.values.deadline
+    ? moment(formik.values.deadline).format('D MMMM YYYY')
+    : CurrentDate();
+  
+const updateDeadline = deadline ? new Date(deadline) : null;
+  console.log(deadline)
+  console.log(updateDeadline);
 
   return (
     <StyledDiv>
@@ -222,7 +224,7 @@ export const EditTask = ({
             className="custom-datepicker"
             ref={deadlinePickerRef}
             name="deadline"
-            selected={formik.values.deadline}
+            selected={updateDeadline}
             onChange={handleDateChange}
             locale="en"
             dateFormat="d MMMM yyyy"
