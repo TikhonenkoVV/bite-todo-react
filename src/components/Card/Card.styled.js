@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { priority } from 'styles';
 
 export const CardStyled = styled.li`
   position: relative;
@@ -15,7 +16,7 @@ export const CardStyled = styled.li`
     left: 0;
     width: 4px;
     height: 100%;
-    background-color: ${props => props.theme.priority[props.color]};
+    background-color: ${props => priority[props.color]};
   }
 `;
 
@@ -85,7 +86,7 @@ export const PriorityStatus = styled.p`
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: ${props => props.theme.priority[props.color]};
+    background-color: ${props => priority[props.color]};
   }
 `;
 
