@@ -29,16 +29,14 @@ const MainDashboard = () => {
     : null;
 
   const columns = useSelector(selectColumns);
-  const isAnyCardInTheColumns = columns.every(
-    column => column.cards.length === 0
-  );
+  const hasCards = columns.some(column => column.cards.length > 0);
 
   return (
     <MainDashboardSection>
       <FilterContainer>
         <DashboardHeader
           name={selectedBoard?.title}
-          disabled={isAnyCardInTheColumns}
+          disabled={!hasCards}
           theme={'dark'}
         />
       </FilterContainer>

@@ -67,17 +67,11 @@ export const DashboardHeaderFilter = styled.button`
   }
 `;
 
-export const DashboardHeaderIcon = styled.svg`
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
-  margin-right: 8px;
-`;
-
 export const DashboardHeaderText = styled.p`
   font-family: Poppins;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
+  margin-left: 8px;
 `;

@@ -1,19 +1,20 @@
 import { useModal } from 'hooks/useModal';
 import PropTypes from 'prop-types';
+
 import { Modal } from 'components/Modal/Modal';
 import StatusFilter from 'components/StatusFilter';
 import sprite from '../../img/icons/sprite.svg';
+import { Svg } from 'components/SvgIcon/SvgIcon';
 
 import {
   DashboardHeaderFilter,
-  DashboardHeaderIcon,
   DashboardHeaderText,
   DashboardHeaderTitle,
 } from './DashboardHeader.styled';
 
 const DashboardHeader = ({ name, disabled, theme = 'dark' }) => {
   const { isModalOpen, closeModal, openModal } = useModal();
-  const path = '#icon-filter';
+  const iconName = '#icon-filter';
   return (
     <>
       {name && (
@@ -26,9 +27,7 @@ const DashboardHeader = ({ name, disabled, theme = 'dark' }) => {
         onClick={openModal}
         disabled={disabled}
       >
-        <DashboardHeaderIcon>
-          <use href={`${sprite}${path}`}></use>
-        </DashboardHeaderIcon>
+        <Svg w={16} h={16} use={`${sprite}${iconName}`} />
         <DashboardHeaderText>Filters</DashboardHeaderText>
       </DashboardHeaderFilter>
 
