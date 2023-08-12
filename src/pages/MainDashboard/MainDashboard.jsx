@@ -53,6 +53,7 @@ const MainDashboard = () => {
             </MainDashboardSectionTitle>
             <ContentHolder>
               <Scrollbars
+                hideTracksWhenNotNeeded={true}
                 renderTrackHorizontal={({ style, ...props }) => (
                   <div
                     {...props}
