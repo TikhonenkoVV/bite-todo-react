@@ -92,7 +92,6 @@ export const FilterContainer = styled.div`
 
 export const ContentHolder = styled.div`
   display: flex;
-  gap: 34px;
 `;
 
 export const TrackHorizontal = styled.div`
