@@ -10,23 +10,38 @@ import {
 } from './FormNeedHelp.styled';
 import sprite from 'img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
+// import { fetchSendNeedHelp } from 'services/fetchSendNeedHelp';
+// import { useState } from 'react';
+// import { sendNeedHelp } from 'store/boards/operations';
 
 export const FormNeedHelp = ({ closeModal }) => {
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [sent, setSent] = useState(false);
+  // const [error, setError] = useState('');
+
   const formik = useFormik({
     initialValues: {
       email: '',
-      comment: '',
+      message: '',
     },
     validationSchema: Yup.object({
       email: Yup.string().email('Invalid email address').required('Required'),
-      comment: Yup.string()
+      message: Yup.string()
         .min(8, 'Must be not less than 8 characters')
         .max(2000, 'Must be 2000 characters or less')
         .required('Required'),
     }),
     onSubmit: values => {
-      console.log(values);
-      // dispatch(logIn(values)); send data
+      // setIsLoading(true);
+      console.log('values:', values);
+      // sendNeedHelp(values);
+      // fetchSendNeedHelp(values)
+      //   .then(data => console.log('then:', data))
+      //   .catch(err => setError(err.message))
+      //   .finally(() => {
+      //     setIsLoading(false);
+      //   });
+      // // dispatch(logIn(values)); send data
       //  closse modal
     },
   });
@@ -48,9 +63,9 @@ export const FormNeedHelp = ({ closeModal }) => {
         />
         <StyledTextArea
           type="text"
-          name="comment"
+          name="message"
           placeholder="comment"
-          value={formik.values.comment}
+          value={formik.values.message}
           onChange={formik.handleChange}
         />
         <StyledButton type="submit">Send</StyledButton>

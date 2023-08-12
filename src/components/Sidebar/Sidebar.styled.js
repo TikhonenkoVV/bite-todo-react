@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from 'styles';
 
 export const ContainerSidebar = styled.aside`
   position: fixed;
@@ -8,16 +9,15 @@ export const ContainerSidebar = styled.aside`
   height: 100vh;
   display: ${props => (props.menuActive ? 'block' : 'none')};
   background-color: #121212;
-  z-index: 1000;
+  z-index: 2;
   padding-top: 14px;
-  padding-bottom: 24px;
   color: #ffffff;
 
-  @media screen and (min-width: 768px) {
+  @media screen and ${theme.devices.tablet} {
     width: 260px;
     padding: 24px 0;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and ${theme.devices.desktop} {
     grid-row: 1 / 3;
   }
 `;
@@ -26,4 +26,7 @@ export const WrapperBottom = styled.div`
   margin-bottom: 24px;
   position: absolute;
   bottom: 0;
+  @media screen and ${theme.devices.desktop} {
+    position: static;
+  }
 `;
