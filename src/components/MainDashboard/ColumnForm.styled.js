@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
-// import { theme } from 'styles/theme';
 
 export const FormTitle = styled.p`
   margin-bottom: 24px;

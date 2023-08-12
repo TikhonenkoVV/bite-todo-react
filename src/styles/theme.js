@@ -7,8 +7,8 @@ const sizes = {
 };
 
 export const theme = Object.freeze({
-  colors: {
-    dark: {
+  dark: {
+    colors: {
       background: '#1F1F1F', //Background color
       sideBar: '#121212', //Sidebar color
       btnAddBoard: '#BEDBB0', //Button add new board color
@@ -35,7 +35,9 @@ export const theme = Object.freeze({
       iconContainerBackground: '#fff', //Icon container Background,
       addColumnIconFill: '#121212', // Add column icon fill
     },
-    light: {
+  },
+  light: {
+    colors: {
       background: '#F6F6F7', //Background color
       sideBar: '#fff', //Sidebar color
       btnAddBoard: '#BEDBB0', //Button add new board color
@@ -62,7 +64,9 @@ export const theme = Object.freeze({
       iconContainerBackground: '#000', //Icon container Background,
       addColumnIconFill: '#fff', // Add column icon fill
     },
-    violet: {
+  },
+  violet: {
+    colors: {
       background: '#ECEDFD', //Background color
       sideBar: '#5255BC', //Sidebar color
       btnAddBoard: '#B8BCFD', //Button add new board color
@@ -90,18 +94,21 @@ export const theme = Object.freeze({
       addColumnIconFill: '#fff', // Add column icon fill
     },
   },
-  priority: {
-    without: '#656565',
-    low: '#8FA1D0',
-    medium: '#E09CB5',
-    high: '#BEDBB0',
-  },
-  devices: {
-    onlymobile: `(max-width: ${sizes.onlymobile})`,
-    mobile: `(min-width: ${sizes.mobile})`,
-    tablet: `(min-width: ${sizes.tablet})`,
-    desktop: `(min-width: ${sizes.desktop})`,
-    notdesktop: `(max-width: ${sizes.desktop})`,
-  },
-  baseTransition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
 });
+
+export const devices = {
+  onlymobile: `(max-width: ${sizes.onlymobile})`,
+  mobile: `(min-width: ${sizes.mobile})`,
+  tablet: `(min-width: ${sizes.tablet})`,
+  desktop: `(min-width: ${sizes.desktop})`,
+  notdesktop: `(max-width: ${sizes.desktop})`,
+};
+
+export const baseTransition = '250ms cubic-bezier(0.4, 0, 0.2, 1)';
+
+export const priority = {
+  without: '#656565',
+  low: '#8FA1D0',
+  medium: '#E09CB5',
+  high: '#BEDBB0',
+};

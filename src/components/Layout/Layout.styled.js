@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
-import { theme } from 'styles';
+import { devices } from 'styles';
 
 export const Wrapper = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: auto;
 
-  @media screen and ${theme.devices.desktop} {
+  @media screen and ${devices.desktop} {
     grid-template-columns: 260px auto;
     grid-template-rows: 64px auto;
   }
@@ -16,14 +16,14 @@ export const WrapperMain = styled.main`
   overflow-x: auto;
   width: 100%;
   height: 100%;
-  @media screen and ${theme.devices.desktop} {
+  @media screen and ${devices.desktop} {
     grid-column: 2;
     grid-row: 2;
   }
 `;
 
 export const Backdrop = styled.div`
-  @media screen and ${theme.devices.notdesktopdesktop} {
+  @media screen and ${devices.notdesktopdesktop} {
     position: fixed;
     top: 0;
     left: 0;

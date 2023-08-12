@@ -1,11 +1,8 @@
 import styled from '@emotion/styled';
-import { theme } from '../../styles/theme';
-
-const currTheme = 'dark';
 
 export const MainDashboardSection = styled.section`
   position: relative;
-  background-color: ${theme.colors[currTheme].mainDashboardBackground};
+  background-color: ${props => props.theme.colors.mainDashboardBackground} 
   background-image: ${props =>
     props.background !== 'default'
       ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}.jpg")`
@@ -104,12 +101,12 @@ export const MainDashboardAddColumnButton = styled.button`
   line-height: normal;
   letter-spacing: -0.28px;
   border-radius: 8px;
-  color: ${theme.colors[currTheme].addColumnButtonColor};
-  background-color: ${theme.colors[currTheme].addColumnButtonBackground};
-  transition: background ${theme.baseTransition};
+  color: ${props => props.theme.colors.addColumnButtonColor}
+  background-color: ${props => props.theme.colors.addColumnButtonBackground};
+  transition: background ${props => props.theme.baseTransition};
   &:hover,
   &:focus {
-    background: ${theme.colors[currTheme].addColumnButtonHoverBackground};
+    background: ${props => props.theme.colors.addColumnButtonHoverBackground};
   }
 `;
 
@@ -119,14 +116,14 @@ export const MainDashboardIconContainer = styled.div`
   justify-content: center;
   width: 28px;
   height: 28px;
-  background-color: ${theme.colors[currTheme].iconContainerBackground};
+  background-color: ${props => props.theme.colors.iconContainerBackground};
   border-radius: 6px;
 `;
 
 export const MainDashboardIcon = styled.svg`
   width: 14px;
   height: 14px;
-  fill: ${theme.colors[currTheme].addColumnIconFill};
+  fill: ${props => props.theme.colors.addColumnIconFill};
 `;
 
 export const FilterContainer = styled.div`

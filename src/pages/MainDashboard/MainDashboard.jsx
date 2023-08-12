@@ -35,14 +35,12 @@ const MainDashboard = () => {
 
   return (
     <MainDashboardSection
-      theme={'dark'}
       background={selectedBoard?.background || 'default'}
     >
       <FilterContainer>
         <DashboardHeader
           name={selectedBoard?.title}
           disabled={!hasCards}
-          theme={'dark'}
         />
       </FilterContainer>
       <MainDashboardContainer>

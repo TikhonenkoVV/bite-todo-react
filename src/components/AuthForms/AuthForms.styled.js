@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
-import { theme } from 'styles';
+import { devices } from 'styles';
 
 export const Container = styled.div`
   padding: 24px;
@@ -10,11 +10,11 @@ export const Container = styled.div`
   width: 100%;
   min-height: 300px;
 
-  @media ${theme.devices.mobile} {
+  @media ${devices.mobile} {
     width: 335px;
   }
 
-  @media ${theme.devices.tablet} {
+  @media ${devices.tablet} {
     padding: 40px;
     width: 424px;
     min-height: 332px;
@@ -100,11 +100,11 @@ export const Button = styled.button`
     background: #9dc888;
   }
 
-  @media ${theme.devices.mobile} {
+  @media ${devices.mobile} {
     width: 287px;
   }
 
-  @media ${theme.devices.tablet} {
+  @media ${devices.tablet} {
     width: 344px;
   }
 `;

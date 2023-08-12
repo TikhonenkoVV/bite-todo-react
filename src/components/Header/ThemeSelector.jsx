@@ -4,30 +4,18 @@ import {
   BtnSelectStyled,
   DivListStyled,
   UlListStyled,
-  LiStyled
+  LiStyled,
 } from './ThemeSelector.styled';
-import { useDispatch } from 'react-redux';
-import { setTheme } from 'store/theme/operations';
 
 const ThemeSelector = () => {
-  const [currentTheme, setCurrentTheme] = useState('');
+  const [theme, setTheme] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-
-  const dispatch = useDispatch();
 
   const handleThemeChange = event => {
     event.stopPropagation();
-    const themeName = event.target.innerText;
-    setCurrentTheme(themeName);
-    dispatch(setTheme(themeName));
+    setTheme(event.target.innerText);
     setIsOpen(false);
   };
-
-  // const handleThemeChange = event => {
-  //   event.stopPropagation();
-  //   setTheme(event.target.innerText);
-  //   setIsOpen(false);
-  // };
 
   const handleClick = event => {
     event.stopPropagation();
@@ -49,11 +37,11 @@ const ThemeSelector = () => {
   return (
     <DivStyled>
       <BtnSelectStyled onClick={handleClick}>
-        {currentTheme === '' ? 'Theme' : currentTheme}
+        {theme === '' ? 'Theme' : theme}
       </BtnSelectStyled>
       <DivListStyled isOpen={isOpen} onClick={e => e.stopPropagation()}>
         <UlListStyled>
-          <LiStyled onClick={handleThemeChange} >Light</LiStyled>
+          <LiStyled onClick={handleThemeChange}>Light</LiStyled>
           <LiStyled onClick={handleThemeChange}>Dark</LiStyled>
           <LiStyled onClick={handleThemeChange}>Violet</LiStyled>
         </UlListStyled>
