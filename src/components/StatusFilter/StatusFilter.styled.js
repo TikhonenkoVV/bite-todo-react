@@ -1,21 +1,19 @@
 import styled from '@emotion/styled';
 
+import { baseTransition } from 'styles';
+
 export const StatusFilterContainer = styled.div`
   position: relative;
   width: 300px;
   height: 234px;
   border-radius: 8px;
-  background-color: ${props =>
-    props.theme === 'dark' ? '#151515' : '#FCFCFC'};
+  background-color: ${props => props.theme.colors.filterContainerBackground};
   padding: 24px;
-  box-shadow: ${props =>
-    props.theme === 'dark'
-      ? 'none'
-      : '0px 4px 16px 0px rgba(22, 22, 22, 0.05)'};
+  box-shadow: ${props => props.theme.colors.filterContainerShadow};
 `;
 
 export const StatusFilterMainText = styled.p`
-  color: ${props => (props.theme === 'dark' ? '#fff' : 'rgba(22, 22, 22, 1)')};
+  color: ${props => props.theme.colors.titleColor};
   font-family: Poppins;
   font-size: 18px;
   font-weight: 500;
@@ -35,7 +33,7 @@ export const StatusFilterBox = styled.div`
 `;
 
 export const StatusFilterLabel = styled.p`
-  color: ${props => (props.theme === 'dark' ? '#fff' : 'rgba(22, 22, 22, 1)')};
+  color: ${props => props.theme.colors.titleColor};
   font-family: Poppins;
   font-size: 14px;
   font-weight: 500;
@@ -51,18 +49,15 @@ export const StatusFilterShowAll = styled.button`
   line-height: normal;
   letter-spacing: -0.24px;
   text-decoration-line: underline;
-  color: ${props => {
-    if (props.theme === 'dark') {
-      return props.selected ? '#fff' : 'rgba(255, 255, 255, 0.5)';
-    }
-    return props.selected ? 'rgba(22, 22, 22, 1)' : 'rgba(22, 22, 22, 0.5)';
-  }};
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: ${props =>
+    props.selected
+      ? props.theme.colors.filterBtnColorSelected
+      : props.theme.colors.filterBtnColor};
+  transition: color ${baseTransition};
 
   &:hover,
   &:focus {
-    color: ${props =>
-      props.theme === 'dark' ? '#fff' : 'rgba(22, 22, 22, 1)'};
+    color: ${props => props.theme.colors.iconHover};
   }
 `;
 
@@ -81,15 +76,11 @@ export const CloseButton = styled.button`
   top: 14px;
   right: 14px;
   cursor: pointer;
-  fill: ${props =>
-    props.theme === 'dark' ? 'rgba(255, 255, 255, 1)' : 'rgba(22, 22, 22, 1)'};
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  fill: ${props => props.theme.colors.closeModalBtn};
+  transition: fill ${baseTransition};
 
   &:hover,
   &:focus {
-    fill: ${props =>
-      props.theme === 'dark'
-        ? 'rgba(255, 255, 255, 0.5)'
-        : 'rgba(22, 22, 22, 0.5)'};
+    fill: ${props => props.theme.colors.closeModalBtnHover};
   }
 `;

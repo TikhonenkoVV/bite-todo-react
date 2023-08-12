@@ -38,6 +38,7 @@ export const theme = Object.freeze({
       borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
       boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
       closeModalBtn: '#FFFFFF', // Close modal
+      closeModalBtnHover: 'rgba(255, 255, 255, 0.5)', // Modal close button hover
       backgroundUserImgWrapper: '#1F1F1F', // Background user wrapper
       backgroundAddIcon: '#bedbb0', // Background add icon
       textColorForm: '#FFFFFF', // Text color form
@@ -49,6 +50,13 @@ export const theme = Object.freeze({
       borderSelectorColor: 'rgba(255, 255, 255, 0.5)', // Border selector
       textSelectorColor: 'rgba(255, 255, 255, 0.5)', // Text selector color
       hoverSelectorColor: '#bedbb0', // Hover selector color
+      filterColor: 'rgba(255, 255, 255, 0.8)', // Dashboard filter color
+      filterContainerBackground: '#151515', // Dashboard filter modal background
+      filterContainerShadow: 'none', // Dashboard filter modal shadow
+      filterDecorativeElement: '2px solid #000', // Dashboard filter modal (slected button ::after element color)
+      filterBtnColor: 'rgba(255, 255, 255, 0.5)', // Filter button(option) color
+      filterBtnColorSelected: '#fff', // Selected filter button(option) color
+      filterWithoutPriorityColor: 'rgba(255, 255, 255, 0.3)', // Filter button without priority (::before element bgd color)
     },
   },
   light: {
@@ -82,6 +90,7 @@ export const theme = Object.freeze({
       // borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
       boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
       closeModalBtn: '#161616', // Close modal
+      closeModalBtnHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
       backgroundUserImgWrapper: '#F6F6F7', // Background user wrapper
       backgroundAddIcon: '#bedbb0', // Background add icon
       textColorForm: '#161616', // Text color form
@@ -94,6 +103,13 @@ export const theme = Object.freeze({
       textSelectorColor: '#161616', // Text selector color
       hoverSelectorColor: '#BEDBB0', // Hover selector color
       boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
+      filterColor: 'rgba(22, 22, 22, 0.8)', // Dashboard filter color
+      filterContainerBackground: '#FCFCFC', // Dashboard filter modal background
+      filterContainerShadow: '0px 4px 16px 0px rgba(22, 22, 22, 0.05)', // Dashboard filter modal shadow
+      filterDecorativeElement: '2px solid #fff', // Dashboard filter modal (slected button ::after element color)
+      filterBtnColor: 'rgba(22, 22, 22, 0.5)', // Filter button(option) color
+      filterBtnColorSelected: '#161616', // Selected filter button(option) color
+      filterWithoutPriorityColor: 'rgba(22, 22, 22, 0.3)', // Filter button without priority (::before element bgd color)
     },
   },
   violet: {
@@ -127,6 +143,7 @@ export const theme = Object.freeze({
       // borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
       boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
       closeModalBtn: '#161616', // Close modal
+      closeModalBtnHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
       backgroundUserImgWrapper: '#ECEDFD', // Background user wrapper
       backgroundAddIcon: '#ECEDFD', // Background add icon
       textColorForm: '#161616', // Text color form
@@ -139,6 +156,13 @@ export const theme = Object.freeze({
       textSelectorColor: '#161616', // Text selector color
       hoverSelectorColor: '#5255BC', // Hover selector color
       boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
+      filterColor: 'rgba(22, 22, 22, 0.8)', // Dashboard filter color
+      filterContainerBackground: '#FCFCFC', // Dashboard filter modal background
+      filterContainerShadow: '0px 4px 16px 0px rgba(22, 22, 22, 0.05)', // Dashboard filter modal shadow
+      filterDecorativeElement: '2px solid #fff', // Dashboard filter modal (slected button ::after element color)
+      filterBtnColor: 'rgba(22, 22, 22, 0.5)', // Filter button(option) color
+      filterBtnColorSelected: '#161616', // Selected filter button(option) color
+      filterWithoutPriorityColor: 'rgba(22, 22, 22, 0.3)', // Filter button without priority (::before element bgd color)
     },
   },
 });
