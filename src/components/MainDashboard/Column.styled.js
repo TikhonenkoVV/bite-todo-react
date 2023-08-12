@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+const currTheme = 'dark';
+
 export const ColumnContainer = styled.div`
   max-width: 335px;
 `;
@@ -12,7 +14,7 @@ export const ColumnTitleContainer = styled.div`
   padding: 18px 20px 17px 20px;
   height: 56px;
   border-radius: 8px;
-  background: #121212;
+  background-color: ${props => props.theme.colors[currTheme].card};
 `;
 
 export const ColumnTitle = styled.h3`
@@ -20,7 +22,7 @@ export const ColumnTitle = styled.h3`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  color: #fff;
+  color: ${props => props.theme.colors[currTheme].columnTitleColor};
 `;
 
 export const IconContainer = styled.div`
@@ -35,8 +37,12 @@ export const IconContainer = styled.div`
 export const TitleIcon = styled.svg`
   width: 16px;
   height: 16px;
-  /* fill: #121212; */
-  fill: rgba(255, 255, 255, 0.5);
+  fill: ${props => props.theme.colors[currTheme].columnIconFill};
+  transition: fill ${props => props.theme.baseTransition};
+  &:hover,
+  &:focus {
+    fill: ${props => props.theme.colors[currTheme].columnIconHover};
+  }
 `;
 
 export const IconButton = styled.button`
@@ -61,7 +67,7 @@ export const AddCardButton = styled.button`
   color: #161616;
   border-radius: 8px;
   background: #bedbb0;
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background ${props => props.theme.baseTransition};
   &:hover,
   &:focus {
     background: #9dc888;

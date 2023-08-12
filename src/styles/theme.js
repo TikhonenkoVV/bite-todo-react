@@ -18,7 +18,10 @@ export const theme = Object.freeze({
       card: '#121212', //Task(card) color
       cardDecor: 'rgba(255, 255, 255, 0.10)', //Card decor line color
       cardMajorText: '#fff', //Task(card) title color
-      cardMinorText: '#888888', //Task(card) description color
+      cardMinorText: '#888888', //Task(card) description color,
+      columnTitleColor: '#fff', //Column title color,
+      columnIconFill: 'rgba(255, 255, 255, 0.5)', //Column icon fill,
+      columnIconHover: 'rgba(255, 255, 255, 1.0)', //Column icon hover,
     },
     light: {
       background: '#F6F6F7', //Background color
@@ -32,6 +35,9 @@ export const theme = Object.freeze({
       cardDecor: 'rgba(22, 22, 22, 0.10)', //Card decor line color
       cardMajorText: '#161616', //Task(card) title color
       cardMinorText: '#5C5C5C', //Task(card) description color
+      columnTitleColor: '#161616', //Column title color,
+      columnIconFill: 'rgba(22, 22, 22, 0.50)', //Column icon fill,
+      columnIconHover: 'rgba(22, 22, 22, 1.0)', //Column icon hover,
     },
     violet: {
       background: '#ECEDFD', //Background color
@@ -45,6 +51,9 @@ export const theme = Object.freeze({
       cardDecor: 'rgba(22, 22, 22, 0.10)', //Card decor line color
       cardMajorText: '#161616', //Task(card) title color
       cardMinorText: '#5C5C5C', //Task(card) description color
+      columnTitleColor: '#161616', //Column title color,
+      columnIconFill: 'rgba(22, 22, 22, 0.50)', //Column icon fill,
+      columnIconHover: 'rgba(22, 22, 22, 1.0)', //Column icon hover,
     },
   },
   priority: {
@@ -59,4 +68,5 @@ export const theme = Object.freeze({
     tablet: `(min-width: ${sizes.tablet})`,
     desktop: `(min-width: ${sizes.desktop})`,
   },
+  baseTransition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
 });
