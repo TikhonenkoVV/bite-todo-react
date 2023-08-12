@@ -8,10 +8,12 @@ export const MainDashboardSection = styled.section`
 
 export const MainDashboardContainer = styled.div`
   /* width: 375px; */
+
   min-height: calc(100vh - 64px);
   height: 100%;
   padding: 74px 20px 24px 20px;
   /* margin: 0 auto; */
+
   overflow-x: auto;
 
   @media (min-width: 768px) {
