@@ -30,7 +30,7 @@ import {
 } from './AddTaskForm.styled';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
-const priorities = [ 'low', 'medium','high' ,'without'];
+const priorities = ['low', 'medium', 'high', 'without'];
 
 const StyledCustomCalendar = styled(DatePicker)`
   &.custom-datepicker {

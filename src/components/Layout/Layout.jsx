@@ -4,10 +4,10 @@ import Header from 'components/Header';
 import Sidebar from 'components/Sidebar/Sidebar';
 import { useState } from 'react';
 import { Backdrop, Wrapper, WrapperMain } from './Layout.styled';
+import { Loader } from 'components/Loader/Loader';
 
 export const Layout = () => {
   const [menuActive, setMenuActive] = useState(false);
-
   const toggleMenu = () => {
     setMenuActive(prevMenuActive => !prevMenuActive);
   };
@@ -27,7 +27,7 @@ export const Layout = () => {
       />
       <Sidebar menuActive={menuActive} />
       <WrapperMain>
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader/>}>
           <Outlet />
         </Suspense>
       </WrapperMain>

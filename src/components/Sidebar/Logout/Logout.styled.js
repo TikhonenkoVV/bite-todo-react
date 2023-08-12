@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { devices } from 'styles';
 
 export const ButtonStyled = styled.button`
   display: flex;
@@ -10,7 +11,7 @@ export const ButtonStyled = styled.button`
 
   cursor: pointer;
 
-  @media screen and (min-width: 768px) {
+  @media screen and ${devices.tablet} {
     margin-left: 24px;
   }
 `;
@@ -25,7 +26,7 @@ export const Container = styled.div`
 
 export const PStyled = styled.p`
   font-family: Poppins;
-  @media screen and (min-width: 1440px) {
+  @media screen and ${devices.desktop} {
     font-size: 16px;
   }
 `;

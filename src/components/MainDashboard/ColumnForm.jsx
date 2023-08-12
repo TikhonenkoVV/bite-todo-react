@@ -31,8 +31,9 @@ export const ColumnForm = ({
   onCloseForm,
   columnTitle = '',
 }) => {
-  const title = isEditMode ? 'Edit column' : 'Add column';
   const dispatch = useDispatch();
+  const title = isEditMode ? 'Edit column' : 'Add column';
+  const buttonText = isEditMode ? 'Edit' : 'Add';
 
   const handleSubmit = ({ title }, { resetForm }) => {
     if (isEditMode) {
@@ -73,7 +74,7 @@ export const ColumnForm = ({
                   <use href={`${sprite}#icon-plus`}></use>
                 </FormIcon>
               </FormIconContainer>
-              <div>Add</div>
+              <div>{buttonText}</div>
             </AddButton>
           </Form>
         )}

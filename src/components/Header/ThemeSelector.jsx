@@ -4,9 +4,8 @@ import {
   BtnSelectStyled,
   DivListStyled,
   UlListStyled,
-  LiStyled
+  LiStyled,
 } from './ThemeSelector.styled';
-
 
 const ThemeSelector = () => {
   const [theme, setTheme] = useState('');

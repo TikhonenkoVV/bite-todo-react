@@ -1,32 +1,18 @@
 import PropTypes from 'prop-types';
 
-import {
-  FilterButton,
-  FilterIcon,
-  FilterText,
-} from './StatusFilterButton.styled';
+import { FilterButton } from './StatusFilterButton.styled';
 
-const StatusFilterButton = ({
-  selected,
-  color,
-  theme,
-  children,
-  ...otherProps
-}) => {
+const StatusFilterButton = ({ selected, color, theme, children, onClick }) => {
   return (
     <FilterButton
       theme={theme}
       selected={selected}
       type="button"
-      {...otherProps}
+      onClick={onClick}
+      color={color}
+      text={children}
     >
-      <FilterIcon
-        text={children}
-        selected={selected}
-        color={color}
-        theme={theme}
-      ></FilterIcon>
-      <FilterText>{children}</FilterText>
+      {children}
     </FilterButton>
   );
 };
@@ -36,6 +22,7 @@ StatusFilterButton.propTypes = {
   color: PropTypes.string.isRequired,
   theme: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default StatusFilterButton;

@@ -7,6 +7,7 @@ export const DivStyled = styled.div`
   background-color: #161616;
   color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
+  z-index: 1000;
 `;
 
 export const BtnSelectStyled = styled.button`
@@ -43,7 +44,6 @@ export const DivListStyled = styled.div`
   margin: 0;
   margin-top: 10px
   position: fixed;
-  z-index: 50;
   background-color: #161616;
   transform: ${props => (props.isOpen ? 'scaleY(1)' : 'scaleY(0)')};
   transform-origin: top;

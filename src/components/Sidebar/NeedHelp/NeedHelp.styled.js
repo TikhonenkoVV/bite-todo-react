@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
+import { devices } from 'styles';
 import flower from 'img/flower.png';
 
 export const DivStyled = styled.div`
   padding: 14px;
-  margin-left: 14px;
+  margin: 0 auto;
   width: 197px;
   height: 238px;
   border-radius: 8px;
@@ -18,7 +19,8 @@ export const DivStyled = styled.div`
   background-image: url(${flower});
   background-repeat: no-repeat;
   background-position: 14px 14px;
-  @media screen and (min-width: 768px) {
+
+  @media screen and ${devices.tablet} {
     margin-left: 24px;
     padding: 20px;
     width: 212px;
@@ -34,7 +36,8 @@ export const DivStyled = styled.div`
 export const PStyled = styled.p`
   margin: 92px 0 15px;
   padding-left: 1px;
-  @media screen and (min-width: 768px) {
+
+  @media screen and ${devices.tablet} {
     margin-bottom: 18px;
   }
 `;

@@ -8,13 +8,25 @@ import {
   HeroStyled,
   ImgWrapperStyled,
   LinkWrapperStyled,
-  ImgSetStyled,
+  ImgSetStyled,  
   HeroTextStyled,
   LinkButtonStyled,
-  LinkStyled
+  LinkStyled,
 } from './Welcome.styled';
 import { Loader } from 'components/Loader/Loader';
-import Logo from '../../components/Sidebar/Logo/Logo';
+import Logo from '../../components/Sidebar/Logo/Logo'
+
+
+const logoStyles = {  
+  columnGap: 14,
+  fontSize: 28,
+  fontSizeTab: 40,
+  lineHeight: 1.5,
+  width: 40,
+  height: 40,
+  widthTab: 48,
+  heightTab: 48,  
+};
 
 const Welcome = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -33,17 +45,15 @@ const Welcome = () => {
                   alt="The guy is working on a laptop"
                 />
               </ImgSetStyled>
-              {/* створити можливість передавати стилі (розмір) в Лого пропсами */}
-              <Logo />
             </ImgWrapperStyled>
+            <Logo styles= {logoStyles}/>            
             <HeroTextStyled>
-              Supercharge your productivity and take control of your tasks with Task Pro - Don't wait, start achieving your goals now!
+              Supercharge your productivity and take control of your tasks with
+              Task Pro - Don't wait, start achieving your goals now!
             </HeroTextStyled>
           </HeroStyled>
           <LinkWrapperStyled>
-            <LinkButtonStyled to="auth/register">
-              Registration
-            </LinkButtonStyled>
+            <LinkButtonStyled to="auth/register">Registration</LinkButtonStyled>
             <LinkStyled to="auth/login">Log In</LinkStyled>
           </LinkWrapperStyled>
         </WelcomePageStyled>

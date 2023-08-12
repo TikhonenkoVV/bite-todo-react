@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
-import { theme } from '../../styles/theme';
+import { devices, baseTransition } from '../../styles/theme';
 
 export const WelcomePageStyled = styled.div`
   background: linear-gradient(
@@ -32,14 +32,14 @@ export const ImgWrapperStyled = styled.div`
   align-items: center;
   width: 100%;
   gap: 14px;
-  @media screen and ${theme.devices.tablet} {
+  @media screen and ${devices.tablet} {
     gap: 24px;
   }
 `;
 
 export const ImgSetStyled = styled.picture`
   width: 124px;
-  @media screen and ${theme.devices.tablet} {
+  @media screen and ${devices.tablet} {
     width: 162px;
   }
 `;
@@ -72,20 +72,22 @@ export const LinkButtonStyled = styled(NavLink)`
   align-items: center;
   border-radius: 8px;
   background-color: #161616;
-  color: #ffffff;  
+  color: #ffffff;
   font-weight: 500;
-  @media screen and ${theme.devices.tablet} {
+  transition: color, background-color ${baseTransition};
+  @media screen and ${devices.tablet} {
     width: 344px;
   }
   &:hover {
     color: #161616;
-    background-color: #9DC888;
+    background-color: #9dc888;
   }
 `;
- export const LinkStyled = styled(NavLink)`
- font-weight: 500;
- &:hover {
-  color: #9DC888;
-  
-}
- `
+
+export const LinkStyled = styled(NavLink)`
+  font-weight: 500;
+  transition: color ${baseTransition};
+  &:hover {
+    color: #9dc888;
+  }
+`;

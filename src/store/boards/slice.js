@@ -16,19 +16,18 @@ const boardsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getBoards.fulfilled, (state, { payload }) => {
-        state.boards = payload.boards;
+        state.boards = payload.boards.reverse();
         state.error = null;
       })
       .addCase(getBoards.rejected, (state, { payload }) => {
         state.isLoading = false;
-        console.log(payload);
         state.error = payload;
       })
       .addCase(add.pending, (state, { payload }) => {
         state.isLoading = true;
       })
       .addCase(add.fulfilled, (state, { payload }) => {
-        state.boards.push(payload.board);
+        state.boards.unshift(payload.board);
         state.error = null;
       })
       .addCase(add.rejected, (state, { payload }) => {
