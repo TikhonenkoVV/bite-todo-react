@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateUser } from 'store/auth/operations';
 import {
   DivStyled,
   BtnSelectStyled,
@@ -12,13 +10,11 @@ import {
 const ThemeSelector = () => {
   const [theme, setTheme] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useDispatch();
 
   const handleThemeChange = event => {
     event.stopPropagation();
     setTheme(event.target.innerText);
     setIsOpen(false);
-    dispatch(updateUser({ theme }));
   };
 
   const handleClick = event => {

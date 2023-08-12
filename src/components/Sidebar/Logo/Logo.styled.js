@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { theme } from 'styles';
+import { devices } from 'styles';
 
 export const LogoStyled = styled.div`
   margin-left: ${props =>
@@ -9,7 +9,7 @@ export const LogoStyled = styled.div`
     props.styles.columnGap ? `${props.styles.columnGap}px` : '8px'};
   align-items: center;
 
-  @media screen and ${theme.devices.tablet} {
+  @media screen and ${devices.tablet} {
     margin-left: ${props =>
       props.styles.marginLeftTab ? `${props.styles.marginLeftTab}px` : 0};
   }
@@ -22,7 +22,7 @@ export const IconWrapperStyled = styled.div`
   width: ${props => `${props.styles.width}px`};
   height: ${props => `${props.styles.height}px`};
 
-  @media screen and ${theme.devices.tablet} {
+  @media screen and ${devices.tablet} {
     width: ${props =>
       props.styles.widthTab
         ? `${props.styles.widthTab}px`
@@ -44,7 +44,7 @@ export const PStyled = styled.p`
     props.styles.lineHeight ? props.styles.lineHeight : 1.15};
   text-transform: capitalize;
 
-  @media screen and ${theme.devices.tablet} {
+  @media screen and ${devices.tablet} {
     font-size: ${props =>
       props.styles.fontSizeTab
         ? `${props.styles.fontSizeTab}px`

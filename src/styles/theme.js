@@ -41,7 +41,6 @@ export const theme = Object.freeze({
       medium: '#E09CB5',
       high: '#BEDBB0',
     },
-    baseTransition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
   light: {
     colors: {
@@ -77,7 +76,6 @@ export const theme = Object.freeze({
       medium: '#E09CB5',
       high: '#BEDBB0',
     },
-    baseTransition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
   violet: {
     colors: {
@@ -113,13 +111,15 @@ export const theme = Object.freeze({
       medium: '#E09CB5',
       high: '#BEDBB0',
     },
-    baseTransition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
-  },
-  devices: {
-    onlymobile: `(max-width: ${sizes.onlymobile})`,
-    mobile: `(min-width: ${sizes.mobile})`,
-    tablet: `(min-width: ${sizes.tablet})`,
-    desktop: `(min-width: ${sizes.desktop})`,
-    notdesktop: `(max-width: ${sizes.desktop})`,
   },
 });
+
+export const devices = {
+  onlymobile: `(max-width: ${sizes.onlymobile})`,
+  mobile: `(min-width: ${sizes.mobile})`,
+  tablet: `(min-width: ${sizes.tablet})`,
+  desktop: `(min-width: ${sizes.desktop})`,
+  notdesktop: `(max-width: ${sizes.desktop})`,
+};
+
+export const baseTransition = '250ms cubic-bezier(0.4, 0, 0.2, 1)';
