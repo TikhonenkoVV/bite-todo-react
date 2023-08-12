@@ -10,7 +10,7 @@ export const DivUserImgStyled = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background-color: #1f1f1f;
+  background-color: ${props => props.theme.colors.backgroundUserImgWrapper};
   position: relative;
 `;
 
@@ -28,4 +28,5 @@ export const LinkStyled = styled.a`
 
 export const AvatarImg = styled.img`
   border-radius: 8px;
+  object-fit: cover;
 `;
