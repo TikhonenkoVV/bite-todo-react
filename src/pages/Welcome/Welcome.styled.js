@@ -74,6 +74,7 @@ export const LinkButtonStyled = styled(NavLink)`
   background-color: #161616;
   color: #ffffff;
   font-weight: 500;
+  transition: color, background-color ${theme.baseTransition};
   @media screen and ${theme.devices.tablet} {
     width: 344px;
   }
@@ -85,6 +86,7 @@ export const LinkButtonStyled = styled(NavLink)`
 
 export const LinkStyled = styled(NavLink)`
   font-weight: 500;
+  transition: color ${theme.baseTransition};
   &:hover {
     color: #9dc888;
   }
