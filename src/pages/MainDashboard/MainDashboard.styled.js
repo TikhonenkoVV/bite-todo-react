@@ -135,21 +135,11 @@ export const FilterContainer = styled.div`
 `;
 
 export const ContentHolder = styled.div`
+  width: 100%;
+`;
+
+export const ContentWrapper = styled.div`
+  width: max-content;
+  height: 100%;
   display: flex;
-`;
-
-export const TrackHorizontal = styled.div`
-  background-color: rgba(255, 255, 255, 0.1);
-  left: 24px;
-  bottom: 8px;
-  right: 24px;
-  border-radius: 12px;
-  // width: '100%',
-  min-height: 12px;
-  overflow-x: auto;
-`;
-
-export const ThumbHorizontal = styled.div`
-  border-radius: 12px;
-  background-color: #121212;
 `;
