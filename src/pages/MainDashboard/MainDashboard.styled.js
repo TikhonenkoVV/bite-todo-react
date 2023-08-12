@@ -142,5 +142,4 @@ export const ContentWrapper = styled.div`
   width: max-content;
   height: 100%;
   display: flex;
-  gap: 34px;
 `;
