@@ -9,7 +9,7 @@ export const ContainerSidebar = styled.aside`
   height: 100vh;
   display: ${props => (props.menuActive ? 'block' : 'none')};
   background-color: #121212;
-  z-index: 3;
+  z-index: 2;
   padding-top: 14px;
   color: #ffffff;
 
