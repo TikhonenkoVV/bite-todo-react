@@ -14,6 +14,7 @@ export const CardList = ({ boardId, cards }) => {
   return (
     <CardListContainer>
       <Scrollbars
+        hideTracksWhenNotNeeded={true}
         renderTrackVertical={({ style, ...props }) => (
           <div
             {...props}

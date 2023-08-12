@@ -2,18 +2,7 @@ import styled from '@emotion/styled';
 
 export const MainDashboardSection = styled.section`
   position: relative;
-  background-color: ${props => {
-    switch (props.theme) {
-      case 'dark':
-        return '#1f1f1f';
-      case 'violet':
-        return '#ECEDFD';
-      case 'white':
-        return '#F6F6F7';
-      default:
-        return '#1f1f1f';
-    }
-  }};
+  background-color: ${props => props.theme.colors.mainDashboardBackground} 
   background-image: ${props =>
     props.background !== 'default'
       ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}.jpg")`
@@ -22,13 +11,13 @@ export const MainDashboardSection = styled.section`
   background-repeat: no-repeat;
   background-position: center;
   @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-        background-image: ${props =>
-          props.background !== 'default'
-            ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}%402x.jpg")`
-            : 'none'};
-    }
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: ${props =>
+      props.background !== 'default'
+        ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}%402x.jpg")`
+        : 'none'};
+  }
 
   @media (min-width: 768px) {
     background-image: ${props =>
@@ -38,10 +27,10 @@ export const MainDashboardSection = styled.section`
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-        background-image: ${props =>
-          props.background !== 'default'
-            ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Tablet/${props.background}%402x.jpg")`
-            : 'none'};
+      background-image: ${props =>
+        props.background !== 'default'
+          ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Tablet/${props.background}%402x.jpg")`
+          : 'none'};
     }
   }
 
@@ -53,10 +42,10 @@ export const MainDashboardSection = styled.section`
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-        background-image: ${props =>
-          props.background !== 'default'
-            ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Desktop/${props.background}.jpg")`
-            : 'none'};
+      background-image: ${props =>
+        props.background !== 'default'
+          ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Desktop/${props.background}.jpg")`
+          : 'none'};
     }
   }
 `;
@@ -111,16 +100,13 @@ export const MainDashboardAddColumnButton = styled.button`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  color: #fff;
-  /* color: #161616; */
   border-radius: 8px;
-  background: #121212;
-  /* background: #fff; */
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: ${props => props.theme.colors.addColumnButtonColor}
+  background-color: ${props => props.theme.colors.addColumnButtonBackground};
+  transition: background ${props => props.theme.baseTransition};
   &:hover,
   &:focus {
-    background: #000;
-    /* background: #e5e5e5; */
+    background: ${props => props.theme.colors.addColumnButtonHoverBackground};
   }
 `;
 
@@ -130,16 +116,14 @@ export const MainDashboardIconContainer = styled.div`
   justify-content: center;
   width: 28px;
   height: 28px;
-  background: #fff;
-  /* background: #000; */
+  background-color: ${props => props.theme.colors.iconContainerBackground};
   border-radius: 6px;
 `;
 
 export const MainDashboardIcon = styled.svg`
   width: 14px;
   height: 14px;
-  fill: #121212;
-  /* fill: #fff; */
+  fill: ${props => props.theme.colors.addColumnIconFill};
 `;
 
 export const FilterContainer = styled.div`
@@ -148,22 +132,11 @@ export const FilterContainer = styled.div`
 `;
 
 export const ContentHolder = styled.div`
+  width: 100%;
+`;
+
+export const ContentWrapper = styled.div`
+  width: max-content;
+  height: 100%;
   display: flex;
-  gap: 34px;
-`;
-
-export const TrackHorizontal = styled.div`
-  background-color: rgba(255, 255, 255, 0.1);
-  left: 24px;
-  bottom: 8px;
-  right: 24px;
-  border-radius: 12px;
-  // width: '100%',
-  min-height: 12px;
-  overflow-x: auto;
-`;
-
-export const ThumbHorizontal = styled.div`
-  border-radius: 12px;
-  background-color: #121212;
 `;

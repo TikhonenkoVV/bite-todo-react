@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { theme } from 'styles';
+import { devices } from 'styles';
 
 export const ContainerSidebar = styled.aside`
   position: fixed;
@@ -13,11 +13,11 @@ export const ContainerSidebar = styled.aside`
   padding-top: 14px;
   color: #ffffff;
 
-  @media screen and ${theme.devices.tablet} {
+  @media screen and ${devices.tablet} {
     width: 260px;
     padding: 24px 0;
   }
-  @media screen and ${theme.devices.desktop} {
+  @media screen and ${devices.desktop} {
     grid-row: 1 / 3;
   }
 `;
@@ -26,7 +26,7 @@ export const WrapperBottom = styled.div`
   margin-bottom: 24px;
   position: absolute;
   bottom: 0;
-  @media screen and ${theme.devices.desktop} {
+  @media screen and ${devices.desktop} {
     position: static;
   }
 `;
