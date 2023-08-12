@@ -1,6 +1,4 @@
 import styled from '@emotion/styled';
-import { baseTransition, devices, priority } from 'styles';
-
 export const DivStyled = styled.div`
   width: 68px;
   height: 21px;
