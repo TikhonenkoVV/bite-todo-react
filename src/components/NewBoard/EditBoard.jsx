@@ -89,7 +89,7 @@ const EditBoard = ({ onClick, id }) => {
       }}
       validationSchema={validationSchema}
       onSubmit={(values, formik) => {
-        if (boards.find(board => board.title === values.title)) {
+        if (boards.find(b => b.title === values.title && board.title !== values.title)) {
           formik.setFieldError(
             'title',
             'A board with this title already exists'
