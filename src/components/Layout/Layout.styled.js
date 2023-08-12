@@ -23,7 +23,7 @@ export const WrapperMain = styled.main`
 `;
 
 export const Backdrop = styled.div`
-  @media screen and ${devices.notdesktopdesktop} {
+  @media screen and ${devices.notdesktop} {
     position: fixed;
     top: 0;
     left: 0;
