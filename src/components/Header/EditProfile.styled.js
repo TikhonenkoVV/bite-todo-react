@@ -51,6 +51,8 @@ export const DivUserImgStyled = styled.div`
 
 export const AvatarImg = styled.img`
   border-radius: 8px;
+  object-fit: cover;
+  height: 68px;
 `;
 
 export const DivIconPlus = styled.div`

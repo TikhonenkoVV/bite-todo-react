@@ -28,4 +28,5 @@ export const LinkStyled = styled.a`
 
 export const AvatarImg = styled.img`
   border-radius: 8px;
+  object-fit: cover;
 `;
