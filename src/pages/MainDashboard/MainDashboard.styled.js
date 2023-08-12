@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { theme } from '../../styles/theme';
+// import { store } from '../../store/store';
 
+// const currTheme = store.getState().auth.user.theme ?? 'dark';
 const currTheme = 'dark';
 
 export const MainDashboardSection = styled.section`
@@ -54,26 +56,19 @@ export const MainDashboardSection = styled.section`
 `;
 
 export const MainDashboardContainer = styled.div`
-  /* width: 375px; */
-
   min-height: calc(100vh - 64px);
   height: 100%;
   padding: 74px 20px 24px 20px;
-  /* margin: 0 auto; */
-
   overflow-x: auto;
 
   @media (min-width: 768px) {
     display: flex;
     gap: 34px;
-    /* width: 768px; */
     padding: 80px 32px 52px 32px;
   }
 
   @media (min-width: 1440px) {
     padding: 48px 32px 16px 24px;
-    /* width: 1440px; */
-    /* padding: 48px 24px 0 284px; */
   }
 `;
 
@@ -84,7 +79,6 @@ export const MainDashboardSectionTitle = styled.h2`
   margin: -1px;
   border: 0;
   padding: 0;
-
   white-space: nowrap;
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
