@@ -3,6 +3,7 @@ const sizes = {
   mobile: '375px',
   tablet: '768px',
   desktop: '1440px',
+  notdesktop: '1339px',
 };
 
 export const theme = Object.freeze({
@@ -18,7 +19,21 @@ export const theme = Object.freeze({
       card: '#121212', //Task(card) color
       cardDecor: 'rgba(255, 255, 255, 0.10)', //Card decor line color
       cardMajorText: '#fff', //Task(card) title color
-      cardMinorText: '#888888', //Task(card) description color
+      cardMinorText: '#888888', //Task(card) description color,
+      titleColor: '#fff', //Column title color,
+      iconFill: 'rgba(255, 255, 255, 0.5)', //Column icon fill,
+      iconHover: 'rgba(255, 255, 255, 1.0)', //Column icon hover,
+      buttonIconBackground: '#000', //button icon background,
+      buttonIconFill: '#fff', //button icon fill,
+      addButtonColor: '#161616', //Add (Edit) button color,
+      addButtonBackground: '#bedbb0', //Add (Edit) button Background,
+      addButtonHoverBackground: '#9dc888', //Add (Edit) button hover Background,
+      mainDashboardBackground: '#1f1f1f', //Main dashboard background color
+      addColumnButtonColor: '#fff', //Add column button color,
+      addColumnButtonBackground: '#121212', //Add column button Background,
+      addColumnButtonHoverBackground: '#000', //Add column button hover Background,
+      iconContainerBackground: '#fff', //Icon container Background,
+      addColumnIconFill: '#121212', // Add column icon fill
     },
     light: {
       background: '#F6F6F7', //Background color
@@ -32,6 +47,20 @@ export const theme = Object.freeze({
       cardDecor: 'rgba(22, 22, 22, 0.10)', //Card decor line color
       cardMajorText: '#161616', //Task(card) title color
       cardMinorText: '#5C5C5C', //Task(card) description color
+      titleColor: '#161616', //Column title color,
+      iconFill: 'rgba(22, 22, 22, 0.50)', //Column icon fill,
+      iconHover: 'rgba(22, 22, 22, 1.0)', //Column icon hover,
+      buttonIconBackground: '#000', //button icon background,
+      buttonIconFill: '#fff', //button icon fill,
+      addButtonColor: '#161616', //Add (Edit) button color,
+      addButtonBackground: '#bedbb0', //Add (Edit) button Background,
+      addButtonHoverBackground: '#9dc888', //Add (Edit) button hover Background,
+      mainDashboardBackground: 'F6F6F7', //Main dashboard background color
+      addColumnButtonColor: '#161616', //Add column button color,
+      addColumnButtonBackground: '#fff', //Add column button Background,
+      addColumnButtonHoverBackground: '#e5e5e5', //Add column button hover Background,
+      iconContainerBackground: '#000', //Icon container Background,
+      addColumnIconFill: '#fff', // Add column icon fill
     },
     violet: {
       background: '#ECEDFD', //Background color
@@ -45,6 +74,20 @@ export const theme = Object.freeze({
       cardDecor: 'rgba(22, 22, 22, 0.10)', //Card decor line color
       cardMajorText: '#161616', //Task(card) title color
       cardMinorText: '#5C5C5C', //Task(card) description color
+      titleColor: '#161616', //Column title color,
+      iconFill: 'rgba(22, 22, 22, 0.50)', //Column icon fill,
+      iconHover: 'rgba(22, 22, 22, 1.0)', //Column icon hover,
+      buttonIconBackground: '#fff', //button icon background,
+      buttonIconFill: '#161616', //button icon fill,
+      addButtonColor: '#161616', //Add (Edit) button color,
+      addButtonBackground: '#5255BC', //Add (Edit) button Background,
+      addButtonHoverBackground: '#7B7EDE', //Add (Edit) button hover Background,
+      mainDashboardBackground: '#ECEDFD', //Main dashboard background color
+      addColumnButtonColor: '#161616', //Add column button color,
+      addColumnButtonBackground: '#fff', //Add column button Background,
+      addColumnButtonHoverBackground: '#e5e5e5', //Add column button hover Background,
+      iconContainerBackground: '#5255BC;', //Icon container Background,
+      addColumnIconFill: '#fff', // Add column icon fill
     },
   },
   priority: {
@@ -58,5 +101,7 @@ export const theme = Object.freeze({
     mobile: `(min-width: ${sizes.mobile})`,
     tablet: `(min-width: ${sizes.tablet})`,
     desktop: `(min-width: ${sizes.desktop})`,
+    notdesktop: `(max-width: ${sizes.desktop})`,
   },
+  baseTransition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
 });

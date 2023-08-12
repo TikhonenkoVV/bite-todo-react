@@ -1,17 +1,24 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
+import { theme } from 'styles';
 
 export const Container = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 40px;
+  padding: 24px;
   border-radius: 8px;
   background: #151515;
 
-  width: 424px;
-  min-height: 332px;
+  width: 100%;
+  min-height: 300px;
+
+  @media ${theme.devices.mobile} {
+    width: 335px;
+  }
+
+  @media ${theme.devices.tablet} {
+    padding: 40px;
+    width: 424px;
+    min-height: 332px;
+  }
 `;
 
 export const AuthNavWrapper = styled.div`
@@ -59,6 +66,7 @@ export const Input = styled.input`
     opacity: 1;
     border: 1px solid #bedbb0;
   }
+
 `;
 
 export const InputWrapper = styled.div`
@@ -69,11 +77,12 @@ export const InputWrapper = styled.div`
   width: 100%;
   height: 49px;
   margin-top: 14px;
+
 `;
 
 export const Button = styled.button`
   display: flex;
-  width: 344px;
+  width: 100%;
   height: 49px;
   justify-content: center;
   align-items: center;
@@ -89,6 +98,14 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     background: #9dc888;
+  }
+
+  @media ${theme.devices.mobile} {
+    width: 287px;
+  }
+
+  @media ${theme.devices.tablet} {
+    width: 344px;
   }
 `;
 
