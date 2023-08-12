@@ -6,14 +6,20 @@ import {
   UlListStyled,
   LiStyled,
 } from './ThemeSelector.styled';
+import { useDispatch } from 'react-redux';
+import { setTheme } from 'store/theme/operations';
 
 const ThemeSelector = () => {
-  const [theme, setTheme] = useState('');
+  const [currentTheme, setCurrentTheme] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleThemeChange = event => {
     event.stopPropagation();
-    setTheme(event.target.innerText);
+    const themeName = event.target.innerText;
+    setCurrentTheme(themeName);
+    dispatch(setTheme(themeName));
     setIsOpen(false);
   };
 
@@ -37,7 +43,7 @@ const ThemeSelector = () => {
   return (
     <DivStyled>
       <BtnSelectStyled onClick={handleClick}>
-        {theme === '' ? 'Theme' : theme}
+        {currentTheme === '' ? 'Theme' : currentTheme}
       </BtnSelectStyled>
       <DivListStyled isOpen={isOpen} onClick={e => e.stopPropagation()}>
         <UlListStyled>

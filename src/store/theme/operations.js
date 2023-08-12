@@ -7,9 +7,11 @@ export const biteTodoInnstance = axios.create({
 
 export const setTheme = createAsyncThunk(
   'theme/selectTheme',
-  async (theme, { rejectWithValue }) => {
+  async (themeName, { rejectWithValue }) => {
     try {
-      const { data } = await biteTodoInnstance.patch('/auth/theme', theme);
+      const { data } = await biteTodoInnstance.patch('/auth', {
+        theme: themeName,
+      });
       return data.theme;
     } catch (error) {
       return rejectWithValue({
