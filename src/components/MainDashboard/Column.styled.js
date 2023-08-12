@@ -22,7 +22,7 @@ export const ColumnTitle = styled.h3`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  color: ${props => props.theme.colors[currTheme].columnTitleColor};
+  color: ${props => props.theme.colors[currTheme].titleColor};
 `;
 
 export const IconContainer = styled.div`
@@ -37,11 +37,11 @@ export const IconContainer = styled.div`
 export const TitleIcon = styled.svg`
   width: 16px;
   height: 16px;
-  fill: ${props => props.theme.colors[currTheme].columnIconFill};
+  fill: ${props => props.theme.colors[currTheme].iconFill};
   transition: fill ${props => props.theme.baseTransition};
   &:hover,
   &:focus {
-    fill: ${props => props.theme.colors[currTheme].columnIconHover};
+    fill: ${props => props.theme.colors[currTheme].iconHover};
   }
 `;
 
@@ -64,13 +64,14 @@ export const AddCardButton = styled.button`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  color: #161616;
   border-radius: 8px;
-  background: #bedbb0;
+  color: ${props => props.theme.colors[currTheme].addButtonColor};
+  background: ${props => props.theme.colors[currTheme].addButtonBackground};
   transition: background ${props => props.theme.baseTransition};
   &:hover,
   &:focus {
-    background: #9dc888;
+    background: ${props =>
+      props.theme.colors[currTheme].addButtonHoverBackground};
   }
 `;
 
@@ -80,14 +81,12 @@ export const AddCardIconContainer = styled.div`
   justify-content: center;
   width: 28px;
   height: 28px;
-  /* background: #fff; */
-  background: #000;
+  background: ${props => props.theme.colors[currTheme].buttonIconBackground};
   border-radius: 6px;
 `;
 
 export const AddCardIcon = styled.svg`
   width: 14px;
   height: 14px;
-  /* fill: #121212; */
-  fill: #fff;
+  fill: ${props => props.theme.colors[currTheme].buttonIconFill};
 `;
