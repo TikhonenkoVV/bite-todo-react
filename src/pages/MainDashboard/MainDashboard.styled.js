@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const MainDashboardSection = styled.section`
   position: relative;
-  background-color: ${props => props.theme.colors.mainDashboardBackground};
+  background-color: ${props => props.theme.colors.background};
   background-image: ${props =>
     props.background !== 'default'
       ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}.jpg")`
@@ -55,9 +55,9 @@ export const MainDashboardContainer = styled.div`
   height: 100%;
   padding: 74px 20px 24px 20px;
   overflow-x: auto;
+  display: flex;
 
   @media (min-width: 768px) {
-    display: flex;
     gap: 34px;
     padding: 80px 32px 52px 32px;
   }
