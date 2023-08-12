@@ -15,8 +15,8 @@ export const FormContainer = styled.div`
   max-width: 335px;
   padding: 24px;
   border-radius: 8px;
-  background: #151515;
-  border: 1px solid rgba(190, 219, 176, 0.5);
+  background: ${props => props.theme.colors.formBackgroundColor};
+  border: 1px solid ${props => props.theme.colors.formBorderColor};
   /* background: #fcfcfc; */
   @media (min-width: 768px) {
     min-width: 350px;
@@ -29,13 +29,13 @@ export const FormInput = styled(Field)`
   height: 49px;
   font-size: 14px;
   font-weight: 400;
-  color: #fff;
+  color: ${props => props.theme.colors.formInputColor};
   /* color: #161616; */
   line-height: normal;
   letter-spacing: -0.28px;
-  background: #1f1f1f;
+  background-color: ${props => props.theme.colors.formInputBackground};
   border-radius: 8px;
-  border: 1px solid #bedbb0;
+  border: 1px solid ${props => props.theme.colors.formInputBorderColor};
   opacity: 0.4;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   &:hover,

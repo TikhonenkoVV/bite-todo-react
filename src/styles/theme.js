@@ -36,6 +36,9 @@ export const theme = Object.freeze({
       formTitleColor: '#fff', // form title color
       formBackgroundColor: '#151515', // form background color
       formBorderColor: 'rgba(190, 219, 176, 0.5)', // form border color
+      formInputColor: '#fff',
+      formInputBackground: '#1f1f1f',
+      formInputBorderColor: 'rgba(190, 219, 176, 0.5)',
     },
   },
   light: {
@@ -67,6 +70,9 @@ export const theme = Object.freeze({
       formTitleColor: '#161616', // form title color
       formBackgroundColor: '#FCFCFC', // form background color
       formBorderColor: 'rgba(190, 219, 176, 0.5)', // form border color
+      formInputColor: '#161616',
+      formInputBackground: '#fff',
+      formInputBorderColor: '#BEDBB0',
     },
   },
   violet: {
@@ -98,6 +104,9 @@ export const theme = Object.freeze({
       formTitleColor: '#161616', // form title color
       formBackgroundColor: '#151515;', // form background color
       formBorderColor: 'rgba(190, 219, 176, 0.5)', // form border color
+      formInputColor: '#fff',
+      formInputBackground: '#1f1f1f',
+      formInputBorderColor: '#5255BC',
     },
   },
 });

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { baseTransition } from 'styles';
 
 export const MainDashboardSection = styled.section`
   position: relative;
@@ -53,17 +54,17 @@ export const MainDashboardSection = styled.section`
 export const MainDashboardContainer = styled.div`
   min-height: calc(100vh - 64px);
   height: 100%;
-  padding: 74px 20px 24px 20px;
+  padding: 74px 0 24px 20px;
   overflow-x: auto;
   display: flex;
 
   @media (min-width: 768px) {
     gap: 34px;
-    padding: 80px 32px 52px 32px;
+    padding: 80px 0 52px 32px;
   }
 
   @media (min-width: 1440px) {
-    padding: 48px 32px 16px 24px;
+    padding: 48px 0 16px 24px;
   }
 `;
 
@@ -95,7 +96,7 @@ export const MainDashboardAddColumnButton = styled.button`
   border-radius: 8px;
   color: ${props => props.theme.colors.addColumnButtonColor};
   background-color: ${props => props.theme.colors.addColumnButtonBackground};
-  transition: background ${props => props.theme.baseTransition};
+  transition: background ${baseTransition};
   &:hover,
   &:focus {
     background: ${props => props.theme.colors.addColumnButtonHoverBackground};
