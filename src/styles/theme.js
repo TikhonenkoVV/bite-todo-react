@@ -38,6 +38,7 @@ export const theme = Object.freeze({
       borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
       boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
       closeModalBtn: '#FFFFFF', // Close modal
+      closeModalBtnHover: 'rgba(255, 255, 255, 0.5)', // Modal close button hover
       backgroundUserImgWrapper: '#1F1F1F', // Background user wrapper
       backgroundAddIcon: '#bedbb0', // Background add icon
       textColorForm: '#FFFFFF', // Text color form
@@ -56,8 +57,6 @@ export const theme = Object.freeze({
       filterBtnColor: 'rgba(255, 255, 255, 0.5)', // Filter button(option) color
       filterBtnColorSelected: '#fff', // Selected filter button(option) color
       filterWithoutPriorityColor: 'rgba(255, 255, 255, 0.3)', // Filter button without priority (::before element bgd color)
-      modalCloseIconFill: 'rgba(255, 255, 255, 1.0)', // Modal close button fill
-      modalCloseIconHover: 'rgba(255, 255, 255, 0.5)', // Modal close button hover
     },
   },
   light: {
@@ -91,6 +90,7 @@ export const theme = Object.freeze({
       // borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
       boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
       closeModalBtn: '#161616', // Close modal
+      closeModalBtnHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
       backgroundUserImgWrapper: '#F6F6F7', // Background user wrapper
       backgroundAddIcon: '#bedbb0', // Background add icon
       textColorForm: '#161616', // Text color form
@@ -110,8 +110,6 @@ export const theme = Object.freeze({
       filterBtnColor: 'rgba(22, 22, 22, 0.5)', // Filter button(option) color
       filterBtnColorSelected: '#161616', // Selected filter button(option) color
       filterWithoutPriorityColor: 'rgba(22, 22, 22, 0.3)', // Filter button without priority (::before element bgd color)
-      modalCloseIconFill: 'rgba(22, 22, 22, 1.0)', // Modal close button fill
-      modalCloseIconHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
     },
   },
   violet: {
@@ -145,6 +143,7 @@ export const theme = Object.freeze({
       // borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
       boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
       closeModalBtn: '#161616', // Close modal
+      closeModalBtnHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
       backgroundUserImgWrapper: '#ECEDFD', // Background user wrapper
       backgroundAddIcon: '#ECEDFD', // Background add icon
       textColorForm: '#161616', // Text color form
@@ -164,8 +163,6 @@ export const theme = Object.freeze({
       filterBtnColor: 'rgba(22, 22, 22, 0.5)', // Filter button(option) color
       filterBtnColorSelected: '#161616', // Selected filter button(option) color
       filterWithoutPriorityColor: 'rgba(22, 22, 22, 0.3)', // Filter button without priority (::before element bgd color)
-      modalCloseIconFill: 'rgba(22, 22, 22, 1.0)', // Modal close button fill
-      modalCloseIconHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
     },
   },
 });

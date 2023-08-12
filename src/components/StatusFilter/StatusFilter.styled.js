@@ -76,11 +76,11 @@ export const CloseButton = styled.button`
   top: 14px;
   right: 14px;
   cursor: pointer;
-  fill: ${props => props.theme.colors.modalCloseIconFill};
+  fill: ${props => props.theme.colors.closeModalBtn};
   transition: fill ${baseTransition};
 
   &:hover,
   &:focus {
-    fill: ${props => props.theme.colors.modalCloseIconHover};
+    fill: ${props => props.theme.colors.closeModalBtnHover};
   }
 `;
