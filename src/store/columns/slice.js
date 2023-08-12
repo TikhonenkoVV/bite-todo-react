@@ -8,6 +8,7 @@ import {
   editTask,
   deleteTask,
 } from './operations';
+import { reorder, reorderCardsByColumnId } from '../../utils/dragAndDrop';
 
 const initialState = {
   columns: [],
@@ -18,6 +19,22 @@ const initialState = {
 const columnsSlice = createSlice({
   name: 'columns',
   initialState,
+  reducers: {
+    moveColumns: (state, { payload }) => {
+      state.columns = reorder(state.columns, payload.sourceIndex, payload.destinationIndex);
+    },
+    moveCards: (state, { payload }) => {
+      const cardsByColumnIdMap = state.columns.reduce((acc, column) => {
+        acc[column._id] = column.cards;
+
+        return acc;
+      }, {});
+      const updatedCardsByColumnIdMap = reorderCardsByColumnId(cardsByColumnIdMap, payload.source, payload.destination);
+      const newColumnsState = state.columns.map((column) => ({...column, cards: updatedCardsByColumnIdMap.cardsByColumnId[column._id]}))
+
+      state.columns = newColumnsState;
+    },
+  },
   extraReducers: buider => {
     buider
       .addCase(getColumns.pending, (state, { payload }) => {
@@ -124,3 +141,4 @@ const columnsSlice = createSlice({
 });
 
 export const columnsReducer = columnsSlice.reducer;
+export const columnsActions = columnsSlice.actions;
