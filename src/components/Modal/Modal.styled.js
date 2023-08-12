@@ -10,7 +10,7 @@ export const Backdrop = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 3;
+  z-index: 4;
   overflow: hidden;
 `;
 
