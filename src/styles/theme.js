@@ -34,6 +34,15 @@ export const theme = Object.freeze({
       addColumnButtonHoverBackground: '#000', //Add column button hover Background,
       iconContainerBackground: '#fff', //Icon container Background,
       addColumnIconFill: '#121212', // Add column icon fill
+      filterColor: 'rgba(255, 255, 255, 0.8)', // Dashboard filter color
+      filterContainerBackground: '#151515', // Dashboard filter modal background
+      filterContainerShadow: 'none', // Dashboard filter modal shadow
+      filterDecorativeElement: '2px solid #000', // Dashboard filter modal (slected button ::after element color)
+      filterBtnColor: 'rgba(255, 255, 255, 0.5)', // Filter button(option) color
+      filterBtnColorSelected: '#fff', // Selected filter button(option) color
+      filterWithoutPriorityColor: 'rgba(255, 255, 255, 0.3)', // Filter button without priority (::before element bgd color)
+      modalCloseIconFill: 'rgba(255, 255, 255, 1.0)', // Modal close button fill
+      modalCloseIconHover: 'rgba(255, 255, 255, 0.5)', // Modal close button hover
     },
   },
   light: {
@@ -63,6 +72,15 @@ export const theme = Object.freeze({
       addColumnButtonHoverBackground: '#e5e5e5', //Add column button hover Background,
       iconContainerBackground: '#000', //Icon container Background,
       addColumnIconFill: '#fff', // Add column icon fill
+      filterColor: 'rgba(22, 22, 22, 0.8)', // Dashboard filter color
+      filterContainerBackground: '#FCFCFC', // Dashboard filter modal background
+      filterContainerShadow: '0px 4px 16px 0px rgba(22, 22, 22, 0.05)', // Dashboard filter modal shadow
+      filterDecorativeElement: '2px solid #fff', // Dashboard filter modal (slected button ::after element color)
+      filterBtnColor: 'rgba(22, 22, 22, 0.5)', // Filter button(option) color
+      filterBtnColorSelected: '#161616', // Selected filter button(option) color
+      filterWithoutPriorityColor: 'rgba(22, 22, 22, 0.3)', // Filter button without priority (::before element bgd color)
+      modalCloseIconFill: 'rgba(22, 22, 22, 1.0)', // Modal close button fill
+      modalCloseIconHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
     },
   },
   violet: {
@@ -92,6 +110,15 @@ export const theme = Object.freeze({
       addColumnButtonHoverBackground: '#e5e5e5', //Add column button hover Background,
       iconContainerBackground: '#5255BC;', //Icon container Background,
       addColumnIconFill: '#fff', // Add column icon fill
+      filterColor: 'rgba(22, 22, 22, 0.8)', // Dashboard filter color
+      filterContainerBackground: '#FCFCFC', // Dashboard filter modal background
+      filterContainerShadow: '0px 4px 16px 0px rgba(22, 22, 22, 0.05)', // Dashboard filter modal shadow
+      filterDecorativeElement: '2px solid #fff', // Dashboard filter modal (slected button ::after element color)
+      filterBtnColor: 'rgba(22, 22, 22, 0.5)', // Filter button(option) color
+      filterBtnColorSelected: '#161616', // Selected filter button(option) color
+      filterWithoutPriorityColor: 'rgba(22, 22, 22, 0.3)', // Filter button without priority (::before element bgd color)
+      modalCloseIconFill: 'rgba(22, 22, 22, 1.0)', // Modal close button fill
+      modalCloseIconHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
     },
   },
 });

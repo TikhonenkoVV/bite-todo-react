@@ -1,9 +1,10 @@
-import StatusFilterButton from 'components/StatusFilterButton';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { selectStatusFilter } from 'store/filter/selectors';
 import { statusFilters } from 'store/filter/constants';
 import { setStatusFilter } from 'store/filter/filterSlice';
+import StatusFilterButton from 'components/StatusFilterButton';
 import sprite from '../../img/icons/sprite.svg';
 
 import {
@@ -35,7 +36,7 @@ const options = [
   },
 ];
 
-const StatusFilter = ({ onClose, theme }) => {
+const StatusFilter = ({ onClose }) => {
   const dispatch = useDispatch();
 
   const handleFilterChange = filter => dispatch(setStatusFilter(filter));
@@ -61,19 +62,18 @@ const StatusFilter = ({ onClose, theme }) => {
   const filter = useSelector(selectStatusFilter);
 
   return (
-    <StatusFilterContainer theme={theme}>
-      <CloseButton theme={theme} onClick={() => onClose()}>
+    <StatusFilterContainer>
+      <CloseButton onClick={() => onClose()}>
         <svg width={18} height={18}>
           <use href={`${sprite}${path}`}></use>
         </svg>
       </CloseButton>
-      <StatusFilterMainText theme={theme}>Filter</StatusFilterMainText>
+      <StatusFilterMainText>Filter</StatusFilterMainText>
       <StatusFilterBox>
-        <StatusFilterLabel theme={theme}>Label color</StatusFilterLabel>
+        <StatusFilterLabel>Label color</StatusFilterLabel>
 
         <StatusFilterShowAll
           type="button"
-          theme={theme}
           selected={!filter.priority}
           onClick={() => onChangeFilterClick('Show all')}
         >
@@ -87,7 +87,6 @@ const StatusFilter = ({ onClose, theme }) => {
               selected={filter.statusText === text}
               onClick={() => onChangeFilterClick(text)}
               color={color}
-              theme={theme}
             >
               {text}
             </StatusFilterButton>
@@ -100,7 +99,6 @@ const StatusFilter = ({ onClose, theme }) => {
 
 StatusFilter.propTypes = {
   onClose: PropTypes.func.isRequired,
-  theme: PropTypes.string.isRequired,
 };
 
 export default StatusFilter;
