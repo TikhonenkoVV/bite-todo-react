@@ -17,13 +17,10 @@ const DashboardHeader = ({ name, disabled, theme = 'dark' }) => {
   const iconName = '#icon-filter';
   return (
     <>
-      {name && (
-        <DashboardHeaderTitle theme={theme}>{name}</DashboardHeaderTitle>
-      )}
+      {name && <DashboardHeaderTitle>{name}</DashboardHeaderTitle>}
 
       <DashboardHeaderFilter
         type="button"
-        theme={theme}
         onClick={openModal}
         disabled={disabled}
       >
@@ -43,7 +40,6 @@ const DashboardHeader = ({ name, disabled, theme = 'dark' }) => {
 DashboardHeader.propTypes = {
   name: PropTypes.string,
   disabled: PropTypes.bool.isRequired,
-  theme: PropTypes.string.isRequired,
 };
 
 export default DashboardHeader;
