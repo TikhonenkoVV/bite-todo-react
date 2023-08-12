@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+const currTheme = 'dark';
+
 export const ColumnContainer = styled.div`
   max-width: 335px;
 `;
@@ -12,7 +14,7 @@ export const ColumnTitleContainer = styled.div`
   padding: 18px 20px 17px 20px;
   height: 56px;
   border-radius: 8px;
-  background: #121212;
+  background-color: ${props => props.theme.colors[currTheme].card};
 `;
 
 export const ColumnTitle = styled.h3`
@@ -20,7 +22,7 @@ export const ColumnTitle = styled.h3`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  color: #fff;
+  color: ${props => props.theme.colors[currTheme].titleColor};
 `;
 
 export const IconContainer = styled.div`
@@ -35,8 +37,12 @@ export const IconContainer = styled.div`
 export const TitleIcon = styled.svg`
   width: 16px;
   height: 16px;
-  /* fill: #121212; */
-  fill: rgba(255, 255, 255, 0.5);
+  fill: ${props => props.theme.colors[currTheme].iconFill};
+  transition: fill ${props => props.theme.baseTransition};
+  &:hover,
+  &:focus {
+    fill: ${props => props.theme.colors[currTheme].iconHover};
+  }
 `;
 
 export const IconButton = styled.button`
@@ -58,13 +64,14 @@ export const AddCardButton = styled.button`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  color: #161616;
   border-radius: 8px;
-  background: #bedbb0;
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: ${props => props.theme.colors[currTheme].addButtonColor};
+  background: ${props => props.theme.colors[currTheme].addButtonBackground};
+  transition: background ${props => props.theme.baseTransition};
   &:hover,
   &:focus {
-    background: #9dc888;
+    background: ${props =>
+      props.theme.colors[currTheme].addButtonHoverBackground};
   }
 `;
 
@@ -74,14 +81,12 @@ export const AddCardIconContainer = styled.div`
   justify-content: center;
   width: 28px;
   height: 28px;
-  /* background: #fff; */
-  background: #000;
+  background: ${props => props.theme.colors[currTheme].buttonIconBackground};
   border-radius: 6px;
 `;
 
 export const AddCardIcon = styled.svg`
   width: 14px;
   height: 14px;
-  /* fill: #121212; */
-  fill: #fff;
+  fill: ${props => props.theme.colors[currTheme].buttonIconFill};
 `;
