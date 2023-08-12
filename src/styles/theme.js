@@ -35,12 +35,6 @@ export const theme = Object.freeze({
       iconContainerBackground: '#fff', //Icon container Background,
       addColumnIconFill: '#121212', // Add column icon fill
     },
-    priority: {
-      without: '#656565',
-      low: '#8FA1D0',
-      medium: '#E09CB5',
-      high: '#BEDBB0',
-    },
   },
   light: {
     colors: {
@@ -69,12 +63,6 @@ export const theme = Object.freeze({
       addColumnButtonHoverBackground: '#e5e5e5', //Add column button hover Background,
       iconContainerBackground: '#000', //Icon container Background,
       addColumnIconFill: '#fff', // Add column icon fill
-    },
-    priority: {
-      without: '#656565',
-      low: '#8FA1D0',
-      medium: '#E09CB5',
-      high: '#BEDBB0',
     },
   },
   violet: {
@@ -105,12 +93,6 @@ export const theme = Object.freeze({
       iconContainerBackground: '#5255BC;', //Icon container Background,
       addColumnIconFill: '#fff', // Add column icon fill
     },
-    priority: {
-      without: '#656565',
-      low: '#8FA1D0',
-      medium: '#E09CB5',
-      high: '#BEDBB0',
-    },
   },
 });
 
@@ -123,3 +105,10 @@ export const devices = {
 };
 
 export const baseTransition = '250ms cubic-bezier(0.4, 0, 0.2, 1)';
+
+export const priority = {
+  without: '#656565',
+  low: '#8FA1D0',
+  medium: '#E09CB5',
+  high: '#BEDBB0',
+};
