@@ -1,19 +1,11 @@
 import styled from '@emotion/styled';
+import { theme } from '../../styles/theme';
+
+const currTheme = 'dark';
 
 export const MainDashboardSection = styled.section`
   position: relative;
-  background-color: ${props => {
-    switch (props.theme) {
-      case 'dark':
-        return '#1f1f1f';
-      case 'violet':
-        return '#ECEDFD';
-      case 'white':
-        return '#F6F6F7';
-      default:
-        return '#1f1f1f';
-    }
-  }};
+  background-color: ${theme.colors[currTheme].mainDashboardBackground};
   background-image: ${props =>
     props.background !== 'default'
       ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}.jpg")`
@@ -111,16 +103,13 @@ export const MainDashboardAddColumnButton = styled.button`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  color: #fff;
-  /* color: #161616; */
   border-radius: 8px;
-  background: #121212;
-  /* background: #fff; */
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: ${theme.colors[currTheme].addColumnButtonColor};
+  background-color: ${theme.colors[currTheme].addColumnButtonBackground};
+  transition: background ${theme.baseTransition};
   &:hover,
   &:focus {
-    background: #000;
-    /* background: #e5e5e5; */
+    background: ${theme.colors[currTheme].addColumnButtonHoverBackground};
   }
 `;
 
@@ -130,16 +119,14 @@ export const MainDashboardIconContainer = styled.div`
   justify-content: center;
   width: 28px;
   height: 28px;
-  background: #fff;
-  /* background: #000; */
+  background-color: ${theme.colors[currTheme].iconContainerBackground};
   border-radius: 6px;
 `;
 
 export const MainDashboardIcon = styled.svg`
   width: 14px;
   height: 14px;
-  fill: #121212;
-  /* fill: #fff; */
+  fill: ${theme.colors[currTheme].addColumnIconFill};
 `;
 
 export const FilterContainer = styled.div`
@@ -155,6 +142,5 @@ export const ContentWrapper = styled.div`
   width: max-content;
   height: 100%;
   display: flex;
-  flex-flow: row nowrap;
   gap: 34px;
 `;
