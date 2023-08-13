@@ -22,3 +22,19 @@ export const CardListStyled = styled.ul`
   max-width: 335px;
   min-height: 100%;
 `;
+
+export const TrackVertical = styled.div`
+  background-color: ${props =>
+    props.theme.colors.columnTrackVerticalBackground};
+  right: 0;
+  bottom: 0;
+  top: 2px;
+  border-radius: 12px;
+  width: 8px !important;
+`;
+
+export const ThumbVertical = styled.div`
+  border-radius: 12px;
+  background-color: ${props =>
+    props.theme.colors.columnThumbVerticalBackground};
+`;
