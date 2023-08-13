@@ -56,13 +56,13 @@ export const App = () => {
   }, [dispatch, authError]);
 
   useEffect(() => {
-    if (selectedTheme === 'dark') {
+    if (selectedTheme.toLowerCase() === 'dark') {
       setCurrTheme({ ...theme.dark });
     }
-    if (selectedTheme === 'light') {
+    if (selectedTheme.toLowerCase() === 'light') {
       setCurrTheme({ ...theme.light });
     }
-    if (selectedTheme === 'violet') {
+    if (selectedTheme.toLowerCase() === 'violet') {
       setCurrTheme({ ...theme.violet });
     }
   }, [selectedTheme]);
