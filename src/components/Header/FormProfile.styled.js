@@ -14,9 +14,9 @@ export const FromStyled = styled(Form)`
 export const FieldStyled = styled(Field)`
   width: 100%;
   padding: 14px 18px;
-  color: #ffffff;
+  color: ${props => props.theme.colors.textColorForm};
   border-radius: 8px;
-  border: 1px solid #bedbb0;
+  border: 1px solid ${props => props.theme.colors.borderInputColor};
   opacity: 0.4;
   background-color: transparent;
   margin-top: 14px;
@@ -34,13 +34,13 @@ export const FieldStyled = styled(Field)`
   }
 
   &:focus {
-    border: 1px solid #bedbb0;
+    border: 1px solid ${props => props.theme.colors.borderInputColor};
     opacity: 1;
   }
 `;
 
 export const ErrorStyled = styled.p`
-  color: #ed4337;
+  color: ${props => props.theme.colors.errorColor};
   font-family: Poppins;
   font-size: 12px;
   margin-top: 8px;
@@ -65,15 +65,15 @@ export const BtnShowPassword = styled.button`
   align-items: center;
   justify-content: center;
   background: transparent;
-  color: rgba(255, 255, 255, 1);
+  color: ${props => props.theme.colors.eyeShowPassColor};
 `;
 
 export const BtnSubmitStyled = styled.button`
   width: 100%;
   padding: 14px 0;
   margin-top: 24px;
-  background-color: #bedbb0;
-  color: #161616;
+  background-color: ${props => props.theme.colors.addButtonBackground};
+  color: ${props => props.theme.colors.addButtonColor};
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

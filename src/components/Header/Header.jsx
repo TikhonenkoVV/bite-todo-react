@@ -5,13 +5,7 @@ import sprite from '../../img/icons/sprite.svg'
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { StyledHeader, DivBtnStyle, StyledNav } from './Header.styled';
 
-import { useSelector } from 'react-redux';
-import { selectUser } from 'store/auth/selectors';
-
 const Header = ({ menuActive, setMenuActive, toggleMenu }) => {
-
-  const user = useSelector(selectUser)
-  console.log(user);
 
   useEffect(() => {
     const handleKeyDown = e => {
