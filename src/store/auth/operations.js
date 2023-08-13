@@ -2,9 +2,10 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { store } from 'store/store';
 import { forcedLogout } from './slice';
+import { BASE_URL } from 'services/constants';
 
 export const biteTodoInnstance = axios.create({
-  baseURL: 'https://bite-todo-rest-api.onrender.com/api',
+  baseURL: `${BASE_URL}/api`,
 });
 
 const setAuthHeader = token => {

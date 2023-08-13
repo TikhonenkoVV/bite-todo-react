@@ -12,7 +12,7 @@ import { Layout } from './Layout/Layout';
 import Welcome from '../pages/Welcome/Welcome';
 import { Auth } from '../pages/Auth/Auth';
 import { ThemeProvider } from '@emotion/react';
-import { theme } from 'styles';
+import { theme, devices, baseTransition, priority } from 'styles';
 
 const MainDashboard = lazy(() =>
   import('../pages/MainDashboard/MainDashboard')
@@ -20,7 +20,12 @@ const MainDashboard = lazy(() =>
 
 export const App = () => {
   const dispatch = useDispatch();
-  const [currTheme, setCurrTheme] = useState({ ...theme.dark });
+  const [currTheme, setCurrTheme] = useState({
+    ...theme.dark,
+    devices,
+    baseTransition,
+    priority,
+  });
   const selectedTheme = useSelector(selectTheme);
   const { isRefreshing, authError } = useAuth();
 
@@ -57,13 +62,13 @@ export const App = () => {
 
   useEffect(() => {
     if (selectedTheme.toLowerCase() === 'dark') {
-      setCurrTheme({ ...theme.dark });
+      setCurrTheme({ ...theme.dark, devices, baseTransition, priority });
     }
     if (selectedTheme.toLowerCase() === 'light') {
-      setCurrTheme({ ...theme.light });
+      setCurrTheme({ ...theme.light, devices, baseTransition, priority });
     }
     if (selectedTheme.toLowerCase() === 'violet') {
-      setCurrTheme({ ...theme.violet });
+      setCurrTheme({ ...theme.violet, devices, baseTransition, priority });
     }
   }, [selectedTheme]);
 
