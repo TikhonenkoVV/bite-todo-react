@@ -63,7 +63,7 @@ export const Card = forwardRef(({
             <DeadlineDate>{formattedDeadline}</DeadlineDate>
           </div>
         </CardParamsWrapper>
-        <ToolsButtonBell type='button'>
+        <ToolsButtonBell type="button" pastDeadline={moment(deadline).isBefore(moment())}>
           <Svg w={16} h={16} use={`${sprite}#icon-bell`} />
         </ToolsButtonBell>
         <ToolsWrapper>
