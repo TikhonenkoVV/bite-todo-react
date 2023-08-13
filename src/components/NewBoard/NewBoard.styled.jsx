@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
+import { store } from 'store/store';
+
+import {devices, priority, baseTransition} from 'styles'
+const currTheme = store.getState().auth.user.theme
 
 export const FormBox = styled.div`
   position: relative;

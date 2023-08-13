@@ -24,6 +24,7 @@ import { Svg } from '../SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from 'store/boards/operations';
 import { selectBoardsState } from 'store/boards/selectors';
+import { store } from 'store/store';
 
 const iconNames = [
   'icon-Project',
@@ -57,8 +58,9 @@ const backgroundImages = [
 
 const NewBoard = ({ onClick }) => {
   const dispatch = useDispatch();
-
-  const scheme = 'dark';
+  
+  const scheme = store.getState().auth.user.theme;
+  console.log(scheme);
   const buttonStyles = {
     padding: '10px 0px 11px 0px',
     borderRadius: '8px',
