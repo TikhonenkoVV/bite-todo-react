@@ -76,6 +76,10 @@ export const theme = Object.freeze({
       formAddButtonHover: '#9dc888', //Form add button hover background color
       formIconAddButtonFill: '#fff', //Form add button icon fill
       createBoardContainerColor: 'rgba(255, 255, 255, 0.5)', //Create board container color
+      mainTrackHorizontalBackground: '#161616', //Main dashboard scroll background
+      mainThumbHorizontalBackground: 'rgba(255, 255, 255, 0.1)', //Main dashboard thumb background
+      columnTrackVerticalBackground: 'rgba(255, 255, 255, 0.1)', //Column scroll background
+      columnThumbVerticalBackground: '#121212', //Column thumb background
     },
   },
   light: {
@@ -129,9 +133,9 @@ export const theme = Object.freeze({
       borderInputColor: '#BEDBB0', // Border input color
       errorColor: '#ed4337', // Error color
       eyeShowPassColor: '#BEDBB0', // eye show password color
-      wrapperSelectorColor: 'rgba(255, 255, 255, 0.8)', // Wrapper selector color
+      wrapperSelectorColor: '#161616', // Wrapper selector color
       backgroundSelector: '#FCFCFC', // Background color selector
-      borderSelectorColor: '#BEDBB0', // Border selector
+      borderSelectorColor: 'rgba(22, 22, 22, 0.8)', // Border selector
       textSelectorColor: '#161616', // Text selector color
       hoverSelectorColor: '#BEDBB0', // Hover selector color
       boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
@@ -148,6 +152,10 @@ export const theme = Object.freeze({
       formAddButtonHover: '#9DC888', //Form add button hover background color
       formIconAddButtonFill: '#fff', //Form add button icon fill
       createBoardContainerColor: 'rgba(22, 22, 22, 0.70)', //Create board container color
+      mainTrackHorizontalBackground: '#FFF', //Main dashboard scroll background
+      mainThumbHorizontalBackground: '#E8E8E8', //Main dashboard thumb background
+      columnTrackVerticalBackground: '#E8E8E8', //Column scroll background
+      columnThumbVerticalBackground: 'rgba(22, 22, 22, 0.10)', //Column thumb background
     },
   },
   violet: {
@@ -201,9 +209,9 @@ export const theme = Object.freeze({
       borderInputColor: '##5255BC', // Border input color
       errorColor: '#ed4337', // Error color
       eyeShowPassColor: '#BEDBB0', // eye show password color
-      wrapperSelectorColor: 'rgba(255, 255, 255, 0.8)', // Wrapper selector color
+      wrapperSelectorColor: '#161616', // Wrapper selector color
       backgroundSelector: '#FCFCFC', // Background color selector
-      borderSelectorColor: '#ECEDFD', // Border selector
+      borderSelectorColor: 'rgba(22, 22, 22, 0.8)', // Border selector
       textSelectorColor: '#161616', // Text selector color
       hoverSelectorColor: '#5255BC', // Hover selector color
       boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
@@ -220,6 +228,10 @@ export const theme = Object.freeze({
       formAddButtonHover: '#7B7EDE', //Form add button hover background color
       formIconAddButtonFill: '#161616', //Form add button icon fill
       createBoardContainerColor: 'rgba(22, 22, 22, 0.70)', //Create board container color
+      mainTrackHorizontalBackground: '#FFF', //Main dashboard scroll background
+      mainThumbHorizontalBackground: '#B8BCFD', //Main dashboard thumb background
+      columnTrackVerticalBackground: '#FFF', //Column scroll background
+      columnThumbVerticalBackground: '#B8BCFD', //Column thumb background
     },
   },
 });

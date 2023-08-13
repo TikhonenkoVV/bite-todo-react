@@ -54,17 +54,17 @@ export const MainDashboardSection = styled.section`
 export const MainDashboardContainer = styled.div`
   min-height: calc(100vh - 64px);
   height: 100%;
-  padding: 74px 0 24px 20px;
+  padding: 74px 0 24px 0;
   overflow-x: auto;
   display: flex;
 
   @media (min-width: 768px) {
     gap: 34px;
-    padding: 80px 0 52px 32px;
+    padding: 80px 0 52px 0;
   }
 
   @media (min-width: 1440px) {
-    padding: 48px 0 16px 24px;
+    padding: 48px 0 16px 0;
   }
 `;
 
@@ -132,4 +132,39 @@ export const ContentWrapper = styled.div`
   width: max-content;
   height: 100%;
   display: flex;
+  margin-left: 20px;
+
+  @media (min-width: 768px) {
+    margin-left: 32px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-left: 24px;
+  }
+`;
+
+export const TrackHorizontal = styled.div`
+  min-height: 12px;
+  border-radius: 12px;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  @media (min-width: 768px) {
+    left: 32px;
+    right: 32px;
+  }
+
+  @media (min-width: 1440px) {
+    left: 24px;
+    right: 24px;
+  }
+  background-color: ${props =>
+    props.theme.colors.mainTrackHorizontalBackground};
+`;
+
+export const ThumbHorizontal = styled.div`
+  height: 12px;
+  border-radius: 12px;
+  background-color: ${props =>
+    props.theme.colors.mainThumbHorizontalBackground};
 `;

@@ -60,13 +60,12 @@ export const LinkWrapperStyled = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 14px;  
-  }
+  gap: 14px;
 `;
 
 export const LinkButtonStyled = styled(NavLink)`
   display: flex;
-  width: 335px;
+  width: 100%;
   padding: 14px 0px;
   justify-content: center;
   align-items: center;
@@ -75,6 +74,9 @@ export const LinkButtonStyled = styled(NavLink)`
   color: #ffffff;
   font-weight: 500;
   transition: color, background-color ${baseTransition};
+  @media screen and ${devices.mobile} {
+    width: 335px;
+  }
   @media screen and ${devices.tablet} {
     width: 344px;
   }
@@ -89,5 +91,27 @@ export const LinkStyled = styled(NavLink)`
   transition: color ${baseTransition};
   &:hover {
     color: #9dc888;
+  }
+`;
+
+export const GoogleBtn = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  height: 46px;
+  font-weight: 500;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: color, background-color ${baseTransition};
+  @media screen and ${props => props.theme.devices.mobile} {
+    width: 335px;
+  }
+  @media screen and ${props => props.theme.devices.tablet} {
+    width: 344px;
+  }
+  &:hover {
+    background-color: #9dc888;
   }
 `;

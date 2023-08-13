@@ -38,7 +38,7 @@ const backgroundImages = [
   { value: 'aurora', image: auroraImage },
 ];
 
-const BackgroundRadioButton = ({ value, checked, scheme }) => {
+const BackgroundRadioButton = ({ value, checked, theme }) => {
   const selectedImage = backgroundImages.find(
     imageObj => imageObj.value === value
   );
@@ -50,7 +50,7 @@ const BackgroundRadioButton = ({ value, checked, scheme }) => {
         src={selectedImage.image}
         alt={value}
         checked={checked}
-        scheme={scheme}
+        theme={theme}
       />
     </label>
   );
@@ -59,7 +59,7 @@ const BackgroundRadioButton = ({ value, checked, scheme }) => {
 BackgroundRadioButton.propTypes = {
   value: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
-  scheme: PropTypes.string,
+  theme: PropTypes.string,
 };
 
 export default BackgroundRadioButton;

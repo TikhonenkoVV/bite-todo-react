@@ -8,16 +8,19 @@ import {
   HeroStyled,
   ImgWrapperStyled,
   LinkWrapperStyled,
-  ImgSetStyled,  
+  ImgSetStyled,
   HeroTextStyled,
   LinkButtonStyled,
   LinkStyled,
+  GoogleBtn,
 } from './Welcome.styled';
 import { Loader } from 'components/Loader/Loader';
-import Logo from '../../components/Sidebar/Logo/Logo'
+import Logo from '../../components/Sidebar/Logo/Logo';
+import { Svg } from 'components/SvgIcon/SvgIcon';
+import sprite from '../../img/icons/sprite.svg';
+import { BASE_URL } from 'services/constants';
 
-
-const logoStyles = {  
+const logoStyles = {
   columnGap: 14,
   fontSize: 28,
   fontSizeTab: 40,
@@ -25,7 +28,7 @@ const logoStyles = {
   width: 40,
   height: 40,
   widthTab: 48,
-  heightTab: 48,  
+  heightTab: 48,
 };
 
 const Welcome = () => {
@@ -46,7 +49,7 @@ const Welcome = () => {
                 />
               </ImgSetStyled>
             </ImgWrapperStyled>
-            <Logo styles= {logoStyles}/>            
+            <Logo styles={logoStyles} />
             <HeroTextStyled>
               Supercharge your productivity and take control of your tasks with
               Task Pro - Don't wait, start achieving your goals now!
@@ -55,6 +58,10 @@ const Welcome = () => {
           <LinkWrapperStyled>
             <LinkButtonStyled to="auth/register">Registration</LinkButtonStyled>
             <LinkStyled to="auth/login">Log In</LinkStyled>
+            <GoogleBtn href={`${BASE_URL}/api/auth/google`}>
+              <Svg w={32} h={32} use={`${sprite}#icon-google`} />
+              Log In with Google
+            </GoogleBtn>
           </LinkWrapperStyled>
         </WelcomePageStyled>
       )}

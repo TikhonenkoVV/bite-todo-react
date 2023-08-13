@@ -16,6 +16,8 @@ import {
   FilterContainer,
   ContentHolder,
   ContentWrapper,
+  TrackHorizontal,
+  ThumbHorizontal,
 } from './MainDashboard.styled';
 import DashboardHeader from 'components/DashboardHeader/DashboardHeader';
 import { selectBoardsState } from 'store/boards/selectors';
@@ -48,26 +50,18 @@ const MainDashboard = () => {
               <Scrollbars
                 hideTracksWhenNotNeeded={true}
                 renderTrackHorizontal={({ style, ...props }) => (
-                  <div
+                  <TrackHorizontal
                     {...props}
                     style={{
                       ...style,
-                      width: '100%',
-                      height: '12px',
-                      borderRadius: '12px',
-                      bottom: 0,
-                      backgroundColor: '#161616',
                     }}
                   />
                 )}
                 renderThumbHorizontal={({ style, ...props }) => (
-                  <div
+                  <ThumbHorizontal
                     {...props}
                     style={{
                       ...style,
-                      height: '12px',
-                      borderRadius: '12px',
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
                     }}
                   />
                 )}
