@@ -144,17 +144,19 @@ export const ContentWrapper = styled.div`
 `;
 
 export const TrackHorizontal = styled.div`
-  width: 100%;
   min-height: 12px;
   border-radius: 12px;
   bottom: 0;
   left: 20px;
+  right: 20px;
   @media (min-width: 768px) {
     left: 32px;
+    right: 32px;
   }
 
   @media (min-width: 1440px) {
     left: 24px;
+    right: 24px;
   }
   background-color: ${props =>
     props.theme.colors.mainTrackHorizontalBackground};
