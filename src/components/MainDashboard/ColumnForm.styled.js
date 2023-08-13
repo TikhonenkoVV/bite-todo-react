@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
+import { baseTransition } from 'styles';
 
 export const FormTitle = styled.p`
   margin-bottom: 24px;
@@ -17,7 +18,6 @@ export const FormContainer = styled.div`
   border-radius: 8px;
   background: ${props => props.theme.colors.formBackgroundColor};
   border: 1px solid ${props => props.theme.colors.formBorderColor};
-  /* background: #fcfcfc; */
   @media (min-width: 768px) {
     min-width: 350px;
   }
@@ -30,7 +30,6 @@ export const FormInput = styled(Field)`
   font-size: 14px;
   font-weight: 400;
   color: ${props => props.theme.colors.formInputColor};
-  /* color: #161616; */
   line-height: normal;
   letter-spacing: -0.28px;
   background-color: ${props => props.theme.colors.formInputBackground};
@@ -45,7 +44,7 @@ export const FormInput = styled(Field)`
     outline: none;
   }
 
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background ${baseTransition};
 `;
 
 export const CloseButton = styled.button`
@@ -69,13 +68,13 @@ export const AddButton = styled.button`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  color: #161616;
+  color: ${props => props.theme.colors.formAddButtonColor};
   border-radius: 8px;
-  background: #bedbb0;
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: ${props => props.theme.colors.formAddButtonBackground};
+  transition: background ${baseTransition};
   &:hover,
   &:focus {
-    background: #9dc888;
+    background-color: ${props => props.theme.colors.formAddButtonHover};
   }
 `;
 
@@ -85,23 +84,20 @@ export const FormIconContainer = styled.div`
   justify-content: center;
   width: 28px;
   height: 28px;
-  /* background: #fff; */
-  background: #000;
+  background-color: ${props => props.theme.colors.formIconContainerBackground};
   border-radius: 6px;
 `;
 
 export const FormIcon = styled.svg`
   width: 14px;
   height: 14px;
-  /* fill: #121212; */
-  fill: #fff;
+  fill: ${props => props.theme.colors.formIconAddButtonFill};
 `;
 
 export const FormCloseIcon = styled.svg`
   width: 18px;
   height: 18px;
-  /* fill: #121212; */
-  fill: #fff;
+  fill: ${props => props.theme.colors.formTitleColor};
 `;
 
 export const ValidationError = styled.p`

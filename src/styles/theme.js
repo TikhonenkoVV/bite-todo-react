@@ -62,6 +62,12 @@ export const theme = Object.freeze({
       filterBtnColor: 'rgba(255, 255, 255, 0.5)', // Filter button(option) color
       filterBtnColorSelected: '#fff', // Selected filter button(option) color
       filterWithoutPriorityColor: 'rgba(255, 255, 255, 0.3)', // Filter button without priority (::before element bgd color)
+      formIconContainerBackground: '#161616', //Column form icon container background,
+      formAddButtonBackground: '#BEDBB0', //Form add button background
+      formAddButtonColor: '#161616', //Form add button text color
+      formAddButtonHover: '#9dc888', //Form add button hover background color
+      formIconAddButtonFill: '#fff', //Form add button icon fill
+      createBoardContainerColor: 'rgba(255, 255, 255, 0.5)', //Create board container color
     },
   },
   light: {
@@ -120,6 +126,12 @@ export const theme = Object.freeze({
       filterBtnColor: 'rgba(22, 22, 22, 0.5)', // Filter button(option) color
       filterBtnColorSelected: '#161616', // Selected filter button(option) color
       filterWithoutPriorityColor: 'rgba(22, 22, 22, 0.3)', // Filter button without priority (::before element bgd color)
+      formIconContainerBackground: '#161616', //Column form icon container background,
+      formAddButtonBackground: '#BEDBB0', //Form add button background
+      formAddButtonColor: '#161616', //Form add button text color
+      formAddButtonHover: '#9DC888', //Form add button hover background color
+      formIconAddButtonFill: '#fff', //Form add button icon fill
+      createBoardContainerColor: 'rgba(22, 22, 22, 0.70)', //Create board container color
     },
   },
   violet: {
@@ -149,10 +161,10 @@ export const theme = Object.freeze({
       iconContainerBackground: '#5255BC;', //Icon container Background,
       addColumnIconFill: '#fff', // Add column icon fill
       formTitleColor: '#161616', // form title color
-      formBackgroundColor: '#151515;', // form background color
+      formBackgroundColor: '#FCFCFC', // form background color
       formBorderColor: 'rgba(190, 219, 176, 0.5)', // form border color
-      formInputColor: '#fff',
-      formInputBackground: '#1f1f1f',
+      formInputColor: '#161616',
+      formInputBackground: '#fff',
       formInputBorderColor: '#5255BC',
       backgroundModal: '#FCFCFC', // Background modal
       // borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
@@ -178,6 +190,12 @@ export const theme = Object.freeze({
       filterBtnColor: 'rgba(22, 22, 22, 0.5)', // Filter button(option) color
       filterBtnColorSelected: '#161616', // Selected filter button(option) color
       filterWithoutPriorityColor: 'rgba(22, 22, 22, 0.3)', // Filter button without priority (::before element bgd color)
+      formIconContainerBackground: '#fff', //Column form icon container background,
+      formAddButtonBackground: '#5255BC', //Form add button background
+      formAddButtonColor: '#fff', //Form add button text color
+      formAddButtonHover: '#7B7EDE', //Form add button hover background color
+      formIconAddButtonFill: '#161616', //Form add button icon fill
+      createBoardContainerColor: 'rgba(22, 22, 22, 0.70)', //Create board container color
     },
   },
 });
