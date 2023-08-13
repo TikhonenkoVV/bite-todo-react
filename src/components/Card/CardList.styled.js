@@ -7,7 +7,7 @@ export const CardListContainer = styled.div`
   margin-bottom: 14px;
 
   @media (min-width: 768px) {
-    max-height: calc(100vh - 324px);
+    max-height: calc(100vh - 356px);
   }
 
   @media (min-width: 1440px) {
@@ -21,4 +21,20 @@ export const CardListStyled = styled.ul`
   gap: 8px;
   max-width: 335px;
   min-height: 100%;
+`;
+
+export const TrackVertical = styled.div`
+  background-color: ${props =>
+    props.theme.colors.columnTrackVerticalBackground};
+  right: 0;
+  bottom: 0;
+  top: 2px;
+  border-radius: 12px;
+  width: 8px !important;
+`;
+
+export const ThumbVertical = styled.div`
+  border-radius: 12px;
+  background-color: ${props =>
+    props.theme.colors.columnThumbVerticalBackground};
 `;
