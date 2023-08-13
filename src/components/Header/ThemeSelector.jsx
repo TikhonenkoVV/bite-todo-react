@@ -6,16 +6,24 @@ import {
   UlListStyled,
   LiStyled,
 } from './ThemeSelector.styled';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'store/auth/selectors';
+import { updateUser } from 'store/auth/operations';
 
 const ThemeSelector = () => {
-  const [theme, setTheme] = useState('');
+  const currentTheme = useSelector(selectTheme)
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleThemeChange = event => {
-    event.stopPropagation();
-    setTheme(event.target.innerText);
-    setIsOpen(false);
-  };
+  const dispatch = useDispatch();
+
+const handleThemeChange = event => {
+  event.stopPropagation();
+  const themeName = event.target.innerText;
+  dispatch(updateUser({ theme: themeName }));
+  setIsOpen(false);
+};
+
 
   const handleClick = event => {
     event.stopPropagation();
@@ -37,7 +45,7 @@ const ThemeSelector = () => {
   return (
     <DivStyled>
       <BtnSelectStyled onClick={handleClick}>
-        {theme === '' ? 'Theme' : theme}
+        {currentTheme === '' ? 'Theme' : currentTheme}
       </BtnSelectStyled>
       <DivListStyled isOpen={isOpen} onClick={e => e.stopPropagation()}>
         <UlListStyled>

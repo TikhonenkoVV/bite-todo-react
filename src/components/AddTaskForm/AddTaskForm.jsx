@@ -56,8 +56,7 @@ const initialValues = {
 
 export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
   const [deadline, setDeadline] = useState(new Date());
-  // const [showDateNotification, setShowDateNotification] = useState(true);
-  // console.log(deadline);
+  const [showDateNotification, setShowDateNotification] = useState(true);
   const dispatch = useDispatch();
   const deadlinePickerRef = useRef(null);
 
@@ -83,7 +82,6 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
 
   const handleDeadlineClick = () => {
     if (deadlinePickerRef.current) {
-      // setShowDateNotification(false);
       deadlinePickerRef.current.setOpen(true);
     }
   };
@@ -110,10 +108,12 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
   };
 
   const handleDateChange = date => {
-    console.log(date);
     if (date && date < new Date()) {
       alert('Deadline cannot be before today.');
       return;
+    }
+    if (date !== new Date()) {
+      setShowDateNotification(false);
     }
     formik.setFieldValue('deadline', date);
     setDeadline(date);
@@ -207,6 +207,9 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
             >
               <use xlinkHref={`${sprite}#icon-chevron-down`} />
             </svg>
+            {showDateNotification && (
+              <p style={{ marginLeft: 16 }}>Please select date</p>
+            )}
             {/* {showDateNotification && (
     <div style={{ marginLeft: '5px', color: 'white', fontSize: '12px' }}>
       Please select a deadline date
