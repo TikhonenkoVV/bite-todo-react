@@ -69,11 +69,8 @@ export const StyledTextArea = styled.textarea`
     width: 5px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: red;
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: red;
+    background-color: ${props => props.theme.colors.formTitleColor};
+    border-radius: 5px;
   }
 
   &:focus {
