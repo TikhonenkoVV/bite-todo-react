@@ -4,11 +4,11 @@ import flower from 'img/flower.png';
 
 export const DivStyled = styled.div`
   padding: 14px;
-  margin: 0 auto;
+  margin-left: 14px;
   width: 197px;
   height: 238px;
   border-radius: 8px;
-  background-color: #1f1f1f;
+  background-color: ${props => props.theme.colors.helpBackground};
 
   font-family: Poppins;
   font-size: 12px;
@@ -44,7 +44,7 @@ export const PStyled = styled.p`
 
 export const CodeStyled = styled.code`
   font-family: Poppins;
-  color: #bedbb0;
+  color: ${props => props.theme.colors.addButtonBackground};
 `;
 
 export const ButtonStyled = styled.button`

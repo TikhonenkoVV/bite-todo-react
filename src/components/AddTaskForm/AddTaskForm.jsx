@@ -55,8 +55,9 @@ const initialValues = {
 };
 
 export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
-  const [deadline, setDeadline] = useState('');
-
+  const [deadline, setDeadline] = useState(new Date());
+  // const [showDateNotification, setShowDateNotification] = useState(true);
+  // console.log(deadline);
   const dispatch = useDispatch();
   const deadlinePickerRef = useRef(null);
 
@@ -82,6 +83,7 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
 
   const handleDeadlineClick = () => {
     if (deadlinePickerRef.current) {
+      // setShowDateNotification(false);
       deadlinePickerRef.current.setOpen(true);
     }
   };
@@ -95,10 +97,8 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
     ? moment(deadline).format('D MMMM YYYY')
     : CurrentDate();
 
-  
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      
       setDeadline(values.deadline);
       await dispatch(addTask({ ...values, boardId, columnId, taskId }));
       resetForm();
@@ -207,12 +207,20 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
             >
               <use xlinkHref={`${sprite}#icon-chevron-down`} />
             </svg>
+            {/* {showDateNotification && (
+    <div style={{ marginLeft: '5px', color: 'white', fontSize: '12px' }}>
+      Please select a deadline date
+    </div>
+  )} */}
           </Container>
+          {formik.touched.deadline && formik.errors.deadline ? (
+            <div>{formik.errors.deadline}</div>
+          ) : null}
           <StyledCustomCalendar
             className="custom-datepicker"
             ref={deadlinePickerRef}
             name="deadline"
-            selected={formik.values.deadline}
+            selected={deadline || undefined}
             onChange={handleDateChange}
             locale="en"
             dateFormat="d MMMM yyyy"

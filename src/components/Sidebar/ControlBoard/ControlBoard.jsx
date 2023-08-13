@@ -24,12 +24,15 @@ import {
   LiStyled,
   TextStyled,
   UlStyled,
-  ScrollStyled,
+  ButtonEdit,
+  ButtonDelete,
 } from './ControlBoard.styled';
+import Scrollbars from 'react-custom-scrollbars-2';
+import { Notify } from 'notiflix';
 
 const ControlBoard = () => {
   const [idActiveBoard, setIdActiveBoard] = useState('');
-  const [lengthBoard, setlengthBoard] = useState(0);
+  const [lengthBoard, setlengthBoard] = useState(null);
 
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
@@ -78,7 +81,12 @@ const ControlBoard = () => {
   const handleDeleteBoard = id => {
     if (!columns.length) {
       dispatch(deleteBoards(id));
+      setlengthBoard(null);
+      return;
     }
+    Notify.warning(
+      'It is impossible to remove board when exists one or more columns'
+    );
   };
 
   return (
@@ -92,8 +100,9 @@ const ControlBoard = () => {
               <Svg w={18} h={18} use={`${sprite}#icon-plus`} />
             </ButtonStyled>
           </DivStyled>
-          <ScrollStyled
+          <Scrollbars
             style={{ width: '100% ', height: 'calc(100% - 575px)' }}
+            hideTracksWhenNotNeeded={true}
           >
             <UlStyled>
               {boards.map(board => (
@@ -118,21 +127,21 @@ const ControlBoard = () => {
                   </DivNameStyled>
                   {idActiveBoard === board._id && (
                     <DivIconStyled>
-                      <button type="button" onClick={openEditModal}>
+                      <ButtonEdit type="button" onClick={openEditModal}>
                         <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
-                      </button>
-                      <button
+                      </ButtonEdit>
+                      <ButtonDelete
                         type="button"
                         onClick={() => handleDeleteBoard(board._id)}
                       >
                         <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
-                      </button>
+                      </ButtonDelete>
                     </DivIconStyled>
                   )}
                 </LiStyled>
               ))}
             </UlStyled>
-          </ScrollStyled>
+          </Scrollbars>
           {isModalOpen && (
             <Modal onClose={closeModal}>
               <NewBoard onClick={closeModal} />

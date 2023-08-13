@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import Scrollbars from 'react-custom-scrollbars-2';
-import { devices } from 'styles';
+import { baseTransition, devices } from 'styles';
 
 export const H2styled = styled.h2`
   margin-top: 70px;
@@ -10,7 +9,7 @@ export const H2styled = styled.h2`
   font-size: 12px;
   font-weight: 400;
   letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.5);
+  color: ${props => props.theme.colors.boardTitleTextIcon};
   @media screen and ${devices.tablet} {
     margin-top: 60px;
     margin-left: 24px;
@@ -30,7 +29,7 @@ export const DivStyled = styled.div`
 
   border-top: 1px solid;
   border-bottom: 1px solid;
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: ${props => props.theme.colors.sidebarDecor};
   @media screen and ${devices.tablet} {
     margin-left: 24px;
     margin-right: 24px;
@@ -38,11 +37,11 @@ export const DivStyled = styled.div`
 `;
 
 export const PStyled = styled.p`
-  width: 76px;
+  width: 85px;
 
   font-family: Poppins;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: ${props => props.theme.colors.sideBarMainText};
 `;
 
 export const ButtonStyled = styled.button`
@@ -52,10 +51,15 @@ export const ButtonStyled = styled.button`
   width: 40px;
   height: 36px;
   border-radius: 6px;
-  background-color: #bedbb0;
-  color: #121212;
-
+  background-color: ${props => props.theme.colors.btnAddBoard};
+  color: ${props => props.theme.colors.btnAddBoardIcon};
+  transition: background-color ${baseTransition};
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.colors.btnAddBoardHover};
+  }
 `;
 
 export const UlStyled = styled.ul`
@@ -71,11 +75,11 @@ export const LiStyled = styled.li`
 
   width: 100%;
   height: 70px;
-
+  transition: background-color ${baseTransition};
   cursor: pointer;
 
   &.active {
-    background-color: #1f1f1f;
+    background-color: ${props => props.theme.colors.activeBoardBackground};
   }
 `;
 
@@ -86,11 +90,10 @@ export const DivNameStyled = styled.div`
   margin-left: 14px;
   margin-right: 14px;
 
-  color: rgba(255, 255, 255, 0.5);
+  color: ${props => props.theme.colors.boardTitleTextIcon};
 
   &.active {
-    background-color: #1f1f1f;
-    color: #fff;
+    color: ${props => props.theme.colors.sideBarMainText};
   }
   @media screen and ${devices.tablet} {
     column-gap: 8px;
@@ -99,12 +102,8 @@ export const DivNameStyled = styled.div`
 `;
 
 export const TextStyled = styled.p`
-  color: rgba(255, 255, 255, 0.5);
   font-family: Poppins;
   letter-spacing: -0.02em;
-  &.active {
-    color: #fff;
-  }
 `;
 
 export const DivIconStyled = styled.div`
@@ -114,7 +113,6 @@ export const DivIconStyled = styled.div`
   column-gap: 8px;
   padding-right: 18px;
   height: 100%;
-  color: rgba(255, 255, 255, 0.5);
 
   &::after {
     content: '';
@@ -122,15 +120,28 @@ export const DivIconStyled = styled.div`
     right: 0;
 
     width: 4px;
-    height: 100%;
+    height: 96%;
     border-radius: 8px 0 0 4px;
-    background-color: #bedbb0;
+    background-color: ${props => props.theme.colors.btnLogOut};
   }
 `;
 
-export const ScrollStyled = styled(Scrollbars)`
-  right: 0;
-  left: auto;
-  width: 16px;
-  border-radius: 4px;
+export const ButtonEdit = styled.button`
+  color: ${props => props.theme.colors.boardTitleTextIcon};
+  transition: color ${baseTransition};
+
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.sideBarMainText};
+  }
+`;
+
+export const ButtonDelete = styled.button`
+  color: ${props => props.theme.colors.boardTitleTextIcon};
+  transition: color ${baseTransition};
+
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.sideBarMainText};
+  }
 `;

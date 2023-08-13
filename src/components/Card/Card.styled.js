@@ -116,7 +116,11 @@ export const ToolsButtonBell = styled.button`
     width: 30px;
     height: 30px;
     transform: translate(-50%, -50%);
-    background-image: radial-gradient(circle, #bedbb070 0%, #bedbb000 70%);
+   background-image: ${props =>
+     props.pastDeadline
+       ? 'radial-gradient(circle, red 0%, rgba(255, 0, 0, 0) 70%)'
+       : 'radial-gradient(circle, #bedbb070 0%, #bedbb000 70%)'};
+  }
   }
 `;
 

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { baseTransition } from 'styles';
 
 export const ColumnContainer = styled.div`
   max-width: 335px;
@@ -36,7 +37,7 @@ export const TitleIcon = styled.svg`
   width: 16px;
   height: 16px;
   fill: ${props => props.theme.colors.iconFill};
-  transition: fill ${props => props.theme.baseTransition};
+  transition: fill ${baseTransition};
   &:hover,
   &:focus {
     fill: ${props => props.theme.colors.iconHover};
@@ -65,7 +66,7 @@ export const AddCardButton = styled.button`
   border-radius: 8px;
   color: ${props => props.theme.colors.addButtonColor};
   background: ${props => props.theme.colors.addButtonBackground};
-  transition: background ${props => props.theme.baseTransition};
+  transition: background ${baseTransition};
   &:hover,
   &:focus {
     background: ${props => props.theme.colors.addButtonHoverBackground};

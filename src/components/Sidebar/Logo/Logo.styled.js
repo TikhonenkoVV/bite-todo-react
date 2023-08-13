@@ -19,6 +19,7 @@ export const IconWrapperStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: ${props => props.theme.colors.btnLogOut};
   width: ${props => `${props.styles.width}px`};
   height: ${props => `${props.styles.height}px`};
 
