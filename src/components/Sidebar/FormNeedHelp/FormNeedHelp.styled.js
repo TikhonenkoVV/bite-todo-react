@@ -3,21 +3,26 @@ import { devices } from 'styles';
 
 export const StyledDiv = styled.div`
   position: relative;
-  box-sizing: border-box;
-  max-width: 335px;
-  color: #fff;
-  border-radius: 8px;
-  border: 1px solid rgba(190, 219, 176, 0.5);
-  background: #151515;
   padding: 24px;
+  color: ${props => props.theme.colors.formTitleColor};
+  border-radius: 8px;
+  border: 1px solid ${props => props.theme.colors.formBorderColor};
+  background: ${props => props.theme.colors.formBackgroundColor};
   font-family: Poppins;
+
+  width: 100%;
+
+  @media ${devices.mobile} {
+    width: 335px;
+  }
+
   @media screen and ${devices.tablet} {
     max-width: 400px;
   }
 `;
 
 export const StyledP = styled.p`
-  color: #ffffff;
+  /* color: #ffffff; */
   font-size: 18px;
   letter-spacing: -0.02em;
 `;
