@@ -7,21 +7,23 @@ import {
   LiStyled,
 } from './ThemeSelector.styled';
 import { useDispatch } from 'react-redux';
-import { setTheme } from 'store/theme/operations';
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'store/auth/selectors';
+import { updateUser } from 'store/auth/operations';
 
 const ThemeSelector = () => {
-  const [currentTheme, setCurrentTheme] = useState('');
+  const currentTheme = useSelector(selectTheme)
   const [isOpen, setIsOpen] = useState(false);
 
   const dispatch = useDispatch();
 
-  const handleThemeChange = event => {
-    event.stopPropagation();
-    const themeName = event.target.innerText;
-    setCurrentTheme(themeName);
-    dispatch(setTheme(themeName));
-    setIsOpen(false);
-  };
+const handleThemeChange = event => {
+  event.stopPropagation();
+  const themeName = event.target.innerText;
+  dispatch(updateUser({ theme: themeName }));
+  setIsOpen(false);
+};
+
 
   const handleClick = event => {
     event.stopPropagation();
