@@ -29,6 +29,20 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    forcedLogout: state => {
+      state.user = {
+        name: '',
+        email: '',
+        avatarURL: '',
+        theme: 'dark',
+      };
+      state.accessToken = null;
+      state.refreshToken = null;
+      state.isLoggedIn = false;
+      state.error = { message: '', status: '' };
+    },
+  },
   extraReducers: buider => {
     buider
       .addCase(register.pending, (state, { payload }) => {
@@ -125,4 +139,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { forcedLogout } = authSlice.actions;
 export const authReducer = authSlice.reducer;

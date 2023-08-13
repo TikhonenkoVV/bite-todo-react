@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const MainDashboardSection = styled.section`
   position: relative;
-  background-color: ${props => props.theme.colors.mainDashboardBackground} 
+  background-color: ${props => props.theme.colors.mainDashboardBackground};
   background-image: ${props =>
     props.background !== 'default'
       ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}.jpg")`
@@ -101,7 +101,7 @@ export const MainDashboardAddColumnButton = styled.button`
   line-height: normal;
   letter-spacing: -0.28px;
   border-radius: 8px;
-  color: ${props => props.theme.colors.addColumnButtonColor}
+  color: ${props => props.theme.colors.addColumnButtonColor};
   background-color: ${props => props.theme.colors.addColumnButtonBackground};
   transition: background ${props => props.theme.baseTransition};
   &:hover,
