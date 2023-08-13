@@ -7,7 +7,7 @@ export const CardListContainer = styled.div`
   margin-bottom: 14px;
 
   @media (min-width: 768px) {
-    max-height: calc(100vh - 324px);
+    max-height: calc(100vh - 356px);
   }
 
   @media (min-width: 1440px) {
