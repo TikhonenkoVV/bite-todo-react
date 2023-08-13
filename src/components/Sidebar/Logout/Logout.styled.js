@@ -1,11 +1,9 @@
 import styled from '@emotion/styled';
-import { devices } from 'styles';
+import { baseTransition, devices } from 'styles';
 
 export const ButtonStyled = styled.button`
   display: flex;
-
-  margin-top: 24px;
-  margin-left: 14px;
+  margin: 24px 0 14px 14px;
   column-gap: 14px;
   align-items: center;
 
@@ -13,14 +11,17 @@ export const ButtonStyled = styled.button`
 
   @media screen and ${devices.tablet} {
     margin-left: 24px;
+    margin-bottom: 24px;
   }
 `;
 
 export const Container = styled.div`
-  color: #bedbb0;
+  color: ${props => props.theme.colors.btnLogOut};
+  transition: color ${baseTransition};
+
   &:hover,
   &:focus {
-    color: #9dc888;
+    color: ${props => props.theme.colors.btnLogOutHover};
   }
 `;
 
