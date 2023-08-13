@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
+import { baseTransition } from 'styles';
 
 export const MainDashboardSection = styled.section`
   position: relative;
-  background-color: ${props => props.theme.colors.mainDashboardBackground};
+  background-color: ${props => props.theme.colors.background};
   background-image: ${props =>
     props.background !== 'default'
       ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Mobile/${props.background}.jpg")`
@@ -51,26 +52,19 @@ export const MainDashboardSection = styled.section`
 `;
 
 export const MainDashboardContainer = styled.div`
-  /* width: 375px; */
-
   min-height: calc(100vh - 64px);
   height: 100%;
-  padding: 74px 20px 24px 20px;
-  /* margin: 0 auto; */
-
+  padding: 74px 0 24px 20px;
   overflow-x: auto;
+  display: flex;
 
   @media (min-width: 768px) {
-    display: flex;
     gap: 34px;
-    /* width: 768px; */
-    padding: 80px 32px 52px 32px;
+    padding: 80px 0 52px 32px;
   }
 
   @media (min-width: 1440px) {
-    padding: 48px 32px 16px 24px;
-    /* width: 1440px; */
-    /* padding: 48px 24px 0 284px; */
+    padding: 48px 0 16px 24px;
   }
 `;
 
@@ -81,7 +75,6 @@ export const MainDashboardSectionTitle = styled.h2`
   margin: -1px;
   border: 0;
   padding: 0;
-
   white-space: nowrap;
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
@@ -103,7 +96,7 @@ export const MainDashboardAddColumnButton = styled.button`
   border-radius: 8px;
   color: ${props => props.theme.colors.addColumnButtonColor};
   background-color: ${props => props.theme.colors.addColumnButtonBackground};
-  transition: background ${props => props.theme.baseTransition};
+  transition: background ${baseTransition};
   &:hover,
   &:focus {
     background: ${props => props.theme.colors.addColumnButtonHoverBackground};

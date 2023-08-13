@@ -91,7 +91,7 @@ export const Container = styled.div`
   line-height: normal;
   letter-spacing: -0.28px;
   color: ${props => props.theme.colors.btnAddBoard};
-  margin-left: 24px;
+  /* margin-left: 24px; */
   justify-content: left;
   align-items: center;
   display: flex;
@@ -130,7 +130,6 @@ export const RadioInput = styled.input`
     margin-left: 1.5px;
     background-color: ${({ checked, color }) => (checked ? color : color)};
   }
-}
 `;
 
 export const PlusIconContainer = styled.div`
@@ -144,7 +143,7 @@ export const PlusIconContainer = styled.div`
   border-radius: 20%;
 `;
 
-export const StyledTitleDeadline = styled.span`
+export const StyledTitleDeadline = styled.div`
   color: ${props => props.theme.colors.cardMinorText};
   font-family: Poppins;
   font-size: 12px;
@@ -174,4 +173,4 @@ export const StyledFormikColorNotification = styled.div`
   margin-left: 24px;
   color: ${props => props.theme.colors.btnAddColumn};
   font-size: 12px;
-}`;
+`;
