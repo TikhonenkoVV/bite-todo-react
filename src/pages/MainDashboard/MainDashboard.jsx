@@ -34,14 +34,9 @@ const MainDashboard = () => {
   const hasCards = columns.some(column => column.cards.length > 0);
 
   return (
-    <MainDashboardSection
-      background={selectedBoard?.background || 'default'}
-    >
+    <MainDashboardSection background={selectedBoard?.background || 'default'}>
       <FilterContainer>
-        <DashboardHeader
-          name={selectedBoard?.title}
-          disabled={!hasCards}
-        />
+        <DashboardHeader name={selectedBoard?.title} disabled={!hasCards} />
       </FilterContainer>
       <MainDashboardContainer>
         {boardName ? (
