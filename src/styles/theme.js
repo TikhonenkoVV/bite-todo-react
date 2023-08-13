@@ -39,6 +39,29 @@ export const theme = Object.freeze({
       formInputColor: '#fff',
       formInputBackground: '#1f1f1f',
       formInputBorderColor: 'rgba(190, 219, 176, 0.5)',
+      backgroundModal: '#151515', // Background modal
+      borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
+      boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
+      closeModalBtn: '#FFFFFF', // Close modal
+      closeModalBtnHover: 'rgba(255, 255, 255, 0.5)', // Modal close button hover
+      backgroundUserImgWrapper: '#1F1F1F', // Background user wrapper
+      backgroundAddIcon: '#bedbb0', // Background add icon
+      textColorForm: '#FFFFFF', // Text color form
+      borderInputColor: '#bedbb0', // Border input color
+      errorColor: '#ed4337', // Error color
+      eyeShowPassColor: 'rgba(255, 255, 255, 1)', // Eye show password color
+      wrapperSelectorColor: 'rgba(255, 255, 255, 0.8)', // Wrapper selector color
+      backgroundSelector: '#161616', // Background color selector
+      borderSelectorColor: 'rgba(255, 255, 255, 0.5)', // Border selector
+      textSelectorColor: 'rgba(255, 255, 255, 0.5)', // Text selector color
+      hoverSelectorColor: '#bedbb0', // Hover selector color
+      filterColor: 'rgba(255, 255, 255, 0.8)', // Dashboard filter color
+      filterContainerBackground: '#151515', // Dashboard filter modal background
+      filterContainerShadow: 'none', // Dashboard filter modal shadow
+      filterDecorativeElement: '2px solid #000', // Dashboard filter modal (slected button ::after element color)
+      filterBtnColor: 'rgba(255, 255, 255, 0.5)', // Filter button(option) color
+      filterBtnColorSelected: '#fff', // Selected filter button(option) color
+      filterWithoutPriorityColor: 'rgba(255, 255, 255, 0.3)', // Filter button without priority (::before element bgd color)
     },
   },
   light: {
@@ -73,6 +96,30 @@ export const theme = Object.freeze({
       formInputColor: '#161616',
       formInputBackground: '#fff',
       formInputBorderColor: '#BEDBB0',
+      backgroundModal: '#FCFCFC', // Background modal
+      // borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
+      boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
+      closeModalBtn: '#161616', // Close modal
+      closeModalBtnHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
+      backgroundUserImgWrapper: '#F6F6F7', // Background user wrapper
+      backgroundAddIcon: '#bedbb0', // Background add icon
+      textColorForm: '#161616', // Text color form
+      borderInputColor: '#BEDBB0', // Border input color
+      errorColor: '#ed4337', // Error color
+      eyeShowPassColor: '#BEDBB0', // eye show password color
+      wrapperSelectorColor: 'rgba(255, 255, 255, 0.8)', // Wrapper selector color
+      backgroundSelector: '#FCFCFC', // Background color selector
+      borderSelectorColor: '#BEDBB0', // Border selector
+      textSelectorColor: '#161616', // Text selector color
+      hoverSelectorColor: '#BEDBB0', // Hover selector color
+      boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
+      filterColor: 'rgba(22, 22, 22, 0.8)', // Dashboard filter color
+      filterContainerBackground: '#FCFCFC', // Dashboard filter modal background
+      filterContainerShadow: '0px 4px 16px 0px rgba(22, 22, 22, 0.05)', // Dashboard filter modal shadow
+      filterDecorativeElement: '2px solid #fff', // Dashboard filter modal (slected button ::after element color)
+      filterBtnColor: 'rgba(22, 22, 22, 0.5)', // Filter button(option) color
+      filterBtnColorSelected: '#161616', // Selected filter button(option) color
+      filterWithoutPriorityColor: 'rgba(22, 22, 22, 0.3)', // Filter button without priority (::before element bgd color)
     },
   },
   violet: {
@@ -107,6 +154,30 @@ export const theme = Object.freeze({
       formInputColor: '#fff',
       formInputBackground: '#1f1f1f',
       formInputBorderColor: '#5255BC',
+      backgroundModal: '#FCFCFC', // Background modal
+      // borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
+      boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
+      closeModalBtn: '#161616', // Close modal
+      closeModalBtnHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
+      backgroundUserImgWrapper: '#ECEDFD', // Background user wrapper
+      backgroundAddIcon: '#ECEDFD', // Background add icon
+      textColorForm: '#161616', // Text color form
+      borderInputColor: '##5255BC', // Border input color
+      errorColor: '#ed4337', // Error color
+      eyeShowPassColor: '#BEDBB0', // eye show password color
+      wrapperSelectorColor: 'rgba(255, 255, 255, 0.8)', // Wrapper selector color
+      backgroundSelector: '#FCFCFC', // Background color selector
+      borderSelectorColor: '#ECEDFD', // Border selector
+      textSelectorColor: '#161616', // Text selector color
+      hoverSelectorColor: '#5255BC', // Hover selector color
+      boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
+      filterColor: 'rgba(22, 22, 22, 0.8)', // Dashboard filter color
+      filterContainerBackground: '#FCFCFC', // Dashboard filter modal background
+      filterContainerShadow: '0px 4px 16px 0px rgba(22, 22, 22, 0.05)', // Dashboard filter modal shadow
+      filterDecorativeElement: '2px solid #fff', // Dashboard filter modal (slected button ::after element color)
+      filterBtnColor: 'rgba(22, 22, 22, 0.5)', // Filter button(option) color
+      filterBtnColorSelected: '#161616', // Selected filter button(option) color
+      filterWithoutPriorityColor: 'rgba(22, 22, 22, 0.3)', // Filter button without priority (::before element bgd color)
     },
   },
 });
