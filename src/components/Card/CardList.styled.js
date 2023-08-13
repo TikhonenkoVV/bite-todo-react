@@ -21,4 +21,5 @@ export const CardListStyled = styled.ul`
   flex-direction: column;
   gap: 8px;
   max-width: 335px;
+  min-height: 100%;
 `;

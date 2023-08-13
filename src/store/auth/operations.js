@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { store } from 'store/store';
+import { forcedLogout } from './slice';
 
 export const biteTodoInnstance = axios.create({
   baseURL: 'https://bite-todo-rest-api.onrender.com/api',
@@ -12,6 +14,28 @@ const setAuthHeader = token => {
 const clearAuthHeader = () => {
   biteTodoInnstance.defaults.headers.common.Authorization = '';
 };
+
+biteTodoInnstance.interceptors.response.use(
+  responce => responce,
+  async error => {
+    if (error.response.status === 401 && !error.config._retry) {
+      try {
+        error.config._retry = true;
+        await store.dispatch(refreshToken());
+        const newToken = store.getState().auth.accessToken;
+        error.config.headers.Authorization = `Bearer ${newToken}`;
+        return biteTodoInnstance(error.config);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+    if (error.response.status === 403 && !error.config._retry) {
+      error.config._retry = true;
+      await store.dispatch(forcedLogout());
+    }
+    return Promise.reject(error);
+  }
+);
 
 export const register = createAsyncThunk(
   'auth/register',

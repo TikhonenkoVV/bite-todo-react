@@ -13,23 +13,24 @@ import {
 } from './Card.styled';
 import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Modal } from 'components/Modal';
 import { EditTask } from 'components/AddTaskForm/EditTaskForm';
 import { deleteTask } from '../../store/columns/operations';
 import moment from 'moment';
 
-export const Card = ({
-  _id,
-  title,
-  description,
-  priority,
-  deadline,
-  boardId,
-  columnId,
-  taskData,
-}) => {
+export const Card = forwardRef(({
+    _id,
+    title,
+    description,
+    priority,
+    deadline,
+    boardId,
+    columnId,
+    taskData,
+    ...rest
+  }, ref) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -48,7 +49,7 @@ export const Card = ({
   const formattedDeadline = moment(deadline).format('DD/MM/YYYY');
 
   return (
-    <CardStyled color={priority}>
+    <CardStyled color={priority} ref={ref} {...rest}>
       <CardTitleStyled>{title}</CardTitleStyled>
       <CardDescriptionStyled>{description}</CardDescriptionStyled>
       <CardFooter>
@@ -62,11 +63,11 @@ export const Card = ({
             <DeadlineDate>{formattedDeadline}</DeadlineDate>
           </div>
         </CardParamsWrapper>
-        <ToolsButtonBell type="button">
+        <ToolsButtonBell type="button" pastDeadline={moment(deadline).isBefore(moment())}>
           <Svg w={16} h={16} use={`${sprite}#icon-bell`} />
         </ToolsButtonBell>
         <ToolsWrapper>
-          <ToolsButton type="button" onClick={openEditModal}>
+          <ToolsButton type='button' onClick={openEditModal}>
             <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
           </ToolsButton>
           {isEditModalOpen && (
@@ -84,11 +85,11 @@ export const Card = ({
               />
             </Modal>
           )}
-          <ToolsButton type="button" onClick={handleDeleteTaskButtonClick}>
+          <ToolsButton type='button' onClick={handleDeleteTaskButtonClick}>
             <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
           </ToolsButton>
         </ToolsWrapper>
       </CardFooter>
     </CardStyled>
   );
-};
+});

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { add, deleteBoards, edit, getBoards } from './operations';
+import { add, deleteBoards, edit, getBoards, sendNeedHelp } from './operations';
 
 const initialState = {
   boards: [],
@@ -58,6 +58,18 @@ const boardsSlice = createSlice({
         state.error = null;
       })
       .addCase(deleteBoards.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(sendNeedHelp.pending, (state, { payload }) => {
+        state.isLoading = true;
+      })
+      .addCase(sendNeedHelp.fulfilled, (state, { payload }) => {
+        console.log(payload);
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(sendNeedHelp.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });

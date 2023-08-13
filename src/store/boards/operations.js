@@ -50,14 +50,14 @@ export const deleteBoards = createAsyncThunk(
   }
 );
 
-// export const sendNeedHelp = createAsyncThunk(
-//   'needHelp/send',
-//   async (message, thunkAPI) => {
-//     try {
-//       const { data } = await biteTodoInnstance.post(`/auth/help`, message);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const sendNeedHelp = createAsyncThunk(
+  'needHelp/send',
+  async (message, thunkAPI) => {
+    try {
+      const { data } = await biteTodoInnstance.post(`/auth/help`, message);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
