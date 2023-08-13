@@ -148,7 +148,14 @@ export const TrackHorizontal = styled.div`
   min-height: 12px;
   border-radius: 12px;
   bottom: 0;
-  left: 24px;
+  left: 20px;
+  @media (min-width: 768px) {
+    left: 32px;
+  }
+
+  @media (min-width: 1440px) {
+    left: 24px;
+  }
   background-color: ${props =>
     props.theme.colors.mainTrackHorizontalBackground};
 `;
