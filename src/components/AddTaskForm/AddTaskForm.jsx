@@ -55,9 +55,9 @@ const initialValues = {
 };
 
 export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
-  const [deadline, setDeadline] = useState(new Date());;
-  const [showDateNotification, setShowDateNotification] = useState(true);
-console.log(deadline);
+  const [deadline, setDeadline] = useState(new Date());
+  // const [showDateNotification, setShowDateNotification] = useState(true);
+  // console.log(deadline);
   const dispatch = useDispatch();
   const deadlinePickerRef = useRef(null);
 
@@ -71,22 +71,22 @@ console.log(deadline);
       .min(1, 'Description must contain at least 10 characters')
       .max(500, 'Description must not exceed 500 characters'),
     priority: Yup.string().required('Please select a color'),
-   deadline: Yup.date()
-    .nullable()
-    .required('Please select a deadline date') 
-    .min(new Date(), 'Deadline cannot be earlier than today')
-    .test('future', 'Please select a future date', value => {
-      const currentDate = new Date();
-      return value && value > currentDate;
-    }),
+    deadline: Yup.date()
+      .nullable()
+      .required('Please select a deadline date')
+      .min(new Date(), 'Deadline cannot be earlier than today')
+      .test('future', 'Please select a future date', value => {
+        const currentDate = new Date();
+        return value && value > currentDate;
+      }),
   });
 
-const handleDeadlineClick = () => {
-  if (deadlinePickerRef.current) {
-    setShowDateNotification(false); 
-    deadlinePickerRef.current.setOpen(true);
-  }
-};
+  const handleDeadlineClick = () => {
+    if (deadlinePickerRef.current) {
+      // setShowDateNotification(false);
+      deadlinePickerRef.current.setOpen(true);
+    }
+  };
 
   const CurrentDate = () => {
     const formattedDate = moment().format('MMMM D');
@@ -97,10 +97,8 @@ const handleDeadlineClick = () => {
     ? moment(deadline).format('D MMMM YYYY')
     : CurrentDate();
 
-  
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      
       setDeadline(values.deadline);
       await dispatch(addTask({ ...values, boardId, columnId, taskId }));
       resetForm();
@@ -130,7 +128,6 @@ const handleDeadlineClick = () => {
   return (
     <StyledDiv>
       <StyledP>Add Card</StyledP>
-      
 
       <StyledBtnClose onClick={closeModal}>
         <svg
@@ -192,45 +189,45 @@ const handleDeadlineClick = () => {
         ) : null}
 
         <StyledTitleDeadline>
-  Deadline
- <Container>
-  {formattedDeadline}
-  <svg
-    className="icon"
-    width="14"
-    height="14"
-    aria-hidden="true"
-    role="presentation"
-    fill="#BEDBB0"
-    onClick={handleDeadlineClick}
-    style={{
-      marginLeft: '5px',
-      cursor: 'pointer',
-    }}
-  >
-    <use xlinkHref={`${sprite}#icon-chevron-down`} />
-  </svg>
-  {/* {showDateNotification && (
+          Deadline
+          <Container>
+            {formattedDeadline}
+            <svg
+              className="icon"
+              width="14"
+              height="14"
+              aria-hidden="true"
+              role="presentation"
+              fill="#BEDBB0"
+              onClick={handleDeadlineClick}
+              style={{
+                marginLeft: '5px',
+                cursor: 'pointer',
+              }}
+            >
+              <use xlinkHref={`${sprite}#icon-chevron-down`} />
+            </svg>
+            {/* {showDateNotification && (
     <div style={{ marginLeft: '5px', color: 'white', fontSize: '12px' }}>
       Please select a deadline date
     </div>
   )} */}
-</Container>
-  {formik.touched.deadline && formik.errors.deadline ? (
-    <div>{formik.errors.deadline}</div>
-  ) : null}
-  <StyledCustomCalendar
-    className="custom-datepicker"
-    ref={deadlinePickerRef}
-    name="deadline"
-    selected={deadline || undefined}
-    onChange={handleDateChange}
-    locale="en"
-    dateFormat="d MMMM yyyy"
-    showTimeSelect={false}
-    customInput={<div></div>}
-  />
-</StyledTitleDeadline>
+          </Container>
+          {formik.touched.deadline && formik.errors.deadline ? (
+            <div>{formik.errors.deadline}</div>
+          ) : null}
+          <StyledCustomCalendar
+            className="custom-datepicker"
+            ref={deadlinePickerRef}
+            name="deadline"
+            selected={deadline || undefined}
+            onChange={handleDateChange}
+            locale="en"
+            dateFormat="d MMMM yyyy"
+            showTimeSelect={false}
+            customInput={<div></div>}
+          />
+        </StyledTitleDeadline>
         <StyledButton type="submit">
           <PlusIconContainer>
             <svg
