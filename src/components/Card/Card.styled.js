@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { priority } from 'styles';
+import { baseTransition } from 'styles';
 
 export const CardStyled = styled.li`
   position: relative;
@@ -127,4 +128,10 @@ export const ToolsButton = styled.button`
   width: 16px;
   height: 16px;
   color: #888888;
+  transition: color ${baseTransition};
+
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.iconHover};
+  }
 `;
