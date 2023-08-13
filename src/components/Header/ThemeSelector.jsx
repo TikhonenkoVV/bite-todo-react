@@ -45,8 +45,9 @@ const handleThemeChange = event => {
   return (
     <DivStyled>
       <BtnSelectStyled onClick={handleClick}>
-        {currentTheme === '' ? 'Theme' : currentTheme}
+          {currentTheme ? currentTheme : 'Theme'}
       </BtnSelectStyled>
+
       <DivListStyled isOpen={isOpen} onClick={e => e.stopPropagation()}>
         <UlListStyled>
           <LiStyled onClick={handleThemeChange}>Light</LiStyled>
