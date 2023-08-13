@@ -4,7 +4,7 @@ import { baseTransition, devices } from 'styles';
 export const ContainerSidebar = styled.aside`
   position: fixed;
   top: 0;
-  left: -225px; /* Початкове значення за межами видимості */
+  left: -225px;
   width: 225px;
   height: 100vh;
   background-color: ${props => props.theme.colors.sideBar};
@@ -20,13 +20,14 @@ export const ContainerSidebar = styled.aside`
   `}
 
   @media screen and ${devices.tablet} {
+    left: -260px;
     width: 260px;
     padding-top: 24px;
 
     ${props =>
       props.menuActive &&
       `
-    transform: translateX(225px);
+    transform: translateX(260px);
   `}
   }
 
