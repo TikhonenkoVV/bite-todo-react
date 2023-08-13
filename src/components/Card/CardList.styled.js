@@ -5,7 +5,6 @@ export const CardListContainer = styled.div`
   height: 100%;
   min-width: 350px;
   margin-bottom: 14px;
-  /* overflow-y: auto; */
 
   @media (min-width: 768px) {
     max-height: calc(100vh - 324px);

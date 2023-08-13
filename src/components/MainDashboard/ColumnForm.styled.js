@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
+import { baseTransition } from 'styles';
 
 export const FormTitle = styled.p`
   margin-bottom: 24px;
@@ -7,8 +8,7 @@ export const FormTitle = styled.p`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.36px;
-  color: #fff;
-  /* color: #161616; */
+  color: ${props => props.theme.colors.formTitleColor};
 `;
 
 export const FormContainer = styled.div`
@@ -16,9 +16,8 @@ export const FormContainer = styled.div`
   max-width: 335px;
   padding: 24px;
   border-radius: 8px;
-  background: #151515;
-  border: 1px solid rgba(190, 219, 176, 0.5);
-  /* background: #fcfcfc; */
+  background: ${props => props.theme.colors.formBackgroundColor};
+  border: 1px solid ${props => props.theme.colors.formBorderColor};
   @media (min-width: 768px) {
     min-width: 350px;
   }
@@ -30,13 +29,12 @@ export const FormInput = styled(Field)`
   height: 49px;
   font-size: 14px;
   font-weight: 400;
-  color: #fff;
-  /* color: #161616; */
+  color: ${props => props.theme.colors.formInputColor};
   line-height: normal;
   letter-spacing: -0.28px;
-  background: #1f1f1f;
+  background-color: ${props => props.theme.colors.formInputBackground};
   border-radius: 8px;
-  border: 1px solid #bedbb0;
+  border: 1px solid ${props => props.theme.colors.formInputBorderColor};
   opacity: 0.4;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   &:hover,
@@ -46,7 +44,7 @@ export const FormInput = styled(Field)`
     outline: none;
   }
 
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background ${baseTransition};
 `;
 
 export const CloseButton = styled.button`
@@ -70,13 +68,13 @@ export const AddButton = styled.button`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  color: #161616;
+  color: ${props => props.theme.colors.formAddButtonColor};
   border-radius: 8px;
-  background: #bedbb0;
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: ${props => props.theme.colors.formAddButtonBackground};
+  transition: background ${baseTransition};
   &:hover,
   &:focus {
-    background: #9dc888;
+    background-color: ${props => props.theme.colors.formAddButtonHover};
   }
 `;
 
@@ -86,23 +84,20 @@ export const FormIconContainer = styled.div`
   justify-content: center;
   width: 28px;
   height: 28px;
-  /* background: #fff; */
-  background: #000;
+  background-color: ${props => props.theme.colors.formIconContainerBackground};
   border-radius: 6px;
 `;
 
 export const FormIcon = styled.svg`
   width: 14px;
   height: 14px;
-  /* fill: #121212; */
-  fill: #fff;
+  fill: ${props => props.theme.colors.formIconAddButtonFill};
 `;
 
 export const FormCloseIcon = styled.svg`
   width: 18px;
   height: 18px;
-  /* fill: #121212; */
-  fill: #fff;
+  fill: ${props => props.theme.colors.formTitleColor};
 `;
 
 export const ValidationError = styled.p`

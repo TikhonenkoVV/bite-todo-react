@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
+import { baseTransition } from 'styles';
 
 export const CreateBoardContainer = styled.div`
   margin: auto;
   text-align: center;
-  color: rgba(255, 255, 255, 0.5);
+  color: ${props => props.theme.colors.createBoardContainerColor};
   font-family: Poppins;
   font-size: 14px;
   font-weight: 400;
@@ -16,6 +17,11 @@ export const CreateBoardContainer = styled.div`
 `;
 
 export const CreateBoardButton = styled.button`
-  color: #bedbb0;
+  color: ${props => props.theme.colors.formAddButtonBackground};
   font-family: Poppins;
+  transition: color ${baseTransition};
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.formAddButtonHover};
+  }
 `;
