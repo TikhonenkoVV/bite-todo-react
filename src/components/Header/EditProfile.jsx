@@ -21,6 +21,14 @@ const EditProfile = ({ closeModal }) => {
   const [avatarFile, setAvatarFile] = useState(null);
   const [previewAvatar, setPreviewAvatar] = useState(null);
 
+
+  const resetAvatar = () => {
+  setAvatarFile(null);
+  setPreviewAvatar(null);
+};
+
+
+
     const handleAvatarChange = (e) => {
       const file = e.target.files[0];
       if (file) {
@@ -51,7 +59,7 @@ const EditProfile = ({ closeModal }) => {
         </DivUserImgStyled>
       </DivItem>
       <FormProfile
-        avatarFile={avatarFile} onAvatarChange={handleAvatarChange}
+        avatarFile={avatarFile} onAvatarChange={resetAvatar}
       />
     </DivStyled>
   );

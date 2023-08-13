@@ -129,7 +129,6 @@ const authSlice = createSlice({
         state.error = payload;
       })
       .addCase(updateAvatar.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.user.avatarURL = payload;
         state.error = { message: '', status: '' };
       })

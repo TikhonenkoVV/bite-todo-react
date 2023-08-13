@@ -131,7 +131,7 @@ export const theme = Object.freeze({
       eyeShowPassColor: '#BEDBB0', // eye show password color
       wrapperSelectorColor: '#161616', // Wrapper selector color
       backgroundSelector: '#FCFCFC', // Background color selector
-      borderSelectorColor: '#BEDBB0', // Border selector
+      borderSelectorColor: 'rgba(22, 22, 22, 0.8)', // Border selector
       textSelectorColor: '#161616', // Text selector color
       hoverSelectorColor: '#BEDBB0', // Hover selector color
       boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
@@ -203,7 +203,7 @@ export const theme = Object.freeze({
       eyeShowPassColor: '#BEDBB0', // eye show password color
       wrapperSelectorColor: '#161616', // Wrapper selector color
       backgroundSelector: '#FCFCFC', // Background color selector
-      borderSelectorColor: '#ECEDFD', // Border selector
+      borderSelectorColor: 'rgba(22, 22, 22, 0.8)', // Border selector
       textSelectorColor: '#161616', // Text selector color
       hoverSelectorColor: '#5255BC', // Hover selector color
       boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
