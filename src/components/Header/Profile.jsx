@@ -2,7 +2,6 @@ import React from 'react';
 import { Modal } from 'components/Modal';
 import { useModal } from 'hooks/useModal';
 
-// import userdefaultimg from '../../img/Header/user.png';
 import EditProfile from './EditProfile';
 import { DivInfoUserStyled, TextStyled, DivUserImgStyled, LinkStyled, AvatarImg } from './Profile.styled';
 import { useSelector } from 'react-redux';
@@ -25,7 +24,7 @@ const Profile = () => {
         <TextStyled>{name}</TextStyled>
         <DivUserImgStyled>
           <LinkStyled onClick={onClickModalOpen}>
-            <AvatarImg width={32} height={32} src={avatarURL ? `${baseUrl}/${avatarURL}` : `${baseUrl}/avatars/user.png`} alt="userlogo" />
+            <AvatarImg width={32} height={32} src={avatarURL ? avatarURL : `${baseUrl}/avatars/user.png`} alt="userlogo" />
           </LinkStyled>
         </DivUserImgStyled>
       </DivInfoUserStyled>

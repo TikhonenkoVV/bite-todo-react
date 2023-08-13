@@ -129,7 +129,7 @@ export const theme = Object.freeze({
       borderInputColor: '#BEDBB0', // Border input color
       errorColor: '#ed4337', // Error color
       eyeShowPassColor: '#BEDBB0', // eye show password color
-      wrapperSelectorColor: 'rgba(255, 255, 255, 0.8)', // Wrapper selector color
+      wrapperSelectorColor: '#161616', // Wrapper selector color
       backgroundSelector: '#FCFCFC', // Background color selector
       borderSelectorColor: '#BEDBB0', // Border selector
       textSelectorColor: '#161616', // Text selector color
@@ -201,7 +201,7 @@ export const theme = Object.freeze({
       borderInputColor: '##5255BC', // Border input color
       errorColor: '#ed4337', // Error color
       eyeShowPassColor: '#BEDBB0', // eye show password color
-      wrapperSelectorColor: 'rgba(255, 255, 255, 0.8)', // Wrapper selector color
+      wrapperSelectorColor: '#161616', // Wrapper selector color
       backgroundSelector: '#FCFCFC', // Background color selector
       borderSelectorColor: '#ECEDFD', // Border selector
       textSelectorColor: '#161616', // Text selector color
