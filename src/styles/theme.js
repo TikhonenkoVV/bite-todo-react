@@ -128,7 +128,7 @@ export const devices = {
   notdesktop: `(max-width: ${sizes.desktop})`,
 };
 
-export const baseTransition = '2500ms cubic-bezier(0.4, 0, 0.2, 1)';
+export const baseTransition = '250ms cubic-bezier(0.4, 0, 0.2, 1)';
 
 export const priority = {
   without: '#656565',

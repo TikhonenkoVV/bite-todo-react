@@ -12,9 +12,11 @@ import sprite from 'img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 // import { fetchSendNeedHelp } from 'services/fetchSendNeedHelp';
 // import { useState } from 'react';
-// import { sendNeedHelp } from 'store/boards/operations';
+import { sendNeedHelp } from 'store/boards/operations';
+import { useDispatch } from 'react-redux';
 
 export const FormNeedHelp = ({ closeModal }) => {
+  const dispatch = useDispatch();
   // const [isLoading, setIsLoading] = useState(false);
   // const [sent, setSent] = useState(false);
   // const [error, setError] = useState('');
@@ -41,8 +43,8 @@ export const FormNeedHelp = ({ closeModal }) => {
       //   .finally(() => {
       //     setIsLoading(false);
       //   });
-      // // dispatch(logIn(values)); send data
-      //  closse modal
+      dispatch(sendNeedHelp(values));
+      closeModal();
     },
   });
 
