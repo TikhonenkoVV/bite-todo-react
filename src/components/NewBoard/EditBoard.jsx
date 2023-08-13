@@ -24,7 +24,7 @@ import { Svg } from '../SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { edit } from 'store/boards/operations';
 import { selectBoardsState } from 'store/boards/selectors';
-import {selectTheme} from '../../store/theme/selector'
+import {selectTheme} from '../../store/auth/selectors'
 const iconNames = [
   'icon-Project',
   'icon-star',
