@@ -12,8 +12,9 @@ import {
 } from './FormProfile.styled';
 import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateAvatar, updateUser } from 'store/auth/operations';
+import { selectUser } from 'store/auth/selectors';
 
 
 const iconAllow = '#icon-eye-allow';
@@ -21,6 +22,7 @@ const iconDenied = '#icon-eye-denied';
 
 
 const FormProfie = ({ avatarFile, onAvatarChange }) => {
+  const {name, email} = useSelector(selectUser)
   const dispatch = useDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -28,7 +30,7 @@ const FormProfie = ({ avatarFile, onAvatarChange }) => {
   return (
     <DivStyled>
       <Formik
-        initialValues={{ name: '', email: '', password: '' }}
+        initialValues={{ name , email, password: '' }}
         validationSchema={userEditScheme}
         onSubmit={(values, { resetForm }) => {
           if (avatarFile) {
@@ -36,7 +38,7 @@ const FormProfie = ({ avatarFile, onAvatarChange }) => {
           }
 
           dispatch(updateUser(values));
-          onAvatarChange(null);
+          onAvatarChange();
           resetForm();
         }}
       >
