@@ -146,9 +146,12 @@ export const updateUser = createAsyncThunk(
 
 export const updateAvatar = createAsyncThunk(
   'auth/updateAvatar',
-  async (avatar, thunkAPI) => {
+  async (avatarFile, thunkAPI) => {
     try {
-      const { data } = await biteTodoInnstance.patch('/auth/avatars', avatar);
+      const formData = new FormData();
+      formData.append('avatarURL', avatarFile);
+
+      const { data } = await biteTodoInnstance.patch('/auth/avatars', formData);
       return data.avatarURL;
     } catch (error) {
       return thunkAPI.rejectWithValue({
