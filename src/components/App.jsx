@@ -4,7 +4,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { PrivateRoute } from './privateRoute';
 import { RestrictedRoute } from './restrictedRoute';
 import { useAuth } from 'hooks/useAuth';
-import { refreshUser, refreshToken } from 'store/auth/operations';
+import { refreshUser } from 'store/auth/operations';
 import { selectTheme } from 'store/auth/selectors';
 import { Loader } from './Loader/Loader';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -22,24 +22,15 @@ export const App = () => {
   const dispatch = useDispatch();
   const [currTheme, setCurrTheme] = useState({ ...theme.dark });
   const selectedTheme = useSelector(selectTheme);
-  const { isRefreshing, authError, isTokenRefreshed } = useAuth();
+  const { isRefreshing, authError } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
   useEffect(() => {
-    if (isTokenRefreshed) dispatch(refreshUser());
-  }, [dispatch, isTokenRefreshed]);
-
-  useEffect(() => {
     const { message, status } = authError;
     if (!message) return;
-
-    if (message === 'Token expired') {
-      dispatch(refreshToken());
-      return;
-    }
 
     if (message === 'Unable to fetch user') return;
 

@@ -12,7 +12,7 @@ import {
   DashboardHeaderTitle,
 } from './DashboardHeader.styled';
 
-const DashboardHeader = ({ name, disabled, theme = 'dark' }) => {
+const DashboardHeader = ({ name, disabled }) => {
   const { isModalOpen, closeModal, openModal } = useModal();
   const iconName = '#icon-filter';
   return (
@@ -30,7 +30,7 @@ const DashboardHeader = ({ name, disabled, theme = 'dark' }) => {
 
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          <StatusFilter theme={theme} onClose={closeModal}></StatusFilter>
+          <StatusFilter onClose={closeModal}></StatusFilter>
         </Modal>
       )}
     </>
