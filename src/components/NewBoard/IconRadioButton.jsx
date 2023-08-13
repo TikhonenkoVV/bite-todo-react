@@ -4,9 +4,9 @@ import { RadioButton, RadioIcon } from './NewBoard.styled';
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
 
-const IconRadioButton = ({ name, value, checked, scheme }) => {
+const IconRadioButton = ({ name, value, checked, theme }) => {
   return (
-    <RadioIcon checked={checked} scheme={scheme}>
+    <RadioIcon checked={checked} theme={theme}>
       <RadioButton type="radio" name={name} value={value} />
       <Svg w={18} h={18} use={`${icons}#${value}`} />
     </RadioIcon>
@@ -15,7 +15,7 @@ const IconRadioButton = ({ name, value, checked, scheme }) => {
 
 IconRadioButton.propTypes = {
   name: PropTypes.string.isRequired,
-  scheme: PropTypes.string,
+  theme: PropTypes.string,
   value: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
 };

@@ -57,11 +57,11 @@ const backgroundImages = [
 
 const EditBoard = ({ onClick, id }) => {
   const dispatch = useDispatch();
-  const theme = useSelector(selectTheme);
+  const theme = useSelector(selectTheme).toLowerCase();
   const buttonStyles = {
     padding: '10px 0px 11px 0px',
     borderRadius: '8px',
-    backgroundColor: theme === 'Violet' ? '#5255BC' : '#BEDBB0',
+    backgroundColor: theme === 'violet' ? '#5255BC' : '#BEDBB0',
     color: '#161616',
     width: '100%',
   };
