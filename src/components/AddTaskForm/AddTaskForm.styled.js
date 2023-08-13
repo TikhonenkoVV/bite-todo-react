@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const StyledDiv = styled.div`
   width: 350px;
   height: 522px;
-  background-color: #151515;
+  background-color: ${props => props.theme.colors.background};
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 10px;
@@ -17,7 +17,7 @@ export const StyledBtnClose = styled.button`
 
 export const StyledP = styled.p`
   display: inline-block;
-  color: #ffffff;
+  color: ${props => props.theme.colors.cardMajorText};
   font-size: 18px;
   margin-bottom: 24px;
   margin-top: 24px;
@@ -26,36 +26,45 @@ export const StyledP = styled.p`
 
 export const StyledInput = styled.input`
   border-radius: 8px;
-  border: 1px solid #bedbb0;
+  border: 1px solid ${props => props.theme.colors.btnAddBoard};
   opacity: 0.4;
-  background: #1f1f1f;
+  background: ${props => props.theme.colors.card};
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   margin-bottom: 10px;
   margin-left: 20px;
   padding: 14px 115px 14px 18px;
   font-size: 14px;
   border-radius: 4px;
-  color: #ffffff;
+  color: ${props => props.theme.colors.cardMajorText};
+  :focus-visible {
+    border: 1px solid ${props => props.theme.colors.btnAddBoard};
+    outline: none;
+  }
 `;
 
 export const StyledTextArea = styled.textarea`
   resize: none;
   margin-left: 20px;
-  color: #ffffff;
+  font-size: 14px;
+  color: ${props => props.theme.colors.cardMajorText};
   display: flex;
-  padding: 14px 113px 122px 18px;
+  padding: 14px 131px 122px 18px;
   align-items: center;
   flex-shrink: 0;
   border-radius: 8px;
-  border: 1px solid #bedbb0;
+  border: 1px solid ${props => props.theme.colors.btnAddBoard};
   opacity: 0.4;
-  background: #1f1f1f;
+  background: ${props => props.theme.colors.card};
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   margin-bottom: 24px;
+  :focus-visible {
+    border: 1px solid ${props => props.theme.colors.btnAddBoard};
+    outline: none;
+  }
 `;
 
 export const StyledTitelBtn = styled.label`
-  color: rgba(255, 255, 255, 50%);
+  color: ${props => props.theme.colors.cardMinorText};
   font-size: 12px;
   margin-left: 24px;
 `;
@@ -70,18 +79,18 @@ export const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  background: #bedbb0;
+  background: ${props => props.theme.colors.btnAddBoard};
 `;
 
 export const Container = styled.div`
-  color: #bedbb0;
+  color: ${props => props.theme.colors.btnAddBoard};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  color: #bedbb0;
+  color: ${props => props.theme.colors.btnAddBoard};
   margin-left: 24px;
   justify-content: left;
   align-items: center;
@@ -121,6 +130,7 @@ export const RadioInput = styled.input`
     margin-left: 1.5px;
     background-color: ${({ checked, color }) => (checked ? color : color)};
   }
+}
 `;
 
 export const PlusIconContainer = styled.div`
@@ -130,12 +140,12 @@ export const PlusIconContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 8px;
-  background-color: #161616;
+  background-color: ${props => props.theme.colors.card};
   border-radius: 20%;
 `;
 
 export const StyledTitleDeadline = styled.span`
-  color: rgba(255, 255, 255, 0.5);
+  color: ${props => props.theme.colors.cardMinorText};
   font-family: Poppins;
   font-size: 12px;
   font-style: normal;
@@ -148,20 +158,20 @@ export const StyledTitleDeadline = styled.span`
 export const StyledFormikTitleNotification = styled.div`
   margin-left: 24px;
   margin-bottom: 5px;
-  color: red;
+  color: ${props => props.theme.colors.btnAddColumn};
   font-size: 12px;
 `;
 
 export const StyledFormikDescriptionNotification = styled.div`
   margin-top: -15px;
   margin-left: 24px;
-  color: red;
+  color: ${props => props.theme.colors.btnAddColumn};
   font-size: 12px;
 `;
 
 export const StyledFormikColorNotification = styled.div`
   margin-top: -5px;
   margin-left: 24px;
-  color: red;
+  color: ${props => props.theme.colors.btnAddColumn};
   font-size: 12px;
-`;
+}`;
