@@ -17,6 +17,7 @@ const boardsSlice = createSlice({
       })
       .addCase(getBoards.fulfilled, (state, { payload }) => {
         state.boards = payload.boards.reverse();
+        state.isLoading = false;
         state.error = null;
       })
       .addCase(getBoards.rejected, (state, { payload }) => {
@@ -28,6 +29,7 @@ const boardsSlice = createSlice({
       })
       .addCase(add.fulfilled, (state, { payload }) => {
         state.boards.unshift(payload.board);
+        state.isLoading = false;
         state.error = null;
       })
       .addCase(add.rejected, (state, { payload }) => {
@@ -42,6 +44,7 @@ const boardsSlice = createSlice({
           board => board._id === payload.board._id
         );
         state.boards[index] = payload.board;
+        state.isLoading = false;
         state.error = null;
       })
       .addCase(edit.rejected, (state, { payload }) => {
@@ -55,6 +58,7 @@ const boardsSlice = createSlice({
         state.boards = state.boards.filter(
           board => board._id !== payload.board._id
         );
+        state.isLoading = false;
         state.error = null;
       })
       .addCase(deleteBoards.rejected, (state, { payload }) => {
