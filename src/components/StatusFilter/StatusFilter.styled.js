@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { baseTransition } from 'styles';
+import { baseTransition, devices } from 'styles';
 
 export const StatusFilterContainer = styled.div`
   position: relative;
@@ -10,6 +10,10 @@ export const StatusFilterContainer = styled.div`
   background-color: ${props => props.theme.colors.filterContainerBackground};
   padding: 24px;
   box-shadow: ${props => props.theme.colors.filterContainerShadow};
+
+  @media screen and (${devices.onlymobile}) {
+    max-width: 100%;
+  }
 `;
 
 export const StatusFilterMainText = styled.p`

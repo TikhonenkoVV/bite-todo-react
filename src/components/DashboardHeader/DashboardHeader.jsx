@@ -12,14 +12,19 @@ import {
   DashboardHeaderTitle,
 } from './DashboardHeader.styled';
 
-const DashboardHeader = ({ name, disabled }) => {
+const DashboardHeader = ({ name, disabled, dashboard }) => {
   const { isModalOpen, closeModal, openModal } = useModal();
   const iconName = '#icon-filter';
   return (
     <>
-      {name && <DashboardHeaderTitle>{name}</DashboardHeaderTitle>}
+      {name && (
+        <DashboardHeaderTitle dashboard={dashboard}>
+          {name}
+        </DashboardHeaderTitle>
+      )}
 
       <DashboardHeaderFilter
+        dashboard={dashboard}
         type="button"
         onClick={openModal}
         disabled={disabled}
@@ -40,6 +45,9 @@ const DashboardHeader = ({ name, disabled }) => {
 DashboardHeader.propTypes = {
   name: PropTypes.string,
   disabled: PropTypes.bool.isRequired,
+  dashboard: PropTypes.shape({
+    background: PropTypes.string.isRequired,
+  }),
 };
 
 export default DashboardHeader;
