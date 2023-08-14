@@ -24,7 +24,7 @@ const logoStyles = {
   columnGap: 14,
   fontSize: 28,
   fontSizeTab: 40,
-  lineHeight: 1.5,
+  lineHeight: 1.15,
   width: 40,
   height: 40,
   widthTab: 48,
