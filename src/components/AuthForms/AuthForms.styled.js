@@ -7,16 +7,12 @@ export const Container = styled.div`
   border-radius: 8px;
   background: #151515;
 
-  width: 100%;
   min-height: 300px;
-
-  @media ${devices.mobile} {
-    width: 335px;
-  }
+  max-width: 335px;
 
   @media screen and (${devices.tablet}) {
     padding: 40px;
-    width: 424px;
+    min-width: 424px;
     min-height: 332px;
   }
 `;
@@ -96,14 +92,6 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     background: #9dc888;
-  }
-
-  @media screen and (${devices.mobile}) {
-    width: 287px;
-  }
-
-  @media screen and (${devices.tablet}) {
-    width: 344px;
   }
 `;
 
