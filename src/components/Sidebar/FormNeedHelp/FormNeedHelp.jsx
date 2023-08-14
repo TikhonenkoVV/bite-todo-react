@@ -14,6 +14,7 @@ import { Svg } from 'components/SvgIcon/SvgIcon';
 // import { useState } from 'react';
 import { sendNeedHelp } from 'store/boards/operations';
 import { useDispatch } from 'react-redux';
+import { Notify } from 'notiflix';
 
 export const FormNeedHelp = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -43,6 +44,12 @@ export const FormNeedHelp = ({ closeModal }) => {
       //   .finally(() => {
       //     setIsLoading(false);
       //   });
+      Notify.info(
+        'Your email has been sent to support. Expect a response to your email within a day.',
+        {
+          timeout: 4000,
+        }
+      );
       dispatch(sendNeedHelp(values));
       closeModal();
     },

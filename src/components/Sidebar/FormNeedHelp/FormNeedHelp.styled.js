@@ -64,6 +64,15 @@ export const StyledTextArea = styled.textarea`
   color: ${props => props.theme.colors.formTitleColor};
   letter-spacing: -0.02em;
 
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${props => props.theme.colors.formTitleColor};
+    border-radius: 5px;
+  }
+
   &:focus {
     opacity: 1;
     border: 1px solid ${props => props.theme.colors.formAddButtonBackground};

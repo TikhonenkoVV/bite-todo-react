@@ -89,6 +89,10 @@ const ControlBoard = () => {
     );
   };
 
+  const media = window.innerWidth;
+  const scrollHeight =
+    media > 767 ? 'calc(100% - 590px)' : 'calc(100% - 560px)';
+
   return (
     <>
       {isLoading ? (
@@ -101,7 +105,10 @@ const ControlBoard = () => {
             </ButtonStyled>
           </DivStyled>
           <Scrollbars
-            style={{ width: '100% ', height: 'calc(100% - 575px)' }}
+            style={{
+              width: '100% ',
+              height: scrollHeight,
+            }}
             hideTracksWhenNotNeeded={true}
           >
             <UlStyled>
