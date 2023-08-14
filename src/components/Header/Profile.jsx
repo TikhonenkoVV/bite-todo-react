@@ -6,8 +6,8 @@ import EditProfile from './EditProfile';
 import { DivInfoUserStyled, TextStyled, DivUserImgStyled, LinkStyled, AvatarImg } from './Profile.styled';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
-
-const baseUrl = 'https://bite-todo-rest-api.onrender.com'
+import { Svg } from 'components/SvgIcon/SvgIcon';
+import sprite from '../../img/icons/sprite.svg';
 
 const Profile = () => {
   const { name, avatarURL } = useSelector(selectUser)
@@ -24,7 +24,9 @@ const Profile = () => {
         <TextStyled>{name}</TextStyled>
         <DivUserImgStyled>
           <LinkStyled onClick={onClickModalOpen}>
-            <AvatarImg width={32} height={32} src={avatarURL ? avatarURL : `${baseUrl}/avatars/user.png`} alt="userlogo" />
+            {avatarURL
+              ? <AvatarImg width={32} height={32} src={avatarURL} alt="userlogo" />
+              : <Svg w={32} h={32} use={`${sprite}#icon-user`} />}
           </LinkStyled>
         </DivUserImgStyled>
       </DivInfoUserStyled>
