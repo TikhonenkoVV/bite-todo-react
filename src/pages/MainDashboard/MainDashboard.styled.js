@@ -90,6 +90,7 @@ export const MainDashboardAddColumnButton = styled.button`
   min-width: 335px;
   height: 56px;
   padding: 14px 78px;
+  margin-right: 20px;
   font-family: Poppins;
   font-size: 14px;
   font-weight: 500;
@@ -102,6 +103,14 @@ export const MainDashboardAddColumnButton = styled.button`
   &:hover,
   &:focus {
     background: ${props => props.theme.colors.addColumnButtonHoverBackground};
+
+    @media screen and (${devices.tablet}) {
+      margin-right: 32px;
+    }
+
+    @media screen and (${devices.desktop}) {
+      margin-right: 24px;
+    }
   }
 `;
 
