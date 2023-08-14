@@ -74,14 +74,6 @@ const ControlBoard = () => {
     }
   }, [boards, idActiveBoard, navigate]);
 
-  // useEffect(() => {
-  //   console.log(error);
-  //   const { message } = error;
-  //   if (!message) return;
-
-  //   Notify.warning(message);
-  // }, [dispatch, error]);
-
   const handleActiveBoard = id => {
     setIdActiveBoard(id);
   };
@@ -105,7 +97,7 @@ const ControlBoard = () => {
   if (isLoading) {
     return <Loader fill={'#fff'} />;
   }
-  if (boards.length > 0) {
+  if (!isLoading) {
     return (
       <>
         <H2styled>My boards</H2styled>

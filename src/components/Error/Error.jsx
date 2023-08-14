@@ -1,3 +1,5 @@
+import notFount from 'img/404-not-found.jpg';
+
 export const Error = () => {
   return (
     <>
