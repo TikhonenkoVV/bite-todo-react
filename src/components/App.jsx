@@ -41,6 +41,7 @@ export const App = () => {
     const refreshToken = searchParams.get('refreshToken');
     if (accessToken && refreshToken) {
       dispatch(setGoogleTokens({ accessToken, refreshToken }));
+      dispatch(refreshUser());
     }
   }, [searchParams, dispatch]);
 
