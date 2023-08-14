@@ -8,7 +8,7 @@ export const Container = styled.div`
   background: #151515;
 
   min-height: 300px;
-  max-width: 335px;
+  width: 335px;
 
   @media screen and (${devices.tablet}) {
     padding: 40px;
