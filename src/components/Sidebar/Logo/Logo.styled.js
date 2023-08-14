@@ -9,7 +9,7 @@ export const LogoStyled = styled.div`
     props.styles.columnGap ? `${props.styles.columnGap}px` : '8px'};
   align-items: center;
 
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     margin-left: ${props =>
       props.styles.marginLeftTab ? `${props.styles.marginLeftTab}px` : 0};
   }
@@ -23,7 +23,7 @@ export const IconWrapperStyled = styled.div`
   width: ${props => `${props.styles.width}px`};
   height: ${props => `${props.styles.height}px`};
 
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     width: ${props =>
       props.styles.widthTab
         ? `${props.styles.widthTab}px`
@@ -31,7 +31,7 @@ export const IconWrapperStyled = styled.div`
     height: ${props =>
       props.styles.heightTab
         ? `${props.styles.heightTab}px`
-        : `${props.styles.height}px`}};
+        : `${props.styles.height}px`};
   }
 `;
 
@@ -45,7 +45,7 @@ export const PStyled = styled.p`
     props.styles.lineHeight ? props.styles.lineHeight : 1.15};
   text-transform: capitalize;
 
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     font-size: ${props =>
       props.styles.fontSizeTab
         ? `${props.styles.fontSizeTab}px`

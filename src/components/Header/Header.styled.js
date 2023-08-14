@@ -14,10 +14,13 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  @media screen and ${devices.desktop} {
+  @media screen and (${devices.tablet}) {
+    height: 68px;
+  }
+
+  @media screen and (${devices.desktop}) {
     justify-content: right;
     grid-column: 2;
-    height: 68px;
   }
 `;
 
@@ -26,7 +29,7 @@ export const DivBtnStyle = styled.div`
   width: 32px;
   height: 32px;
   cursor: pointer;
-  @media screen and (min-width: 1440px) {
+  @media screen and (${devices.desktop}) {
     display: none;
   }
 `;

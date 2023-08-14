@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { baseTransition } from 'styles';
+import { baseTransition, devices } from 'styles';
 
 export const CreateBoardContainer = styled.div`
   margin: auto;
@@ -11,7 +11,7 @@ export const CreateBoardContainer = styled.div`
   line-height: 1.2;
   letter-spacing: -0.28px;
 
-  @media (min-width: 768px) {
+  @media screen and (${devices.tablet}) {
     max-width: 486px;
   }
 `;

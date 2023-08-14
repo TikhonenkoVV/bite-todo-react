@@ -132,7 +132,7 @@ export const theme = Object.freeze({
       textColorForm: '#161616', // Text color form
       borderInputColor: '#BEDBB0', // Border input color
       errorColor: '#ed4337', // Error color
-      eyeShowPassColor: '#BEDBB0', // eye show password color
+      eyeShowPassColor: 'rgba(22, 22, 22, 0.3)', // eye show password color
       wrapperSelectorColor: '#161616', // Wrapper selector color
       backgroundSelector: '#FCFCFC', // Background color selector
       borderSelectorColor: 'rgba(22, 22, 22, 0.8)', // Border selector
@@ -184,7 +184,7 @@ export const theme = Object.freeze({
       iconHover: 'rgba(22, 22, 22, 1.0)', //Column icon hover,
       buttonIconBackground: '#fff', //button icon background,
       buttonIconFill: '#161616', //button icon fill,
-      addButtonColor: '#161616', //Add (Edit) button color,
+      addButtonColor: '#FFFFFF', //Add (Edit) button color,
       addButtonBackground: '#5255BC', //Add (Edit) button Background and text "TaskPro" help area,
       addButtonHoverBackground: '#7B7EDE', //Add (Edit) button hover Background,
       addColumnButtonColor: '#161616', //Add column button color,
@@ -206,9 +206,9 @@ export const theme = Object.freeze({
       backgroundUserImgWrapper: '#ECEDFD', // Background user wrapper
       backgroundAddIcon: '#ECEDFD', // Background add icon
       textColorForm: '#161616', // Text color form
-      borderInputColor: '##5255BC', // Border input color
+      borderInputColor: '#5255BC', // Border input color
       errorColor: '#ed4337', // Error color
-      eyeShowPassColor: '#BEDBB0', // eye show password color
+      eyeShowPassColor: 'rgba(22, 22, 22, 0.3)', // eye show password color
       wrapperSelectorColor: '#161616', // Wrapper selector color
       backgroundSelector: '#FCFCFC', // Background color selector
       borderSelectorColor: 'rgba(22, 22, 22, 0.8)', // Border selector
@@ -237,11 +237,12 @@ export const theme = Object.freeze({
 });
 
 export const devices = {
-  onlymobile: `(max-width: ${sizes.onlymobile})`,
-  mobile: `(min-width: ${sizes.mobile})`,
-  tablet: `(min-width: ${sizes.tablet})`,
-  desktop: `(min-width: ${sizes.desktop})`,
-  notdesktop: `(max-width: ${sizes.desktop})`,
+  onlymobile: `max-width: ${sizes.onlymobile}`,
+  mobile: `min-width: ${sizes.mobile}`,
+  tablet: `min-width: ${sizes.tablet}`,
+  desktop: `min-width: ${sizes.desktop}`,
+  notdesktop: `max-width: ${sizes.desktop}`,
+  retina: 'min-device-pixel-ratio: 2',
 };
 
 export const baseTransition = '250ms cubic-bezier(0.4, 0, 0.2, 1)';

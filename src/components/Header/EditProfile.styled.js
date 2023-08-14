@@ -10,7 +10,7 @@ export const DivStyled = styled.div`
   width: 335px;
   padding: 24px;
 
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     width: 400px;
     padding: 24px;
   }

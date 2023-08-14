@@ -10,7 +10,7 @@ export const H2styled = styled.h2`
   font-weight: 400;
   letter-spacing: -0.02em;
   color: ${props => props.theme.colors.boardTitleTextIcon};
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     margin-top: 60px;
     margin-left: 24px;
   }
@@ -30,7 +30,7 @@ export const DivStyled = styled.div`
   border-top: 1px solid;
   border-bottom: 1px solid;
   border-color: ${props => props.theme.colors.sidebarDecor};
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     margin-left: 24px;
     margin-right: 24px;
   }
@@ -95,7 +95,7 @@ export const DivNameStyled = styled.div`
   &.active {
     color: ${props => props.theme.colors.sideBarMainText};
   }
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     column-gap: 8px;
     margin-left: 24px;
   }

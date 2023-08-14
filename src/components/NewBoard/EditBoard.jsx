@@ -17,13 +17,13 @@ import {
   SvgBox,
   ButtonText,
   Error,
-  PrimaryButton,
 } from './NewBoard.styled';
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { edit } from 'store/boards/operations';
 import { selectBoardsState } from 'store/boards/selectors';
+import { PrimaryButton } from 'components/PrimaryButton';
 
 const iconNames = [
   'icon-Project',
@@ -81,7 +81,11 @@ const EditBoard = ({ onClick, id }) => {
       }}
       validationSchema={validationSchema}
       onSubmit={(values, formik) => {
-        if (boards.find(b => b.title === values.title && board.title !== values.title)) {
+        if (
+          boards.find(
+            b => b.title === values.title && board.title !== values.title
+          )
+        ) {
           formik.setFieldError(
             'title',
             'A board with this title already exists'
@@ -94,22 +98,21 @@ const EditBoard = ({ onClick, id }) => {
     >
       {formik => (
         <Form>
-          <FormBox >
+          <FormBox>
             <CloseButton type="button" onClick={onClick}>
               <Svg w={18} h={18} use={`${icons}#icon-x-close`} />
             </CloseButton>
-            <Title >Edit board</Title>
+            <Title>Edit board</Title>
             <FormInput
               id="title"
               name="title"
               placeholder="Title"
-              
               value={formik.values.title}
             />
             {formik.errors.title && formik.touched.title && (
               <Error>{formik.errors.title}</Error>
             )}
-            <Text >Icons</Text>
+            <Text>Icons</Text>
             <RadioIconBox>
               {iconNames.map(iconName => (
                 <IconRadioButton
@@ -117,14 +120,13 @@ const EditBoard = ({ onClick, id }) => {
                   name="dashboardIcon"
                   value={iconName}
                   checked={formik.values.dashboardIcon === iconName}
-                  
                 />
               ))}
             </RadioIconBox>
             {formik.errors.dashboardIcon && formik.touched.dashboardIcon && (
               <Error>{formik.errors.dashboardIcon}</Error>
             )}
-            <Text >Background</Text>
+            <Text>Background</Text>
             <RadioBackgroundBox>
               {backgroundImages.map(image => (
                 <BackgroundRadioButton
@@ -132,7 +134,6 @@ const EditBoard = ({ onClick, id }) => {
                   name="background"
                   value={image}
                   checked={formik.values.background === image}
-                  
                 />
               ))}
             </RadioBackgroundBox>
@@ -141,10 +142,10 @@ const EditBoard = ({ onClick, id }) => {
             )}
             <PrimaryButton type="submit">
               <ButtonBox>
-                <SvgBox >
+                <SvgBox>
                   <Svg w={14} h={14} use={`${icons}#icon-plus`} />
                 </SvgBox>
-                <ButtonText >Edit</ButtonText>
+                <ButtonText>Edit</ButtonText>
               </ButtonBox>
             </PrimaryButton>
           </FormBox>

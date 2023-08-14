@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { baseTransition } from 'styles';
+import { baseTransition, devices } from 'styles';
 
 export const MainDashboardSection = styled.section`
   position: relative;
@@ -11,7 +11,7 @@ export const MainDashboardSection = styled.section`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  @media (min-device-pixel-ratio: 2),
+  @media screen and (${devices.retina}),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     background-image: ${props =>
@@ -20,12 +20,12 @@ export const MainDashboardSection = styled.section`
         : 'none'};
   }
 
-  @media (min-width: 768px) {
+  @media screen and (${devices.tablet}) {
     background-image: ${props =>
       props.background !== 'default'
         ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Tablet/${props.background}.jpg")`
         : 'none'};
-    @media (min-device-pixel-ratio: 2),
+    @media screen and (${devices.retina}),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: ${props =>
@@ -35,12 +35,12 @@ export const MainDashboardSection = styled.section`
     }
   }
 
-  @media (min-width: 1440px) {
+  @media screen and (${devices.desktop}) {
     background-image: ${props =>
       props.background !== 'default'
         ? `url("https://res.cloudinary.com/dt8h4kxqx/image/upload/v1691824162/TaskPro/Desktop/${props.background}.jpg")`
         : 'none'};
-    @media (min-device-pixel-ratio: 2),
+    @media screen and (${devices.retina}),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: ${props =>
@@ -58,12 +58,12 @@ export const MainDashboardContainer = styled.div`
   overflow-x: auto;
   display: flex;
 
-  @media (min-width: 768px) {
+  @media screen and (${devices.tablet}) {
     gap: 34px;
     padding: 80px 0 52px 0;
   }
 
-  @media (min-width: 1440px) {
+  @media screen and (${devices.desktop}) {
     padding: 48px 0 16px 0;
   }
 `;
@@ -134,11 +134,11 @@ export const ContentWrapper = styled.div`
   display: flex;
   margin-left: 20px;
 
-  @media (min-width: 768px) {
+  @media screen and (${devices.tablet}) {
     margin-left: 32px;
   }
 
-  @media (min-width: 1440px) {
+  @media screen and (${devices.desktop}) {
     margin-left: 24px;
   }
 `;
@@ -149,12 +149,12 @@ export const TrackHorizontal = styled.div`
   bottom: 0;
   left: 20px;
   right: 20px;
-  @media (min-width: 768px) {
+  @media screen and (${devices.tablet}) {
     left: 32px;
     right: 32px;
   }
 
-  @media (min-width: 1440px) {
+  @media screen and (${devices.desktop}) {
     left: 24px;
     right: 24px;
   }

@@ -7,12 +7,12 @@ export const FormBox = styled.div`
   position: relative;
   box-sizing: border-box;
   max-width: 335px;
-  color: ${props => props.theme.colors.textColorForm};
+  color: #fff;
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.5);
-  background: ${props => props.theme.colors.background};
+  background: ${props => (props.theme === 'dark' ? '#232323' : '#FDFDFD')};
   padding: 24px;
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     max-width: 350px;
   }
 `;
@@ -21,26 +21,29 @@ export const FormInput = styled(Field)`
   display: block;
   width: 100%;
   border-radius: 8px;
-  border: 1px solid ${props => props.theme.colors.borderInputColor};
+  border: 1px solid
+    ${props => (props.theme === 'violet' ? '#5255BC' : '#bedbb0')};
   opacity: ${props => (props.value ? '1' : '0.4')};
-  background: ${props => props.theme.colors.background};
+  background: ${props => (props.theme === 'dark' ? '#232323' : '#FDFDFD')};
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   padding: 14px 18px;
-  color: ${props => props.theme.colors.textColorForm};
+  color: ${props =>
+    props.theme === 'dark' ? 'rgba(255, 255, 255, 1)' : 'rgba(22, 22, 22, 1)'};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.28px;
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     max-width: 302px;
   }
   transition: ${baseTransition};
   &:focus,
   &:hover {
     outline: none;
-    border: 1px solid ${props => props.theme.colors.borderInputColor};
+    border: 1px solid
+      ${props => (props.theme === 'violet' ? '#5255BC' : '#bedbb0')};
     opacity: 1;
   }
 `;
@@ -48,7 +51,7 @@ export const FormInput = styled(Field)`
 export const Text = styled.p`
   margin-top: 24px;
   margin-bottom: 14px;
-  color: ${props => props.theme.colors.textColorForm};
+  color: ${props => (props.theme === 'dark' ? '#FFF' : '#161616')};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -58,7 +61,7 @@ export const Text = styled.p`
 `;
 
 export const Title = styled.h2`
-  color: ${props => props.theme.colors.textColorForm};
+  color: ${props => (props.theme === 'dark' ? '#FFF' : '#161616')};
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
@@ -101,23 +104,25 @@ export const RadioImg = styled.img`
   width: 28px;
   border-radius: 25%;
   box-sizing: border-box;
-  border: 2px solid transparent;
-  border-color: ${props =>
-    props.checked ? props.theme.colors.formInputBorderColor : 'transparent'};
+  border: ${props =>
+    props.checked
+      ? `2px solid ${props.theme === 'violet' ? '#5255BC' : '#bedbb0'}`
+      : '2px solid transparent'};
   transition: ${baseTransition};
-  &:hover,
-  &:focus {
-    border-color: ${props => props.theme.colors.formInputBorderColor};
+  &:hover {
+    border-color: ${props =>
+      props.theme === 'violet' ? '#5255BC' : '#BEDBB0'};
   }
 `;
 
 export const RadioIcon = styled.label`
-  color: ${props => props.theme.colors.textColorForm};
+  color: ${props => (props.theme === 'dark' ? '#ffffff' : 'rgb(22, 22, 22)')};
   opacity: ${props => (props.checked ? '100%' : '50%')};
+  fill: ${props =>
+    props.theme === 'dark' ? 'rgb(255, 255, 255)' : 'rgb(22, 22, 22)'};
   transition: ${baseTransition};
-  &:hover,
-  &:focus {
-    color: ${props => props.theme.colors.formInputBorderColor};
+  &:hover {
+    color: ${props => (props.theme === 'violet' ? '#5255BC' : '#BEDBB0')};
     opacity: 100%;
   }
 `;
@@ -126,14 +131,13 @@ export const CloseButton = styled.button`
   position: absolute;
   top: 14px;
   right: 14px;
-  color: ${props => props.theme.colors.closeModalBtn};
 `;
 
 export const ButtonBox = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
-  color: ${props => props.theme.colors.textColorForm};
+  color: ${props => (props.theme === 'violet' ? '#FFF' : '#161616')};
 `;
 
 export const SvgBox = styled.div`
@@ -141,12 +145,14 @@ export const SvgBox = styled.div`
   align-items: center;
   border-radius: 25%;
   padding: 7px;
-  background: ${props => props.theme.colors.buttonIconBackground};
-  color: ${props => props.theme.colors.buttonIconFill};
+  background: ${props =>
+    props.theme === 'violet' ? 'rgba(255, 255, 255, 1)' : '#161616'};
+  color: ${props =>
+    props.theme === 'violet' ? '#161616' : 'rgba(255, 255, 255, 1)'};
 `;
 
 export const ButtonText = styled.p`
-  color: ${props => props.theme.colors.addButtonColor};
+  color: ${props => (props.theme === 'violet' ? '#FFF' : '#161616')};
 `;
 
 export const Error = styled.p`
@@ -154,27 +160,4 @@ export const Error = styled.p`
   font-family: Poppins;
   font-size: 12px;
   margin-top: 8px;
-`;
-
-export const PrimaryButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  height: 49px;
-  padding: 10px 0px 11px 0px;
-  font-family: Poppins;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.28px;
-  border-radius: 8px;
-  color: ${props => props.theme.colors.addButtonColor};
-  background: ${props => props.theme.colors.addButtonBackground};
-  transition: ${baseTransition};
-  &:hover,
-  &:focus {
-    background: ${props => props.theme.colors.addButtonHoverBackground};
-  }
 `;

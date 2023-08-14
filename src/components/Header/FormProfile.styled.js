@@ -36,6 +36,7 @@ export const FieldStyled = styled(Field)`
   &:focus {
     border: 1px solid ${props => props.theme.colors.borderInputColor};
     opacity: 1;
+    outline: none;
   }
 `;
 

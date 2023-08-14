@@ -32,14 +32,14 @@ export const ImgWrapperStyled = styled.div`
   align-items: center;
   width: 100%;
   gap: 14px;
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     gap: 24px;
   }
 `;
 
 export const ImgSetStyled = styled.picture`
   width: 124px;
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     width: 162px;
   }
 `;
@@ -74,10 +74,10 @@ export const LinkButtonStyled = styled(NavLink)`
   color: #ffffff;
   font-weight: 500;
   transition: color, background-color ${baseTransition};
-  @media screen and ${devices.mobile} {
+  @media screen and (${devices.mobile}) {
     width: 335px;
   }
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     width: 344px;
   }
   &:hover {
@@ -105,10 +105,10 @@ export const GoogleBtn = styled.a`
   border-radius: 8px;
   background-color: #fff;
   transition: color, background-color ${baseTransition};
-  @media screen and ${props => props.theme.devices.mobile} {
+  @media screen and (${devices.mobile}) {
     width: 335px;
   }
-  @media screen and ${props => props.theme.devices.tablet} {
+  @media screen and (${devices.tablet}) {
     width: 344px;
   }
   &:hover {
