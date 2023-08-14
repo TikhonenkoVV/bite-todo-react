@@ -50,7 +50,7 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
 
   return (
     <Draggable draggableId={_id} index={index}>
-      {(provided) => (
+      {provided => (
         <ColumnContainer ref={provided.innerRef} {...provided.draggableProps}>
           <ColumnTitleContainer {...provided.dragHandleProps}>
             <ColumnTitle>{title}</ColumnTitle>
@@ -92,7 +92,11 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
           )}
           {isModalOpen && !isEditCardMode && (
             <Modal onClose={closeModal}>
-              <AddTasks boardId={owner} columnId={_id} closeModal={closeModal} />
+              <AddTasks
+                boardId={owner}
+                columnId={_id}
+                closeModal={closeModal}
+              />
             </Modal>
           )}
         </ColumnContainer>
