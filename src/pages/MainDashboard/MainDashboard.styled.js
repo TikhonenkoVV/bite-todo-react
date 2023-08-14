@@ -52,18 +52,20 @@ export const MainDashboardSection = styled.section`
 `;
 
 export const MainDashboardContainer = styled.div`
-  min-height: calc(100vh - 64px);
+  min-height: calc(100svh - 60px);
   height: 100%;
   padding: 74px 0 24px 0;
   overflow-x: auto;
   display: flex;
 
   @media screen and (${devices.tablet}) {
+    min-height: calc(100svh - 68px);
     gap: 34px;
     padding: 80px 0 52px 0;
   }
 
   @media screen and (${devices.desktop}) {
+    min-height: calc(100vh - 68px);
     padding: 48px 0 16px 0;
   }
 `;
