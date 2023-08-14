@@ -2,17 +2,17 @@ import styled from '@emotion/styled';
 import { devices } from 'styles';
 
 export const CardListContainer = styled.div`
-  max-height: calc(100vh - 312px);
+  max-height: calc(100svh - 336px);
   height: 100%;
   min-width: 350px;
   margin-bottom: 14px;
 
   @media screen and (${devices.tablet}) {
-    max-height: calc(100vh - 356px);
+    max-height: calc(100svh - 356px);
   }
 
   @media screen and (${devices.desktop}) {
-    max-height: calc(100vh - 292px);
+    max-height: calc(100vh - 293px);
   }
 `;
 

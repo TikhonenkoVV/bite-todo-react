@@ -53,7 +53,10 @@ export const theme = Object.freeze({
       closeModalBtn: '#FFFFFF', // Close modal
       closeModalBtnHover: 'rgba(255, 255, 255, 0.5)', // Modal close button hover
       backgroundUserImgWrapper: '#1F1F1F', // Background user wrapper
+      iconUserColor: '#151515', // Fill icon user
+      borderIconUser: 'none', // Border icon user
       backgroundAddIcon: '#bedbb0', // Background add icon
+      colorAddIcon: 'rgba(22, 22, 22, 1)', // Color add icon
       textColorForm: '#FFFFFF', // Text color form
       borderInputColor: '#bedbb0', // Border input color
       errorColor: '#ed4337', // Error color
@@ -123,12 +126,15 @@ export const theme = Object.freeze({
       formInputBackground: '#fff',
       formInputBorderColor: '#BEDBB0',
       backgroundModal: '#FCFCFC', // Background modal
-      // borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
+      borderModal: 'none', // Border modal
       boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
       closeModalBtn: '#161616', // Close modal
       closeModalBtnHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
       backgroundUserImgWrapper: '#F6F6F7', // Background user wrapper
+      iconUserColor: '#FFFFFF', // Fill icon user
+      borderIconUser: 'rgba(22, 22, 22, 0.05)', // Border icon user
       backgroundAddIcon: '#bedbb0', // Background add icon
+      colorAddIcon: 'rgba(22, 22, 22, 1)', // Color add icon
       textColorForm: '#161616', // Text color form
       borderInputColor: '#BEDBB0', // Border input color
       errorColor: '#ed4337', // Error color
@@ -199,12 +205,15 @@ export const theme = Object.freeze({
       formInputBackground: '#fff',
       formInputBorderColor: '#5255BC',
       backgroundModal: '#FCFCFC', // Background modal
-      // borderModal: 'rgba(190, 219, 176, 0.5)', // Border modal
+      borderModal: 'none', // Border modal
       boxShadowModal: 'rgba(22, 22, 22, 0.05)', // Box shadow modal
       closeModalBtn: '#161616', // Close modal
       closeModalBtnHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
-      backgroundUserImgWrapper: '#ECEDFD', // Background user wrapper
+      backgroundUserImgWrapper: 'rgba(236, 237, 253, 1)', // Background user wrapper
+      iconUserColor: '#FFFFFF', // Fill icon user
+      borderIconUser: 'rgba(22, 22, 22, 0.05)', // Border icon user
       backgroundAddIcon: '#ECEDFD', // Background add icon
+      colorAddIcon: 'rgba(22, 22, 22, 1)', // Color add icon
       textColorForm: '#161616', // Text color form
       borderInputColor: '#5255BC', // Border input color
       errorColor: '#ed4337', // Error color

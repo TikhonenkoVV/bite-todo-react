@@ -6,9 +6,9 @@ export const ContainerSidebar = styled.aside`
   top: 0;
   left: -225px;
   width: 225px;
-  height: 100vh;
+  height: 100svh;
   background-color: ${props => props.theme.colors.sideBar};
-  z-index: 3;
+  z-index: 5;
   padding-top: 14px;
   color: ${props => props.theme.colors.sideBarMainText};
   transition: transform ${baseTransition};
@@ -34,6 +34,7 @@ export const ContainerSidebar = styled.aside`
   @media screen and (${devices.desktop}) {
     padding-top: 24px;
     grid-row: 1 / 3;
+    height: 100vh;
   }
 `;
 

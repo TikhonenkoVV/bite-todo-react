@@ -14,8 +14,6 @@ import {
 import { useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
 
-const baseUrl = 'https://bite-todo-rest-api.onrender.com'
-
 const EditProfile = ({ closeModal }) => {
   const { avatarURL } = useSelector(selectUser)
   const [avatarFile, setAvatarFile] = useState(null);
@@ -51,7 +49,11 @@ const EditProfile = ({ closeModal }) => {
       <TextStyled>Edit Profile</TextStyled>
       <DivItem>
         <DivUserImgStyled>
-          <AvatarImg width={68} height={68}  src={previewAvatar ? previewAvatar : avatarURL ? avatarURL : `${baseUrl}/avatars/user.png`} alt="userlogo" />
+          {previewAvatar
+            ? <AvatarImg width={68} height={68} src={previewAvatar} alt="userlogo" />
+            : avatarURL
+              ? <AvatarImg width={68} height={68} src={avatarURL} alt="userlogo" />
+              : <Svg w={68} h={68} use={`${sprite}#icon-user`} />}
           <input width={68} height={68} type="file" accept="image/*" onChange={handleAvatarChange} hidden id="avatarInput" />
           <DivIconPlus onClick={() => document.getElementById('avatarInput').click()}>
               <Svg w={10} h={10} use={`${sprite}#icon-plus`} />

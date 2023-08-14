@@ -7,7 +7,7 @@ export const DivStyled = styled.div`
   border: 1px solid ${props => props.theme.colors.borderModal};
   background: ${props => props.theme.colors.backgroundModal};
   box-shadow: 0px 4px 16px 0px ${props => props.theme.colors.boxShadowModal};
-  width: 335px;
+  max-width: 335px;
   padding: 24px;
 
   @media screen and (${devices.tablet}) {
@@ -46,6 +46,7 @@ export const DivUserImgStyled = styled.div`
   background-color: ${props => props.theme.colors.backgroundUserImgWrapper};
   position: relative;
   margin-bottom: 25px;
+  color: ${props => props.theme.colors.iconUserColor};
 `;
 
 export const AvatarImg = styled.img`
@@ -66,4 +67,5 @@ export const DivIconPlus = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: ${props => props.theme.colors.colorAddIcon};
 `;

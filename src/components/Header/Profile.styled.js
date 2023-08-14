@@ -11,6 +11,14 @@ export const DivUserImgStyled = styled.div`
   border-radius: 8px;
   background-color: ${props => props.theme.colors.backgroundUserImgWrapper};
   position: relative;
+  height: 32px;
+  color: ${props => props.theme.colors.iconUserColor};
+  border: 1px solid ${props => props.theme.colors.borderIconUser};
+`;
+
+export const LinkStyled = styled.div`
+  text-align: center;
+  cursor: pointer;
 `;
 
 export const TextStyled = styled.span`
@@ -19,14 +27,10 @@ export const TextStyled = styled.span`
   line-height: normal;
   letter-spacing: -0.28px;
 `;
-
-export const LinkStyled = styled.a`
-  text-decoration: none;
-  cursor: pointer;
-`;
-
 export const AvatarImg = styled.img`
   border-radius: 8px;
   object-fit: cover;
-  height: 32px;
+  height: 31.1px;
 `;
+
+// export const IconUserSvg = styled()``;
