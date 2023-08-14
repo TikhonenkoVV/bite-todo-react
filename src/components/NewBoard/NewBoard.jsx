@@ -4,7 +4,6 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import 'react-toastify/dist/ReactToastify.css';
 import IconRadioButton from './IconRadioButton';
-import { PrimaryButton } from '../PrimaryButton/';
 import BackgroundRadioButton from './BackgroundRadioButton';
 import {
   Title,
@@ -18,13 +17,14 @@ import {
   SvgBox,
   ButtonText,
   Error,
+  PrimaryButton,
 } from './NewBoard.styled';
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from 'store/boards/operations';
 import { selectBoardsState } from 'store/boards/selectors';
-import {selectTheme} from '../../store/auth/selectors'
+
 const iconNames = [
   'icon-Project',
   'icon-star',
@@ -57,15 +57,6 @@ const backgroundImages = [
 
 const NewBoard = ({ onClick }) => {
   const dispatch = useDispatch();
-  const theme = useSelector(selectTheme).toLowerCase()
-
-  const buttonStyles = {
-    padding: '10px 0px 11px 0px',
-    borderRadius: '8px',
-    backgroundColor: theme === 'violet' ? '#5255BC' : '#BEDBB0',
-    color: '#161616',
-    width: '100%',
-  };
 
   const { boards } = useSelector(selectBoardsState);
 
@@ -100,23 +91,22 @@ const NewBoard = ({ onClick }) => {
     >
       {formik => (
         <Form>
-          <FormBox theme={theme}>
+          <FormBox>
             <CloseButton type="button" onClick={onClick}>
               <Svg w={18} h={18} use={`${icons}#icon-x-close`} />
             </CloseButton>
-            <Title theme={theme}>New board</Title>
+            <Title>New board</Title>
             <FormInput
               type="text"
               id="title"
               name="title"
               placeholder="Title"
-              theme={theme}
               value={formik.values.title}
             />
             {formik.errors.title && formik.touched.title && (
               <Error>{formik.errors.title}</Error>
             )}
-            <Text theme={theme}>Icons</Text>
+            <Text>Icons</Text>
             <RadioIconBox>
               {iconNames.map(iconName => (
                 <IconRadioButton
@@ -124,14 +114,13 @@ const NewBoard = ({ onClick }) => {
                   name="dashboardIcon"
                   value={iconName}
                   checked={formik.values.dashboardIcon === iconName}
-                  theme={theme}
                 />
               ))}
             </RadioIconBox>
             {formik.errors.dashboardIcon && formik.touched.dashboardIcon && (
               <Error>{formik.errors.dashboardIcon}</Error>
             )}
-            <Text theme={theme}>Background</Text>
+            <Text>Background</Text>
             <RadioBackgroundBox>
               {backgroundImages.map(image => (
                 <BackgroundRadioButton
@@ -139,19 +128,18 @@ const NewBoard = ({ onClick }) => {
                   name="background"
                   value={image}
                   checked={formik.values.background === image}
-                  theme={theme}
                 />
               ))}
             </RadioBackgroundBox>
             {formik.errors.background && formik.touched.background && (
               <Error>{formik.errors.background}</Error>
             )}
-            <PrimaryButton type="submit" styles={buttonStyles}>
+            <PrimaryButton type="submit">
               <ButtonBox>
-                <SvgBox theme={theme}>
+                <SvgBox>
                   <Svg w={14} h={14} use={`${icons}#icon-plus`} />
                 </SvgBox>
-                <ButtonText theme={theme}>Create </ButtonText>
+                <ButtonText>Create </ButtonText>
               </ButtonBox>
             </PrimaryButton>
           </FormBox>

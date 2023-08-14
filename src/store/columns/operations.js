@@ -1,5 +1,6 @@
 import { biteTodoInnstance } from 'store/auth/operations';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getErrorMessage } from 'utils/httpUtils';
 
 export const getColumns = createAsyncThunk(
   'columns/get',
@@ -10,7 +11,7 @@ export const getColumns = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(getErrorMessage(error));
     }
   }
 );
@@ -27,7 +28,7 @@ export const addColumn = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(getErrorMessage(error));
     }
   }
 );
@@ -44,7 +45,7 @@ export const editColumn = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(getErrorMessage(error));
     }
   }
 );
@@ -58,7 +59,7 @@ export const deleteColumn = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(getErrorMessage(error));
     }
   }
 );
@@ -76,7 +77,7 @@ export const addTask = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(getErrorMessage(error));
     }
   }
 );
@@ -94,7 +95,7 @@ export const editTask = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(getErrorMessage(error));
     }
   }
 );
@@ -108,7 +109,7 @@ export const deleteTask = createAsyncThunk(
       );
       return { ...data, boardId, columnId, taskId };
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(getErrorMessage(error));
     }
   }
 );

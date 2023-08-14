@@ -51,7 +51,7 @@ export const HeroTextStyled = styled.p`
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  // line-height: 18px; /* 128.571% */
+  line-height: 1.28;
 `;
 
 export const LinkWrapperStyled = styled.div`

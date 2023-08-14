@@ -1,6 +1,6 @@
 import { useEffect, lazy, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useSearchParams } from 'react-router-dom';
 import { PrivateRoute } from './privateRoute';
 import { RestrictedRoute } from './restrictedRoute';
 import { useAuth } from 'hooks/useAuth';
@@ -13,6 +13,7 @@ import Welcome from '../pages/Welcome/Welcome';
 import { Auth } from '../pages/Auth/Auth';
 import { ThemeProvider } from '@emotion/react';
 import { theme, devices, baseTransition, priority } from 'styles';
+import { setGoogleTokens } from 'store/auth/slice';
 
 const MainDashboard = lazy(() =>
   import('../pages/MainDashboard/MainDashboard')
@@ -20,6 +21,8 @@ const MainDashboard = lazy(() =>
 
 export const App = () => {
   const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
+
   const [currTheme, setCurrTheme] = useState({
     ...theme.dark,
     devices,
@@ -32,6 +35,15 @@ export const App = () => {
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+
+  useEffect(() => {
+    const accessToken = searchParams.get('accessToken');
+    const refreshToken = searchParams.get('refreshToken');
+    if (accessToken && refreshToken) {
+      dispatch(setGoogleTokens({ accessToken, refreshToken }));
+      dispatch(refreshUser());
+    }
+  }, [searchParams, dispatch]);
 
   useEffect(() => {
     const { message, status } = authError;
@@ -61,6 +73,7 @@ export const App = () => {
   }, [dispatch, authError]);
 
   useEffect(() => {
+    if (!selectedTheme) return;
     if (selectedTheme.toLowerCase() === 'dark') {
       setCurrTheme({ ...theme.dark, devices, baseTransition, priority });
     }

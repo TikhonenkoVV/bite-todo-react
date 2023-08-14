@@ -21,7 +21,11 @@ const columnsSlice = createSlice({
   initialState,
   reducers: {
     moveColumns: (state, { payload }) => {
-      state.columns = reorder(state.columns, payload.sourceIndex, payload.destinationIndex);
+      state.columns = reorder(
+        state.columns,
+        payload.sourceIndex,
+        payload.destinationIndex
+      );
     },
     moveCards: (state, { payload }) => {
       const cardsByColumnIdMap = state.columns.reduce((acc, column) => {
@@ -29,8 +33,15 @@ const columnsSlice = createSlice({
 
         return acc;
       }, {});
-      const updatedCardsByColumnIdMap = reorderCardsByColumnId(cardsByColumnIdMap, payload.source, payload.destination);
-      const newColumnsState = state.columns.map((column) => ({...column, cards: updatedCardsByColumnIdMap.cardsByColumnId[column._id]}))
+      const updatedCardsByColumnIdMap = reorderCardsByColumnId(
+        cardsByColumnIdMap,
+        payload.source,
+        payload.destination
+      );
+      const newColumnsState = state.columns.map(column => ({
+        ...column,
+        cards: updatedCardsByColumnIdMap.cardsByColumnId[column._id],
+      }));
 
       state.columns = newColumnsState;
     },
@@ -39,6 +50,7 @@ const columnsSlice = createSlice({
     buider
       .addCase(getColumns.pending, (state, { payload }) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getColumns.fulfilled, (state, { payload }) => {
         state.columns = payload.columns;
@@ -51,6 +63,7 @@ const columnsSlice = createSlice({
       })
       .addCase(addColumn.pending, (state, { payload }) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(addColumn.fulfilled, (state, { payload }) => {
         state.columns.push(payload.column);
@@ -63,6 +76,7 @@ const columnsSlice = createSlice({
       })
       .addCase(editColumn.pending, (state, { payload }) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(editColumn.fulfilled, (state, { payload }) => {
         const column = state.columns.find(
@@ -78,6 +92,7 @@ const columnsSlice = createSlice({
       })
       .addCase(deleteColumn.pending, state => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(deleteColumn.fulfilled, (state, { payload }) => {
         state.columns = state.columns.filter(
@@ -92,6 +107,7 @@ const columnsSlice = createSlice({
       })
       .addCase(addTask.pending, state => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(addTask.fulfilled, (state, { payload }) => {
         const column = state.columns.find(
@@ -107,6 +123,7 @@ const columnsSlice = createSlice({
       })
       .addCase(editTask.pending, state => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(editTask.fulfilled, (state, { payload }) => {
         const column = state.columns.find(
@@ -125,6 +142,7 @@ const columnsSlice = createSlice({
       })
       .addCase(deleteTask.pending, state => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(deleteTask.fulfilled, (state, { payload }) => {
         const { columnId, taskId } = payload;
