@@ -7,7 +7,7 @@ export const DivStyled = styled.div`
   border: 1px solid ${props => props.theme.colors.borderModal};
   background: ${props => props.theme.colors.backgroundModal};
   box-shadow: 0px 4px 16px 0px ${props => props.theme.colors.boxShadowModal};
-  width: 335px;
+  max-width: 335px;
   padding: 24px;
 
   @media screen and (${devices.tablet}) {

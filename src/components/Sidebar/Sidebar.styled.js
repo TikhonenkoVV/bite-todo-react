@@ -8,7 +8,7 @@ export const ContainerSidebar = styled.aside`
   width: 225px;
   height: 100svh;
   background-color: ${props => props.theme.colors.sideBar};
-  z-index: 3;
+  z-index: 5;
   padding-top: 14px;
   color: ${props => props.theme.colors.sideBarMainText};
   transition: transform ${baseTransition};

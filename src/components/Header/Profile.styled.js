@@ -13,6 +13,7 @@ export const DivUserImgStyled = styled.div`
   position: relative;
   height: 32px;
   color: ${props => props.theme.colors.iconUserColor};
+  border: 1px solid ${props => props.theme.colors.borderIconUser};
 `;
 
 export const LinkStyled = styled.div`
@@ -29,7 +30,7 @@ export const TextStyled = styled.span`
 export const AvatarImg = styled.img`
   border-radius: 8px;
   object-fit: cover;
-  height: 32px;
+  height: 31.1px;
 `;
 
 // export const IconUserSvg = styled()``;
