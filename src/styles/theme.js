@@ -67,6 +67,9 @@ export const theme = Object.freeze({
       textSelectorColor: 'rgba(255, 255, 255, 0.5)', // Text selector color
       hoverSelectorColor: '#bedbb0', // Hover selector color
       filterColor: 'rgba(255, 255, 255, 0.8)', // Dashboard filter color
+      filterBgd: 'rgba(22, 22, 22, 0.4)', // Status filter component background
+      filterShadow:
+        ' 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)', // Status filter component shadow
       filterContainerBackground: '#151515', // Dashboard filter modal background
       filterContainerShadow: 'none', // Dashboard filter modal shadow
       filterDecorativeElement: '2px solid #000', // Dashboard filter modal (slected button ::after element color)
@@ -146,6 +149,9 @@ export const theme = Object.freeze({
       hoverSelectorColor: '#BEDBB0', // Hover selector color
       boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
       filterColor: 'rgba(22, 22, 22, 0.8)', // Dashboard filter color
+      filterBgd: 'rgba(255, 255, 255, 0.4)', // Status filter component background
+      filterShadow:
+        ' 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)', // Status filter component shadow
       filterContainerBackground: '#FCFCFC', // Dashboard filter modal background
       filterContainerShadow: '0px 4px 16px 0px rgba(22, 22, 22, 0.05)', // Dashboard filter modal shadow
       filterDecorativeElement: '2px solid #fff', // Dashboard filter modal (slected button ::after element color)
@@ -225,6 +231,9 @@ export const theme = Object.freeze({
       hoverSelectorColor: '#5255BC', // Hover selector color
       boxShadowSelector: 'rgba(17, 17, 17, 0.1)', // Shadow selector
       filterColor: 'rgba(22, 22, 22, 0.8)', // Dashboard filter color
+      filterBgd: 'rgba(255, 255, 255, 0.4)', // Status filter component background
+      filterShadow:
+        '0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)', // Status filter component shadow
       filterContainerBackground: '#FCFCFC', // Dashboard filter modal background
       filterContainerShadow: '0px 4px 16px 0px rgba(22, 22, 22, 0.05)', // Dashboard filter modal shadow
       filterDecorativeElement: '2px solid #fff', // Dashboard filter modal (slected button ::after element color)
