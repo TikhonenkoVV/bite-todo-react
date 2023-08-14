@@ -26,13 +26,14 @@ import {
   UlStyled,
   ButtonEdit,
   ButtonDelete,
+  TrackVertical,
 } from './ControlBoard.styled';
 import Scrollbars from 'react-custom-scrollbars-2';
 import { Notify } from 'notiflix';
 
 const ControlBoard = () => {
   const [idActiveBoard, setIdActiveBoard] = useState('');
-  const [lengthBoard, setlengthBoard] = useState(null);
+  const [lengthBoard, setLengthBoard] = useState(null);
 
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
@@ -41,7 +42,7 @@ const ControlBoard = () => {
   const navigate = useNavigate();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const { boards, isLoading } = useSelector(selectBoardsState);
+  const { boards, isLoading, error } = useSelector(selectBoardsState);
   const columns = useSelector(selectColumns);
 
   useEffect(() => {
@@ -56,7 +57,7 @@ const ControlBoard = () => {
     }
     if (boards.length > 0) {
       setIdActiveBoard(boards[0]._id);
-      setlengthBoard(boards.length);
+      setLengthBoard(boards.length);
     }
   }, [boards, lengthBoard]);
 
@@ -74,6 +75,10 @@ const ControlBoard = () => {
     }
   }, [boards, idActiveBoard, navigate]);
 
+  if (error) {
+    Notify.warning(error);
+  }
+
   const handleActiveBoard = id => {
     setIdActiveBoard(id);
   };
@@ -81,7 +86,7 @@ const ControlBoard = () => {
   const handleDeleteBoard = id => {
     if (!columns.length) {
       dispatch(deleteBoards(id));
-      setlengthBoard(null);
+      setLengthBoard(null);
       return;
     }
 
@@ -113,6 +118,14 @@ const ControlBoard = () => {
             height: scrollHeight,
           }}
           hideTracksWhenNotNeeded={true}
+          renderTrackVertical={({ style, ...props }) => (
+            <TrackVertical
+              {...props}
+              style={{
+                ...style,
+              }}
+            />
+          )}
         >
           <UlStyled>
             {boards.map(board => (
