@@ -61,12 +61,12 @@ export const MainDashboardContainer = styled.div`
   @media screen and (${devices.tablet}) {
     min-height: calc(100svh - 68px);
     gap: 34px;
-    padding: 80px 0 52px 0;
+    padding: 80px 0 32px 0;
   }
 
   @media screen and (${devices.desktop}) {
     min-height: calc(100vh - 68px);
-    padding: 48px 0 16px 0;
+    padding: 48px 0 8px 0;
   }
 `;
 
