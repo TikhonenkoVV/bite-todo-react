@@ -12,7 +12,7 @@ export const FormBox = styled.div`
   border: 1px solid rgba(190, 219, 176, 0.5);
   background: ${props => (props.theme === 'dark' ? '#232323' : '#FDFDFD')};
   padding: 24px;
-  @media screen and (${devices.tablet}) {
+  @media screen and ${devices.tablet} {
     max-width: 350px;
   }
 `;
@@ -35,7 +35,7 @@ export const FormInput = styled(Field)`
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.28px;
-  @media screen and (${devices.tablet}) {
+  @media screen and ${devices.tablet} {
     max-width: 302px;
   }
   transition: ${baseTransition};
