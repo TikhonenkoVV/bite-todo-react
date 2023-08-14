@@ -16,7 +16,7 @@ export const StyledDiv = styled.div`
     width: 335px;
   }
 
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     max-width: 400px;
   }
 `;

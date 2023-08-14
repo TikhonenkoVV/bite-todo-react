@@ -14,7 +14,7 @@ export const Container = styled.div`
     width: 335px;
   }
 
-  @media ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     padding: 40px;
     width: 424px;
     min-height: 332px;
@@ -66,7 +66,6 @@ export const Input = styled.input`
     opacity: 1;
     border: 1px solid #bedbb0;
   }
-
 `;
 
 export const InputWrapper = styled.div`
@@ -77,7 +76,6 @@ export const InputWrapper = styled.div`
   width: 100%;
   height: 49px;
   margin-top: 14px;
-
 `;
 
 export const Button = styled.button`
@@ -100,11 +98,11 @@ export const Button = styled.button`
     background: #9dc888;
   }
 
-  @media ${devices.mobile} {
+  @media screen and (${devices.mobile}) {
     width: 287px;
   }
 
-  @media ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     width: 344px;
   }
 `;

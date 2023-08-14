@@ -20,7 +20,7 @@ export const DivStyled = styled.div`
   background-repeat: no-repeat;
   background-position: 14px 14px;
 
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     margin-left: 24px;
     padding: 20px;
     width: 212px;
@@ -37,7 +37,7 @@ export const PStyled = styled.p`
   margin: 92px 0 15px;
   padding-left: 1px;
 
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     margin-bottom: 18px;
   }
 `;

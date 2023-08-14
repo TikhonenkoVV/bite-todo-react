@@ -19,7 +19,7 @@ export const ContainerSidebar = styled.aside`
     transform: translateX(225px);
   `}
 
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     left: -260px;
     width: 260px;
     padding-top: 24px;
@@ -31,8 +31,7 @@ export const ContainerSidebar = styled.aside`
   `}
   }
 
-  @media screen and ${devices.desktop} {
-    /* position: static; */
+  @media screen and (${devices.desktop}) {
     padding-top: 24px;
     grid-row: 1 / 3;
   }
@@ -41,7 +40,4 @@ export const ContainerSidebar = styled.aside`
 export const WrapperBottom = styled.div`
   position: absolute;
   bottom: 0;
-  /* @media screen and ${devices.desktop} {
-    position: static;
-  } */
 `;

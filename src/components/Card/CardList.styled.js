@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { devices } from 'styles';
 
 export const CardListContainer = styled.div`
   max-height: calc(100vh - 312px);
@@ -6,11 +7,11 @@ export const CardListContainer = styled.div`
   min-width: 350px;
   margin-bottom: 14px;
 
-  @media (min-width: 768px) {
+  @media screen and (${devices.tablet}) {
     max-height: calc(100vh - 356px);
   }
 
-  @media (min-width: 1440px) {
+  @media screen and (${devices.desktop}) {
     max-height: calc(100vh - 292px);
   }
 `;

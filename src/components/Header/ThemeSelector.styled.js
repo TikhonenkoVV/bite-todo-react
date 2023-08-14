@@ -40,7 +40,7 @@ export const DivListStyled = styled.div`
   border-radius: 8px;
   padding: 18px;
   margin: 0;
-  margin-top: 10px
+  margin-top: 10px;
   position: fixed;
   background-color: ${props => props.theme.colors.backgroundSelector};
   transform: ${props => (props.isOpen ? 'scaleY(1)' : 'scaleY(0)')};

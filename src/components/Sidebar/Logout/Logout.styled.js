@@ -9,7 +9,7 @@ export const ButtonStyled = styled.button`
 
   cursor: pointer;
 
-  @media screen and ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     margin-left: 24px;
     margin-bottom: 24px;
   }
@@ -27,7 +27,7 @@ export const Container = styled.div`
 
 export const PStyled = styled.p`
   font-family: Poppins;
-  @media screen and ${devices.desktop} {
+  @media screen and (${devices.desktop}) {
     font-size: 16px;
   }
 `;

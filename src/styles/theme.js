@@ -237,11 +237,12 @@ export const theme = Object.freeze({
 });
 
 export const devices = {
-  onlymobile: `(max-width: ${sizes.onlymobile})`,
-  mobile: `(min-width: ${sizes.mobile})`,
-  tablet: `(min-width: ${sizes.tablet})`,
-  desktop: `(min-width: ${sizes.desktop})`,
-  notdesktop: `(max-width: ${sizes.desktop})`,
+  onlymobile: `max-width: ${sizes.onlymobile}`,
+  mobile: `min-width: ${sizes.mobile}`,
+  tablet: `min-width: ${sizes.tablet}`,
+  desktop: `min-width: ${sizes.desktop}`,
+  notdesktop: `max-width: ${sizes.desktop}`,
+  retina: 'min-device-pixel-ratio: 2',
 };
 
 export const baseTransition = '250ms cubic-bezier(0.4, 0, 0.2, 1)';

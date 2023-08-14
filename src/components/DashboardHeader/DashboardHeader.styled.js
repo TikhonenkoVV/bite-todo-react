@@ -12,14 +12,14 @@ export const DashboardHeaderTitle = styled.h2`
   line-height: normal;
   letter-spacing: -0.28px;
 
-  @media ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     font-size: 18px;
     letter-spacing: -0.36px;
     top: 26px;
     left: 32px;
   }
 
-  @media ${devices.desktop} {
+  @media screen and (${devices.desktop}) {
     top: 10px;
   }
 `;
@@ -35,12 +35,12 @@ export const DashboardHeaderFilter = styled.button`
   color: ${props => props.theme.colors.filterColor};
   transition: color ${baseTransition};
 
-  @media ${devices.tablet} {
+  @media screen and (${devices.tablet}) {
     top: 20px;
     right: 32px;
   }
 
-  @media ${devices.desktop} {
+  @media screen and (${devices.desktop}) {
     top: 14px;
     right: 24px;
   }

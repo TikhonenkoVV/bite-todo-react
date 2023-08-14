@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
-import { baseTransition } from 'styles';
+import { baseTransition, devices } from 'styles';
 
 export const FormTitle = styled.p`
   margin-bottom: 24px;
@@ -18,7 +18,7 @@ export const FormContainer = styled.div`
   border-radius: 8px;
   background: ${props => props.theme.colors.formBackgroundColor};
   border: 1px solid ${props => props.theme.colors.formBorderColor};
-  @media (min-width: 768px) {
+  @media screen and (${devices.tablet}) {
     min-width: 350px;
   }
 `;
