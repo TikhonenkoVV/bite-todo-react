@@ -6,7 +6,7 @@ export const DivStyled = styled.div`
   background-color: transparent;
   color: ${props => props.theme.colors.wrapperSelectorColor};
   cursor: pointer;
-  z-index: 4;
+  z-index: 3;
 `;
 
 export const BtnSelectStyled = styled.button`
