@@ -54,6 +54,7 @@ export const theme = Object.freeze({
       closeModalBtnHover: 'rgba(255, 255, 255, 0.5)', // Modal close button hover
       backgroundUserImgWrapper: '#1F1F1F', // Background user wrapper
       iconUserColor: '#151515', // Fill icon user
+      borderIconUser: 'none', // Border icon user
       backgroundAddIcon: '#bedbb0', // Background add icon
       colorAddIcon: 'rgba(22, 22, 22, 1)', // Color add icon
       textColorForm: '#FFFFFF', // Text color form
@@ -131,6 +132,7 @@ export const theme = Object.freeze({
       closeModalBtnHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
       backgroundUserImgWrapper: '#F6F6F7', // Background user wrapper
       iconUserColor: '#FFFFFF', // Fill icon user
+      borderIconUser: 'rgba(22, 22, 22, 0.05)', // Border icon user
       backgroundAddIcon: '#bedbb0', // Background add icon
       colorAddIcon: 'rgba(22, 22, 22, 1)', // Color add icon
       textColorForm: '#161616', // Text color form
@@ -209,6 +211,7 @@ export const theme = Object.freeze({
       closeModalBtnHover: 'rgba(22, 22, 22, 0.5)', // Modal close button hover
       backgroundUserImgWrapper: 'rgba(236, 237, 253, 1)', // Background user wrapper
       iconUserColor: '#FFFFFF', // Fill icon user
+      borderIconUser: 'rgba(22, 22, 22, 0.05)', // Border icon user
       backgroundAddIcon: '#ECEDFD', // Background add icon
       colorAddIcon: 'rgba(22, 22, 22, 1)', // Color add icon
       textColorForm: '#161616', // Text color form
