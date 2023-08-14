@@ -17,13 +17,13 @@ import {
   SvgBox,
   ButtonText,
   Error,
-  PrimaryButton,
 } from './NewBoard.styled';
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from 'store/boards/operations';
 import { selectBoardsState } from 'store/boards/selectors';
+import { PrimaryButton } from 'components/PrimaryButton';
 
 const iconNames = [
   'icon-Project',
