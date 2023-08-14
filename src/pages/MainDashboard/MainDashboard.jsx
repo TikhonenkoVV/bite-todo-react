@@ -38,7 +38,11 @@ const MainDashboard = () => {
   return (
     <MainDashboardSection background={selectedBoard?.background || 'default'}>
       <FilterContainer>
-        <DashboardHeader name={selectedBoard?.title} disabled={!hasCards} />
+        <DashboardHeader
+          name={selectedBoard?.title}
+          disabled={!hasCards}
+          dashboard={selectedBoard}
+        />
       </FilterContainer>
       <MainDashboardContainer>
         {boardName ? (
