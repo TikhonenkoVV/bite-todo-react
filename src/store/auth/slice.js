@@ -42,6 +42,10 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.error = { message: '', status: '' };
     },
+    setGoogleTokens: (state, { payload }) => {
+      state.accessToken = payload.accessToken;
+      state.refreshToken = payload.refreshToken;
+    },
   },
   extraReducers: buider => {
     buider
@@ -138,5 +142,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { forcedLogout } = authSlice.actions;
+export const { forcedLogout, setGoogleTokens } = authSlice.actions;
 export const authReducer = authSlice.reducer;
