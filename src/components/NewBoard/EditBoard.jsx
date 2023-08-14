@@ -17,13 +17,13 @@ import {
   SvgBox,
   ButtonText,
   Error,
+  ModalBoardButton,
 } from './NewBoard.styled';
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { edit } from 'store/boards/operations';
 import { selectBoardsState } from 'store/boards/selectors';
-import { PrimaryButton } from 'components/PrimaryButton';
 
 const iconNames = [
   'icon-Project',
@@ -140,14 +140,14 @@ const EditBoard = ({ onClick, id }) => {
             {formik.errors.background && formik.touched.background && (
               <Error>{formik.errors.background}</Error>
             )}
-            <PrimaryButton type="submit">
+            <ModalBoardButton type="submit">
               <ButtonBox>
                 <SvgBox>
                   <Svg w={14} h={14} use={`${icons}#icon-plus`} />
                 </SvgBox>
                 <ButtonText>Edit</ButtonText>
               </ButtonBox>
-            </PrimaryButton>
+            </ModalBoardButton>
           </FormBox>
         </Form>
       )}
