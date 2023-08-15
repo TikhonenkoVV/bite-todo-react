@@ -92,7 +92,7 @@ export const EditTask = ({
       resetForm();
       closeModal();
     } catch (error) {
-      console.error('Error:', error);
+      console.log('Error:', error);
     }
   };
 
