@@ -33,7 +33,6 @@ export const ColumnList = ({ boardId }) => {
   }, [boardId, dispatch]);
 
   const onDragEnd = result => {
-    console.log(result);
     const { source, destination } = result;
 
     if (
@@ -69,7 +68,6 @@ export const ColumnList = ({ boardId }) => {
     const draggableCard = sourceArr.find(val => val._id === result.draggableId);
     sourceArr.splice(result.source.index, 1);
     destArr.splice(result.destination.index, 0, draggableCard);
-    console.log('sourceArr', sourceArr);
 
     sourceArr.forEach((e, i) => {
       dispatch(
