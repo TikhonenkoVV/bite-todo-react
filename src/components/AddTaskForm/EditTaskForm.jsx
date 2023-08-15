@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { useFormik } from 'formik';
-import styled from '@emotion/styled';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
@@ -117,7 +116,7 @@ export const EditTask = ({
     : CurrentDate();
 
   const updateDeadline = deadline ? new Date(deadline) : null;
-  
+
   return (
     <StyledDiv>
       <StyledP>Edit Card</StyledP>
