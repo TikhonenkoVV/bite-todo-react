@@ -15,6 +15,7 @@ const Logo = ({ styles }) => {
   const selectedTheme = useSelector(selectTheme);
 
   useEffect(() => {
+    if (!selectedTheme) return;
     if (selectedTheme.toLowerCase() === 'violet') {
       setNameIcon('flash-light');
       return;
