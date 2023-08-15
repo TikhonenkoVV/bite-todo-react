@@ -27,26 +27,12 @@ import {
   StyledBtnClose,
   PlusIconContainer,
   StyledFormikColorNotification,
+  DatePickerContainer,
+  StyledContainerCardHeder,
 } from './AddTaskForm.styled';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 const priorities = ['low', 'medium', 'high', 'without'];
-
-const StyledCustomCalendar = styled(DatePicker)`
-  &.custom-datepicker {
-    .react-datepicker-wrapper & .react-datepicker__day--keyboard-selected,
-    .react-datepicker-wrapper & .react-datepicker__day--today,
-    .react-datepicker-wrapper & .react-datepicker__day--weekend {
-      background-color: red !important;
-      color: white !important;
-    }
-
-    .react-datepicker-wrapper & .react-datepicker__day--selected {
-      background-color: red;
-      color: white;
-    }
-  }
-`;
 
 const initialValues = {
   title: '',
@@ -127,20 +113,22 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
 
   return (
     <StyledDiv>
-      <StyledP>Add Card</StyledP>
+      <StyledContainerCardHeder>
+        <StyledP>Add Card</StyledP>
 
-      <StyledBtnClose onClick={closeModal}>
-        <svg
-          className="icon"
-          width="18"
-          height="18"
-          aria-hidden="true"
-          role="presentation"
-          fill="white"
-        >
-          <use xlinkHref={`${sprite}#icon-x-close`} />
-        </svg>
-      </StyledBtnClose>
+        <StyledBtnClose onClick={closeModal}>
+          <svg
+            className="icon"
+            width="18"
+            height="18"
+            aria-hidden="true"
+            role="presentation"
+          >
+            <use xlinkHref={`${sprite}#icon-x-close`} />
+          </svg>
+        </StyledBtnClose>
+      </StyledContainerCardHeder>
+
       <form onSubmit={formik.handleSubmit}>
         <StyledInput
           type="text"
@@ -210,26 +198,23 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
             {showDateNotification && (
               <p style={{ marginLeft: 16 }}>Please select date</p>
             )}
-            {/* {showDateNotification && (
-    <div style={{ marginLeft: '5px', color: 'white', fontSize: '12px' }}>
-      Please select a deadline date
-    </div>
-  )} */}
           </Container>
           {formik.touched.deadline && formik.errors.deadline ? (
             <div>{formik.errors.deadline}</div>
           ) : null}
-          <StyledCustomCalendar
-            className="custom-datepicker"
-            ref={deadlinePickerRef}
-            name="deadline"
-            selected={deadline || undefined}
-            onChange={handleDateChange}
-            locale="en"
-            dateFormat="d MMMM yyyy"
-            showTimeSelect={false}
-            customInput={<div></div>}
-          />
+          <DatePickerContainer>
+            <DatePicker
+              className="custom-datepicker"
+              ref={deadlinePickerRef}
+              name="deadline"
+              selected={deadline || undefined}
+              onChange={handleDateChange}
+              locale="en"
+              dateFormat="d MMMM yyyy"
+              showTimeSelect={false}
+              customInput={<div></div>}
+            />
+          </DatePickerContainer>
         </StyledTitleDeadline>
         <StyledButton type="submit">
           <PlusIconContainer>
@@ -239,7 +224,6 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
               height="14"
               aria-hidden="true"
               role="presentation"
-              fill="white"
             >
               <use xlinkHref={`${sprite}#icon-plus`} />
             </svg>

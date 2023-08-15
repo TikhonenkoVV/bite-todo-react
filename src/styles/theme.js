@@ -86,6 +86,10 @@ export const theme = Object.freeze({
       mainThumbHorizontalBackground: 'rgba(255, 255, 255, 0.1)', //Main dashboard thumb background
       columnTrackVerticalBackground: 'rgba(255, 255, 255, 0.1)', //Column scroll background
       columnThumbVerticalBackground: '#121212', //Column thumb background
+      calendarBackGround: '#1f1f1f', //Calendar
+      calendarNumberColor: '#FFF', //Calendar number color
+      calendarSelectedColor: '#BEDBB0', //Calendar selected color
+      plusButtonColor: '#FFF', //Plus button color
     },
   },
   light: {
@@ -168,6 +172,10 @@ export const theme = Object.freeze({
       mainThumbHorizontalBackground: '#E8E8E8', //Main dashboard thumb background
       columnTrackVerticalBackground: '#E8E8E8', //Column scroll background
       columnThumbVerticalBackground: 'rgba(22, 22, 22, 0.10)', //Column thumb background
+      calendarBackGround: '#FCFCFC', //Calendar
+      calendarNumberColor: '#161616', //Calendar number color
+      calendarSelectedColor: '#BEDBB0', //Calendar selected color
+      plusButtonColor: '#161616', //Plus button color
     },
   },
   violet: {
@@ -250,6 +258,9 @@ export const theme = Object.freeze({
       mainThumbHorizontalBackground: '#B8BCFD', //Main dashboard thumb background
       columnTrackVerticalBackground: '#FFF', //Column scroll background
       columnThumbVerticalBackground: '#B8BCFD', //Column thumb background
+      calendarBackGround: '#FFF', //Calendar
+      calendarNumberColor: '#161616', //Calendar number color
+      calendarSelectedColor: '#5255BC', //Calendar selected color
     },
   },
 });

@@ -1,18 +1,39 @@
 import styled from '@emotion/styled';
 
+import { devices } from 'styles';
+
 export const StyledDiv = styled.div`
   width: 350px;
   height: 522px;
   background-color: ${props => props.theme.colors.background};
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-left: -4px;
   border-radius: 10px;
+
+  @media screen and (${devices.notdesktop}) {
+    width: 335px;
+    height: 522px;
+  }
+`;
+
+export const StyledContainerCardHeder = styled.div`
+  display: flex;
 `;
 
 export const StyledBtnClose = styled.button`
   width: 18px;
   height: 18px;
   margin-left: 212px;
+  fill: ${props => props.theme.colors.closeModalBtn};
+
+  @media screen and (${devices.notdesktop}) {
+    margin-left: 192px;
+    margin-top: 14px;
+  }
+
+  @media screen and (${devices.desktop}) {
+    margin-left: 192px;
+    margin-top: 14px;
+  }
 `;
 
 export const StyledP = styled.p`
@@ -40,27 +61,51 @@ export const StyledInput = styled.input`
     border: 1px solid ${props => props.theme.colors.btnAddBoard};
     outline: none;
   }
+
+  @media screen and (${devices.notdesktop}) {
+    display: inline-flex;
+    padding: 14px 101px 14px 18px;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid #bedbb0;
+    box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  }
 `;
 
 export const StyledTextArea = styled.textarea`
   resize: none;
-  margin-left: 20px;
+
+  max-width: 100%;
   font-size: 14px;
+  margin-left: 20px;
   color: ${props => props.theme.colors.cardMajorText};
-  display: flex;
-  padding: 14px 131px 122px 18px;
-  align-items: center;
-  flex-shrink: 0;
+  padding: 14px 132px 122px 15px;
   border-radius: 8px;
   border: 1px solid ${props => props.theme.colors.btnAddBoard};
   opacity: 0.4;
   background: ${props => props.theme.colors.card};
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   margin-bottom: 24px;
-  :focus-visible {
-    border: 1px solid ${props => props.theme.colors.btnAddBoard};
-    outline: none;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+
+  :focus {
+    border-color: ${props => props.theme.colors.btnAddBoard};
   }
+
+  @media screen and (${devices.desktop}) {
+    padding: 14px 147px 122px 15px;
+  }
+
+  // @media screen and (${devices.notdesktop}) {
+  //   display: flex;
+  //   width: 293px;
+  //   height: 154px;
+  //   padding: 14px 18px;
+  //   justify-content: center;
+  //   align-items: center;
+  //   flex-shrink: 0;
+  // }
 `;
 
 export const StyledTitelBtn = styled.label`
@@ -80,6 +125,10 @@ export const StyledButton = styled.button`
   align-items: center;
   border-radius: 8px;
   background: ${props => props.theme.colors.btnAddBoard};
+
+  @media screen and (${devices.notdesktop}) {
+    width: 287px;
+  }
 `;
 
 export const Container = styled.div`
@@ -123,7 +172,7 @@ export const RadioInput = styled.input`
     border: ${({ checked, colors }) => (checked ? '1px' : '0px')} solid
       ${({ colors }) => colors};
     background-color: ${({ checked, color }) => (checked ? color : color)};
-    transition: width 0.2s ease, height 0.2s ease; /* Добавляем transition */
+    transition: width 0.2s ease, height 0.2s ease;
   }
   &:checked::before {
     margin-bottom: 3.2px;
@@ -141,6 +190,7 @@ export const PlusIconContainer = styled.div`
   margin-right: 8px;
   background-color: ${props => props.theme.colors.card};
   border-radius: 20%;
+  fill: ${props => props.theme.colors.plusButtonColor};
 `;
 
 export const StyledTitleDeadline = styled.div`
@@ -173,4 +223,59 @@ export const StyledFormikColorNotification = styled.div`
   margin-left: 24px;
   color: ${props => props.theme.colors.btnAddColumn};
   font-size: 12px;
+`;
+
+export const DatePickerContainer = styled.div`
+  .react-datepicker {
+    border-radius: 8px;
+    border: 1px solid #bedbb0;
+    background: ${props => props.theme.colors.calendarBackGround};
+  }
+
+  .react-datepicker-popper {
+    margin-left: 130px;
+    margin-top: -25px;
+  }
+
+  .react-datepicker__header {
+    background-color: ${props => props.theme.colors.calendarBackGround};
+  }
+
+  .react-datepicker__current-month {
+    color: ${props => props.theme.colors.calendarNumberColor};
+  }
+
+  .react-datepicker__day-name {
+    color: ${props => props.theme.colors.calendarNumberColor};
+  }
+
+  .react-datepicker__day {
+    color: ${props => props.theme.colors.calendarNumberColor};
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 50%;
+
+    &:active,
+    &:hover {
+      background-color: ${props => props.theme.colors.calendarSelectedColor};
+    }
+  }
+
+  .react-datepicker__day--keyboard-selected {
+    background-color: ${props => props.theme.colors.btnAddBoard};
+  }
+
+  .react-datepicker__day--selected,
+  .react-datepicker__day--today.react-datepicker__day--selected {
+    background-color: ${props => props.theme.colors.calendarSelectedColor};
+  }
+
+  .react-datepicker__day--today:not(.react-datepicker__day--selected):hover {
+    background-color: ${props => props.theme.colors.calendarSelectedColor};
+    color: black;
+  }
+
+  .react-datepicker__day--selected:hover {
+    background-color: ${props => props.theme.colors.calendarSelectedColor};
+  }
 `;

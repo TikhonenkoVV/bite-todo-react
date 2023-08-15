@@ -27,26 +27,11 @@ import {
   StyledBtnClose,
   PlusIconContainer,
   StyledFormikColorNotification,
+  DatePickerContainer,
 } from './AddTaskForm.styled';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
-const priorities = [ 'low', 'medium','high' ,'without'];
-
-const StyledCustomCalendar = styled(DatePicker)`
-  &.custom-datepicker {
-    .react-datepicker-wrapper & .react-datepicker__day--keyboard-selected,
-    .react-datepicker-wrapper & .react-datepicker__day--today,
-    .react-datepicker-wrapper & .react-datepicker__day--weekend {
-      background-color: red !important;
-      color: white !important;
-    }
-
-    .react-datepicker-wrapper & .react-datepicker__day--selected {
-      background-color: red;
-      color: white;
-    }
-  }
-`;
+const priorities = ['low', 'medium', 'high', 'without'];
 
 export const EditTask = ({
   boardId,
@@ -56,7 +41,7 @@ export const EditTask = ({
   description,
   priority,
   taskId,
-  deadline: initialDeadline, 
+  deadline: initialDeadline,
 }) => {
   const initialValues = {
     title: title,
@@ -64,7 +49,7 @@ export const EditTask = ({
     priority: priority,
   };
 
-   const [deadline, setDeadline] = useState(initialDeadline);
+  const [deadline, setDeadline] = useState(initialDeadline);
 
   const dispatch = useDispatch();
 
@@ -92,15 +77,14 @@ export const EditTask = ({
   };
 
   const CurrentDate = () => {
-    const formattedDate = moment(deadline).format('MMMM D');
-    return <div>Today, {formattedDate}</div>;
+    const formattedDate = moment(deadline).format('D MMMM D');
+    return <div> {formattedDate}</div>;
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    console.log(values);
     try {
       if (!values.deadline) {
-        alert("!!!!!!!!");
+        alert('!!!!!!!!');
         return;
       }
 
@@ -119,7 +103,6 @@ export const EditTask = ({
   });
 
   const handleDateChange = date => {
-    console.log(date);
     if (date && date < new Date()) {
       alert('Deadline cannot be before today.');
       return;
@@ -131,10 +114,8 @@ export const EditTask = ({
   const formattedDeadline = formik.values.deadline
     ? moment(formik.values.deadline).format('D MMMM YYYY')
     : CurrentDate();
-  
-const updateDeadline = deadline ? new Date(deadline) : null;
-  console.log(deadline)
-  console.log(updateDeadline);
+
+  const updateDeadline = deadline ? new Date(deadline) : null;
 
   return (
     <StyledDiv>
@@ -147,7 +128,6 @@ const updateDeadline = deadline ? new Date(deadline) : null;
           height="18"
           aria-hidden="true"
           role="presentation"
-          fill="white"
         >
           <use xlinkHref={`${sprite}#icon-x-close`} />
         </svg>
@@ -219,16 +199,19 @@ const updateDeadline = deadline ? new Date(deadline) : null;
               <use xlinkHref={`${sprite}#icon-chevron-down`} />
             </svg>
           </Container>
-          <StyledCustomCalendar
-            className="custom-datepicker"
-            ref={deadlinePickerRef}
-            name="deadline"
-            selected={updateDeadline}
-            onChange={handleDateChange}
-            locale="en"
-            dateFormat="d MMMM yyyy"
-            customInput={<div></div>}
-          />
+          <DatePickerContainer>
+            <DatePicker
+              className="custom-datepicker"
+              ref={deadlinePickerRef}
+              name="deadline"
+              selected={updateDeadline}
+              onChange={handleDateChange}
+              locale="en"
+              dateFormat="d MMMM yyyy"
+              showTimeSelect={false}
+              customInput={<div></div>}
+            />
+          </DatePickerContainer>
         </StyledTitleDeadline>
         <StyledButton type="submit">
           <PlusIconContainer>
@@ -238,7 +221,6 @@ const updateDeadline = deadline ? new Date(deadline) : null;
               height="14"
               aria-hidden="true"
               role="presentation"
-              fill="white"
             >
               <use xlinkHref={`${sprite}#icon-plus`} />
             </svg>
