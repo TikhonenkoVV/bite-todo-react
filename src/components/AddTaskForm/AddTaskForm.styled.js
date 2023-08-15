@@ -102,7 +102,9 @@ export const StyledTextArea = styled.textarea`
   }
 
   @media screen and (${devices.desktop}) {
-    padding: 14px 147px 122px 15px;
+    padding: 14px;
+    width: 311px;
+    height: 154px;
   }
 `;
 
