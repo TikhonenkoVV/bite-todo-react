@@ -96,16 +96,6 @@ export const StyledTextArea = styled.textarea`
   @media screen and (${devices.desktop}) {
     padding: 14px 147px 122px 15px;
   }
-
-  // @media screen and (${devices.notdesktop}) {
-  //   display: flex;
-  //   width: 293px;
-  //   height: 154px;
-  //   padding: 14px 18px;
-  //   justify-content: center;
-  //   align-items: center;
-  //   flex-shrink: 0;
-  // }
 `;
 
 export const StyledTitelBtn = styled.label`
