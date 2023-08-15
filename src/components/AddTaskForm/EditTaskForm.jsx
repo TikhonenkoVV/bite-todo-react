@@ -30,7 +30,7 @@ import {
 } from './AddTaskForm.styled';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
-const priorities = [ 'low', 'medium','high' ,'without'];
+const priorities = ['low', 'medium', 'high', 'without'];
 
 const StyledCustomCalendar = styled(DatePicker)`
   &.custom-datepicker {
@@ -55,8 +55,9 @@ export const EditTask = ({
   title,
   description,
   priority,
+  index,
   taskId,
-  deadline: initialDeadline, 
+  deadline: initialDeadline,
 }) => {
   const initialValues = {
     title: title,
@@ -64,7 +65,7 @@ export const EditTask = ({
     priority: priority,
   };
 
-   const [deadline, setDeadline] = useState(initialDeadline);
+  const [deadline, setDeadline] = useState(initialDeadline);
 
   const dispatch = useDispatch();
 
@@ -100,11 +101,11 @@ export const EditTask = ({
     console.log(values);
     try {
       if (!values.deadline) {
-        alert("!!!!!!!!");
+        alert('!!!!!!!!');
         return;
       }
 
-      await dispatch(editTask({ ...values, boardId, columnId, taskId }));
+      await dispatch(editTask({ ...values, index, boardId, columnId, taskId }));
       resetForm();
       closeModal();
     } catch (error) {
@@ -131,9 +132,9 @@ export const EditTask = ({
   const formattedDeadline = formik.values.deadline
     ? moment(formik.values.deadline).format('D MMMM YYYY')
     : CurrentDate();
-  
-const updateDeadline = deadline ? new Date(deadline) : null;
-  console.log(deadline)
+
+  const updateDeadline = deadline ? new Date(deadline) : null;
+  console.log(deadline);
   console.log(updateDeadline);
 
   return (

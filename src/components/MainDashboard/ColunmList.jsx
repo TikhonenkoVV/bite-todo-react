@@ -10,9 +10,10 @@ import {
   selectError,
 } from 'store/columns/selectors';
 
-import { getColumns } from 'store/columns/operations';
+import { editColumn, editTask, getColumns } from 'store/columns/operations';
 import { Loader } from '../Loader/Loader';
 import { columnsActions } from '../../store/columns/slice';
+import { reorder } from 'utils/dragAndDrop';
 
 export const ColumnList = ({ boardId }) => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export const ColumnList = ({ boardId }) => {
   }, [boardId, dispatch]);
 
   const onDragEnd = result => {
+    console.log(result);
     const { source, destination } = result;
 
     if (
@@ -49,9 +51,54 @@ export const ColumnList = ({ boardId }) => {
           destinationIndex: destination.index,
         })
       );
+      const arr = reorder(columns, source.index, destination.index);
+      arr.forEach((e, i) => {
+        dispatch(editColumn({ boardId, id: e._id, title: e.title, index: i }));
+      });
       return;
     }
 
+    const sourceCol = columns.filter(
+      val => val._id === result.source.droppableId
+    );
+    const destCol = columns.filter(
+      val => val._id === result.destination.droppableId
+    );
+    let sourceArr = [...sourceCol[0].cards];
+    let destArr = [...destCol[0].cards];
+    const draggableCard = sourceArr.find(val => val._id === result.draggableId);
+    sourceArr.splice(result.source.index, 1);
+    destArr.splice(result.destination.index, 0, draggableCard);
+    console.log('sourceArr', sourceArr);
+
+    sourceArr.forEach((e, i) => {
+      dispatch(
+        editTask({
+          title: e.title,
+          description: e.description,
+          priority: e.priority,
+          deadline: e.deadline,
+          index: i,
+          boardId,
+          columnId: e.owner,
+          taskId: e._id,
+        })
+      );
+    });
+    destArr.forEach((e, i) => {
+      dispatch(
+        editTask({
+          title: e.title,
+          description: e.description,
+          priority: e.priority,
+          deadline: e.deadline,
+          index: i,
+          boardId,
+          columnId: result.destination.droppableId,
+          taskId: e._id,
+        })
+      );
+    });
     dispatch(columnsActions.moveCards({ source, destination }));
   };
 

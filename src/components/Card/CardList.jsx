@@ -57,6 +57,7 @@ export const CardList = ({ boardId, cards, columnId }) => {
                           description={description}
                           priority={priority}
                           deadline={deadline}
+                          index={index}
                           boardId={boardId}
                           columnId={owner}
                           {...dragProvided.draggableProps}
