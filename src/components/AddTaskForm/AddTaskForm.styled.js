@@ -93,6 +93,14 @@ export const StyledTextArea = styled.textarea`
     border-color: ${props => props.theme.colors.btnAddBoard};
   }
 
+  @media screen and (${devices.mobile}) {
+    padding: 14px 134px 122px 15px;
+  }
+
+  @media screen and (${devices.tablet}) {
+    padding: 14px 124px 122px 15px;
+  }
+
   @media screen and (${devices.desktop}) {
     padding: 14px 147px 122px 15px;
   }
