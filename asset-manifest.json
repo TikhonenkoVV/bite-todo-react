@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bite-todo-react/static/css/main.837f9f08.css",
-    "main.js": "/bite-todo-react/static/js/main.246c2b28.js",
+    "main.js": "/bite-todo-react/static/js/main.cf37fd37.js",
     "static/css/597.fde1ab7e.chunk.css": "/bite-todo-react/static/css/597.fde1ab7e.chunk.css",
     "static/js/597.9b0d66a7.chunk.js": "/bite-todo-react/static/js/597.9b0d66a7.chunk.js",
     "static/js/811.efef5c10.chunk.js": "/bite-todo-react/static/js/811.efef5c10.chunk.js",
@@ -26,13 +26,13 @@
     "static/media/welcome-img.png": "/bite-todo-react/static/media/welcome-img.835630e4674731f85657.png",
     "index.html": "/bite-todo-react/index.html",
     "main.837f9f08.css.map": "/bite-todo-react/static/css/main.837f9f08.css.map",
-    "main.246c2b28.js.map": "/bite-todo-react/static/js/main.246c2b28.js.map",
+    "main.cf37fd37.js.map": "/bite-todo-react/static/js/main.cf37fd37.js.map",
     "597.fde1ab7e.chunk.css.map": "/bite-todo-react/static/css/597.fde1ab7e.chunk.css.map",
     "597.9b0d66a7.chunk.js.map": "/bite-todo-react/static/js/597.9b0d66a7.chunk.js.map",
     "811.efef5c10.chunk.js.map": "/bite-todo-react/static/js/811.efef5c10.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.837f9f08.css",
-    "static/js/main.246c2b28.js"
+    "static/js/main.cf37fd37.js"
   ]
 }
