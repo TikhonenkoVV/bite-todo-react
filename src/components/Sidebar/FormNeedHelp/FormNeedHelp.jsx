@@ -10,17 +10,12 @@ import {
 } from './FormNeedHelp.styled';
 import sprite from 'img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
-// import { fetchSendNeedHelp } from 'services/fetchSendNeedHelp';
-// import { useState } from 'react';
 import { sendNeedHelp } from 'store/boards/operations';
 import { useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
 export const FormNeedHelp = ({ closeModal }) => {
   const dispatch = useDispatch();
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [sent, setSent] = useState(false);
-  // const [error, setError] = useState('');
 
   const formik = useFormik({
     initialValues: {
@@ -35,15 +30,6 @@ export const FormNeedHelp = ({ closeModal }) => {
         .required('Required'),
     }),
     onSubmit: values => {
-      // setIsLoading(true);
-      console.log('values:', values);
-      // sendNeedHelp(values);
-      // fetchSendNeedHelp(values)
-      //   .then(data => console.log('then:', data))
-      //   .catch(err => setError(err.message))
-      //   .finally(() => {
-      //     setIsLoading(false);
-      //   });
       Notify.info(
         'Your email has been sent to support. Expect a response to your email within a day.',
         {

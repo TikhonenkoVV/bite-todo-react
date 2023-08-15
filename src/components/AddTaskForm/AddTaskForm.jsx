@@ -30,6 +30,8 @@ import {
   DatePickerContainer,
   StyledContainerCardHeder,
 } from './AddTaskForm.styled';
+import { useSelector } from 'react-redux';
+import { selectColumns } from 'store/columns/selectors';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 const priorities = ['low', 'medium', 'high', 'without'];
@@ -45,6 +47,10 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
   const [showDateNotification, setShowDateNotification] = useState(true);
   const dispatch = useDispatch();
   const deadlinePickerRef = useRef(null);
+
+  const columns = useSelector(selectColumns);
+  const currentColumn = columns.filter(val => val._id === columnId);
+  const index = currentColumn[0].cards.length;
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -84,7 +90,7 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       setDeadline(values.deadline);
-      await dispatch(addTask({ ...values, boardId, columnId, taskId }));
+      await dispatch(addTask({ ...values, index, boardId, columnId, taskId }));
       resetForm();
       setDeadline('');
       closeModal();

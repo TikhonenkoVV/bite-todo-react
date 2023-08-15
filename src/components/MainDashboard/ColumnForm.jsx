@@ -16,6 +16,8 @@ import {
   ValidationError,
   TitleContainer,
 } from './ColumnForm.styled';
+import { useSelector } from 'react-redux';
+import { selectColumns } from 'store/columns/selectors';
 
 const ColumnFormSchema = Yup.object().shape({
   title: Yup.string()
@@ -32,6 +34,8 @@ export const ColumnForm = ({
   columnTitle = '',
 }) => {
   const dispatch = useDispatch();
+  const columns = useSelector(selectColumns);
+  const index = columns.length;
   const title = isEditMode ? 'Edit column' : 'Add column';
   const buttonText = isEditMode ? 'Edit' : 'Add';
 
@@ -39,7 +43,7 @@ export const ColumnForm = ({
     if (isEditMode) {
       dispatch(editColumn({ boardId, id, title }));
     } else {
-      dispatch(addColumn({ boardId, title }));
+      dispatch(addColumn({ boardId, title, index }));
     }
     resetForm();
     onCloseForm();

@@ -17,6 +17,14 @@ export const CardList = ({ boardId, cards, columnId }) => {
     ? cards.filter(card => card.priority === status.priority)
     : cards;
 
+  let sortedCards = [];
+
+  if (filteredCards.length > 0) {
+    sortedCards = [...filteredCards].sort(
+      (first, second) => first.index - second.index
+    );
+  }
+
   return (
     <Droppable droppableId={columnId} type="CARD">
       {provided => (
@@ -41,7 +49,7 @@ export const CardList = ({ boardId, cards, columnId }) => {
             )}
           >
             <CardListStyled ref={provided.innerRef}>
-              {filteredCards.map(
+              {sortedCards.map(
                 (
                   { _id, title, description, priority, deadline, owner },
                   index
@@ -57,6 +65,7 @@ export const CardList = ({ boardId, cards, columnId }) => {
                           description={description}
                           priority={priority}
                           deadline={deadline}
+                          index={index}
                           boardId={boardId}
                           columnId={owner}
                           {...dragProvided.draggableProps}

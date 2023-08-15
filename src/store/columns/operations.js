@@ -18,12 +18,13 @@ export const getColumns = createAsyncThunk(
 
 export const addColumn = createAsyncThunk(
   'columns/add',
-  async ({ boardId, title }, thunkAPI) => {
+  async ({ boardId, title, index }, thunkAPI) => {
     try {
       const { data } = await biteTodoInnstance.post(
         `/boards/${boardId}/columns`,
         {
           title,
+          index,
         }
       );
       return data;
@@ -35,12 +36,13 @@ export const addColumn = createAsyncThunk(
 
 export const editColumn = createAsyncThunk(
   'columns/edit',
-  async ({ boardId, id, title }, thunkAPI) => {
+  async ({ boardId, id, title, index }, thunkAPI) => {
     try {
       const { data } = await biteTodoInnstance.put(
         `/boards/${boardId}/columns/${id}`,
         {
           title,
+          index,
         }
       );
       return data;
@@ -67,13 +69,13 @@ export const deleteColumn = createAsyncThunk(
 export const addTask = createAsyncThunk(
   'tasks/addTask',
   async (
-    { title, description, priority, deadline, boardId, columnId },
+    { title, description, priority, deadline, index, boardId, columnId },
     thunkAPI
   ) => {
     try {
       const { data } = await biteTodoInnstance.post(
         `/boards/${boardId}/columns/${columnId}/tasks`,
-        { title, description, priority, deadline }
+        { title, description, priority, deadline, index }
       );
       return data;
     } catch (error) {
@@ -85,13 +87,22 @@ export const addTask = createAsyncThunk(
 export const editTask = createAsyncThunk(
   'tasks/editTask',
   async (
-    { title, description, priority, deadline, boardId, columnId, taskId },
+    {
+      title,
+      description,
+      priority,
+      deadline,
+      index,
+      boardId,
+      columnId,
+      taskId,
+    },
     thunkAPI
   ) => {
     try {
       const { data } = await biteTodoInnstance.put(
         `/boards/${boardId}/columns/${columnId}/tasks/${taskId}`,
-        { title, description, priority, deadline }
+        { title, description, priority, deadline, owner: columnId, index }
       );
       return data;
     } catch (error) {
