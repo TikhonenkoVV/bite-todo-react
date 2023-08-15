@@ -68,6 +68,10 @@ export const UlStyled = styled.ul`
   row-gap: 4px;
 `;
 
+export const TrackVertical = styled.div`
+  background-color: transparent;
+`;
+
 export const LiStyled = styled.li`
   display: flex;
   justify-content: space-between;

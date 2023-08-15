@@ -26,13 +26,14 @@ import {
   UlStyled,
   ButtonEdit,
   ButtonDelete,
+  TrackVertical,
 } from './ControlBoard.styled';
 import Scrollbars from 'react-custom-scrollbars-2';
 import { Notify } from 'notiflix';
 
 const ControlBoard = () => {
   const [idActiveBoard, setIdActiveBoard] = useState('');
-  const [lengthBoard, setlengthBoard] = useState(null);
+  const [lengthBoard, setLengthBoard] = useState(null);
 
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isModalEditOpen, openEditModal, closeEditModal } = useEditModal();
@@ -41,7 +42,7 @@ const ControlBoard = () => {
   const navigate = useNavigate();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const { boards, isLoading } = useSelector(selectBoardsState);
+  const { boards, isLoading, error } = useSelector(selectBoardsState);
   const columns = useSelector(selectColumns);
 
   useEffect(() => {
@@ -56,7 +57,7 @@ const ControlBoard = () => {
     }
     if (boards.length > 0) {
       setIdActiveBoard(boards[0]._id);
-      setlengthBoard(boards.length);
+      setLengthBoard(boards.length);
     }
   }, [boards, lengthBoard]);
 
@@ -74,6 +75,10 @@ const ControlBoard = () => {
     }
   }, [boards, idActiveBoard, navigate]);
 
+  if (error) {
+    Notify.warning(error);
+  }
+
   const handleActiveBoard = id => {
     setIdActiveBoard(id);
   };
@@ -81,9 +86,10 @@ const ControlBoard = () => {
   const handleDeleteBoard = id => {
     if (!columns.length) {
       dispatch(deleteBoards(id));
-      setlengthBoard(null);
+      setLengthBoard(null);
       return;
     }
+
     Notify.warning(
       'It is impossible to remove board when exists one or more columns'
     );
@@ -93,78 +99,81 @@ const ControlBoard = () => {
   const scrollHeight =
     media > 767 ? 'calc(100% - 590px)' : 'calc(100% - 560px)';
 
-  return (
-    <>
-      {isLoading ? (
-        <>
-          <H2styled>My boards</H2styled>
-          <DivStyled>
-            <PStyled>Create a new board</PStyled>
-            <ButtonStyled type="button" onClick={openModal}>
-              <Svg w={18} h={18} use={`${sprite}#icon-plus`} />
-            </ButtonStyled>
-          </DivStyled>
-          <Scrollbars
-            style={{
-              width: '100% ',
-              height: scrollHeight,
-            }}
-            hideTracksWhenNotNeeded={true}
-          >
-            <UlStyled>
-              {boards.map(board => (
-                <LiStyled
-                  key={board._id}
-                  onClick={() => handleActiveBoard(board._id, board.title)}
+  if (isLoading) {
+    return <Loader fill={'#fff'} />;
+  }
+  if (!isLoading) {
+    return (
+      <>
+        <H2styled>My boards</H2styled>
+        <DivStyled>
+          <PStyled>Create a new board</PStyled>
+          <ButtonStyled type="button" onClick={openModal}>
+            <Svg w={18} h={18} use={`${sprite}#icon-plus`} />
+          </ButtonStyled>
+        </DivStyled>
+        <Scrollbars
+          style={{
+            width: '100% ',
+            height: scrollHeight,
+          }}
+          hideTracksWhenNotNeeded={true}
+          renderTrackVertical={({ style, ...props }) => (
+            <TrackVertical
+              {...props}
+              style={{
+                ...style,
+              }}
+            />
+          )}
+        >
+          <UlStyled>
+            {boards.map(board => (
+              <LiStyled
+                key={board._id}
+                onClick={() => handleActiveBoard(board._id, board.title)}
+                className={board._id === idActiveBoard && 'active'}
+              >
+                <DivNameStyled
                   className={board._id === idActiveBoard && 'active'}
                 >
-                  <DivNameStyled
+                  <Svg w={18} h={18} use={`${sprite}#${board.dashboardIcon}`} />
+                  <TextStyled
                     className={board._id === idActiveBoard && 'active'}
                   >
-                    <Svg
-                      w={18}
-                      h={18}
-                      use={`${sprite}#${board.dashboardIcon}`}
-                    />
-                    <TextStyled
-                      className={board._id === idActiveBoard && 'active'}
+                    {board.title}
+                  </TextStyled>
+                </DivNameStyled>
+                {idActiveBoard === board._id && (
+                  <DivIconStyled>
+                    <ButtonEdit type="button" onClick={openEditModal}>
+                      <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
+                    </ButtonEdit>
+                    <ButtonDelete
+                      type="button"
+                      onClick={() => handleDeleteBoard(board._id)}
                     >
-                      {board.title}
-                    </TextStyled>
-                  </DivNameStyled>
-                  {idActiveBoard === board._id && (
-                    <DivIconStyled>
-                      <ButtonEdit type="button" onClick={openEditModal}>
-                        <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
-                      </ButtonEdit>
-                      <ButtonDelete
-                        type="button"
-                        onClick={() => handleDeleteBoard(board._id)}
-                      >
-                        <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
-                      </ButtonDelete>
-                    </DivIconStyled>
-                  )}
-                </LiStyled>
-              ))}
-            </UlStyled>
-          </Scrollbars>
-          {isModalOpen && (
-            <Modal onClose={closeModal}>
-              <NewBoard onClick={closeModal} />
-            </Modal>
-          )}
-          {isModalEditOpen && (
-            <Modal onClose={closeEditModal}>
-              <EditBoard onClick={closeEditModal} id={idActiveBoard} />
-            </Modal>
-          )}
-        </>
-      ) : (
-        <Loader fill={'#fff'} />
-      )}
-    </>
-  );
+                      <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
+                    </ButtonDelete>
+                  </DivIconStyled>
+                )}
+              </LiStyled>
+            ))}
+          </UlStyled>
+        </Scrollbars>
+        {isModalOpen && (
+          <Modal onClose={closeModal}>
+            <NewBoard onClick={closeModal} />
+          </Modal>
+        )}
+        {isModalEditOpen && (
+          <Modal onClose={closeEditModal}>
+            <EditBoard onClick={closeEditModal} id={idActiveBoard} />
+          </Modal>
+        )}
+      </>
+    );
+  }
 };
 
 export default ControlBoard;
