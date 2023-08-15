@@ -108,6 +108,7 @@ export const DivNameStyled = styled.div`
 export const TextStyled = styled.p`
   font-family: Poppins;
   letter-spacing: -0.02em;
+  width: 120px;
 `;
 
 export const DivIconStyled = styled.div`
