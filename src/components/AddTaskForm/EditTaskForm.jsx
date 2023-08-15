@@ -39,6 +39,7 @@ export const EditTask = ({
   title,
   description,
   priority,
+  index,
   taskId,
   deadline: initialDeadline,
 }) => {
@@ -87,7 +88,7 @@ export const EditTask = ({
         return;
       }
 
-      await dispatch(editTask({ ...values, boardId, columnId, taskId }));
+      await dispatch(editTask({ ...values, index, boardId, columnId, taskId }));
       resetForm();
       closeModal();
     } catch (error) {
@@ -115,7 +116,7 @@ export const EditTask = ({
     : CurrentDate();
 
   const updateDeadline = deadline ? new Date(deadline) : null;
-
+  
   return (
     <StyledDiv>
       <StyledP>Edit Card</StyledP>
