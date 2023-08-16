@@ -41,7 +41,7 @@ export const ColumnForm = ({
 
   const handleSubmit = ({ title }, { resetForm }) => {
     if (isEditMode) {
-      dispatch(editColumn({ boardId, id, title }));
+      dispatch(editColumn({ boardId, id, title, index }));
     } else {
       dispatch(addColumn({ boardId, title, index }));
     }

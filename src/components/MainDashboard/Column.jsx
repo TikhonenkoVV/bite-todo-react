@@ -96,6 +96,7 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
                 boardId={owner}
                 columnId={_id}
                 closeModal={closeModal}
+                index={index}
               />
             </Modal>
           )}
