@@ -117,7 +117,6 @@ const ControlBoard = () => {
             width: '100% ',
             height: scrollHeight,
           }}
-          hideTracksWhenNotNeeded={true}
           renderTrackVertical={({ style, ...props }) => (
             <TrackVertical
               {...props}

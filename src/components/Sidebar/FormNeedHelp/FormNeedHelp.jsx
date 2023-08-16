@@ -11,15 +11,18 @@ import {
 import sprite from 'img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { sendNeedHelp } from 'store/boards/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
+import { selectUser } from 'store/auth/selectors';
 
 export const FormNeedHelp = ({ closeModal }) => {
   const dispatch = useDispatch();
 
+  const { email } = useSelector(selectUser);
+
   const formik = useFormik({
     initialValues: {
-      email: '',
+      email,
       message: '',
     },
     validationSchema: Yup.object({
