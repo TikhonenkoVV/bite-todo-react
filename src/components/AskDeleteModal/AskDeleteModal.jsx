@@ -12,6 +12,7 @@ export const AskDeleteModal = ({ onClick, id, title }) => {
   const dispatch = useDispatch();
   const handleDeleteBoard = () => {
     dispatch(deleteBoards(id));
+
     Notify.success(`The board ${title} was successfully deleted`);
   };
 
