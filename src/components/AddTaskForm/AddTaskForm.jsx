@@ -6,7 +6,6 @@ import moment from 'moment';
 import * as Yup from 'yup';
 import sprite from '../../img/icons/sprite.svg';
 import 'react-datepicker/dist/react-datepicker.css';
-import './AddTaskForm.css';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../../store/columns/operations';
 import {
@@ -39,11 +38,12 @@ const initialValues = {
   title: '',
   description: '',
   priority: '',
+  deadline: moment().toDate(),
 };
 
 export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
   const [deadline, setDeadline] = useState(new Date());
-  const [showDateNotification, setShowDateNotification] = useState(true);
+
   const dispatch = useDispatch();
   const deadlinePickerRef = useRef(null);
 
@@ -62,13 +62,8 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
       .max(500, 'Description must not exceed 500 characters'),
     priority: Yup.string().required('Please select a color'),
     deadline: Yup.date()
-      .nullable()
       .required('Please select a deadline date')
-      .min(new Date(), 'Deadline cannot be earlier than today')
-      .test('future', 'Please select a future date', value => {
-        const currentDate = new Date();
-        return value && value > currentDate;
-      }),
+      .min(Date(), 'Deadline cannot be earlier than today'),
   });
 
   const handleDeadlineClick = () => {
@@ -99,13 +94,6 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
   };
 
   const handleDateChange = date => {
-    if (date && date < new Date()) {
-      alert('Deadline cannot be before today.');
-      return;
-    }
-    if (date !== new Date()) {
-      setShowDateNotification(false);
-    }
     formik.setFieldValue('deadline', date);
     setDeadline(date);
   };
@@ -200,9 +188,6 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
             >
               <use xlinkHref={`${sprite}#icon-chevron-down`} />
             </svg>
-            {showDateNotification && (
-              <p style={{ marginLeft: 16 }}>Please select date</p>
-            )}
           </Container>
           {formik.touched.deadline && formik.errors.deadline ? (
             <div>{formik.errors.deadline}</div>
@@ -212,7 +197,7 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
               className="custom-datepicker"
               ref={deadlinePickerRef}
               name="deadline"
-              selected={deadline || undefined}
+              selected={deadline}
               onChange={handleDateChange}
               locale="en"
               dateFormat="d MMMM yyyy"
