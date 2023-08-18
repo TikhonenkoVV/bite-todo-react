@@ -11,3 +11,15 @@ export const useModal = (initialState = false) => {
   const closeModal = () => setIsModalOpen(false);
   return { isModalOpen, openModal, closeModal };
 };
+
+export const useAskDeleteModal = (initialState = false) => {
+  const [isAskDeleteModalOpen, setIsModalOpen] = useState(initialState);
+  useEffect(() => {
+    if (isAskDeleteModalOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+  }, [isAskDeleteModalOpen]);
+  const openAskDeleteModal = () => setIsModalOpen(true);
+  const closeAskDeleteModal = () => setIsModalOpen(false);
+  return { isAskDeleteModalOpen, openAskDeleteModal, closeAskDeleteModal };
+};
