@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
-import { useModal } from 'hooks/useModal';
+import { useAskDeleteModal, useModal } from 'hooks/useModal';
 import { selectColumns } from 'store/columns/selectors';
 import { deleteBoards } from 'store/boards/operations';
 
@@ -18,9 +18,13 @@ import {
 } from './Board.styled';
 import { Modal } from 'components/Modal';
 import EditBoard from 'components/NewBoard/EditBoard';
+import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
 
 export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
   const { isModalOpen, openModal, closeModal } = useModal();
+
+  const { isAskDeleteModalOpen, openAskDeleteModal, closeAskDeleteModal } =
+    useAskDeleteModal();
 
   const dispatch = useDispatch();
 
@@ -30,15 +34,13 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
     changeIdActiveBoard(id);
   };
 
-  const handleDeleteBoard = id => {
+  const handleDeleteBoard = (id, title) => {
     if (!columns.length) {
       dispatch(deleteBoards(id));
+      Notify.success(`The board ${title} was successfully deleted`);
       return;
     }
-
-    Notify.warning(
-      'It is impossible to remove board when exists one or more columns'
-    );
+    openAskDeleteModal();
   };
 
   return (
@@ -61,7 +63,7 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
             </ButtonEdit>
             <ButtonDelete
               type="button"
-              onClick={() => handleDeleteBoard(board._id)}
+              onClick={() => handleDeleteBoard(board._id, board.title)}
             >
               <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
             </ButtonDelete>
@@ -71,6 +73,15 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <EditBoard onClick={closeModal} id={idActiveBoard} />
+        </Modal>
+      )}
+      {isAskDeleteModalOpen && (
+        <Modal onClose={closeAskDeleteModal}>
+          <AskDeleteModal
+            onClick={closeAskDeleteModal}
+            id={idActiveBoard}
+            title={board.title}
+          />
         </Modal>
       )}
     </>
