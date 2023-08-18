@@ -6,7 +6,6 @@ import moment from 'moment';
 import * as Yup from 'yup';
 import sprite from '../../img/icons/sprite.svg';
 import 'react-datepicker/dist/react-datepicker.css';
-import './AddTaskForm.css';
 import { useDispatch } from 'react-redux';
 import { editTask } from '../../store/columns/operations';
 import {
@@ -47,6 +46,7 @@ export const EditTask = ({
     title: title,
     description: description,
     priority: priority,
+    deadline: initialDeadline,
   };
 
   const [deadline, setDeadline] = useState(initialDeadline);
@@ -83,11 +83,6 @@ export const EditTask = ({
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      if (!values.deadline) {
-        alert('!!!!!!!!');
-        return;
-      }
-
       await dispatch(editTask({ ...values, index, boardId, columnId, taskId }));
       resetForm();
       closeModal();
@@ -199,6 +194,9 @@ export const EditTask = ({
               <use xlinkHref={`${sprite}#icon-chevron-down`} />
             </svg>
           </Container>
+          {formik.touched.deadline && formik.errors.deadline ? (
+            <div>{formik.errors.deadline}</div>
+          ) : null}
           <DatePickerContainer>
             <DatePicker
               className="custom-datepicker"
