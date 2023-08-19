@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { devices } from 'styles';
 
 export const StyledDiv = styled.div`
+  position: relative;
   width: 350px;
   height: 522px;
   background-color: ${props => props.theme.colors.background};
@@ -17,23 +18,6 @@ export const StyledDiv = styled.div`
 
 export const StyledContainerCardHeder = styled.div`
   display: flex;
-`;
-
-export const StyledBtnClose = styled.button`
-  width: 18px;
-  height: 18px;
-  margin-left: 212px;
-  fill: ${props => props.theme.colors.closeModalBtn};
-
-  @media screen and (${devices.notdesktop}) {
-    margin-left: 192px;
-    margin-top: 14px;
-  }
-
-  @media screen and (${devices.desktop}) {
-    margin-left: 192px;
-    margin-top: 14px;
-  }
 `;
 
 export const StyledP = styled.p`

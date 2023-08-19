@@ -12,7 +12,6 @@ import {
   Text,
   RadioIconBox,
   RadioBackgroundBox,
-  CloseButton,
   ButtonBox,
   SvgBox,
   ButtonText,
@@ -24,6 +23,7 @@ import { Svg } from '../SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from 'store/boards/operations';
 import { selectBoardsState } from 'store/boards/selectors';
+import { ButtonCloseModal } from 'components/ButtonCloseModal/ButtonCloseModal';
 
 const iconNames = [
   'icon-Project',
@@ -92,9 +92,7 @@ const NewBoard = ({ onClick }) => {
       {formik => (
         <Form>
           <FormBox>
-            <CloseButton type="button" onClick={onClick}>
-              <Svg w={18} h={18} use={`${icons}#icon-x-close`} />
-            </CloseButton>
+            <ButtonCloseModal onClose={onClick} />
             <Title>New board</Title>
             <FormInput
               type="text"

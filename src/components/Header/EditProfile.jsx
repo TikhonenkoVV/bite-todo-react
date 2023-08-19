@@ -4,7 +4,6 @@ import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import {
   DivStyled,
-  DivIconClose,
   TextStyled,
   DivItem,
   DivUserImgStyled,
@@ -13,6 +12,7 @@ import {
 } from './EditProfile.styled';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
+import { ButtonCloseModal } from 'components/ButtonCloseModal/ButtonCloseModal';
 
 const EditProfile = ({ closeModal }) => {
   const { avatarURL } = useSelector(selectUser)
@@ -42,10 +42,8 @@ const EditProfile = ({ closeModal }) => {
 
 
   return (
-    <DivStyled>
-      <DivIconClose onClick={closeModal}>
-        <Svg  w={18} h={18} use={`${sprite}#icon-x-close`} />
-      </DivIconClose>
+    <DivStyled>  
+      <ButtonCloseModal onClose={closeModal} />
       <TextStyled>Edit Profile</TextStyled>
       <DivItem>
         <DivUserImgStyled>

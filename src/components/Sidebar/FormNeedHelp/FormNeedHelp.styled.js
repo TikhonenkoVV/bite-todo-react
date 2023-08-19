@@ -98,11 +98,3 @@ export const StyledButton = styled.button`
     background: ${props => props.theme.colors.formAddButtonHover};
   }
 `;
-
-export const DivIconClose = styled.div`
-  position: absolute;
-  color: ${props => props.theme.colors.formTitleColor};
-  top: 14px;
-  right: 14px;
-  cursor: pointer;
-`;
