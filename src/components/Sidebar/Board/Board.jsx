@@ -40,7 +40,7 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
     changeIdActiveBoard(id);
   };
 
-  const handleDeleteBoard = (id, title) => {
+  const handleDeleteBoardEmty = (id, title) => {
     if (!columns.length) {
       dispatch(deleteBoards(id));
       // Notify.info(message);
@@ -55,6 +55,17 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
       return;
     }
     openAskDeleteModal();
+  };
+
+  const handleDeleteBoardFull = () => {
+    dispatch(deleteBoards(idActiveBoard));
+    if (isDeleteBoard) {
+      Notify.info(
+        `Sorry, the request to delete board ${board.title} failed, please try again.`
+      );
+      return;
+    }
+    Notify.info(`The board ${board.title} was successfully deleted`);
   };
 
   return (
@@ -77,7 +88,7 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
             </ButtonEdit>
             <ButtonDelete
               type="button"
-              onClick={() => handleDeleteBoard(board._id, board.title)}
+              onClick={() => handleDeleteBoardEmty(board._id, board.title)}
             >
               <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
             </ButtonDelete>
@@ -93,8 +104,8 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
         <Modal onClose={closeAskDeleteModal}>
           <AskDeleteModal
             onClick={closeAskDeleteModal}
-            id={idActiveBoard}
-            title={board.title}
+            handleDelete={handleDeleteBoardFull}
+            title={'Delete board?'}
           />
         </Modal>
       )}
