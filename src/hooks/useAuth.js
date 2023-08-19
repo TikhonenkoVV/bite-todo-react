@@ -4,7 +4,6 @@ import {
   selectIsLoggedIn,
   selectIsRefreshing,
   selectAuthError,
-  selectIsTokenRefreshed,
   selectIsRegistered,
 } from '../store/auth/selectors';
 
@@ -13,7 +12,6 @@ export const useAuth = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const user = useSelector(selectUser);
   const authError = useSelector(selectAuthError);
-  const isTokenRefreshed = useSelector(selectIsTokenRefreshed);
   const isRegistered = useSelector(selectIsRegistered);
 
   return {
@@ -21,7 +19,6 @@ export const useAuth = () => {
     isRefreshing,
     user,
     authError,
-    isTokenRefreshed,
     isRegistered,
   };
 };

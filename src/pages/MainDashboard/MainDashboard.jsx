@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
-import { ColumnForm } from '../../components/MainDashboard';
+import { ColumnForm } from '../../components/MainDashboard/ColumnForm';
 import { ColumnList } from '../../components/MainDashboard/ColunmList';
 import CreateBoard from '../../components/MainDashboard/CreateBoard';
 import sprite from '../../img/icons/sprite.svg';
