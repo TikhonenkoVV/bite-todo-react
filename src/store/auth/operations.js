@@ -24,6 +24,7 @@ biteTodoInnstance.interceptors.response.use(
         await store.dispatch(refreshToken());
         const newToken = store.getState().auth.accessToken;
         error.config.headers.Authorization = `Bearer ${newToken}`;
+        setAuthHeader(newToken);
         return biteTodoInnstance(error.config);
       } catch (error) {
         return Promise.reject(error);
