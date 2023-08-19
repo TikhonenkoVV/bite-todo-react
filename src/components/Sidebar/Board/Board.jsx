@@ -71,7 +71,6 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
   return (
     <>
       <LiStyled
-        key={board._id}
         onClick={() => handleActiveBoard(board._id)}
         className={board._id === idActiveBoard && 'active'}
       >

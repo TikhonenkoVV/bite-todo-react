@@ -104,6 +104,7 @@ export const ControlBoards = () => {
           <UlStyled>
             {boards.map(board => (
               <Board
+                key={board._id}
                 board={board}
                 idActiveBoard={idActiveBoard}
                 changeIdActiveBoard={id => setIdActiveBoard(id)}

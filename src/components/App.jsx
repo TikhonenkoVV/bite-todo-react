@@ -13,7 +13,7 @@ import Welcome from '../pages/Welcome/Welcome';
 import { Auth } from '../pages/Auth/Auth';
 import { ThemeProvider } from '@emotion/react';
 import { theme, devices, baseTransition, priority } from 'styles';
-import { setGoogleTokens } from 'store/auth/slice';
+import { forcedLogout, setGoogleTokens } from 'store/auth/slice';
 
 const MainDashboard = lazy(() =>
   import('../pages/MainDashboard/MainDashboard')
@@ -59,6 +59,10 @@ export const App = () => {
         background: '#ff5549',
       },
     });
+
+    if (status === 403) {
+      dispatch(forcedLogout());
+    }
 
     if (
       message === 'Invalid token' ||

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { store } from 'store/store';
-import { forcedLogout } from './slice';
 import { BASE_URL } from 'services/constants';
 
 export const biteTodoInnstance = axios.create({
@@ -29,10 +28,6 @@ biteTodoInnstance.interceptors.response.use(
       } catch (error) {
         return Promise.reject(error);
       }
-    }
-    if (error.response.status === 403 && !error.config._retry) {
-      error.config._retry = true;
-      await store.dispatch(forcedLogout());
     }
     return Promise.reject(error);
   }

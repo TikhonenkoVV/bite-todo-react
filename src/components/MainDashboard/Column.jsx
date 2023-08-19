@@ -6,7 +6,7 @@ import { deleteColumn } from '../../store/columns/operations';
 import sprite from '../../img/icons/sprite.svg';
 import { useAskDeleteModal, useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
-import { ColumnForm } from '../../components/MainDashboard';
+import { ColumnForm } from './ColumnForm';
 
 import {
   ColumnContainer,

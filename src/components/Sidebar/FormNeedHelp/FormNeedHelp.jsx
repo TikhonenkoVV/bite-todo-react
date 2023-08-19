@@ -18,10 +18,11 @@ import { selectUser } from 'store/auth/selectors';
 export const FormNeedHelp = ({ closeModal }) => {
   const dispatch = useDispatch();
 
-  const { email } = useSelector(selectUser);
+  const { name, email } = useSelector(selectUser);
 
   const formik = useFormik({
     initialValues: {
+      name,
       email,
       message: '',
     },
