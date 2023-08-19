@@ -1,12 +1,11 @@
-// import { useSelector } from 'react-redux';
-// import { selectBoardsState } from 'store/boards/selectors';
-// import { selectUser } from '../store/auth/selectors';
+import { useSelector } from 'react-redux';
+import { selectBoardsState } from 'store/boards/selectors';
 
-// export const useAuth = () => {
-//   const {boards} = useSelector(selectBoardsState);
-//   const isDeleteBoard = boards.
+export const useDeleteBoard = id => {
+  const { boards } = useSelector(selectBoardsState);
+  const isDeleteBoard = boards.find(({ _id }) => _id === id);
 
-//   return {
-//     user,
-//   };
-// };
+  return {
+    isDeleteBoard,
+  };
+};

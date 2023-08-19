@@ -1,6 +1,3 @@
-import { Notify } from 'notiflix';
-import { useDispatch } from 'react-redux';
-import { deleteBoards } from 'store/boards/operations';
 import {
   DivStyled,
   StyledButton,
@@ -8,23 +5,16 @@ import {
   WrapperButton,
 } from './AskDeleteModal.stayled';
 
-export const AskDeleteModal = ({ onClick, id, title }) => {
-  const dispatch = useDispatch();
-  const handleDeleteBoard = () => {
-    dispatch(deleteBoards(id));
-
-    Notify.success(`The board ${title} was successfully deleted`);
-  };
-
+export const AskDeleteModal = ({ onClick, handleDelete, title }) => {
   return (
     <>
       <DivStyled>
-        <StyledP>Delete board?</StyledP>
+        <StyledP>{title}</StyledP>
         <WrapperButton>
           <StyledButton type="button" onClick={onClick}>
             Cancel
           </StyledButton>
-          <StyledButton type="button" onClick={handleDeleteBoard}>
+          <StyledButton type="button" onClick={handleDelete}>
             Delete
           </StyledButton>
         </WrapperButton>
