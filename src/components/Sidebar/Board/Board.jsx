@@ -19,15 +19,21 @@ import {
 import { Modal } from 'components/Modal';
 import EditBoard from 'components/NewBoard/EditBoard';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
+// import { selectBoardsState } from 'store/boards/selectors';
+import { useDeleteBoard } from 'hooks/useDeleteBoard';
+// import { useMessageDeleteBoard } from 'hooks/useMessageDeleteBoard';
 
 export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
   const { isModalOpen, openModal, closeModal } = useModal();
-
   const { isAskDeleteModalOpen, openAskDeleteModal, closeAskDeleteModal } =
     useAskDeleteModal();
+  const { isDeleteBoard } = useDeleteBoard(board.id);
+  // const { message } = useMessageDeleteBoard(board.id, board.title);
+  // console.log(message);
 
   const dispatch = useDispatch();
 
+  // const { boards } = useSelector(selectBoardsState);
   const columns = useSelector(selectColumns);
 
   const handleActiveBoard = id => {
@@ -37,7 +43,15 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
   const handleDeleteBoard = (id, title) => {
     if (!columns.length) {
       dispatch(deleteBoards(id));
-      Notify.success(`The board ${title} was successfully deleted`);
+      // Notify.info(message);
+      // const isDeleteBoard = boards.find(({ _id }) => _id === id);
+      if (isDeleteBoard) {
+        Notify.info(
+          `Sorry, the request to delete board ${title} failed, please try again.`
+        );
+        return;
+      }
+      Notify.info(`The board ${title} was successfully deleted`);
       return;
     }
     openAskDeleteModal();
