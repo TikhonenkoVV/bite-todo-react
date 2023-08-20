@@ -12,7 +12,6 @@ import {
   Text,
   RadioIconBox,
   RadioBackgroundBox,
-  CloseButton,
   ButtonBox,
   SvgBox,
   ButtonText,
@@ -24,6 +23,7 @@ import { Svg } from '../SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { edit, add } from 'store/boards/operations';
 import { selectBoardsState } from 'store/boards/selectors';
+import { ButtonCloseModal } from 'components/ButtonCloseModal/ButtonCloseModal';
 
 const iconNames = [
   'icon-Project',
@@ -64,7 +64,6 @@ const MoodalForBoards = ({ onClick, boardId, type }) => {
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
-      .required('Title is required')
       .min(2, 'Must be not less than 2 characters')
       .max(32, 'Must be 32 characters or less'),
     background: Yup.string().required('A background must be selected'),
@@ -73,16 +72,16 @@ const MoodalForBoards = ({ onClick, boardId, type }) => {
 
   return (
     <FormBox>
-      <CloseButton type="button" onClick={onClick}>
-        <Svg w={18} h={18} use={`${icons}#icon-x-close`} />
-      </CloseButton>
+      <ButtonCloseModal onClose={onClick} />
       <Title>{type === 'edit' ? 'Edit board' : 'New board'}</Title>
       <Formik
         initialValues={{
           ...(boardId ? { id: boardId } : {}),
-          title: board?.title ? board.title : '',
-          background: board?.background ? board.background : null,
-          dashboardIcon: board?.dashboardIcon ? board.dashboardIcon : null,
+          title: board?.title ? board.title : ``,
+          background: board?.background ? board.background : 'default',
+          dashboardIcon: board?.dashboardIcon
+            ? board.dashboardIcon
+            : 'icon-Project',
         }}
         validationSchema={validationSchema}
         onSubmit={(values, formik) => {
@@ -97,6 +96,9 @@ const MoodalForBoards = ({ onClick, boardId, type }) => {
             );
             return;
           }
+          if (values.title === '') {
+            values.title = `Board ${boards.length +1}`;
+          }
           type === 'edit' ? dispatch(edit(values)) : dispatch(add(values));
 
           console.log(values);
@@ -108,7 +110,7 @@ const MoodalForBoards = ({ onClick, boardId, type }) => {
             <FormInput
               id="title"
               name="title"
-              placeholder="Title"
+              placeholder={`Board ${boards.length +1}`}
               value={formik.values.title}
             />
             {formik.errors.title && formik.touched.title && (
