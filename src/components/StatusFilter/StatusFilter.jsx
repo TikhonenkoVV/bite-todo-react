@@ -5,7 +5,6 @@ import { selectStatusFilter } from 'store/filter/selectors';
 import { statusFilters } from 'store/filter/constants';
 import { setStatusFilter } from 'store/filter/filterSlice';
 import StatusFilterButton from 'components/StatusFilterButton';
-import sprite from '../../img/icons/sprite.svg';
 
 import {
   StatusFilterContainer,
@@ -13,9 +12,9 @@ import {
   StatusFilterLabel,
   StatusFilterBox,
   StatusFilterShowAll,
-  CloseButton,
   StatusFilterItem,
 } from './StatusFilter.styled';
+import { ButtonCloseModal } from 'components/ButtonCloseModal/ButtonCloseModal';
 
 const options = [
   {
@@ -58,16 +57,11 @@ const StatusFilter = ({ onClose }) => {
     }
   };
 
-  const path = '#icon-x-close';
   const filter = useSelector(selectStatusFilter);
 
   return (
     <StatusFilterContainer>
-      <CloseButton onClick={() => onClose()}>
-        <svg width={18} height={18}>
-          <use href={`${sprite}${path}`}></use>
-        </svg>
-      </CloseButton>
+      <ButtonCloseModal onClose={onClose} />
       <StatusFilterMainText>Filter</StatusFilterMainText>
       <StatusFilterBox>
         <StatusFilterLabel>Label color</StatusFilterLabel>

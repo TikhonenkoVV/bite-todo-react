@@ -7,17 +7,16 @@ import * as Yup from 'yup';
 import {
   FormTitle,
   FormContainer,
-  CloseButton,
   AddButton,
   FormInput,
   FormIconContainer,
   FormIcon,
-  FormCloseIcon,
   ValidationError,
   TitleContainer,
 } from './ColumnForm.styled';
 import { useSelector } from 'react-redux';
 import { selectColumns } from 'store/columns/selectors';
+import { ButtonCloseModal } from 'components/ButtonCloseModal/ButtonCloseModal';
 
 const ColumnFormSchema = Yup.object().shape({
   title: Yup.string()
@@ -51,11 +50,7 @@ export const ColumnForm = ({
 
   return (
     <FormContainer>
-      <CloseButton type="button" onClick={onCloseForm}>
-        <FormCloseIcon>
-          <use href={`${sprite}#icon-x-close`}></use>
-        </FormCloseIcon>
-      </CloseButton>
+      <ButtonCloseModal onClose={onCloseForm} />
       <FormTitle>{title}</FormTitle>
       <Formik
         initialValues={{

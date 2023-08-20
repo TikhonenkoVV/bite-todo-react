@@ -47,14 +47,6 @@ export const FormInput = styled(Field)`
   transition: background ${baseTransition};
 `;
 
-export const CloseButton = styled.button`
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 18px;
-  height: 18px;
-`;
-
 export const AddButton = styled.button`
   display: flex;
   align-items: center;
@@ -92,12 +84,6 @@ export const FormIcon = styled.svg`
   width: 14px;
   height: 14px;
   fill: ${props => props.theme.colors.formIconAddButtonFill};
-`;
-
-export const FormCloseIcon = styled.svg`
-  width: 18px;
-  height: 18px;
-  fill: ${props => props.theme.colors.formTitleColor};
 `;
 
 export const ValidationError = styled.p`

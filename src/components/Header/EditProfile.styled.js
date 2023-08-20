@@ -16,14 +16,6 @@ export const DivStyled = styled.div`
   }
 `;
 
-export const DivIconClose = styled.div`
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  cursor: pointer;
-  color: ${props => props.theme.colors.closeModalBtn};
-`;
-
 export const TextStyled = styled.p`
   font-size: 18px;
   font-style: normal;

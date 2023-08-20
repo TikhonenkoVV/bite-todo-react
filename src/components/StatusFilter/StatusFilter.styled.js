@@ -70,21 +70,3 @@ export const StatusFilterItem = styled.li`
     margin-bottom: 8px;
   }
 `;
-
-export const CloseButton = styled.button`
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  top: 14px;
-  right: 14px;
-  cursor: pointer;
-  fill: ${props => props.theme.colors.closeModalBtn};
-  transition: fill ${baseTransition};
-
-  &:hover,
-  &:focus {
-    fill: ${props => props.theme.colors.closeModalBtnHover};
-  }
-`;
