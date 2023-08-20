@@ -17,7 +17,7 @@ import {
   TextStyled,
 } from './Board.styled';
 import { Modal } from 'components/Modal';
-import MoodalForBoards from 'components/MoodalForBoards/MoodalForBoards';
+import MoodalForBoards from 'components/ModalForBoards/ModalForBoards';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
 // import { selectBoardsState } from 'store/boards/selectors';
 import { useDeleteBoard } from 'hooks/useDeleteBoard';

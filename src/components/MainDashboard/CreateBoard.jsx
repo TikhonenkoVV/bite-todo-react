@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from '../Modal/Modal';
 import { useModal } from 'hooks/useModal';
-import MoodalForBoards from 'components/MoodalForBoards/MoodalForBoards';
+import MoodalForBoards from 'components/ModalForBoards/ModalForBoards';
 
 import { CreateBoardContainer, CreateBoardButton } from './CreateBoard.styled';
 

@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RadioButton, RadioImg } from './NewBoard.styled';
+import { RadioButton, RadioImg } from './FormForBoards.styled';
 
-import defaultImage from '../../img/modal/default.png';
-import flowersImage from '../../img/modal/flowers.png';
-import starsImage from '../../img/modal/stars.png';
-import sakuraImage from '../../img/modal/sakura.png';
-import nightImage from '../../img/modal/night.png';
-import fernImage from '../../img/modal/fern.png';
-import cloudsImage from '../../img/modal/clouds.png';
-import rockImage from '../../img/modal/rock.png';
-import circleImage from '../../img/modal/circle.png';
-import moonImage from '../../img/modal/moon.png';
-import yachtImage from '../../img/modal/yacht.png';
-import balloonImage from '../../img/modal/balloon.png';
-import canyonImage from '../../img/modal/canyon.png';
-import coastImage from '../../img/modal/coast.png';
-import balloonsImage from '../../img/modal/balloons.png';
-import auroraImage from '../../img/modal/aurora.png';
+import defaultImage from '../../../img/modal/default.png';
+import flowersImage from '../../../img/modal/flowers.png';
+import starsImage from '../../../img/modal/stars.png';
+import sakuraImage from '../../../img/modal/sakura.png';
+import nightImage from '../../../img/modal/night.png';
+import fernImage from '../../../img/modal/fern.png';
+import cloudsImage from '../../../img/modal/clouds.png';
+import rockImage from '../../../img/modal/rock.png';
+import circleImage from '../../../img/modal/circle.png';
+import moonImage from '../../../img/modal/moon.png';
+import yachtImage from '../../../img/modal/yacht.png';
+import balloonImage from '../../../img/modal/balloon.png';
+import canyonImage from '../../../img/modal/canyon.png';
+import coastImage from '../../../img/modal/coast.png';
+import balloonsImage from '../../../img/modal/balloons.png';
+import auroraImage from '../../../img/modal/aurora.png';
 
 const backgroundImages = [
   { value: 'default', image: defaultImage },

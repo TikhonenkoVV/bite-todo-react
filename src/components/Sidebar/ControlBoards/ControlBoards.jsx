@@ -7,7 +7,7 @@ import { selectIsLoggedIn } from 'store/auth/selectors';
 import { getBoards } from 'store/boards/operations';
 
 import { Modal } from 'components/Modal/Modal';
-import MoodalForBoards from 'components/MoodalForBoards/MoodalForBoards';
+import MoodalForBoards from 'components/ModalForBoards/ModalForBoards';
 import sprite from 'img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { Loader } from 'components/Loader/Loader';
