@@ -22,7 +22,7 @@ import {
 import icons from '../../img/icons/sprite.svg';
 import { Svg } from '../SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
-import { edit } from 'store/boards/operations';
+import { edit, add } from 'store/boards/operations';
 import { selectBoardsState } from 'store/boards/selectors';
 
 const iconNames = [
@@ -55,12 +55,12 @@ const backgroundImages = [
   'aurora',
 ];
 
-const EditBoard = ({ onClick, id }) => {
+const MoodalForBoards = ({ onClick, boardId, type }) => {
   const dispatch = useDispatch();
 
   const { boards } = useSelector(selectBoardsState);
 
-  const board = boards.find(board => board._id === id);
+  const board = boards.find(board => board._id === boardId);
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -72,37 +72,39 @@ const EditBoard = ({ onClick, id }) => {
   });
 
   return (
-    <Formik
-      initialValues={{
-        id,
-        title: board.title,
-        background: board.background,
-        dashboardIcon: board.dashboardIcon,
-      }}
-      validationSchema={validationSchema}
-      onSubmit={(values, formik) => {
-        if (
-          boards.find(
-            b => b.title === values.title && board.title !== values.title
-          )
-        ) {
-          formik.setFieldError(
-            'title',
-            'A board with this title already exists'
-          );
-          return;
-        }
-        dispatch(edit(values));
-        onClick();
-      }}
-    >
-      {formik => (
-        <Form>
-          <FormBox>
-            <CloseButton type="button" onClick={onClick}>
-              <Svg w={18} h={18} use={`${icons}#icon-x-close`} />
-            </CloseButton>
-            <Title>Edit board</Title>
+    <FormBox>
+      <CloseButton type="button" onClick={onClick}>
+        <Svg w={18} h={18} use={`${icons}#icon-x-close`} />
+      </CloseButton>
+      <Title>{type === 'edit' ? 'Edit board' : 'New board'}</Title>
+      <Formik
+        initialValues={{
+          ...(boardId ? { id: boardId } : {}),
+          title: board?.title ? board.title : '',
+          background: board?.background ? board.background : null,
+          dashboardIcon: board?.dashboardIcon ? board.dashboardIcon : null,
+        }}
+        validationSchema={validationSchema}
+        onSubmit={(values, formik) => {
+          if (
+            boards.find(
+              b => b.title === values.title && board.title !== values.title
+            )
+          ) {
+            formik.setFieldError(
+              'title',
+              'A board with this title already exists'
+            );
+            return;
+          }
+          type === 'edit' ? dispatch(edit(values)) : dispatch(add(values));
+
+          console.log(values);
+          onClick();
+        }}
+      >
+        {formik => (
+          <Form>
             <FormInput
               id="title"
               name="title"
@@ -143,21 +145,28 @@ const EditBoard = ({ onClick, id }) => {
             <ModalBoardButton type="submit">
               <ButtonBox>
                 <SvgBox>
-                  <Svg w={14} h={14} use={`${icons}#icon-plus`} />
+                  <Svg
+                    w={14}
+                    h={14}
+                    use={`${icons}${
+                      type === 'edit' ? '#icon-pencil' : '#icon-plus'
+                    }`}
+                  />
                 </SvgBox>
-                <ButtonText>Edit</ButtonText>
+                <ButtonText>{type === 'edit' ? 'Edit' : 'Create'}</ButtonText>
               </ButtonBox>
             </ModalBoardButton>
-          </FormBox>
-        </Form>
-      )}
-    </Formik>
+          </Form>
+        )}
+      </Formik>
+    </FormBox>
   );
 };
 
-EditBoard.propTypes = {
+MoodalForBoards.propTypes = {
   onClick: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
+  boardId: PropTypes.string,
+  type: PropTypes.oneOf(['new', 'edit']).isRequired,
 };
 
-export default EditBoard;
+export default MoodalForBoards;
