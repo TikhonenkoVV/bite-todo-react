@@ -1,19 +1,17 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
-  DivIconClose,
   StyledButton,
   StyledDiv,
   StyledInput,
   StyledP,
   StyledTextArea,
 } from './FormNeedHelp.styled';
-import sprite from 'img/icons/sprite.svg';
-import { Svg } from 'components/SvgIcon/SvgIcon';
 import { sendNeedHelp } from 'store/boards/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { selectUser } from 'store/auth/selectors';
+import { ButtonCloseModal } from 'components/ButtonCloseModal/ButtonCloseModal';
 
 export const FormNeedHelp = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -47,9 +45,7 @@ export const FormNeedHelp = ({ closeModal }) => {
 
   return (
     <StyledDiv>
-      <DivIconClose onClick={closeModal}>
-        <Svg w={18} h={18} use={`${sprite}#icon-x-close`} />
-      </DivIconClose>
+      <ButtonCloseModal onClose={closeModal} />
       <StyledP>Need help</StyledP>
       <form onSubmit={formik.handleSubmit}>
         <StyledInput

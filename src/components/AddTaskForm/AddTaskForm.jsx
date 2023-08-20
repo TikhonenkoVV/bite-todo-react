@@ -22,7 +22,6 @@ import {
   Container,
   StyledFormikTitleNotification,
   StyledFormikDescriptionNotification,
-  StyledBtnClose,
   PlusIconContainer,
   StyledFormikColorNotification,
   DatePickerContainer,
@@ -30,6 +29,7 @@ import {
 } from './AddTaskForm.styled';
 import { useSelector } from 'react-redux';
 import { selectColumns } from 'store/columns/selectors';
+import { ButtonCloseModal } from 'components/ButtonCloseModal/ButtonCloseModal';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 const priorities = ['low', 'medium', 'high', 'without'];
@@ -108,18 +108,7 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
     <StyledDiv>
       <StyledContainerCardHeder>
         <StyledP>Add Card</StyledP>
-
-        <StyledBtnClose onClick={closeModal}>
-          <svg
-            className="icon"
-            width="18"
-            height="18"
-            aria-hidden="true"
-            role="presentation"
-          >
-            <use xlinkHref={`${sprite}#icon-x-close`} />
-          </svg>
-        </StyledBtnClose>
+        <ButtonCloseModal onClose={closeModal} />
       </StyledContainerCardHeder>
 
       <form onSubmit={formik.handleSubmit}>
