@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from '../Modal/Modal';
 import { useModal } from 'hooks/useModal';
-import NewBoard from 'components/NewBoard/NewBoard';
+import MoodalForBoards from 'components/MoodalForBoards/MoodalForBoards';
 
 import { CreateBoardContainer, CreateBoardButton } from './CreateBoard.styled';
 
@@ -20,7 +20,7 @@ const CreateBoard = () => {
       </CreateBoardContainer>
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          <NewBoard onClick={closeModal} />
+          <MoodalForBoards onClick={closeModal} />
         </Modal>
       )}
     </>
