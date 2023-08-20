@@ -95,7 +95,6 @@ const FormForBoards = ({ boardId, type, onClick }) => {
         }
         type === 'edit' ? dispatch(edit(values)) : dispatch(add(values));
 
-        console.log(values);
         onClick();
       }}
     >
