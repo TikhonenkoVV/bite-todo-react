@@ -12,7 +12,6 @@ import {
   StyledDiv,
   StyledInput,
   StyledTextArea,
-  StyledButton,
   RadioGroup,
   RadioInput,
   RadioLabel,
@@ -21,11 +20,12 @@ import {
   Container,
   StyledFormikTitleNotification,
   StyledFormikDescriptionNotification,
-  PlusIconContainer,
   StyledFormikColorNotification,
   DatePickerContainer,
 } from './AddTaskForm.styled';
 import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
+import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 const priorities = ['low', 'medium', 'high', 'without'];
@@ -195,20 +195,9 @@ export const TaskForm = ({
             />
           </DatePickerContainer>
         </StyledTitleDeadline>
-        <StyledButton type="submit">
-          <PlusIconContainer>
-            <svg
-              className="icon"
-              width="14"
-              height="14"
-              aria-hidden="true"
-              role="presentation"
-            >
-              <use xlinkHref={`${sprite}#icon-plus`} />
-            </svg>
-          </PlusIconContainer>
-          {isEditing ? 'Edit' : 'Add'}
-        </StyledButton>
+        <PrimaryButton type="submit" title={isEditing ? 'Edit' : 'Add'}>
+          <IconAddEditDeleteModal icon={isEditing ? 'pencil' : 'plus'} />
+        </PrimaryButton>
       </form>
     </StyledDiv>
   );

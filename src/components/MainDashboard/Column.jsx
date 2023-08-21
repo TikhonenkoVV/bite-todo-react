@@ -100,7 +100,7 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
                 <use href={`${sprite}#icon-plus`}></use>
               </AddCardIcon>
             </AddCardIconContainer>
-            <div>Add another card</div>
+            <p>Add another card</p>
           </AddCardButton>
           {isModalOpen && isEditCardMode && (
             <Modal onClose={closeModal}>

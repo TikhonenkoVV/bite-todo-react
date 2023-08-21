@@ -3,7 +3,6 @@ import { Field } from 'formik';
 
 import { devices, baseTransition } from 'styles';
 
-
 export const FormInput = styled(Field)`
   display: block;
   width: 100%;
@@ -98,52 +97,9 @@ export const RadioIcon = styled.label`
   }
 `;
 
-export const ButtonBox = styled.div`
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  color: ${props => props.theme.colors.textColorForm};
-`;
-
-export const SvgBox = styled.div`
-  display: flex;
-  align-items: center;
-  border-radius: 25%;
-  padding: 7px;
-  background: ${props => props.theme.colors.buttonIconBackground};
-  color: ${props => props.theme.colors.buttonIconFill};
-`;
-
-export const ButtonText = styled.p`
-  color: ${props => props.theme.colors.addButtonColor};
-`;
-
 export const Error = styled.p`
   color: #ed4337;
   font-family: Poppins;
   font-size: 12px;
   margin-top: 8px;
-`;
-
-export const ModalBoardButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  height: 49px;
-  padding: 10px 0px 11px 0px;
-  font-family: Poppins;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.28px;
-  border-radius: 8px;
-  color: ${props => props.theme.colors.addButtonColor};
-  background: ${props => props.theme.colors.addButtonBackground};
-  transition: ${baseTransition};
-  &:hover,
-  &:focus {
-    background: ${props => props.theme.colors.addButtonHoverBackground};
-  }
 `;

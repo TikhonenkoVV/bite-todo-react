@@ -1,15 +1,15 @@
 import { Button } from './PrimaryButton.styled';
 
 export const PrimaryButton = ({
-  type,
-  styles,
+  type = 'submit',
   action,
+  title = 'Add',
   children,
-  ...otherProps
 }) => {
   return (
-    <Button type={type} onClick={action} styles={styles}>
+    <Button type={type} onClick={action}>
       {children}
+      <p>{title}</p>
     </Button>
   );
 };

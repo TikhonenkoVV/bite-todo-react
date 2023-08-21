@@ -12,12 +12,12 @@ import {
   Link,
   Input,
   InputWrapper,
-  Button,
   Error,
   ShowButton,
 } from './AuthForms.styled';
 import { Loader } from 'components/Loader/Loader';
 import sprite from '../../img/icons/sprite.svg';
+import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -121,7 +121,8 @@ export const RegisterForm = () => {
             {formik.errors.password && formik.touched.password && (
               <Error>{formik.errors.password}</Error>
             )}
-            <Button type="submit">Register Now</Button>
+
+            <PrimaryButton type="submit" title="Register Now" />
           </form>
         </Container>
       )}

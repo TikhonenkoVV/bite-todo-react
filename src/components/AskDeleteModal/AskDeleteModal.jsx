@@ -1,9 +1,6 @@
-import {
-  DivStyled,
-  StyledButton,
-  StyledP,
-  WrapperButton,
-} from './AskDeleteModal.stayled';
+import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
+import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { DivStyled, StyledP, WrapperButton } from './AskDeleteModal.stayled';
 
 export const AskDeleteModal = ({ onClick, handleDelete, title }) => {
   return (
@@ -11,12 +8,10 @@ export const AskDeleteModal = ({ onClick, handleDelete, title }) => {
       <DivStyled>
         <StyledP>{title}</StyledP>
         <WrapperButton>
-          <StyledButton type="button" onClick={onClick}>
-            Cancel
-          </StyledButton>
-          <StyledButton type="button" onClick={handleDelete}>
-            Delete
-          </StyledButton>
+          <PrimaryButton type="button" action={onClick} title="Cancel" />
+          <PrimaryButton type="button" onClick={handleDelete} title="Delete">
+            <IconAddEditDeleteModal icon="trash" />
+          </PrimaryButton>
         </WrapperButton>
       </DivStyled>
     </>

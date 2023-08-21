@@ -5,22 +5,18 @@ import {
   Text,
   RadioIconBox,
   RadioBackgroundBox,
-  ButtonBox,
-  SvgBox,
-  ButtonText,
   Error,
-  ModalBoardButton,
 } from './FormForBoards.styled';
 import IconRadioButton from './IconRadioButton';
 import BackgroundRadioButton from './BackgroundRadioButton';
 import { Formik, Form } from 'formik';
-import icons from '../../../img/icons/sprite.svg';
-import { Svg } from '../../SvgIcon/SvgIcon';
 import { edit, add } from 'store/boards/operations';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectBoardsState } from 'store/boards/selectors';
+import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 
 const iconNames = [
   'icon-Project',
@@ -58,6 +54,8 @@ const FormForBoards = ({ boardId, type, onClick }) => {
   const { boards } = useSelector(selectBoardsState);
 
   const board = boards.find(board => board._id === boardId);
+  const buttonText = type === 'edit' ? 'Edit' : 'Create';
+  const icon = type === 'edit' ? 'pencil' : 'plus';
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -137,20 +135,9 @@ const FormForBoards = ({ boardId, type, onClick }) => {
           {formik.errors.background && formik.touched.background && (
             <Error>{formik.errors.background}</Error>
           )}
-          <ModalBoardButton type="submit">
-            <ButtonBox>
-              <SvgBox>
-                <Svg
-                  w={14}
-                  h={14}
-                  use={`${icons}${
-                    type === 'edit' ? '#icon-pencil' : '#icon-plus'
-                  }`}
-                />
-              </SvgBox>
-              <ButtonText>{type === 'edit' ? 'Edit' : 'Create'}</ButtonText>
-            </ButtonBox>
-          </ModalBoardButton>
+          <PrimaryButton type="submit" title={buttonText}>
+            <IconAddEditDeleteModal icon={icon} />
+          </PrimaryButton>
         </Form>
       )}
     </Formik>

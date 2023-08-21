@@ -1,22 +1,20 @@
 import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { addColumn, editColumn } from '../../store/columns/operations';
-import sprite from '../../img/icons/sprite.svg';
 import * as Yup from 'yup';
 
 import {
   FormTitle,
   FormContainer,
-  AddButton,
   FormInput,
-  FormIconContainer,
-  FormIcon,
   ValidationError,
   TitleContainer,
 } from './ColumnForm.styled';
 import { useSelector } from 'react-redux';
 import { selectColumns } from 'store/columns/selectors';
 import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
+import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 
 const ColumnFormSchema = Yup.object().shape({
   title: Yup.string()
@@ -37,6 +35,7 @@ export const ColumnForm = ({
   const index = columns.length;
   const title = isEditMode ? 'Edit column' : 'Add column';
   const buttonText = isEditMode ? 'Edit' : 'Add';
+  const icon = isEditMode ? 'pencil' : 'plus';
 
   const handleSubmit = ({ title }, { resetForm }) => {
     if (isEditMode) {
@@ -67,14 +66,9 @@ export const ColumnForm = ({
                 <ValidationError>{errors.title}</ValidationError>
               ) : null}
             </TitleContainer>
-            <AddButton type="submit">
-              <FormIconContainer>
-                <FormIcon>
-                  <use href={`${sprite}#icon-plus`}></use>
-                </FormIcon>
-              </FormIconContainer>
-              <div>{buttonText}</div>
-            </AddButton>
+            <PrimaryButton type="submit" title={buttonText}>
+              <IconAddEditDeleteModal icon={icon} />
+            </PrimaryButton>
           </Form>
         )}
       </Formik>

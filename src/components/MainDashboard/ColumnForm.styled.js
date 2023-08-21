@@ -47,45 +47,6 @@ export const FormInput = styled(Field)`
   transition: background ${baseTransition};
 `;
 
-export const AddButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  height: 49px;
-  padding: 10px 0px 11px 0px;
-  font-family: Poppins;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.28px;
-  color: ${props => props.theme.colors.formAddButtonColor};
-  border-radius: 8px;
-  background-color: ${props => props.theme.colors.formAddButtonBackground};
-  transition: background ${baseTransition};
-  &:hover,
-  &:focus {
-    background-color: ${props => props.theme.colors.formAddButtonHover};
-  }
-`;
-
-export const FormIconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background-color: ${props => props.theme.colors.formIconContainerBackground};
-  border-radius: 6px;
-`;
-
-export const FormIcon = styled.svg`
-  width: 14px;
-  height: 14px;
-  fill: ${props => props.theme.colors.formIconAddButtonFill};
-`;
-
 export const ValidationError = styled.p`
   margin-top: 6px;
   color: #ed4337;

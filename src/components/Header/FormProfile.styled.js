@@ -50,6 +50,7 @@ export const ErrorStyled = styled.p`
 export const WrapperInput = styled.div`
   position: relative;
   display: flex;
+  margin-bottom: 24px;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -67,20 +68,4 @@ export const BtnShowPassword = styled.button`
   justify-content: center;
   background: transparent;
   color: ${props => props.theme.colors.eyeShowPassColor};
-`;
-
-export const BtnSubmitStyled = styled.button`
-  width: 100%;
-  padding: 14px 0;
-  margin-top: 24px;
-  background-color: ${props => props.theme.colors.addButtonBackground};
-  color: ${props => props.theme.colors.addButtonColor};
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.28px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
 `;

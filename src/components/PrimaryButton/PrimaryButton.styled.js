@@ -3,22 +3,23 @@ import { baseTransition } from '../../styles/theme';
 
 export const Button = styled.button`
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: ${props => props.styles.padding};
+  justify-content: center;
   gap: 8px;
-  outline: none;
-  border-radius: ${props => props.styles.borderRadius};
-  background-color: ${props => props.styles.backgroundColor};
-  color: ${props => props.styles.color};
+  width: 100%;
+  height: 49px;
+  padding: 10px 0px 11px 0px;
   font-family: Poppins;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
-  width: ${props => props.styles.width};
-  transition: color, background-color ${baseTransition};
-
-  &:hover {
-    background-color: ${props => props.styles.backgroundColor};
+  line-height: normal;
+  letter-spacing: -0.28px;
+  border-radius: 8px;
+  color: ${props => props.theme.colors.addButtonColor};
+  background: ${props => props.theme.colors.addButtonBackground};
+  transition: background ${baseTransition};
+  &:hover,
+  &:focus {
+    background: ${props => props.theme.colors.addButtonHoverBackground};
   }
 `;

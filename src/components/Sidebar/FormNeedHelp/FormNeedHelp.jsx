@@ -1,7 +1,6 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
-  StyledButton,
   StyledDiv,
   StyledInput,
   StyledP,
@@ -12,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { selectUser } from 'store/auth/selectors';
 import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
+import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
 
 export const FormNeedHelp = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -63,7 +63,7 @@ export const FormNeedHelp = ({ closeModal }) => {
           value={formik.values.message}
           onChange={formik.handleChange}
         />
-        <StyledButton type="submit">Send</StyledButton>
+        <PrimaryButton type="submit" title="Send" />
       </form>
     </StyledDiv>
   );
