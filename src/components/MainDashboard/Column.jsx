@@ -4,9 +4,9 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Draggable } from 'react-beautiful-dnd';
 import { deleteColumn } from '../../store/columns/operations';
 import sprite from '../../img/icons/sprite.svg';
-import { useModal } from 'hooks/useModal';
+import { useAskDeleteModal, useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
-import { ColumnForm } from '../../components/MainDashboard';
+import { ColumnForm } from './ColumnForm';
 
 import {
   ColumnContainer,
@@ -21,21 +21,44 @@ import {
 } from './Column.styled';
 import { CardList } from 'components/Card/CardList';
 import { AddTasks } from 'components/AddTaskForm/AddTaskForm';
+import { useDeleteColumn } from 'hooks/useDeleteBoard';
+import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
 
 export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
   const [isEditCardMode, setIsEditCardMode] = useState(false);
+
   const { isModalOpen, closeModal, openModal } = useModal();
+  const { isAskDeleteModalOpen, openAskDeleteModal, closeAskDeleteModal } =
+    useAskDeleteModal();
+  const { isDeleteColumn } = useDeleteColumn(_id);
+
   const dispatch = useDispatch();
   const hasCards = cards && cards.length > 0;
 
-  const handleDeleteButtonClick = async () => {
-    if (hasCards) {
-      Notify.warning(
-        'It is impossible to remove column when exists one or more cards.'
+  const handleDeleteColumnEmty = async () => {
+    if (!hasCards) {
+      await dispatch(deleteColumn({ boardId: owner, columnId: _id }));
+      if (isDeleteColumn) {
+        Notify.info(
+          `Sorry, the request to delete column ${title} failed, please try again.`
+        );
+        return;
+      }
+      Notify.info(`The column ${title} was successfully deleted`);
+      return;
+    }
+    openAskDeleteModal();
+  };
+
+  const handleDeleteColumnFull = async () => {
+    await dispatch(deleteColumn({ boardId: owner, columnId: _id }));
+    if (isDeleteColumn) {
+      Notify.info(
+        `Sorry, the request to delete column ${title} failed, please try again.`
       );
       return;
     }
-    await dispatch(deleteColumn({ boardId: owner, columnId: _id }));
+    Notify.info(`The column ${title} was successfully deleted`);
   };
 
   const handleAddCardButtonClick = () => {
@@ -63,7 +86,7 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
                   <use href={`${sprite}#icon-pencil`}></use>
                 </TitleIcon>
               </IconButton>
-              <IconButton type="button" onClick={handleDeleteButtonClick}>
+              <IconButton type="button" onClick={handleDeleteColumnEmty}>
                 <TitleIcon>
                   <use href={`${sprite}#icon-trash`}></use>
                 </TitleIcon>
@@ -97,6 +120,15 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
                 columnId={_id}
                 closeModal={closeModal}
                 index={index}
+              />
+            </Modal>
+          )}
+          {isAskDeleteModalOpen && (
+            <Modal onClose={closeAskDeleteModal}>
+              <AskDeleteModal
+                onClick={closeAskDeleteModal}
+                handleDelete={handleDeleteColumnFull}
+                title={'Delete column?'}
               />
             </Modal>
           )}

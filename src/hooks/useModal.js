@@ -12,14 +12,14 @@ export const useModal = (initialState = false) => {
   return { isModalOpen, openModal, closeModal };
 };
 
-export const useEditModal = (initialState = false) => {
-  const [isModalEditOpen, setIsModalEditOpen] = useState(initialState);
+export const useAskDeleteModal = (initialState = false) => {
+  const [isAskDeleteModalOpen, setIsModalOpen] = useState(initialState);
   useEffect(() => {
-    if (isModalEditOpen) {
+    if (isAskDeleteModalOpen) {
       document.body.style.overflow = 'hidden';
     }
-  }, [isModalEditOpen]);
-  const openEditModal = () => setIsModalEditOpen(true);
-  const closeEditModal = () => setIsModalEditOpen(false);
-  return { isModalEditOpen, openEditModal, closeEditModal };
+  }, [isAskDeleteModalOpen]);
+  const openAskDeleteModal = () => setIsModalOpen(true);
+  const closeAskDeleteModal = () => setIsModalOpen(false);
+  return { isAskDeleteModalOpen, openAskDeleteModal, closeAskDeleteModal };
 };

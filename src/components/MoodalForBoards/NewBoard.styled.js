@@ -122,13 +122,6 @@ export const RadioIcon = styled.label`
   }
 `;
 
-export const CloseButton = styled.button`
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  color: ${props => props.theme.colors.closeModalBtn};
-`;
-
 export const ButtonBox = styled.div`
   display: flex;
   gap: 8px;

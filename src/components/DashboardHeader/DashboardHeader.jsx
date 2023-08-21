@@ -35,7 +35,7 @@ const DashboardHeader = ({ name, disabled, dashboard }) => {
 
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          <StatusFilter onClose={closeModal}></StatusFilter>
+          <StatusFilter onClose={closeModal} />
         </Modal>
       )}
     </>

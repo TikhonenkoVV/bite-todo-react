@@ -20,9 +20,7 @@ const initialState = {
   refreshToken: null,
   isRegistered: false,
   isLoggedIn: false,
-  isLoggingIn: false,
   isRefreshing: false,
-  isTokenRefreshed: false,
   error: { message: '', status: '' },
 };
 
@@ -62,7 +60,7 @@ const authSlice = createSlice({
         state.error = payload;
       })
       .addCase(logIn.pending, (state, { payload }) => {
-        state.isLoggingIn = true;
+        state.isRefreshing = true;
         state.isLoggedIn = false;
         state.error = { message: '', status: '' };
       })
@@ -70,13 +68,13 @@ const authSlice = createSlice({
         state.user = payload.user;
         state.accessToken = payload.tokens.accessToken;
         state.refreshToken = payload.tokens.refreshToken;
-        state.isLoggingIn = false;
+        state.isRefreshing = false;
         state.isLoggedIn = true;
         state.error = { message: '', status: '' };
       })
       .addCase(logIn.rejected, (state, { payload }) => {
         state.user = { name: '', email: '', avatarURL: '', theme: 'dark' };
-        state.isLoggingIn = false;
+        state.isRefreshing = false;
         state.isLoggedIn = false;
         state.error = payload;
       })
@@ -92,12 +90,13 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
+        state.isLoggedIn = true;
         state.error = { message: '', status: '' };
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user = payload;
-        state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.isLoggedIn = true;
         state.error = { message: '', status: '' };
       })
       .addCase(refreshUser.rejected, (state, { payload }) => {
@@ -107,17 +106,14 @@ const authSlice = createSlice({
       })
       .addCase(refreshToken.pending, (state, { payload }) => {
         state.error = { message: '', status: '' };
-        state.isTokenRefreshed = false;
       })
       .addCase(refreshToken.fulfilled, (state, { payload }) => {
         state.accessToken = payload.accessToken;
         state.refreshToken = payload.refreshToken;
-        state.isTokenRefreshed = true;
         state.error = { message: '', status: '' };
       })
       .addCase(refreshToken.rejected, (state, { payload }) => {
         state.error = payload;
-        state.isTokenRefreshed = false;
       })
       .addCase(updateUser.pending, state => {
         state.isRefreshing = true;
