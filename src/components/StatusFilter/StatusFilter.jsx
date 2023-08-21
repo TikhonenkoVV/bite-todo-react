@@ -14,7 +14,7 @@ import {
   StatusFilterShowAll,
   StatusFilterItem,
 } from './StatusFilter.styled';
-import { ButtonCloseModal } from 'components/ButtonCloseModal/ButtonCloseModal';
+import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
 
 const options = [
   {

@@ -16,7 +16,7 @@ import {
 } from './ColumnForm.styled';
 import { useSelector } from 'react-redux';
 import { selectColumns } from 'store/columns/selectors';
-import { ButtonCloseModal } from 'components/ButtonCloseModal/ButtonCloseModal';
+import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
 
 const ColumnFormSchema = Yup.object().shape({
   title: Yup.string()

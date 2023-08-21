@@ -21,11 +21,11 @@ import {
   Container,
   StyledFormikTitleNotification,
   StyledFormikDescriptionNotification,
-  StyledBtnClose,
   PlusIconContainer,
   StyledFormikColorNotification,
   DatePickerContainer,
 } from './AddTaskForm.styled';
+import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 const priorities = ['low', 'medium', 'high', 'without'];
@@ -110,18 +110,7 @@ export const TaskForm = ({
   return (
     <StyledDiv>
       <StyledP>{isEditing ? 'Edit Card' : 'Add Card'}</StyledP>
-
-      <StyledBtnClose onClick={onClose}>
-        <svg
-          className="icon"
-          width="18"
-          height="18"
-          aria-hidden="true"
-          role="presentation"
-        >
-          <use xlinkHref={`${sprite}#icon-x-close`} />
-        </svg>
-      </StyledBtnClose>
+      <ButtonCloseModal onClose={onClose} />
       <form onSubmit={formik.handleSubmit}>
         <StyledInput
           type="text"

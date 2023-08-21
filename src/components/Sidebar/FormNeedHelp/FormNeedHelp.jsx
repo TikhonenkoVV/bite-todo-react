@@ -11,7 +11,7 @@ import { sendNeedHelp } from 'store/boards/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { selectUser } from 'store/auth/selectors';
-import { ButtonCloseModal } from 'components/ButtonCloseModal/ButtonCloseModal';
+import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
 
 export const FormNeedHelp = ({ closeModal }) => {
   const dispatch = useDispatch();
