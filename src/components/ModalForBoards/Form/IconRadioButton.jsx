@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RadioButton, RadioIcon } from './NewBoard.styled';
-import icons from '../../img/icons/sprite.svg';
-import { Svg } from '../SvgIcon/SvgIcon';
+import { RadioButton, RadioIcon } from './FormForBoards.styled';
+import icons from '../../../img/icons/sprite.svg';
+import { Svg } from '../../SvgIcon/SvgIcon';
 
 const IconRadioButton = ({ name, value, checked }) => {
   return (
