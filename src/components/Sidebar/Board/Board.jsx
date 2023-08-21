@@ -17,7 +17,7 @@ import {
   TextStyled,
 } from './Board.styled';
 import { Modal } from 'components/Modal';
-import EditBoard from 'components/NewBoard/EditBoard';
+import MoodalForBoards from 'components/ModalForBoards/ModalForBoards';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
 // import { selectBoardsState } from 'store/boards/selectors';
 import { useDeleteBoard } from 'hooks/useDeleteBoard';
@@ -97,7 +97,7 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
       </LiStyled>
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          <EditBoard onClick={closeModal} id={idActiveBoard} />
+          <MoodalForBoards onClick={closeModal} boardId={idActiveBoard} type={'edit'} />
         </Modal>
       )}
       {isAskDeleteModalOpen && (

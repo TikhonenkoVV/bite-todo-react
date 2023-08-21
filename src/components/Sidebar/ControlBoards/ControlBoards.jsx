@@ -7,7 +7,7 @@ import { selectIsLoggedIn } from 'store/auth/selectors';
 import { getBoards } from 'store/boards/operations';
 
 import { Modal } from 'components/Modal/Modal';
-import NewBoard from 'components/NewBoard/NewBoard';
+import MoodalForBoards from 'components/ModalForBoards/ModalForBoards';
 import sprite from 'img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { Loader } from 'components/Loader/Loader';
@@ -114,7 +114,7 @@ export const ControlBoards = () => {
         </Scrollbars>
         {isModalOpen && (
           <Modal onClose={closeModal}>
-            <NewBoard onClick={closeModal} />
+            <MoodalForBoards onClick={closeModal} type={'new'}/>
           </Modal>
         )}
       </>
