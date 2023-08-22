@@ -276,9 +276,9 @@ export const devices = {
 
 export const baseTransition = '250ms cubic-bezier(0.4, 0, 0.2, 1)';
 
-export const priority = {
+export const priority = Object.freeze({
   without: '#656565',
   low: '#8FA1D0',
   medium: '#E09CB5',
   high: '#BEDBB0',
-};
+});

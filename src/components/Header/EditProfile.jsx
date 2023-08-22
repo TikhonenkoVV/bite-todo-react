@@ -3,12 +3,12 @@ import FormProfile from './FormProfile';
 import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import {
-  DivStyled,
   TextStyled,
   DivItem,
   DivUserImgStyled,
   DivIconPlus,
   AvatarImg,
+  ModalContentStyled,
 } from './EditProfile.styled';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
@@ -37,7 +37,7 @@ const EditProfile = ({ closeModal }) => {
   };
 
   return (
-    <DivStyled>
+    <ModalContentStyled>
       <ButtonCloseModal onClose={closeModal} />
       <TextStyled>Edit Profile</TextStyled>
       <DivItem>
@@ -71,7 +71,7 @@ const EditProfile = ({ closeModal }) => {
         </DivUserImgStyled>
       </DivItem>
       <FormProfile avatarFile={avatarFile} onAvatarChange={resetAvatar} />
-    </DivStyled>
+    </ModalContentStyled>
   );
 };
 

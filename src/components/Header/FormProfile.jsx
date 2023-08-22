@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import userEditScheme from './schema';
 import {
-  DivStyled,
   FromStyled,
   FieldStyled,
   WrapperInput,
@@ -26,56 +25,50 @@ const FormProfie = ({ avatarFile, onAvatarChange }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <DivStyled>
-      <Formik
-        initialValues={{ name, email, password: '' }}
-        validationSchema={userEditScheme}
-        onSubmit={(values, { resetForm }) => {
-          if (avatarFile) {
-            dispatch(updateAvatar(avatarFile));
-          }
+    <Formik
+      initialValues={{ name, email, password: '' }}
+      validationSchema={userEditScheme}
+      onSubmit={(values, { resetForm }) => {
+        if (avatarFile) {
+          dispatch(updateAvatar(avatarFile));
+        }
 
-          dispatch(updateUser(values));
-          onAvatarChange();
-          resetForm();
-        }}
-      >
-        {({ isSubmitting }) => {
-          return (
-            <FromStyled>
-              <FieldStyled id="name" name="name" placeholder="Username" />
-              <ErrorMessage name="name" component={ErrorStyled} />
-              <FieldStyled id="email" name="email" placeholder="Email" />
-              <ErrorMessage name="email" component={ErrorStyled} />
-              <WrapperInput>
-                <FieldStyled
-                  id="password"
-                  name="password"
-                  placeholder="Password"
-                  type={showPassword ? 'text' : 'password'}
-                />
-                <BtnShowPassword
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  <Svg
-                    v={'18px'}
-                    h={'18px'}
-                    use={`${sprite}${showPassword ? iconDenied : iconAllow}`}
-                  />
-                </BtnShowPassword>
-              </WrapperInput>
-              <ErrorMessage name="password" component={ErrorStyled} />
-              <PrimaryButton
-                type="submit"
-                disabled={isSubmitting}
-                title="Send"
+        dispatch(updateUser(values));
+        onAvatarChange();
+        resetForm();
+      }}
+    >
+      {({ isSubmitting }) => {
+        return (
+          <FromStyled>
+            <FieldStyled id="name" name="name" placeholder="Username" />
+            <ErrorMessage name="name" component={ErrorStyled} />
+            <FieldStyled id="email" name="email" placeholder="Email" />
+            <ErrorMessage name="email" component={ErrorStyled} />
+            <WrapperInput>
+              <FieldStyled
+                id="password"
+                name="password"
+                placeholder="Password"
+                type={showPassword ? 'text' : 'password'}
               />
-            </FromStyled>
-          );
-        }}
-      </Formik>
-    </DivStyled>
+              <BtnShowPassword
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <Svg
+                  v={'18px'}
+                  h={'18px'}
+                  use={`${sprite}${showPassword ? iconDenied : iconAllow}`}
+                />
+              </BtnShowPassword>
+            </WrapperInput>
+            <ErrorMessage name="password" component={ErrorStyled} />
+            <PrimaryButton type="submit" disabled={isSubmitting} title="Send" />
+          </FromStyled>
+        );
+      }}
+    </Formik>
   );
 };
 

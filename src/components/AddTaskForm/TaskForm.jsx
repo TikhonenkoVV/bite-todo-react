@@ -9,7 +9,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import PropTypes from 'prop-types';
 import {
   StyledP,
-  StyledDiv,
   StyledInput,
   StyledTextArea,
   RadioGroup,
@@ -26,6 +25,7 @@ import {
 import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
 import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
+import { ModalContent } from 'components/Modal/Modal.styled';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 const priorities = ['low', 'medium', 'high', 'without'];
@@ -108,7 +108,7 @@ export const TaskForm = ({
   const updateDeadline = deadline ? new Date(deadline) : null;
 
   return (
-    <StyledDiv>
+    <ModalContent>
       <StyledP>{isEditing ? 'Edit Card' : 'Add Card'}</StyledP>
       <ButtonCloseModal onClose={onClose} />
       <form onSubmit={formik.handleSubmit}>
@@ -143,6 +143,7 @@ export const TaskForm = ({
             <RadioLabel key={index}>
               <RadioInput
                 type="radio"
+                priority={priority}
                 name="priority"
                 color={colors[index]}
                 value={priority}
@@ -199,7 +200,7 @@ export const TaskForm = ({
           <IconAddEditDeleteModal icon={isEditing ? 'pencil' : 'plus'} />
         </PrimaryButton>
       </form>
-    </StyledDiv>
+    </ModalContent>
   );
 };
 

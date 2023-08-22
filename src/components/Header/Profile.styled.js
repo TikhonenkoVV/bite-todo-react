@@ -32,5 +32,3 @@ export const AvatarImg = styled.img`
   object-fit: cover;
   height: 31.1px;
 `;
-
-// export const IconUserSvg = styled()``;

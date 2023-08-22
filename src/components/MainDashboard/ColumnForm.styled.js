@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
-import { baseTransition, devices } from 'styles';
+import { baseTransition } from 'styles';
 
 export const FormTitle = styled.p`
   margin-bottom: 24px;
@@ -9,18 +9,6 @@ export const FormTitle = styled.p`
   line-height: normal;
   letter-spacing: -0.36px;
   color: ${props => props.theme.colors.formTitleColor};
-`;
-
-export const FormContainer = styled.div`
-  position: relative;
-  max-width: 335px;
-  padding: 24px;
-  border-radius: 8px;
-  background: ${props => props.theme.colors.formBackgroundColor};
-  border: 1px solid ${props => props.theme.colors.formBorderColor};
-  @media screen and (${devices.tablet}) {
-    min-width: 350px;
-  }
 `;
 
 export const FormInput = styled(Field)`
