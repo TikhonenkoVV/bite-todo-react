@@ -58,6 +58,7 @@ const boardsSlice = createSlice({
         state.boards = state.boards.filter(
           board => board._id !== payload.board._id
         );
+        console.log('slice', state.boards);
         state.isLoading = false;
         state.error = null;
       })

@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
-
 import { devices } from 'styles';
 
 export const StyledDiv = styled.div`
   position: relative;
+  padding: 24px;
   width: 350px;
   height: 522px;
   background-color: ${props => props.theme.colors.background};
@@ -25,8 +25,6 @@ export const StyledP = styled.p`
   color: ${props => props.theme.colors.cardMajorText};
   font-size: 18px;
   margin-bottom: 24px;
-  margin-top: 24px;
-  margin-left: 24px;
 `;
 
 export const StyledInput = styled.input`
@@ -36,7 +34,6 @@ export const StyledInput = styled.input`
   background: ${props => props.theme.colors.card};
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   margin-bottom: 10px;
-  margin-left: 20px;
   padding: 14px 115px 14px 18px;
   font-size: 14px;
   border-radius: 4px;
@@ -61,7 +58,6 @@ export const StyledTextArea = styled.textarea`
 
   max-width: 100%;
   font-size: 14px;
-  margin-left: 20px;
   color: ${props => props.theme.colors.cardMajorText};
   padding: 14px 132px 122px 15px;
   border-radius: 8px;
@@ -95,24 +91,6 @@ export const StyledTextArea = styled.textarea`
 export const StyledTitelBtn = styled.label`
   color: ${props => props.theme.colors.cardMinorText};
   font-size: 12px;
-  margin-left: 24px;
-`;
-
-export const StyledButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 24px;
-  width: 302px;
-  padding: 10px 0px 11px 0px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  background: ${props => props.theme.colors.btnAddBoard};
-
-  @media screen and (${devices.notdesktop}) {
-    width: 287px;
-  }
 `;
 
 export const Container = styled.div`
@@ -124,7 +102,6 @@ export const Container = styled.div`
   line-height: normal;
   letter-spacing: -0.28px;
   color: ${props => props.theme.colors.btnAddBoard};
-  /* margin-left: 24px; */
   justify-content: left;
   align-items: center;
   display: flex;
@@ -133,13 +110,12 @@ export const Container = styled.div`
 export const RadioGroup = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 15px;
 `;
 
 export const RadioLabel = styled.label`
   display: flex;
   align-items: center;
-  margin-left: 10px;
+  margin-right: 10px;
   cursor: pointer;
   margin-top: 10px;
 `;
@@ -165,18 +141,6 @@ export const RadioInput = styled.input`
   }
 `;
 
-export const PlusIconContainer = styled.div`
-  width: 28px;
-  height: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 8px;
-  background-color: ${props => props.theme.colors.card};
-  border-radius: 20%;
-  fill: ${props => props.theme.colors.plusButtonColor};
-`;
-
 export const StyledTitleDeadline = styled.div`
   color: ${props => props.theme.colors.cardMinorText};
   font-family: Poppins;
@@ -185,11 +149,9 @@ export const StyledTitleDeadline = styled.div`
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.24px;
-  margin-left: 24px;
 `;
 
 export const StyledFormikTitleNotification = styled.div`
-  margin-left: 24px;
   margin-bottom: 5px;
   color: ${props => props.theme.colors.btnAddColumn};
   font-size: 12px;
@@ -197,14 +159,12 @@ export const StyledFormikTitleNotification = styled.div`
 
 export const StyledFormikDescriptionNotification = styled.div`
   margin-top: -15px;
-  margin-left: 24px;
   color: ${props => props.theme.colors.btnAddColumn};
   font-size: 12px;
 `;
 
 export const StyledFormikColorNotification = styled.div`
   margin-top: -5px;
-  margin-left: 24px;
   color: ${props => props.theme.colors.btnAddColumn};
   font-size: 12px;
 `;

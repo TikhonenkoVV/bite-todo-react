@@ -72,27 +72,7 @@ export const InputWrapper = styled.div`
   width: 100%;
   height: 49px;
   margin-top: 14px;
-`;
-
-export const Button = styled.button`
-  display: flex;
-  width: 100%;
-  height: 49px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  background: #bedbb0;
-  color: #161616;
-  font-family: Poppins;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.28px;
-  margin-top: 24px;
-
-  &:hover,
-  &:focus {
-    background: #9dc888;
-  }
+  margin-bottom: 24px;
 `;
 
 export const Error = styled.p`

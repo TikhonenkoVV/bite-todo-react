@@ -53,6 +53,7 @@ export const StyledTextArea = styled.textarea`
   width: 100%;
   height: 120px;
   padding: 14px 18px;
+  margin-bottom: 24px;
 
   resize: none;
   border-radius: 8px;
@@ -76,25 +77,5 @@ export const StyledTextArea = styled.textarea`
   &:focus {
     opacity: 1;
     border: 1px solid ${props => props.theme.colors.formAddButtonBackground};
-  }
-`;
-
-export const StyledButton = styled.button`
-  display: flex;
-  width: 100%;
-  height: 49px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  background: ${props => props.theme.colors.formAddButtonBackground};
-  color: ${props => props.theme.colors.formAddButtonColor};
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: -0.02em;
-  margin-top: 24px;
-
-  &:hover,
-  &:focus {
-    background: ${props => props.theme.colors.formAddButtonHover};
   }
 `;
