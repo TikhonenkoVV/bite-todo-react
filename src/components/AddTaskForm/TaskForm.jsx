@@ -26,6 +26,7 @@ import {
   StyledFormikColorNotification,
   DatePickerContainer,
 } from './AddTaskForm.styled';
+import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 const priorities = ['low', 'medium', 'high', 'without'];
@@ -122,6 +123,9 @@ export const TaskForm = ({
           <use xlinkHref={`${sprite}#icon-x-close`} />
         </svg>
       </StyledBtnClose>
+       {/* <PrimaryButton action={onClose} title="Close">
+        Close
+      </PrimaryButton> */}
       <form onSubmit={formik.handleSubmit}>
         <StyledInput
           type="text"

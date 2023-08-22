@@ -16,6 +16,21 @@ export const StyledDiv = styled.div`
   }
 `;
 
+export const StyledBtnClose = styled.button`
+  width: 18px;
+  height: 18px;
+  margin-left: 180px;
+  fill: ${props => props.theme.colors.closeModalBtn};
+
+  @media screen and (${devices.desktop}) {
+    margin-left: 200px;
+  }
+
+  @media screen and (${devices.notdesktop}) {
+    margin-left: 180px;
+  }
+`;
+
 export const StyledContainerCardHeder = styled.div`
   display: flex;
 `;
