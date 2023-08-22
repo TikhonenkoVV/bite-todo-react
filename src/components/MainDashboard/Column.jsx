@@ -39,12 +39,12 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
     if (!hasCards) {
       await dispatch(deleteColumn({ boardId: owner, columnId: _id }));
       if (isDeleteColumn) {
-        Notify.info(
-          `Sorry, the request to delete column ${title} failed, please try again.`
-        );
+        Notify.info(`The column ${title} was successfully deleted`);
         return;
       }
-      Notify.info(`The column ${title} was successfully deleted`);
+      Notify.info(
+        `Sorry, the request to delete column ${title} failed, please try again.`
+      );
       return;
     }
     openAskDeleteModal();
@@ -100,7 +100,7 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
                 <use href={`${sprite}#icon-plus`}></use>
               </AddCardIcon>
             </AddCardIconContainer>
-            <div>Add another card</div>
+            <p>Add another card</p>
           </AddCardButton>
           {isModalOpen && isEditCardMode && (
             <Modal onClose={closeModal}>

@@ -17,7 +17,7 @@ import {
   TextStyled,
 } from './Board.styled';
 import { Modal } from 'components/Modal';
-import MoodalForBoards from 'components/MoodalForBoards/MoodalForBoards';
+import MoodalForBoards from 'components/ModalForBoards/ModalForBoards';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
 // import { selectBoardsState } from 'store/boards/selectors';
 import { useDeleteBoard } from 'hooks/useDeleteBoard';
@@ -27,7 +27,7 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isAskDeleteModalOpen, openAskDeleteModal, closeAskDeleteModal } =
     useAskDeleteModal();
-  const { isDeleteBoard } = useDeleteBoard(board.id);
+  const { isDeleteBoard } = useDeleteBoard(board._id);
   // const { message } = useMessageDeleteBoard(board.id, board.title);
   // console.log(message);
 
@@ -40,32 +40,33 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
     changeIdActiveBoard(id);
   };
 
-  const handleDeleteBoardEmty = (id, title) => {
+  const handleDeleteBoardEmty = async (id, title) => {
     if (!columns.length) {
-      dispatch(deleteBoards(id));
+      await dispatch(deleteBoards(id));
       // Notify.info(message);
       // const isDeleteBoard = boards.find(({ _id }) => _id === id);
       if (isDeleteBoard) {
-        Notify.info(
-          `Sorry, the request to delete board ${title} failed, please try again.`
-        );
+        Notify.info(`The board ${title} was successfully deleted`);
         return;
       }
-      Notify.info(`The board ${title} was successfully deleted`);
+      Notify.info(
+        `Sorry, the request to delete board ${title} failed, please try again.`
+      );
       return;
     }
     openAskDeleteModal();
   };
 
-  const handleDeleteBoardFull = () => {
-    dispatch(deleteBoards(idActiveBoard));
+  const handleDeleteBoardFull = async (id, title) => {
+    console.log(isDeleteBoard);
+    await dispatch(deleteBoards(id));
     if (isDeleteBoard) {
-      Notify.info(
-        `Sorry, the request to delete board ${board.title} failed, please try again.`
-      );
+      Notify.info(`The board ${title} was successfully deleted`);
       return;
     }
-    Notify.info(`The board ${board.title} was successfully deleted`);
+    Notify.info(
+      `Sorry, the request to delete board ${title} failed, please try again.`
+    );
   };
 
   return (
@@ -103,7 +104,7 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
         <Modal onClose={closeAskDeleteModal}>
           <AskDeleteModal
             onClick={closeAskDeleteModal}
-            handleDelete={handleDeleteBoardFull}
+            handleDelete={() => handleDeleteBoardFull(board._id, board.title)}
             title={'Delete board?'}
           />
         </Modal>
