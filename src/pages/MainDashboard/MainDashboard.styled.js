@@ -82,6 +82,23 @@ export const MainDashboardSectionTitle = styled.h2`
   clip: rect(0 0 0 0);
   overflow: hidden;
 `;
+export const ContentWrapper = styled.div`
+  /* width: max-content; */
+  height: 100%;
+  width: 335px;
+  margin-right: 20px;
+
+  display: flex;
+  margin-left: 20px;
+
+  @media screen and (${devices.tablet}) {
+    margin-left: 32px;
+  }
+
+  @media screen and (${devices.desktop}) {
+    margin-left: 24px;
+  }
+`;
 
 export const MainDashboardAddColumnButton = styled.button`
   display: flex;
@@ -137,21 +154,6 @@ export const FilterContainer = styled.div`
 
 export const ContentHolder = styled.div`
   width: 100%;
-`;
-
-export const ContentWrapper = styled.div`
-  width: max-content;
-  height: 100%;
-  display: flex;
-  margin-left: 20px;
-
-  @media screen and (${devices.tablet}) {
-    margin-left: 32px;
-  }
-
-  @media screen and (${devices.desktop}) {
-    margin-left: 24px;
-  }
 `;
 
 export const TrackHorizontal = styled.div`
