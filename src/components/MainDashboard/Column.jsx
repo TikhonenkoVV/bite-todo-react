@@ -15,14 +15,13 @@ import {
   IconContainer,
   TitleIcon,
   IconButton,
-  AddCardButton,
-  AddCardIconContainer,
-  AddCardIcon,
 } from './Column.styled';
 import { CardList } from 'components/Card/CardList';
 import { AddTasks } from 'components/AddTaskForm/AddTaskForm';
 import { useDeleteColumn } from 'hooks/useDeleteBoard';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
+import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 
 export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
   const [isEditCardMode, setIsEditCardMode] = useState(false);
@@ -94,14 +93,13 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
             </IconContainer>
           </ColumnTitleContainer>
           {cards && <CardList boardId={owner} columnId={_id} cards={cards} />}
-          <AddCardButton onClick={handleAddCardButtonClick}>
-            <AddCardIconContainer>
-              <AddCardIcon>
-                <use href={`${sprite}#icon-plus`}></use>
-              </AddCardIcon>
-            </AddCardIconContainer>
-            <p>Add another card</p>
-          </AddCardButton>
+          <PrimaryButton
+            type="button"
+            action={handleAddCardButtonClick}
+            title="Add another card"
+          >
+            <IconAddEditDeleteModal icon="plus" />
+          </PrimaryButton>
           {isModalOpen && isEditCardMode && (
             <Modal onClose={closeModal}>
               <ColumnForm

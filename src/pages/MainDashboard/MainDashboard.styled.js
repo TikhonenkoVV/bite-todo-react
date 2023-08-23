@@ -83,9 +83,8 @@ export const MainDashboardSectionTitle = styled.h2`
   overflow: hidden;
 `;
 export const ContentWrapper = styled.div`
-  /* width: max-content; */
+  width: max-content;
   height: 100%;
-  width: 335px;
   margin-right: 20px;
 
   display: flex;

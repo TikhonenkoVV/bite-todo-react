@@ -18,13 +18,14 @@ import {
   ContentWrapper,
   TrackHorizontal,
   ThumbHorizontal,
+  // ButtonWrapper,
 } from './MainDashboard.styled';
 import DashboardHeader from 'components/DashboardHeader/DashboardHeader';
 import { selectBoardsState } from 'store/boards/selectors';
 import { selectColumns } from 'store/columns/selectors';
 import { Scrollbars } from 'react-custom-scrollbars-2';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
-import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
+// import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+// import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 
 const MainDashboard = () => {
   const { boardName } = useParams();
@@ -74,14 +75,16 @@ const MainDashboard = () => {
               >
                 <ContentWrapper>
                   <ColumnList boardId={selectedBoard?._id} />
-                  <PrimaryButton
-                    type="button"
-                    action={openModal}
-                    title="Add another column"
-                  >
-                    <IconAddEditDeleteModal icon="plus" />
-                  </PrimaryButton>
-                  {/* <MainDashboardAddColumnButton
+                  {/* <ButtonWrapper>
+                    <PrimaryButton
+                      type="button"
+                      action={openModal}
+                      title="Add another column"
+                    >
+                      <IconAddEditDeleteModal icon="plus" />
+                    </PrimaryButton>
+                  </ButtonWrapper> */}
+                  <MainDashboardAddColumnButton
                     type="button"
                     onClick={openModal}
                   >
@@ -91,7 +94,7 @@ const MainDashboard = () => {
                       </MainDashboardIcon>
                     </MainDashboardIconContainer>
                     <div>Add another column</div>
-                  </MainDashboardAddColumnButton> */}
+                  </MainDashboardAddColumnButton>
                 </ContentWrapper>
               </Scrollbars>
             </ContentHolder>
