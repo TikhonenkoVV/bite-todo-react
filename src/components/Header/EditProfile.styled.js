@@ -1,20 +1,6 @@
 import styled from '@emotion/styled';
+import { ModalContent } from 'components/Modal/Modal.styled';
 import { devices } from 'styles';
-
-export const DivStyled = styled.div`
-  position: relative;
-  border-radius: 8px;
-  border: 1px solid ${props => props.theme.colors.borderModal};
-  background: ${props => props.theme.colors.backgroundModal};
-  box-shadow: 0px 4px 16px 0px ${props => props.theme.colors.boxShadowModal};
-  max-width: 335px;
-  padding: 24px;
-
-  @media screen and (${devices.tablet}) {
-    width: 400px;
-    padding: 24px;
-  }
-`;
 
 export const TextStyled = styled.p`
   font-size: 18px;
@@ -60,4 +46,10 @@ export const DivIconPlus = styled.div`
   align-items: center;
   justify-content: center;
   color: ${props => props.theme.colors.colorAddIcon};
+`;
+
+export const ModalContentStyled = styled(ModalContent)`
+  @media screen and (${devices.tablet}) {
+    width: 400px;
+  }
 `;

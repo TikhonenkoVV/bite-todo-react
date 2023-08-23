@@ -1,20 +1,4 @@
 import styled from '@emotion/styled';
-import { devices } from 'styles';
-
-export const StyledDiv = styled.div`
-  position: relative;
-  padding: 24px;
-  width: 350px;
-  height: 522px;
-  background-color: ${props => props.theme.colors.background};
-  margin-left: -4px;
-  border-radius: 10px;
-
-  @media screen and (${devices.notdesktop}) {
-    width: 335px;
-    height: 522px;
-  }
-`;
 
 export const StyledContainerCardHeder = styled.div`
   display: flex;
@@ -28,38 +12,29 @@ export const StyledP = styled.p`
 `;
 
 export const StyledInput = styled.input`
-  border-radius: 8px;
+  width: 100%;
   border: 1px solid ${props => props.theme.colors.btnAddBoard};
+  border-radius: 8px;
   opacity: 0.4;
   background: ${props => props.theme.colors.card};
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-  margin-bottom: 10px;
-  padding: 14px 115px 14px 18px;
+  margin-bottom: 14px;
+  padding: 14px 18px;
   font-size: 14px;
-  border-radius: 4px;
   color: ${props => props.theme.colors.cardMajorText};
   :focus-visible {
     border: 1px solid ${props => props.theme.colors.btnAddBoard};
     outline: none;
   }
-
-  @media screen and (${devices.notdesktop}) {
-    display: inline-flex;
-    padding: 14px 101px 14px 18px;
-    align-items: center;
-    border-radius: 8px;
-    border: 1px solid #bedbb0;
-    box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-  }
 `;
 
 export const StyledTextArea = styled.textarea`
   resize: none;
-
-  max-width: 100%;
+  width: 100%;
+  height: 154px;
   font-size: 14px;
   color: ${props => props.theme.colors.cardMajorText};
-  padding: 14px 132px 122px 15px;
+  padding: 14px 18px;
   border-radius: 8px;
   border: 1px solid ${props => props.theme.colors.btnAddBoard};
   opacity: 0.4;
@@ -71,20 +46,6 @@ export const StyledTextArea = styled.textarea`
 
   :focus {
     border-color: ${props => props.theme.colors.btnAddBoard};
-  }
-
-  @media screen and (${devices.mobile}) {
-    padding: 14px 134px 122px 15px;
-  }
-
-  @media screen and (${devices.tablet}) {
-    padding: 14px 124px 122px 15px;
-  }
-
-  @media screen and (${devices.desktop}) {
-    padding: 14px;
-    width: 311px;
-    height: 154px;
   }
 `;
 
@@ -121,23 +82,33 @@ export const RadioLabel = styled.label`
 `;
 
 export const RadioInput = styled.input`
+  position: relative;
   margin-bottom: 14px;
 
   &::before {
     content: '';
-    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    width: ${({ checked }) => (checked ? '10px' : '14px')};
-    height: ${({ checked }) => (checked ? '10px' : '14px')};
-    border: ${({ checked, colors }) => (checked ? '1px' : '0px')} solid
-      ${({ colors }) => colors};
-    background-color: ${({ checked, color }) => (checked ? color : color)};
-    transition: width 0.2s ease, height 0.2s ease;
+    background-color: ${props => props.theme.priority[props.priority]};
   }
-  &:checked::before {
-    margin-bottom: 3.2px;
-    margin-left: 1.5px;
-    background-color: ${({ checked, color }) => (checked ? color : color)};
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 1px;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: ${props => props.theme.colors.filterDecorativeElement};
+    background-color: ${props => props.theme.priority[props.priority]};
+    opacity: ${props => (props.checked ? '1' : ' 0')};
   }
 `;
 

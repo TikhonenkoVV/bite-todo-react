@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 
 import {
   FormTitle,
-  FormContainer,
   FormInput,
   ValidationError,
   TitleContainer,
@@ -15,6 +14,7 @@ import { selectColumns } from 'store/columns/selectors';
 import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
 import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
+import { ModalContent } from 'components/Modal/Modal.styled';
 
 const ColumnFormSchema = Yup.object().shape({
   title: Yup.string()
@@ -48,7 +48,7 @@ export const ColumnForm = ({
   };
 
   return (
-    <FormContainer>
+    <ModalContent>
       <ButtonCloseModal onClose={onCloseForm} />
       <FormTitle>{title}</FormTitle>
       <Formik
@@ -72,6 +72,6 @@ export const ColumnForm = ({
           </Form>
         )}
       </Formik>
-    </FormContainer>
+    </ModalContent>
   );
 };

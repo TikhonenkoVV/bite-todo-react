@@ -1,11 +1,6 @@
 import styled from '@emotion/styled';
 import { Form, Field } from 'formik';
 
-export const DivStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 export const FromStyled = styled(Form)`
   display: flex;
   flex-direction: column;
