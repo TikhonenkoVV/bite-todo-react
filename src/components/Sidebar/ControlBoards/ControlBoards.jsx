@@ -114,7 +114,7 @@ export const ControlBoards = () => {
         </Scrollbars>
         {isModalOpen && (
           <Modal onClose={closeModal}>
-            <MoodalForBoards onClick={closeModal} type={'new'}/>
+            <MoodalForBoards onClick={closeModal} type={'new'} />
           </Modal>
         )}
       </>

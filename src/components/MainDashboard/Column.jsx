@@ -18,45 +18,37 @@ import {
 } from './Column.styled';
 import { CardList } from 'components/Card/CardList';
 import { AddTasks } from 'components/AddTaskForm/AddTaskForm';
-import { useDeleteColumn } from 'hooks/useDeleteBoard';
+// import { useDeleteColumn } from 'hooks/useDeleteBoard';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
 import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 
 export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
+  const [titleColumn, setTitleColumn] = useState('Delete column?');
   const [isEditCardMode, setIsEditCardMode] = useState(false);
 
   const { isModalOpen, closeModal, openModal } = useModal();
   const { isAskDeleteModalOpen, openAskDeleteModal, closeAskDeleteModal } =
     useAskDeleteModal();
-  const { isDeleteColumn } = useDeleteColumn(_id);
 
   const dispatch = useDispatch();
-  const hasCards = cards && cards.length > 0;
 
-  const handleDeleteColumnEmty = async () => {
-    if (!hasCards) {
-      await dispatch(deleteColumn({ boardId: owner, columnId: _id }));
-      if (isDeleteColumn) {
-        Notify.info(`The column ${title} was successfully deleted`);
-        return;
-      }
-      Notify.info(
-        `Sorry, the request to delete column ${title} failed, please try again.`
-      );
-      return;
-    }
+  const handleDeleteColumnEmty = () => {
     openAskDeleteModal();
+    switch (cards.length) {
+      case 0:
+        setTitleColumn(`Delete column "${title}"?`);
+        break;
+      case 1:
+        setTitleColumn(`Delete column "${title}" with one task?`);
+        break;
+      default:
+        setTitleColumn(`Delete column "${title}" with ${cards.length} tasks?`);
+    }
   };
 
-  const handleDeleteColumnFull = async () => {
-    await dispatch(deleteColumn({ boardId: owner, columnId: _id }));
-    if (isDeleteColumn) {
-      Notify.info(
-        `Sorry, the request to delete column ${title} failed, please try again.`
-      );
-      return;
-    }
+  const handleDeleteColumnFull = () => {
+    dispatch(deleteColumn({ boardId: owner, columnId: _id }));
     Notify.info(`The column ${title} was successfully deleted`);
   };
 
@@ -126,7 +118,7 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
               <AskDeleteModal
                 onClick={closeAskDeleteModal}
                 handleDelete={handleDeleteColumnFull}
-                title={'Delete column?'}
+                title={titleColumn}
               />
             </Modal>
           )}
