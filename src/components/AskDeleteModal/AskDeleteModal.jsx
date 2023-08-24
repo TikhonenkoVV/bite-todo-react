@@ -9,7 +9,7 @@ export const AskDeleteModal = ({ onClick, handleDelete, title }) => {
         <StyledP>{title}</StyledP>
         <WrapperButton>
           <PrimaryButton type="button" action={onClick} title="Cancel" />
-          <PrimaryButton type="button" onClick={handleDelete} title="Delete">
+          <PrimaryButton type="button" action={handleDelete} title="Delete">
             <IconAddEditDeleteModal icon="trash" />
           </PrimaryButton>
         </WrapperButton>

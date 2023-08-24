@@ -19,54 +19,41 @@ import {
 import { Modal } from 'components/Modal';
 import MoodalForBoards from 'components/ModalForBoards/ModalForBoards';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
-// import { selectBoardsState } from 'store/boards/selectors';
-import { useDeleteBoard } from 'hooks/useDeleteBoard';
-// import { useMessageDeleteBoard } from 'hooks/useMessageDeleteBoard';
+import { useState } from 'react';
 
 export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
+  const [title, setTitle] = useState('Delete board?');
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isAskDeleteModalOpen, openAskDeleteModal, closeAskDeleteModal } =
     useAskDeleteModal();
-  const { isDeleteBoard } = useDeleteBoard(board._id);
-  // const { message } = useMessageDeleteBoard(board.id, board.title);
-  // console.log(message);
 
   const dispatch = useDispatch();
 
-  // const { boards } = useSelector(selectBoardsState);
   const columns = useSelector(selectColumns);
 
   const handleActiveBoard = id => {
     changeIdActiveBoard(id);
   };
 
-  const handleDeleteBoardEmty = async (id, title) => {
-    if (!columns.length) {
-      await dispatch(deleteBoards(id));
-      // Notify.info(message);
-      // const isDeleteBoard = boards.find(({ _id }) => _id === id);
-      if (isDeleteBoard) {
-        Notify.info(`The board ${title} was successfully deleted`);
-        return;
-      }
-      Notify.info(
-        `Sorry, the request to delete board ${title} failed, please try again.`
-      );
-      return;
-    }
+  const handleAskDeleteBoard = () => {
     openAskDeleteModal();
+    switch (columns.length) {
+      case 0:
+        setTitle(`Delete board "${board.title}"?`);
+        break;
+      case 1:
+        setTitle(`Delete board "${board.title}" with one column?`);
+        break;
+      default:
+        setTitle(
+          `Delete board "${board.title}" with ${columns.length} columns?`
+        );
+    }
   };
 
-  const handleDeleteBoardFull = async (id, title) => {
-    console.log(isDeleteBoard);
-    await dispatch(deleteBoards(id));
-    if (isDeleteBoard) {
-      Notify.info(`The board ${title} was successfully deleted`);
-      return;
-    }
-    Notify.info(
-      `Sorry, the request to delete board ${title} failed, please try again.`
-    );
+  const handleDeleteBoard = () => {
+    dispatch(deleteBoards(board._id));
+    Notify.info(`The board ${board.title} was successfully deleted`);
   };
 
   return (
@@ -86,10 +73,7 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
             <ButtonEdit type="button" onClick={openModal}>
               <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
             </ButtonEdit>
-            <ButtonDelete
-              type="button"
-              onClick={() => handleDeleteBoardEmty(board._id, board.title)}
-            >
+            <ButtonDelete type="button" onClick={handleAskDeleteBoard}>
               <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
             </ButtonDelete>
           </DivIconStyled>
@@ -97,15 +81,19 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
       </LiStyled>
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          <MoodalForBoards onClick={closeModal} boardId={idActiveBoard} type={'edit'} />
+          <MoodalForBoards
+            onClick={closeModal}
+            boardId={idActiveBoard}
+            type={'edit'}
+          />
         </Modal>
       )}
       {isAskDeleteModalOpen && (
         <Modal onClose={closeAskDeleteModal}>
           <AskDeleteModal
             onClick={closeAskDeleteModal}
-            handleDelete={() => handleDeleteBoardFull(board._id, board.title)}
-            title={'Delete board?'}
+            handleDelete={handleDeleteBoard}
+            title={title}
           />
         </Modal>
       )}

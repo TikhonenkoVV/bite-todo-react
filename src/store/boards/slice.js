@@ -14,6 +14,7 @@ const boardsSlice = createSlice({
     buider
       .addCase(getBoards.pending, (state, { payload }) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getBoards.fulfilled, (state, { payload }) => {
         state.boards = payload.boards.reverse();
@@ -26,6 +27,7 @@ const boardsSlice = createSlice({
       })
       .addCase(add.pending, (state, { payload }) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(add.fulfilled, (state, { payload }) => {
         state.boards.unshift(payload.board);
@@ -38,6 +40,7 @@ const boardsSlice = createSlice({
       })
       .addCase(edit.pending, (state, { payload }) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(edit.fulfilled, (state, { payload }) => {
         const index = state.boards.findIndex(
@@ -53,12 +56,12 @@ const boardsSlice = createSlice({
       })
       .addCase(deleteBoards.pending, (state, { payload }) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(deleteBoards.fulfilled, (state, { payload }) => {
         state.boards = state.boards.filter(
           board => board._id !== payload.board._id
         );
-        console.log('slice', state.boards);
         state.isLoading = false;
         state.error = null;
       })
@@ -68,6 +71,7 @@ const boardsSlice = createSlice({
       })
       .addCase(sendNeedHelp.pending, (state, { payload }) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(sendNeedHelp.fulfilled, (state, { payload }) => {
         console.log(payload);
