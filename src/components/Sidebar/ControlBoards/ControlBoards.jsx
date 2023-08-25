@@ -23,6 +23,8 @@ import Scrollbars from 'react-custom-scrollbars-2';
 import { Notify } from 'notiflix';
 import { Board } from '../Board/Board';
 import { useNavigate } from 'react-router-dom';
+import { setStatusFilter } from 'store/filter/filterSlice';
+import { statusFilters } from 'store/filter/constants';
 
 export const ControlBoards = () => {
   const [idActiveBoard, setIdActiveBoard] = useState('');
@@ -58,13 +60,14 @@ export const ControlBoards = () => {
       if (activeBoard) {
         const titleActiveBoard = activeBoard.title;
         navigate(`/home/${titleActiveBoard}`, { replace: true });
+        dispatch(setStatusFilter(statusFilters.all));
       }
     }
     if (boards.length === 0) {
       setIdActiveBoard('');
       navigate(`/home`, { replace: true });
     }
-  }, [boards, idActiveBoard, navigate]);
+  }, [boards, idActiveBoard, navigate, dispatch]);
 
   if (error) {
     Notify.warning(error);
