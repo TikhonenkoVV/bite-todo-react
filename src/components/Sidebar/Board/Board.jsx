@@ -21,7 +21,7 @@ import MoodalForBoards from 'components/ModalForBoards/ModalForBoards';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
 import { useState } from 'react';
 
-export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
+export const Board = ({ board, idActiveBoard, changeIdActiveBoard, changeLengthBoard }) => {
   const [title, setTitle] = useState('Delete board?');
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isAskDeleteModalOpen, openAskDeleteModal, closeAskDeleteModal } =
@@ -53,6 +53,7 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard }) => {
 
   const handleDeleteBoard = () => {
     dispatch(deleteBoards(board._id));
+    changeLengthBoard(0);
     Notify.info(`The board ${board.title} was successfully deleted`);
   };
 
