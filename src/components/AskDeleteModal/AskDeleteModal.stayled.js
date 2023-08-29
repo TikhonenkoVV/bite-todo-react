@@ -1,20 +1,8 @@
 import styled from '@emotion/styled';
+import { ModalContent } from 'components/Modal/Modal.styled';
 import { devices } from 'styles';
 
-export const DivStyled = styled.div`
-  padding: 24px;
-  color: ${props => props.theme.colors.formTitleColor};
-  border-radius: 8px;
-  border: 1px solid ${props => props.theme.colors.formBorderColor};
-  background: ${props => props.theme.colors.formBackgroundColor};
-  font-family: Poppins;
-
-  width: 100%;
-
-  @media ${devices.mobile} {
-    width: 335px;
-  }
-
+export const StyledDiv = styled(ModalContent)`
   @media screen and (${devices.tablet}) {
     width: 400px;
   }
@@ -23,6 +11,7 @@ export const DivStyled = styled.div`
 export const StyledP = styled.p`
   font-size: 18px;
   letter-spacing: -0.02em;
+  color: ${props => props.theme.colors.formTitleColor};
 `;
 
 export const WrapperButton = styled.div`
