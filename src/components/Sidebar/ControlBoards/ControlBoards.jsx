@@ -28,7 +28,7 @@ import { statusFilters } from 'store/filter/constants';
 
 export const ControlBoards = () => {
   const [idActiveBoard, setIdActiveBoard] = useState('');
-  const [lengthBoard, setLengthBoard] = useState(null);
+  const [lengthBoard, setLengthBoard] = useState(0);
 
   const { isModalOpen, openModal, closeModal } = useModal();
 
@@ -45,7 +45,7 @@ export const ControlBoards = () => {
   }, [dispatch, isLoggedIn]);
 
   useEffect(() => {
-    if (boards.length > 0 && boards.length === lengthBoard) {
+    if (boards.length > 1 && boards.length === lengthBoard ) {
       return;
     }
     if (boards.length > 0) {
@@ -111,6 +111,7 @@ export const ControlBoards = () => {
                 board={board}
                 idActiveBoard={idActiveBoard}
                 changeIdActiveBoard={id => setIdActiveBoard(id)}
+                changeLengthBoard={(length) => setLengthBoard(length)}
               />
             ))}
           </UlStyled>
