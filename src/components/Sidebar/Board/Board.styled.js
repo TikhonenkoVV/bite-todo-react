@@ -24,6 +24,7 @@ export const DivNameStyled = styled.div`
   margin-right: 14px;
 
   color: ${props => props.theme.colors.boardTitleTextIcon};
+  fill: currentColor;
 
   &.active {
     color: ${props => props.theme.colors.sideBarMainText};
