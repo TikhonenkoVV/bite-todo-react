@@ -8,7 +8,6 @@ import { getBoards } from 'store/boards/operations';
 
 import { Modal } from 'components/Modal/Modal';
 import MoodalForBoards from 'components/ModalForBoards/ModalForBoards';
-import sprite from 'img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { Loader } from 'components/Loader/Loader';
 import {
@@ -87,7 +86,7 @@ export const ControlBoards = () => {
         <DivStyled>
           <PStyled>Create a new board</PStyled>
           <ButtonStyled type="button" onClick={openModal}>
-            <Svg w={18} h={18} use={`${sprite}#icon-plus`} />
+            <Svg w={20} h={20} icon='plus' />
           </ButtonStyled>
         </DivStyled>
         <Scrollbars

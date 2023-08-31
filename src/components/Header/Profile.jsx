@@ -7,7 +7,6 @@ import { DivInfoUserStyled, TextStyled, DivUserImgStyled, LinkStyled, AvatarImg 
 import { useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
 import { Svg } from 'components/SvgIcon/SvgIcon';
-import sprite from '../../img/icons/sprite.svg';
 
 const Profile = () => {
   const { name, avatarURL } = useSelector(selectUser)
@@ -26,7 +25,7 @@ const Profile = () => {
           <LinkStyled onClick={onClickModalOpen}>
             {avatarURL
               ? <AvatarImg width={32} height={32} src={avatarURL} alt="userlogo" />
-              : <Svg w={32} h={32} use={`${sprite}#icon-user`} />}
+              : <Svg w={32} h={32} icon='user' />}
           </LinkStyled>
         </DivUserImgStyled>
       </DivInfoUserStyled>

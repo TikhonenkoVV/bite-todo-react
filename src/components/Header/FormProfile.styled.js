@@ -62,5 +62,5 @@ export const BtnShowPassword = styled.button`
   align-items: center;
   justify-content: center;
   background: transparent;
-  color: ${props => props.theme.colors.eyeShowPassColor};
+  fill: ${props => props.theme.colors.eyeShowPassColor};
 `;

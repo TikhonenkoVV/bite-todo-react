@@ -41,6 +41,7 @@ export const DashboardHeaderFilter = styled.button`
   justify-content: center;
   cursor: pointer;
   color: ${props => props.theme.colors.filterColor};
+  fill: currentColor;
   transition: color ${baseTransition}, box-shadow ${baseTransition};
 
   background-color: ${props => {

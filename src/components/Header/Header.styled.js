@@ -29,6 +29,7 @@ export const DivBtnStyle = styled.div`
   width: 32px;
   height: 32px;
   cursor: pointer;
+  fill: currentColor; 
   @media screen and (${devices.desktop}) {
     display: none;
   }

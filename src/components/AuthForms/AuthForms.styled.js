@@ -81,15 +81,3 @@ export const Error = styled.p`
   font-size: 12px;
   margin-top: 8px;
 `;
-
-export const ShowButton = styled.button`
-  position: absolute;
-  right: 18px;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.5);
-`;

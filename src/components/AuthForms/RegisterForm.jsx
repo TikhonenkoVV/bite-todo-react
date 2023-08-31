@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Svg } from 'components/SvgIcon/SvgIcon';
 import { register, logIn } from 'store/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 import {
@@ -13,18 +12,17 @@ import {
   Input,
   InputWrapper,
   Error,
-  ShowButton,
 } from './AuthForms.styled';
 import { Loader } from 'components/Loader/Loader';
-import sprite from '../../img/icons/sprite.svg';
 import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isRegistered, isLoggedIn, isLoggingIn } = useAuth();
   const [inputType, setInputType] = useState('password');
-  const [inputIcon, setInputIcon] = useState('#icon-eye-allow');
+  const [inputIcon, setInputIcon] = useState('eye-allow');
   const [loginData, setLoginData] = useState({});
 
   const formik = useFormik({
@@ -67,10 +65,10 @@ export const RegisterForm = () => {
   const togglePasswordVisibility = () => {
     if (inputType === 'password') {
       setInputType('text');
-      setInputIcon('#icon-eye-denied');
+      setInputIcon('eye-denied');
     } else {
       setInputType('password');
-      setInputIcon('#icon-eye-allow');
+      setInputIcon('eye-allow');
     }
   };
 
@@ -114,9 +112,13 @@ export const RegisterForm = () => {
                 onBlur={formik.handleBlur}
                 placeholder="Create a password"
               />
-              <ShowButton type="button" onClick={togglePasswordVisibility}>
-                <Svg v={'18px'} h={'18px'} use={`${sprite}${inputIcon}`} />
-              </ShowButton>
+              <ButtonIcon action={togglePasswordVisibility} w={18} h={18} icon={inputIcon} 
+                style={{ 
+                  position: 'absolute', 
+                  right: '18px',
+                  fill: 'rgba(255, 255, 255, 0.5)' 
+                    }} 
+              />
             </InputWrapper>
             {formik.errors.password && formik.touched.password && (
               <Error>{formik.errors.password}</Error>

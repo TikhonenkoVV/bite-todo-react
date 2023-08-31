@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import FormProfile from './FormProfile';
-import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import {
   TextStyled,
@@ -38,7 +37,7 @@ const EditProfile = ({ closeModal }) => {
 
   return (
     <ModalContentStyled>
-      <ButtonCloseModal onClose={closeModal} />
+      <ButtonCloseModal onClose={closeModal} size={18} icon='x-close' />
       <TextStyled>Edit Profile</TextStyled>
       <DivItem>
         <DivUserImgStyled>
@@ -52,7 +51,7 @@ const EditProfile = ({ closeModal }) => {
           ) : avatarURL ? (
             <AvatarImg width={68} height={68} src={avatarURL} alt="userlogo" />
           ) : (
-            <Svg w={68} h={68} use={`${sprite}#icon-user`} />
+            <Svg w={68} h={68} icon='user' />
           )}
           <input
             width={68}
@@ -66,7 +65,7 @@ const EditProfile = ({ closeModal }) => {
           <DivIconPlus
             onClick={() => document.getElementById('avatarInput').click()}
           >
-            <Svg w={10} h={10} use={`${sprite}#icon-plus`} />
+            <Svg w={10} h={10} icon='plus' />
           </DivIconPlus>
         </DivUserImgStyled>
       </DivItem>

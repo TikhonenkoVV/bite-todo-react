@@ -45,7 +45,7 @@ export const FormNeedHelp = ({ closeModal }) => {
 
   return (
     <StyledDiv>
-      <ButtonCloseModal onClose={closeModal} />
+      <ButtonCloseModal onClose={closeModal} size={18} icon={'x-close'}/>
       <StyledP>Need help</StyledP>
       <form onSubmit={formik.handleSubmit}>
         <StyledInput

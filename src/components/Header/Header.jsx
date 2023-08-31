@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import ThemeSelector from './ThemeSelector';
 import Profile from './Profile';
-import sprite from '../../img/icons/sprite.svg';
+// import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { StyledHeader, DivBtnStyle, StyledNav } from './Header.styled';
 
@@ -39,7 +39,7 @@ const Header = ({ menuActive, setMenuActive, toggleMenu }) => {
   return (
     <StyledHeader>
       <DivBtnStyle onClick={toggleMenu}>
-        <Svg w={32} h={32} use={`${sprite}#icon-burger`} />
+        <Svg w={32} h={32} icon='burger' />
       </DivBtnStyle>
       <StyledNav>
         <ThemeSelector />

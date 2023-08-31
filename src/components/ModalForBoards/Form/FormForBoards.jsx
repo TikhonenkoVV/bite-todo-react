@@ -19,14 +19,14 @@ import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 
 const iconNames = [
-  'icon-Project',
-  'icon-star',
-  'icon-loading',
-  'icon-puzzle',
-  'icon-container',
-  'icon-lightning',
-  'icon-colors',
-  'icon-hexagon',
+  'Project',
+  'star',
+  'loading',
+  'puzzle',
+  'container',
+  'lightning',
+  'colors',
+  'hexagon',
 ];
 
 const backgroundImages = [

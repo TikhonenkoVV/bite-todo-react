@@ -51,6 +51,7 @@ export const ButtonStyled = styled.button`
   display: flex;
   column-gap: 8px;
   align-items: center;
+  fill: currentColor;
 
   cursor: pointer;
 `;

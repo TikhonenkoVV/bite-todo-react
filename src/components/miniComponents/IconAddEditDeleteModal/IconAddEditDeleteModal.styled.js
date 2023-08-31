@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-// import { baseTransition } from 'styles';
 
 export const StyledDiv = styled.div`
   width: 28px;

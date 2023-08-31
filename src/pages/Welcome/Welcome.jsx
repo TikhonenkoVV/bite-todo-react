@@ -17,7 +17,6 @@ import {
 import { Loader } from 'components/Loader/Loader';
 import Logo from '../../components/Sidebar/Logo/Logo';
 import { Svg } from 'components/SvgIcon/SvgIcon';
-import sprite from '../../img/icons/sprite.svg';
 import { BASE_URL } from 'services/constants';
 
 const logoStyles = {
@@ -59,7 +58,7 @@ const Welcome = () => {
             <LinkButtonStyled to="auth/register">Registration</LinkButtonStyled>
             <LinkStyled to="auth/login">Log In</LinkStyled>
             <GoogleBtn href={`${BASE_URL}/api/auth/google`}>
-              <Svg w={32} h={32} use={`${sprite}#icon-google`} />
+              <Svg w={32} h={32} icon='google' />
               Log In with Google
             </GoogleBtn>
           </LinkWrapperStyled>

@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 
-export const Icon = styled.svg`
-  fill: currentColor;
-`;
+// export const Icon = styled.svg`
+//   fill: currentColor;
+// `;

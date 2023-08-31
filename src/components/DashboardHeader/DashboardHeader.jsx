@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { Modal } from 'components/Modal/Modal';
 import StatusFilter from 'components/StatusFilter';
-import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 
 import {
@@ -14,7 +13,6 @@ import {
 
 const DashboardHeader = ({ name, disabled, dashboard }) => {
   const { isModalOpen, closeModal, openModal } = useModal();
-  const iconName = '#icon-filter';
   return (
     <>
       {name && (
@@ -29,7 +27,7 @@ const DashboardHeader = ({ name, disabled, dashboard }) => {
         onClick={openModal}
         disabled={disabled}
       >
-        <Svg w={16} h={16} use={`${sprite}${iconName}`} />
+        <Svg w={16} h={16} icon='filter' />
         <DashboardHeaderText>Filters</DashboardHeaderText>
       </DashboardHeaderFilter>
 
