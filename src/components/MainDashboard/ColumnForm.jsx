@@ -66,7 +66,7 @@ export const ColumnForm = ({
                 <ValidationError>{errors.title}</ValidationError>
               ) : null}
             </TitleContainer>
-            <PrimaryButton type="submit" title={buttonText}>
+            <PrimaryButton title={buttonText}>
               <IconAddEditDeleteModal icon={icon} />
             </PrimaryButton>
           </Form>

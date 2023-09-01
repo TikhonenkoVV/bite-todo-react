@@ -7,6 +7,7 @@ import {
   CardTitleStyled,
   DeadlineDate,
   PriorityStatus,
+  ToolsButtonBell,
   ToolsWrapper,
 } from './Card.styled';
 import { forwardRef, useState } from 'react';
@@ -18,6 +19,7 @@ import moment from 'moment';
 import { useAskDeleteModal } from 'hooks/useModal';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
 import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
+import { Svg } from 'components/SvgIcon/SvgIcon';
 
 export const Card = forwardRef(
   (
@@ -81,12 +83,12 @@ export const Card = forwardRef(
             )}
           </CardParamsWrapper>
           {priority !== 'without' && (
-            <ButtonIcon
-              action={moment(deadline).isBefore(moment())}
-              w={16}
-              h={16}
-              icon="bell"
-            />
+            <ToolsButtonBell
+              type="button"
+              pastDeadline={moment(deadline).isBefore(moment())}
+            >
+              <Svg w={16} h={16} icon="bell" />
+            </ToolsButtonBell>
           )}
           <ToolsWrapper>
             <ButtonIcon action={openEditModal} w={16} h={16} icon="pencil" />

@@ -45,7 +45,7 @@ export const FormNeedHelp = ({ closeModal }) => {
 
   return (
     <StyledDiv>
-      <ButtonCloseModal onClose={closeModal} size={18} icon={'x-close'}/>
+      <ButtonCloseModal onClose={closeModal} size={18} icon={'x-close'} />
       <StyledP>Need help</StyledP>
       <form onSubmit={formik.handleSubmit}>
         <StyledInput
@@ -63,7 +63,7 @@ export const FormNeedHelp = ({ closeModal }) => {
           value={formik.values.message}
           onChange={formik.handleChange}
         />
-        <PrimaryButton type="submit" title="Send" />
+        <PrimaryButton />
       </form>
     </StyledDiv>
   );

@@ -112,19 +112,23 @@ export const RegisterForm = () => {
                 onBlur={formik.handleBlur}
                 placeholder="Create a password"
               />
-              <ButtonIcon action={togglePasswordVisibility} w={18} h={18} icon={inputIcon} 
-                style={{ 
-                  position: 'absolute', 
+              <ButtonIcon
+                action={togglePasswordVisibility}
+                w={18}
+                h={18}
+                icon={inputIcon}
+                style={{
+                  position: 'absolute',
                   right: '18px',
-                  fill: 'rgba(255, 255, 255, 0.5)' 
-                    }} 
+                  fill: 'rgba(255, 255, 255, 0.5)',
+                }}
               />
             </InputWrapper>
             {formik.errors.password && formik.touched.password && (
               <Error>{formik.errors.password}</Error>
             )}
 
-            <PrimaryButton type="submit" title="Register Now" />
+            <PrimaryButton title="Register Now" />
           </form>
         </Container>
       )}

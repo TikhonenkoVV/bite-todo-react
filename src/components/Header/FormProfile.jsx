@@ -63,7 +63,7 @@ const FormProfie = ({ avatarFile, onAvatarChange }) => {
               </BtnShowPassword>
             </WrapperInput>
             <ErrorMessage name="password" component={ErrorStyled} />
-            <PrimaryButton type="submit" disabled={isSubmitting} title="Send" />
+            <PrimaryButton disabled={isSubmitting} />
           </FromStyled>
         );
       }}

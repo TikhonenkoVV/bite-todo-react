@@ -88,19 +88,23 @@ export const LoginForm = () => {
                 onBlur={formik.handleBlur}
                 placeholder="Confirm a password"
               />
-          <ButtonIcon action={togglePasswordVisibility} w={18} h={18} icon={inputIcon} 
-          style={{ 
-            position: 'absolute',  
-            right: '18px',
-            fill: 'rgba(255, 255, 255, 0.5)',
-              }} 
-          />
+              <ButtonIcon
+                action={togglePasswordVisibility}
+                w={18}
+                h={18}
+                icon={inputIcon}
+                style={{
+                  position: 'absolute',
+                  right: '18px',
+                  fill: 'rgba(255, 255, 255, 0.5)',
+                }}
+              />
             </InputWrapper>
             {formik.errors.password && formik.touched.password && (
               <Error>{formik.errors.password}</Error>
             )}
 
-            <PrimaryButton type="submit" title="Log In Now" />
+            <PrimaryButton title="Log In Now" />
           </form>
         </Container>
       )}

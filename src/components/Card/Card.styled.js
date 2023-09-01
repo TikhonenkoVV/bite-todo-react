@@ -108,6 +108,7 @@ export const ToolsButtonBell = styled.button`
   height: 16px;
   margin-right: 12px;
   color: #888888;
+  fill: #888888;
   cursor: auto;
   &::before {
     content: '';
