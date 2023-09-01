@@ -71,9 +71,7 @@ const FormForBoards = ({ boardId, type, onClick }) => {
         ...(boardId ? { id: boardId } : {}),
         title: board?.title ? board.title : ``,
         background: board?.background ? board.background : 'default',
-        dashboardIcon: board?.dashboardIcon
-          ? board.dashboardIcon
-          : 'icon-Project',
+        dashboardIcon: board?.dashboardIcon ? board.dashboardIcon : 'Project',
       }}
       validationSchema={validationSchema}
       onSubmit={(values, formik) => {
@@ -135,7 +133,7 @@ const FormForBoards = ({ boardId, type, onClick }) => {
           {formik.errors.background && formik.touched.background && (
             <Error>{formik.errors.background}</Error>
           )}
-          <PrimaryButton type="submit" title={buttonText}>
+          <PrimaryButton title={buttonText}>
             <IconAddEditDeleteModal icon={icon} />
           </PrimaryButton>
         </Form>

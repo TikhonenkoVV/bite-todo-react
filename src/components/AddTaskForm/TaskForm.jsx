@@ -205,7 +205,7 @@ export const TaskForm = ({
             />
           </DatePickerContainer>
         </StyledTitleDeadline>
-        <PrimaryButton type="submit" title={isEditing ? 'Edit' : 'Add'}>
+        <PrimaryButton title={isEditing ? 'Edit' : 'Add'}>
           <IconAddEditDeleteModal icon={isEditing ? 'pencil' : 'plus'} />
         </PrimaryButton>
       </form>

@@ -82,17 +82,19 @@ export const RadioImg = styled.img`
   transition: ${baseTransition};
   &:hover,
   &:focus {
+    scale: 120%;
     border-color: ${props => props.theme.colors.formInputBorderColor};
   }
 `;
 
 export const RadioIcon = styled.label`
-  color: ${props => props.theme.colors.textColorForm};
+  fill: ${props => props.theme.colors.textColorForm};
   opacity: ${props => (props.checked ? '100%' : '50%')};
   transition: ${baseTransition};
   &:hover,
   &:focus {
-    color: ${props => props.theme.colors.formInputBorderColor};
+    scale: 130%;
+    fill: ${props => props.theme.colors.formInputBorderColor};
     opacity: 100%;
   }
 `;

@@ -23,11 +23,10 @@ export const DivNameStyled = styled.div`
   margin-left: 14px;
   margin-right: 14px;
 
-  color: ${props => props.theme.colors.boardTitleTextIcon};
-  fill: currentColor;
+  fill: ${props => props.theme.colors.boardTitleTextIcon};
 
   &.active {
-    color: ${props => props.theme.colors.sideBarMainText};
+    fill: ${props => props.theme.colors.sideBarMainText};
   }
   @media screen and (${devices.tablet}) {
     column-gap: 8px;
