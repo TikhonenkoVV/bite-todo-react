@@ -21,6 +21,7 @@ import {
   StyledFormikDescriptionNotification,
   StyledFormikColorNotification,
   DatePickerContainer,
+  DatePickerBtn,
 } from './AddTaskForm.styled';
 import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
 import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
@@ -33,7 +34,7 @@ const priorities = ['low', 'medium', 'high', 'without'];
 export const TaskForm = ({
   title: initialTitle = '',
   description: initialDescription = '',
-  priority: initialPriority = '',
+  priority: initialPriority = 'without',
   deadline: initialDeadline = new Date(),
   onSubmit,
   onClose,
@@ -159,25 +160,33 @@ export const TaskForm = ({
           </StyledFormikColorNotification>
         ) : null}
 
-        <StyledTitleDeadline>
+        <StyledTitleDeadline
+          className={formik.values.priority === 'without' ? 'disabled' : ''}
+        >
           Deadline
-          <Container>
+          <Container
+            className={formik.values.priority === 'without' ? 'disabled' : ''}
+          >
             {formattedDeadline}
-            <svg
-              className="icon"
-              width="14"
-              height="14"
-              aria-hidden="true"
-              role="presentation"
-              fill="#BEDBB0"
+            <DatePickerBtn
+              type="button"
+              disabled={formik.values.priority === 'without'}
               onClick={handleDeadlineClick}
-              style={{
-                marginLeft: '5px',
-                cursor: 'pointer',
-              }}
             >
-              <use xlinkHref={`${sprite}#icon-chevron-down`} />
-            </svg>
+              <svg
+                className="icon"
+                width="14"
+                height="14"
+                aria-hidden="true"
+                role="presentation"
+                style={{
+                  marginLeft: '5px',
+                  fill: 'currentColor',
+                }}
+              >
+                <use xlinkHref={`${sprite}#icon-chevron-down`} />
+              </svg>
+            </DatePickerBtn>
           </Container>
           {formik.touched.deadline && formik.errors.deadline ? (
             <div>{formik.errors.deadline}</div>

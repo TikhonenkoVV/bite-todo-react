@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { editTask } from '../../store/columns/operations';
-import { TaskForm } from './TaskForm'; 
+import { TaskForm } from './TaskForm';
 import PropTypes from 'prop-types';
 
 export const EditTask = ({
@@ -18,6 +18,7 @@ export const EditTask = ({
   const dispatch = useDispatch();
 
   const handleSubmit = async values => {
+    if (values.priority === 'without') values.deadline = new Date(0);
     try {
       await dispatch(editTask({ ...values, index, boardId, columnId, taskId }));
     } catch (error) {

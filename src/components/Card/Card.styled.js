@@ -62,6 +62,7 @@ export const CardFooter = styled.div`
 export const CardParamsWrapper = styled.div`
   display: flex;
   gap: 14px;
+  margin-right: auto;
 `;
 
 export const CardParamsTitle = styled.p`
@@ -105,7 +106,6 @@ export const ToolsButtonBell = styled.button`
   position: relative;
   width: 16px;
   height: 16px;
-  margin-left: auto;
   margin-right: 12px;
   color: #888888;
   cursor: auto;

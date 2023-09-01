@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addTask } from '../../store/columns/operations';
 import { useSelector } from 'react-redux';
 import { selectColumns } from 'store/columns/selectors';
-import { TaskForm } from './TaskForm'; 
+import { TaskForm } from './TaskForm';
 import PropTypes from 'prop-types';
 
 export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
@@ -14,6 +14,7 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
   const index = currentColumn[0].cards.length;
 
   const handleSubmit = async values => {
+    if (values.priority === 'without') values.deadline = new Date(0);
     try {
       await dispatch(addTask({ ...values, index, boardId, columnId, taskId }));
     } catch (error) {
@@ -22,11 +23,7 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
   };
 
   return (
-    <TaskForm
-      onSubmit={handleSubmit}
-      onClose={closeModal}
-      isEditing={false}
-    />
+    <TaskForm onSubmit={handleSubmit} onClose={closeModal} isEditing={false} />
   );
 };
 
