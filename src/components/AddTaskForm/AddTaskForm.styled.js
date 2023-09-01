@@ -66,6 +66,9 @@ export const Container = styled.div`
   justify-content: left;
   align-items: center;
   display: flex;
+  &.disabled {
+    color: ${props => props.theme.colors.cardMinorText};
+  }
 `;
 
 export const RadioGroup = styled.div`
@@ -120,6 +123,10 @@ export const StyledTitleDeadline = styled.div`
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.24px;
+  &.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
 `;
 
 export const StyledFormikTitleNotification = styled.div`
@@ -192,5 +199,13 @@ export const DatePickerContainer = styled.div`
 
   .react-datepicker__day--selected:hover {
     background-color: ${props => props.theme.colors.calendarSelectedColor};
+  }
+`;
+
+export const DatePickerBtn = styled.button`
+  color: ${props => props.theme.colors.btnAddBoard};
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
   }
 `;

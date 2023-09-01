@@ -19,6 +19,8 @@ import { Modal } from 'components/Modal';
 import { EditTask } from 'components/AddTaskForm/EditTaskForm';
 import { deleteTask } from '../../store/columns/operations';
 import moment from 'moment';
+import { useAskDeleteModal } from 'hooks/useModal';
+import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
 
 export const Card = forwardRef(
   (
@@ -37,7 +39,13 @@ export const Card = forwardRef(
     ref
   ) => {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+    const { isAskDeleteModalOpen, openAskDeleteModal, closeAskDeleteModal } =
+      useAskDeleteModal();
+
     const dispatch = useDispatch();
+
+    const [titleCard, setTitleCard] = useState('');
 
     const openEditModal = () => {
       setIsEditModalOpen(true);
@@ -47,8 +55,13 @@ export const Card = forwardRef(
       setIsEditModalOpen(false);
     };
 
-    const handleDeleteTaskButtonClick = async () => {
-      await dispatch(deleteTask({ boardId, columnId, taskId: _id }));
+    const handleDeleteTaskButtonClick = () => {
+      openAskDeleteModal();
+      setTitleCard(`Delete card "${title}"?`);
+    };
+
+    const handleDeleteCard = () => {
+      dispatch(deleteTask({ boardId, columnId, taskId: _id }));
     };
 
     const formattedDeadline = moment(deadline).format('DD/MM/YYYY');
@@ -63,17 +76,21 @@ export const Card = forwardRef(
               <CardParamsTitle>Priority</CardParamsTitle>
               <PriorityStatus color={priority}>{priority}</PriorityStatus>
             </div>
-            <div>
-              <CardParamsTitle>Deadline</CardParamsTitle>
-              <DeadlineDate>{formattedDeadline}</DeadlineDate>
-            </div>
+            {priority !== 'without' && (
+              <div>
+                <CardParamsTitle>Deadline</CardParamsTitle>
+                <DeadlineDate>{formattedDeadline}</DeadlineDate>
+              </div>
+            )}
           </CardParamsWrapper>
-          <ToolsButtonBell
-            type="button"
-            pastDeadline={moment(deadline).isBefore(moment())}
-          >
-            <Svg w={16} h={16} use={`${sprite}#icon-bell`} />
-          </ToolsButtonBell>
+          {priority !== 'without' && (
+            <ToolsButtonBell
+              type="button"
+              pastDeadline={moment(deadline).isBefore(moment())}
+            >
+              <Svg w={16} h={16} use={`${sprite}#icon-bell`} />
+            </ToolsButtonBell>
+          )}
           <ToolsWrapper>
             <ToolsButton type="button" onClick={openEditModal}>
               <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
@@ -91,6 +108,15 @@ export const Card = forwardRef(
                   index={index}
                   priority={priority}
                   closeModal={closeEditModal}
+                />
+              </Modal>
+            )}
+            {isAskDeleteModalOpen && (
+              <Modal onClose={closeAskDeleteModal}>
+                <AskDeleteModal
+                  onClick={closeAskDeleteModal}
+                  handleDelete={handleDeleteCard}
+                  title={titleCard}
                 />
               </Modal>
             )}

@@ -77,7 +77,6 @@ export const ColumnList = ({ boardId }) => {
           priority: e.priority,
           deadline: e.deadline,
           index: i,
-          boardId,
           columnId: e.owner,
           taskId: e._id,
         })
@@ -91,7 +90,6 @@ export const ColumnList = ({ boardId }) => {
           priority: e.priority,
           deadline: e.deadline,
           index: i,
-          boardId,
           columnId: result.destination.droppableId,
           taskId: e._id,
         })

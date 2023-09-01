@@ -27,7 +27,7 @@ export const edit = createAsyncThunk(
   'board/edit',
   async ({ id, title, background, dashboardIcon }, thunkAPI) => {
     try {
-      const { data } = await biteTodoInnstance.put(`/boards/${id}`, {
+      const { data } = await biteTodoInnstance.patch(`/boards/${id}`, {
         title,
         background,
         dashboardIcon,
