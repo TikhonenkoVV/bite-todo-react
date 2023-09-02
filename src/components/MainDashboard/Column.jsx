@@ -110,6 +110,7 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
                 columnId={_id}
                 closeModal={closeModal}
                 index={index}
+                cardsNumber={cards.length}
               />
             </Modal>
           )}
