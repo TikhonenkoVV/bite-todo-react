@@ -19,8 +19,7 @@ import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 const ColumnFormSchema = Yup.object().shape({
   title: Yup.string()
     .min(2, 'Please write more than 2 symbol!')
-    .max(32, 'Please write less than 32 symbols!')
-    .required('Required'),
+    .max(32, 'Please write less than 32 symbols!'),
 });
 
 export const ColumnForm = ({
@@ -41,6 +40,7 @@ export const ColumnForm = ({
     if (isEditMode) {
       dispatch(editColumn({ boardId, id, title, index }));
     } else {
+      title = title === '' ? `Column ${index + 1}` : title;
       dispatch(addColumn({ boardId, title, index }));
     }
     resetForm();

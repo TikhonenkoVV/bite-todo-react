@@ -6,7 +6,7 @@ import { selectColumns } from 'store/columns/selectors';
 import { TaskForm } from './TaskForm';
 import PropTypes from 'prop-types';
 
-export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
+export const AddTasks = ({ boardId, columnId, closeModal, taskId, cardsNumber }) => {
   const dispatch = useDispatch();
 
   const columns = useSelector(selectColumns);
@@ -23,7 +23,7 @@ export const AddTasks = ({ boardId, columnId, closeModal, taskId }) => {
   };
 
   return (
-    <TaskForm onSubmit={handleSubmit} onClose={closeModal} isEditing={false} />
+    <TaskForm onSubmit={handleSubmit} onClose={closeModal} isEditing={false} cardsNumber={cardsNumber} />
   );
 };
 
