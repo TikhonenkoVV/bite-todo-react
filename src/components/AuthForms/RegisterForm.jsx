@@ -14,7 +14,7 @@ import {
   Error,
 } from './AuthForms.styled';
 import { Loader } from 'components/Loader/Loader';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
 import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
 export const RegisterForm = () => {

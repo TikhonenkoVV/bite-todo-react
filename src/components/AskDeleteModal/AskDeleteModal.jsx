@@ -1,5 +1,5 @@
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
 import { StyledDiv, StyledP, WrapperButton } from './AskDeleteModal.stayled';
 
 export const AskDeleteModal = ({ onClick, handleDelete, title }) => {

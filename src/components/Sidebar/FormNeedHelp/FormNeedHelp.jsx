@@ -10,8 +10,8 @@ import { sendNeedHelp } from 'store/boards/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { selectUser } from 'store/auth/selectors';
-import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
+import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
 export const FormNeedHelp = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -45,7 +45,14 @@ export const FormNeedHelp = ({ closeModal }) => {
 
   return (
     <StyledDiv>
-      <ButtonCloseModal onClose={closeModal} size={18} icon={'x-close'} />
+      <ButtonIcon
+        action={closeModal}
+        style={{
+          position: 'absolute',
+          top: '14px',
+          right: '14px',
+        }}
+      />
       <StyledP>Need help</StyledP>
       <form onSubmit={formik.handleSubmit}>
         <StyledInput

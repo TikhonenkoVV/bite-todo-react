@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { baseTransition } from '../../styles/theme';
+import { baseTransition } from '../../../styles/theme';
 
 export const Button = styled.button`
   display: flex;

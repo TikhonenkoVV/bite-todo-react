@@ -16,7 +16,7 @@ import {
 import { CardList } from 'components/Card/CardList';
 import { AddTasks } from 'components/AddTaskForm/AddTaskForm';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
@@ -66,8 +66,18 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
           <ColumnTitleContainer {...provided.dragHandleProps}>
             <ColumnTitle>{title}</ColumnTitle>
             <IconContainer>
-          <ButtonIcon action={() => handleEditCardButtonClick(openModal)} w={16} h={16} icon='pencil'/>
-          <ButtonIcon action={handleDeleteColumnEmty} w={16} h={16} icon='trash'/>
+              <ButtonIcon
+                action={() => handleEditCardButtonClick(openModal)}
+                w={16}
+                h={16}
+                icon="pencil"
+              />
+              <ButtonIcon
+                action={handleDeleteColumnEmty}
+                w={16}
+                h={16}
+                icon="trash"
+              />
             </IconContainer>
           </ColumnTitleContainer>
           {cards && <CardList boardId={owner} columnId={_id} cards={cards} />}
@@ -76,7 +86,7 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
             action={handleAddCardButtonClick}
             title="Add another card"
           >
-            <IconAddEditDeleteModal icon="plus" />
+            <IconAddEditDeleteModal />
           </PrimaryButton>
           {isModalOpen && isEditCardMode && (
             <Modal onClose={closeModal}>

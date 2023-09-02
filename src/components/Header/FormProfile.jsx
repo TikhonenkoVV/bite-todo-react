@@ -12,7 +12,7 @@ import { Svg } from 'components/SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateAvatar, updateUser } from 'store/auth/operations';
 import { selectUser } from 'store/auth/selectors';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
 
 const iconAllow = 'eye-allow';
 const iconDenied = 'eye-denied';

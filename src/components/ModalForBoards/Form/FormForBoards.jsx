@@ -15,7 +15,7 @@ import { edit, add } from 'store/boards/operations';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectBoardsState } from 'store/boards/selectors';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 
 const iconNames = [

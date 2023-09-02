@@ -23,10 +23,10 @@ import {
   DatePickerContainer,
   DatePickerBtn,
 } from './AddTaskForm.styled';
-import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 import { ModalContent } from 'components/Modal/Modal.styled';
+import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
 export const colors = ['#8FA1D0', '#E09CB5', '#BEDBB0', '#808080'];
 const priorities = ['low', 'medium', 'high', 'without'];
@@ -111,7 +111,14 @@ export const TaskForm = ({
   return (
     <ModalContent>
       <StyledP>{isEditing ? 'Edit Card' : 'Add Card'}</StyledP>
-      <ButtonCloseModal onClose={onClose} />
+      <ButtonIcon
+        action={onClose}
+        style={{
+          position: 'absolute',
+          top: '14px',
+          right: '14px',
+        }}
+      />
       <form onSubmit={formik.handleSubmit}>
         <StyledInput
           type="text"
