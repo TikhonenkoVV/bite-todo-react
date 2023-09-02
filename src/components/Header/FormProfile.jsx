@@ -8,15 +8,14 @@ import {
   BtnShowPassword,
   ErrorStyled,
 } from './FormProfile.styled';
-import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateAvatar, updateUser } from 'store/auth/operations';
 import { selectUser } from 'store/auth/selectors';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
 
-const iconAllow = '#icon-eye-allow';
-const iconDenied = '#icon-eye-denied';
+const iconAllow = 'eye-allow';
+const iconDenied = 'eye-denied';
 
 const FormProfie = ({ avatarFile, onAvatarChange }) => {
   const { name, email } = useSelector(selectUser);
@@ -57,14 +56,14 @@ const FormProfie = ({ avatarFile, onAvatarChange }) => {
                 onClick={() => setShowPassword(!showPassword)}
               >
                 <Svg
-                  v={'18px'}
-                  h={'18px'}
-                  use={`${sprite}${showPassword ? iconDenied : iconAllow}`}
+                  v={18}
+                  h={18}
+                  icon={showPassword ? iconDenied : iconAllow}
                 />
               </BtnShowPassword>
             </WrapperInput>
             <ErrorMessage name="password" component={ErrorStyled} />
-            <PrimaryButton type="submit" disabled={isSubmitting} title="Send" />
+            <PrimaryButton disabled={isSubmitting} />
           </FromStyled>
         );
       }}

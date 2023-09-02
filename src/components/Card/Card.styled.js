@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { priority } from 'styles';
-import { baseTransition } from 'styles';
 
 export const CardStyled = styled.li`
   position: relative;
@@ -109,6 +108,7 @@ export const ToolsButtonBell = styled.button`
   height: 16px;
   margin-right: 12px;
   color: #888888;
+  fill: #888888;
   cursor: auto;
   &::before {
     content: '';
@@ -122,17 +122,5 @@ export const ToolsButtonBell = styled.button`
       props.pastDeadline
         ? 'radial-gradient(circle, red 0%, rgba(255, 0, 0, 0) 70%)'
         : 'radial-gradient(circle, #bedbb070 0%, #bedbb000 70%)'};
-  }
-`;
-
-export const ToolsButton = styled.button`
-  width: 16px;
-  height: 16px;
-  color: #888888;
-  transition: color ${baseTransition};
-
-  &:hover,
-  &:focus {
-    color: ${props => props.theme.colors.iconHover};
   }
 `;

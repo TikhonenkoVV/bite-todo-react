@@ -1,9 +1,9 @@
-import { Icon } from './SvgIcon.styled';
+import sprite from 'img/icons/sprite.svg';
 
-export const Svg = ({ w, h, use }) => {
+export const Svg = ({ w, h, icon}) => {
   return (
-    <Icon width={w} height={h}>
-      <use href={use} />
-    </Icon>
+    <svg width={w} height={h} aria-hidden="true" role="presentation">
+      <use href={`${sprite}#icon-${icon}`} />
+    </svg>
   );
 };

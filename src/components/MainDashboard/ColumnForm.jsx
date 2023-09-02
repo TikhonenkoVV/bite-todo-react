@@ -11,10 +11,10 @@ import {
 } from './ColumnForm.styled';
 import { useSelector } from 'react-redux';
 import { selectColumns } from 'store/columns/selectors';
-import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 import { ModalContent } from 'components/Modal/Modal.styled';
+import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
 const ColumnFormSchema = Yup.object().shape({
   title: Yup.string()
@@ -49,7 +49,14 @@ export const ColumnForm = ({
 
   return (
     <ModalContent>
-      <ButtonCloseModal onClose={onCloseForm} />
+      <ButtonIcon
+        action={onCloseForm}
+        style={{
+          position: 'absolute',
+          top: '14px',
+          right: '14px',
+        }}
+      />
       <FormTitle>{title}</FormTitle>
       <Formik
         initialValues={{
@@ -66,7 +73,7 @@ export const ColumnForm = ({
                 <ValidationError>{errors.title}</ValidationError>
               ) : null}
             </TitleContainer>
-            <PrimaryButton type="submit" title={buttonText}>
+            <PrimaryButton title={buttonText}>
               <IconAddEditDeleteModal icon={icon} />
             </PrimaryButton>
           </Form>

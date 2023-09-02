@@ -7,12 +7,9 @@ import {
   CardTitleStyled,
   DeadlineDate,
   PriorityStatus,
-  ToolsButton,
   ToolsButtonBell,
   ToolsWrapper,
 } from './Card.styled';
-import sprite from '../../img/icons/sprite.svg';
-import { Svg } from 'components/SvgIcon/SvgIcon';
 import { forwardRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Modal } from 'components/Modal';
@@ -21,6 +18,8 @@ import { deleteTask } from '../../store/columns/operations';
 import moment from 'moment';
 import { useAskDeleteModal } from 'hooks/useModal';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
+import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
+import { Svg } from 'components/SvgIcon/SvgIcon';
 
 export const Card = forwardRef(
   (
@@ -88,13 +87,11 @@ export const Card = forwardRef(
               type="button"
               pastDeadline={moment(deadline).isBefore(moment())}
             >
-              <Svg w={16} h={16} use={`${sprite}#icon-bell`} />
+              <Svg w={16} h={16} icon="bell" />
             </ToolsButtonBell>
           )}
           <ToolsWrapper>
-            <ToolsButton type="button" onClick={openEditModal}>
-              <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
-            </ToolsButton>
+            <ButtonIcon action={openEditModal} w={16} h={16} icon="pencil" />
             {isEditModalOpen && (
               <Modal onClose={closeEditModal}>
                 <EditTask
@@ -120,9 +117,12 @@ export const Card = forwardRef(
                 />
               </Modal>
             )}
-            <ToolsButton type="button" onClick={handleDeleteTaskButtonClick}>
-              <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
-            </ToolsButton>
+            <ButtonIcon
+              action={handleDeleteTaskButtonClick}
+              w={16}
+              h={16}
+              icon="trash"
+            />
           </ToolsWrapper>
         </CardFooter>
       </CardStyled>

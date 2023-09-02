@@ -14,7 +14,7 @@ import {
   StatusFilterShowAll,
   StatusFilterItem,
 } from './StatusFilter.styled';
-import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
+import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
 const options = [
   {
@@ -61,7 +61,14 @@ const StatusFilter = ({ onClose }) => {
 
   return (
     <StatusFilterContainer>
-      <ButtonCloseModal onClose={onClose} />
+      <ButtonIcon
+        action={onClose}
+        style={{
+          position: 'absolute',
+          top: '14px',
+          right: '14px',
+        }}
+      />
       <StatusFilterMainText>Filter</StatusFilterMainText>
       <StatusFilterBox>
         <StatusFilterLabel>Label color</StatusFilterLabel>

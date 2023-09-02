@@ -3,12 +3,6 @@ import { useSelector } from 'react-redux';
 import { selectTheme } from 'store/auth/selectors';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import { LogoStyled, IconWrapperStyled, PStyled } from './Logo.styled';
-import sprite from 'img/icons/sprite.svg';
-
-const iconStyles = {
-  defaultWidth: '100%',
-  defaultHeighth: '100%',
-};
 
 const Logo = ({ styles }) => {
   const [nameIcon, setNameIcon] = useState('');
@@ -17,19 +11,19 @@ const Logo = ({ styles }) => {
   useEffect(() => {
     if (!selectedTheme) return;
     if (selectedTheme.toLowerCase() === 'violet') {
-      setNameIcon('flash-light');
+      setNameIcon('logo-flash-light');
       return;
     }
-    setNameIcon('flash-dark');
+    setNameIcon('logo-flash-dark');
   }, [selectedTheme]);
 
   return (
     <LogoStyled styles={styles}>
       <IconWrapperStyled styles={styles}>
         <Svg
-          w={iconStyles.defaultWidth}
-          h={iconStyles.defaultHeighth}
-          use={`${sprite}#icon-logo-${nameIcon}`}
+          w={32}
+          h={32}
+          icon={nameIcon}
         />
       </IconWrapperStyled>
       <PStyled styles={styles}>Task pro</PStyled>

@@ -19,12 +19,12 @@ export const StyledInput = styled.input`
   background: ${props => props.theme.colors.card};
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   margin-bottom: 14px;
+  outline: none;
   padding: 14px 18px;
   font-size: 14px;
   color: ${props => props.theme.colors.cardMajorText};
   :focus-visible {
-    border: 1px solid ${props => props.theme.colors.btnAddBoard};
-    outline: none;
+    opacity: 1;
   }
 `;
 
@@ -43,9 +43,8 @@ export const StyledTextArea = styled.textarea`
   margin-bottom: 24px;
   outline: none;
   transition: border-color 0.3s ease-in-out;
-
   :focus {
-    border-color: ${props => props.theme.colors.btnAddBoard};
+    opacity: 1;
   }
 `;
 

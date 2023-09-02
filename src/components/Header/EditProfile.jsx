@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import FormProfile from './FormProfile';
-import sprite from '../../img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import {
   TextStyled,
@@ -12,7 +11,7 @@ import {
 } from './EditProfile.styled';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
-import { ButtonCloseModal } from 'components/miniComponents/ButtonCloseModal/ButtonCloseModal';
+import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
 const EditProfile = ({ closeModal }) => {
   const { avatarURL } = useSelector(selectUser);
@@ -38,7 +37,14 @@ const EditProfile = ({ closeModal }) => {
 
   return (
     <ModalContentStyled>
-      <ButtonCloseModal onClose={closeModal} />
+      <ButtonIcon
+        action={closeModal}
+        style={{
+          position: 'absolute',
+          top: '14px',
+          right: '14px',
+        }}
+      />
       <TextStyled>Edit Profile</TextStyled>
       <DivItem>
         <DivUserImgStyled>
@@ -52,7 +58,7 @@ const EditProfile = ({ closeModal }) => {
           ) : avatarURL ? (
             <AvatarImg width={68} height={68} src={avatarURL} alt="userlogo" />
           ) : (
-            <Svg w={68} h={68} use={`${sprite}#icon-user`} />
+            <Svg w={68} h={68} icon="user" />
           )}
           <input
             width={68}
@@ -66,7 +72,7 @@ const EditProfile = ({ closeModal }) => {
           <DivIconPlus
             onClick={() => document.getElementById('avatarInput').click()}
           >
-            <Svg w={10} h={10} use={`${sprite}#icon-plus`} />
+            <Svg w={10} h={10} icon="plus" />
           </DivIconPlus>
         </DivUserImgStyled>
       </DivItem>

@@ -3,7 +3,7 @@ import { Button } from './PrimaryButton.styled';
 export const PrimaryButton = ({
   type = 'submit',
   action,
-  title = 'Add',
+  title = 'Send',
   children,
 }) => {
   return (

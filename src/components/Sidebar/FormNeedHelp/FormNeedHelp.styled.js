@@ -32,7 +32,6 @@ export const StyledInput = styled.input`
 
   &:focus {
     opacity: 1;
-    border: 1px solid ${props => props.theme.colors.formAddButtonBackground};
   }
 `;
 

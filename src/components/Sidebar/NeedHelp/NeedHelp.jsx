@@ -6,7 +6,6 @@ import {
   PStyled,
 } from './NeedHelp.styled';
 import { Svg } from 'components/SvgIcon/SvgIcon';
-import sprite from 'img/icons/sprite.svg';
 import { useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
 import { FormNeedHelp } from '../FormNeedHelp/FormNeedHelp';
@@ -21,7 +20,7 @@ const NeedHelp = () => {
         support resources or reach out to our customer support team.
       </PStyled>
       <ButtonStyled type="button" onClick={openModal}>
-        <Svg w={20} h={20} use={`${sprite}#icon-help-circle`} />
+        <Svg w={20} h={20} icon='help-circle' />
         <PNeedHelpStyled>Need help?</PNeedHelpStyled>
       </ButtonStyled>
       {isModalOpen && (

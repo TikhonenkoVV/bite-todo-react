@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Draggable } from 'react-beautiful-dnd';
 import { deleteColumn } from '../../store/columns/operations';
-import sprite from '../../img/icons/sprite.svg';
 import { useAskDeleteModal, useModal } from 'hooks/useModal';
 import { Modal } from 'components/Modal';
 import { ColumnForm } from './ColumnForm';
@@ -13,15 +12,13 @@ import {
   ColumnTitleContainer,
   ColumnTitle,
   IconContainer,
-  TitleIcon,
-  IconButton,
 } from './Column.styled';
 import { CardList } from 'components/Card/CardList';
 import { AddTasks } from 'components/AddTaskForm/AddTaskForm';
-// import { useDeleteColumn } from 'hooks/useDeleteBoard';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
+import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
 export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
   const [titleColumn, setTitleColumn] = useState('Delete column?');
@@ -69,19 +66,18 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
           <ColumnTitleContainer {...provided.dragHandleProps}>
             <ColumnTitle>{title}</ColumnTitle>
             <IconContainer>
-              <IconButton
-                type="button"
-                onClick={() => handleEditCardButtonClick(openModal)}
-              >
-                <TitleIcon>
-                  <use href={`${sprite}#icon-pencil`}></use>
-                </TitleIcon>
-              </IconButton>
-              <IconButton type="button" onClick={handleDeleteColumnEmty}>
-                <TitleIcon>
-                  <use href={`${sprite}#icon-trash`}></use>
-                </TitleIcon>
-              </IconButton>
+              <ButtonIcon
+                action={() => handleEditCardButtonClick(openModal)}
+                w={16}
+                h={16}
+                icon="pencil"
+              />
+              <ButtonIcon
+                action={handleDeleteColumnEmty}
+                w={16}
+                h={16}
+                icon="trash"
+              />
             </IconContainer>
           </ColumnTitleContainer>
           {cards && <CardList boardId={owner} columnId={_id} cards={cards} />}
@@ -90,7 +86,7 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
             action={handleAddCardButtonClick}
             title="Add another card"
           >
-            <IconAddEditDeleteModal icon="plus" />
+            <IconAddEditDeleteModal />
           </PrimaryButton>
           {isModalOpen && isEditCardMode && (
             <Modal onClose={closeModal}>

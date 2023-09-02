@@ -16,12 +16,12 @@ export const ButtonStyled = styled.button`
 `;
 
 export const Container = styled.div`
-  color: ${props => props.theme.colors.btnLogOut};
+  fill: ${props => props.theme.colors.btnLogOut};
   transition: color ${baseTransition};
 
   &:hover,
   &:focus {
-    color: ${props => props.theme.colors.btnLogOutHover};
+    fill: ${props => props.theme.colors.btnLogOutHover};
   }
 `;
 

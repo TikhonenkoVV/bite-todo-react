@@ -6,11 +6,8 @@ import { useAskDeleteModal, useModal } from 'hooks/useModal';
 import { selectColumns } from 'store/columns/selectors';
 import { deleteBoards } from 'store/boards/operations';
 
-import sprite from 'img/icons/sprite.svg';
 import { Svg } from 'components/SvgIcon/SvgIcon';
 import {
-  ButtonDelete,
-  ButtonEdit,
   DivIconStyled,
   DivNameStyled,
   LiStyled,
@@ -20,6 +17,7 @@ import { Modal } from 'components/Modal';
 import MoodalForBoards from 'components/ModalForBoards/ModalForBoards';
 import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
 import { useState } from 'react';
+import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
 export const Board = ({ board, idActiveBoard, changeIdActiveBoard, changeLengthBoard }) => {
   const [title, setTitle] = useState('Delete board?');
@@ -64,19 +62,15 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard, changeLengthB
         className={board._id === idActiveBoard && 'active'}
       >
         <DivNameStyled className={board._id === idActiveBoard && 'active'}>
-          <Svg w={18} h={18} use={`${sprite}#${board.dashboardIcon}`} />
+          <Svg w={18} h={18} icon={board.dashboardIcon} />
           <TextStyled className={board._id === idActiveBoard && 'active'}>
             {board.title}
           </TextStyled>
         </DivNameStyled>
         {idActiveBoard === board._id && (
           <DivIconStyled>
-            <ButtonEdit type="button" onClick={openModal}>
-              <Svg w={16} h={16} use={`${sprite}#icon-pencil`} />
-            </ButtonEdit>
-            <ButtonDelete type="button" onClick={handleAskDeleteBoard}>
-              <Svg w={16} h={16} use={`${sprite}#icon-trash`} />
-            </ButtonDelete>
+          <ButtonIcon action={openModal} w={16} h={16} icon='pencil'/>
+          <ButtonIcon action={handleAskDeleteBoard} w={16} h={16} icon='trash'/>
           </DivIconStyled>
         )}
       </LiStyled>

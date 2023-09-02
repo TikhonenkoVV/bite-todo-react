@@ -15,18 +15,18 @@ import { edit, add } from 'store/boards/operations';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectBoardsState } from 'store/boards/selectors';
-import { PrimaryButton } from 'components/PrimaryButton/PrimaryButton';
+import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 
 const iconNames = [
-  'icon-Project',
-  'icon-star',
-  'icon-loading',
-  'icon-puzzle',
-  'icon-container',
-  'icon-lightning',
-  'icon-colors',
-  'icon-hexagon',
+  'Project',
+  'star',
+  'loading',
+  'puzzle',
+  'container',
+  'lightning',
+  'colors',
+  'hexagon',
 ];
 
 const backgroundImages = [
@@ -71,9 +71,7 @@ const FormForBoards = ({ boardId, type, onClick }) => {
         ...(boardId ? { id: boardId } : {}),
         title: board?.title ? board.title : ``,
         background: board?.background ? board.background : 'default',
-        dashboardIcon: board?.dashboardIcon
-          ? board.dashboardIcon
-          : 'icon-Project',
+        dashboardIcon: board?.dashboardIcon ? board.dashboardIcon : 'Project',
       }}
       validationSchema={validationSchema}
       onSubmit={(values, formik) => {
@@ -135,7 +133,7 @@ const FormForBoards = ({ boardId, type, onClick }) => {
           {formik.errors.background && formik.touched.background && (
             <Error>{formik.errors.background}</Error>
           )}
-          <PrimaryButton type="submit" title={buttonText}>
+          <PrimaryButton title={buttonText}>
             <IconAddEditDeleteModal icon={icon} />
           </PrimaryButton>
         </Form>

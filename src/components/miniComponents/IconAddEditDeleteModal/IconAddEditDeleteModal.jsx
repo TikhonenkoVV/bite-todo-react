@@ -1,18 +1,10 @@
-import sprite from 'img/icons/sprite.svg';
 import { StyledDiv } from './IconAddEditDeleteModal.styled';
+import { Svg } from 'components/SvgIcon/SvgIcon';
 
-export const IconAddEditDeleteModal = ({ icon = 'plus' }) => {
+export const IconAddEditDeleteModal = ({ icon = 'plus', style }) => {
   return (
     <StyledDiv>
-      <svg
-        className="icon"
-        width="14"
-        height="14"
-        aria-hidden="true"
-        role="presentation"
-      >
-        <use xlinkHref={`${sprite}#icon-${icon}`} />
-      </svg>
+      <Svg w={14} h={14} icon={icon} style={style} />
     </StyledDiv>
   );
 };
