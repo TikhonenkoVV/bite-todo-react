@@ -35,20 +35,23 @@ export const TaskForm = ({
   title: initialTitle = '',
   description: initialDescription = '',
   priority: initialPriority = 'without',
-  deadline: initialDeadline = new Date(),
+  deadline: initialDeadline,
   onSubmit,
   onClose,
   isEditing = false,
   cardsNumber,
 }) => {
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() + 1);
+
   const initialValues = {
     title: initialTitle,
     description: initialDescription,
     priority: initialPriority,
-    deadline: initialDeadline,
+    deadline: initialDeadline >= startDate ? initialDeadline : startDate,
   };
 
-  const [deadline, setDeadline] = useState(initialDeadline);
+  const [deadline, setDeadline] = useState(startDate);
 
   const deadlinePickerRef = useRef(null);
 
@@ -60,9 +63,7 @@ export const TaskForm = ({
       .min(1, 'Description must contain at least 10 characters')
       .max(500, 'Description must not exceed 500 characters'),
     priority: Yup.string().required('Please select a color'),
-    deadline: Yup.date()
-      .required('Please select a deadline date')
-      .min(new Date(), 'Deadline cannot be earlier than today'),
+    deadline: Yup.date(),
   });
 
   const handleDeadlineClick = () => {
@@ -80,8 +81,10 @@ export const TaskForm = ({
     try {
       values.title =
         values.title === '' ? `Task ${cardsNumber + 1}` : values.title;
-        values.description =
-        values.description === '' ? `Description for ${values.title}` : values.description;
+      values.description =
+        values.description === ''
+          ? `Description for ${values.title}`
+          : values.description;
       await onSubmit(values);
       resetForm();
       onClose();
@@ -97,10 +100,6 @@ export const TaskForm = ({
   });
 
   const handleDateChange = date => {
-    if (date && date < new Date()) {
-      alert('Deadline cannot be before today.');
-      return;
-    }
     formik.setFieldValue('deadline', date);
     setDeadline(date);
   };
@@ -212,6 +211,7 @@ export const TaskForm = ({
               dateFormat="d MMMM yyyy"
               showTimeSelect={false}
               customInput={<div></div>}
+              minDate={startDate}
             />
           </DatePickerContainer>
         </StyledTitleDeadline>

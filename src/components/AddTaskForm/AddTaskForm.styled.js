@@ -199,6 +199,10 @@ export const DatePickerContainer = styled.div`
   .react-datepicker__day--selected:hover {
     background-color: ${props => props.theme.colors.calendarSelectedColor};
   }
+
+  .react-datepicker__day--disabled {
+    opacity: 0.3;
+  }
 `;
 
 export const DatePickerBtn = styled.button`
