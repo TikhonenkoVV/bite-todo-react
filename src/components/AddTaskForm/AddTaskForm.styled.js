@@ -136,7 +136,7 @@ export const StyledFormikTitleNotification = styled.div`
 
 export const StyledFormikDescriptionNotification = styled.div`
   margin-top: -15px;
-  color: ${props => props.theme.colors.btnAddColumn};
+  color: #ed4337;
   font-size: 12px;
 `;
 
