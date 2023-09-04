@@ -18,6 +18,7 @@ import { selectBoardsState } from 'store/boards/selectors';
 import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryButton';
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 
+
 const iconNames = [
   'Project',
   'star',
@@ -56,6 +57,15 @@ const FormForBoards = ({ boardId, type, onClick }) => {
   const board = boards.find(board => board._id === boardId);
   const buttonText = type === 'edit' ? 'Edit' : 'Create';
   const icon = type === 'edit' ? 'pencil' : 'plus';
+  let boardNumber = 1;
+
+  const editBoardNumber = () => {
+    if (boards.find(board => board.title.includes(`Board ${boardNumber}`))) {
+      boardNumber += 1;
+      editBoardNumber();
+    }
+    return boardNumber;
+  };
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -76,9 +86,8 @@ const FormForBoards = ({ boardId, type, onClick }) => {
       validationSchema={validationSchema}
       onSubmit={(values, formik) => {
         if (
-          boards.find(
-            b => b.title === values.title && board.title !== values.title
-          )
+          boards.find(board => board.title === values.title) &&
+          type !== 'edit'
         ) {
           formik.setFieldError(
             'title',
@@ -87,10 +96,10 @@ const FormForBoards = ({ boardId, type, onClick }) => {
           return;
         }
         if (values.title === '') {
-          values.title = `Board ${boards.length + 1}`;
+          values.title = `Board ${editBoardNumber()}`;
         }
         type === 'edit' ? dispatch(edit(values)) : dispatch(add(values));
-
+        boardNumber = 1;
         onClick();
       }}
     >
@@ -99,7 +108,7 @@ const FormForBoards = ({ boardId, type, onClick }) => {
           <FormInput
             id="title"
             name="title"
-            placeholder={`Board ${boards.length + 1}`}
+            placeholder={`Board ${editBoardNumber()}`}
             value={formik.values.title}
           />
           {formik.errors.title && formik.touched.title && (

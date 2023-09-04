@@ -60,6 +60,7 @@ export const TaskForm = ({
       .min(1, 'Title must contain at least 3 characters')
       .max(32, 'Title must not exceed 50 characters'),
     description: Yup.string()
+      .required('description is Required')
       .min(1, 'Description must contain at least 10 characters')
       .max(500, 'Description must not exceed 500 characters'),
     priority: Yup.string().required('Please select a color'),
@@ -81,10 +82,7 @@ export const TaskForm = ({
     try {
       values.title =
         values.title === '' ? `Task ${cardsNumber + 1}` : values.title;
-      values.description =
-        values.description === ''
-          ? `Description for ${values.title}`
-          : values.description;
+
       await onSubmit(values);
       resetForm();
       onClose();
