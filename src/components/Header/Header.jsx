@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ThemeSelector from './ThemeSelector';
 import Profile from './Profile';
-import { Svg } from 'components/SvgIcon/SvgIcon';
 import { StyledHeader, DivBtnStyle, StyledNav } from './Header.styled';
+import { Svg } from 'components/SvgIcon/SvgIcon';
 
 const Header = ({ menuActive, setMenuActive, toggleMenu }) => {
+  const [windowWidth, setWindowWidth] = useState();
+
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape' && window.innerWidth <= 1439) {
@@ -24,6 +26,7 @@ const Header = ({ menuActive, setMenuActive, toggleMenu }) => {
       } else {
         setMenuActive(false);
       }
+      setWindowWidth(window.innerWidth);
     };
 
     handleResize();
@@ -38,7 +41,11 @@ const Header = ({ menuActive, setMenuActive, toggleMenu }) => {
   return (
     <StyledHeader>
       <DivBtnStyle onClick={toggleMenu}>
-        <Svg w={32} h={32} icon="burger" />
+        <Svg
+          w={windowWidth < 767 ? 24 : 32}
+          h={windowWidth < 767 ? 24 : 32}
+          icon="burger"
+        />
       </DivBtnStyle>
       <StyledNav>
         <ThemeSelector />

@@ -7,14 +7,14 @@ export const StyledHeader = styled.header`
   line-height: 1.5;
   background-color: ${props => props.theme.colors.header};
   color: ${props => props.theme.colors.cardMajorText};
-  padding: 18px 32px;
-  height: 60px;
+  padding: 14px 20px;
   max-width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   @media screen and (${devices.tablet}) {
+    padding: 18px 32px;
     height: 68px;
   }
 
@@ -26,10 +26,14 @@ export const StyledHeader = styled.header`
 
 export const DivBtnStyle = styled.div`
   display: block;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
-  fill: currentColor; 
+  fill: currentColor;
+  @media screen and (${devices.tablet}) {
+    width: 32px;
+    height: 32px;
+  }
   @media screen and (${devices.desktop}) {
     display: none;
   }

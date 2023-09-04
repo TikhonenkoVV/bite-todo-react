@@ -146,11 +146,6 @@ export const MainDashboardIcon = styled.svg`
   fill: ${props => props.theme.colors.addColumnIconFill};
 `;
 
-export const FilterContainer = styled.div`
-  position: absolute;
-  width: 100%;
-`;
-
 export const ContentHolder = styled.div`
   width: 100%;
 `;

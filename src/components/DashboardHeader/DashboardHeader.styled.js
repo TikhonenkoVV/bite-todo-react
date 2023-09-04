@@ -4,31 +4,29 @@ import { devices, baseTransition } from 'styles';
 
 export const DashboardHeaderTitle = styled.h2`
   position: absolute;
-  top: 10px;
-  left: 12px;
+  top: 14px;
+  left: 20px;
   color: ${props => props.theme.colors.titleColor};
   font-size: 14px;
   font-weight: 500;
-  line-height: normal;
+  line-height: 1.5;
   letter-spacing: -0.28px;
   background-color: ${props =>
     props.dashboard.background === 'default'
-      ? 'none'
+      ? 'transparent'
       : props.theme.colors.filterBgd};
-  padding: 4px 8px;
   border-radius: 10px;
 
   @media screen and (${devices.tablet}) {
     font-size: 18px;
     letter-spacing: -0.36px;
     top: 24px;
-    left: 24px;
-
-    padding: 2px 8px;
+    left: 32px;
   }
 
   @media screen and (${devices.desktop}) {
-    top: 8px;
+    top: 10px;
+    left: 24px;
   }
 `;
 
@@ -48,7 +46,7 @@ export const DashboardHeaderFilter = styled.button`
     if (!props.dashboard) return 'none';
 
     return props.dashboard && props.dashboard.background === 'default'
-      ? 'none'
+      ? 'transparent'
       : props.theme.colors.filterBgd;
   }};
   padding: 4px 8px;

@@ -30,5 +30,4 @@ export const TextStyled = styled.span`
 export const AvatarImg = styled.img`
   border-radius: 8px;
   object-fit: cover;
-  height: 31.1px;
 `;

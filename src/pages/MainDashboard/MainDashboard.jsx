@@ -13,7 +13,6 @@ import {
   MainDashboardAddColumnButton,
   MainDashboardIconContainer,
   MainDashboardIcon,
-  FilterContainer,
   ContentHolder,
   ContentWrapper,
   TrackHorizontal,
@@ -37,13 +36,11 @@ const MainDashboard = () => {
 
   return (
     <MainDashboardSection background={selectedBoard?.background || 'default'}>
-      <FilterContainer>
-        <DashboardHeader
-          name={selectedBoard?.title}
-          disabled={!hasCards}
-          dashboard={selectedBoard}
-        />
-      </FilterContainer>
+      <DashboardHeader
+        name={selectedBoard?.title}
+        disabled={!hasCards}
+        dashboard={selectedBoard}
+      />
       <MainDashboardContainer>
         {boardName ? (
           <>
