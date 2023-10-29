@@ -112,6 +112,7 @@ export const TaskForm = ({
     <ModalContent>
       <StyledP>{isEditing ? 'Edit Card' : 'Add Card'}</StyledP>
       <ButtonIcon
+        ariaLabel="close"
         action={onClose}
         style={{
           position: 'absolute',

@@ -67,12 +67,14 @@ export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
             <ColumnTitle>{title}</ColumnTitle>
             <IconContainer>
               <ButtonIcon
+                ariaLabel="edit"
                 action={() => handleEditCardButtonClick(openModal)}
                 w={16}
                 h={16}
                 icon="pencil"
               />
               <ButtonIcon
+                ariaLabel="delete"
                 action={handleDeleteColumnEmty}
                 w={16}
                 h={16}

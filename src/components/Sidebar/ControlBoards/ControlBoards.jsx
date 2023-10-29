@@ -44,7 +44,7 @@ export const ControlBoards = () => {
   }, [dispatch, isLoggedIn]);
 
   useEffect(() => {
-    if (boards.length > 1 && boards.length === lengthBoard ) {
+    if (boards.length > 1 && boards.length === lengthBoard) {
       return;
     }
     if (boards.length > 0) {
@@ -85,8 +85,12 @@ export const ControlBoards = () => {
         <H2styled>My boards</H2styled>
         <DivStyled>
           <PStyled>Create a new board</PStyled>
-          <ButtonStyled type="button" onClick={openModal}>
-            <Svg w={20} h={20} icon='plus' />
+          <ButtonStyled
+            aria-label="add new board"
+            type="button"
+            onClick={openModal}
+          >
+            <Svg w={20} h={20} icon="plus" />
           </ButtonStyled>
         </DivStyled>
         <Scrollbars
@@ -110,7 +114,7 @@ export const ControlBoards = () => {
                 board={board}
                 idActiveBoard={idActiveBoard}
                 changeIdActiveBoard={id => setIdActiveBoard(id)}
-                changeLengthBoard={(length) => setLengthBoard(length)}
+                changeLengthBoard={length => setLengthBoard(length)}
               />
             ))}
           </UlStyled>

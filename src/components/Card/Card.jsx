@@ -84,6 +84,7 @@ export const Card = forwardRef(
           </CardParamsWrapper>
           {priority !== 'without' && (
             <ToolsButtonBell
+              aria-label="deadline"
               type="button"
               pastDeadline={moment(deadline).isBefore(moment())}
             >
@@ -91,7 +92,13 @@ export const Card = forwardRef(
             </ToolsButtonBell>
           )}
           <ToolsWrapper>
-            <ButtonIcon action={openEditModal} w={16} h={16} icon="pencil" />
+            <ButtonIcon
+              ariaLabel="edit"
+              action={openEditModal}
+              w={16}
+              h={16}
+              icon="pencil"
+            />
             {isEditModalOpen && (
               <Modal onClose={closeEditModal}>
                 <EditTask
@@ -118,6 +125,7 @@ export const Card = forwardRef(
               </Modal>
             )}
             <ButtonIcon
+              ariaLabel="delete"
               action={handleDeleteTaskButtonClick}
               w={16}
               h={16}

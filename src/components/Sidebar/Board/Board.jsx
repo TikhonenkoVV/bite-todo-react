@@ -19,7 +19,12 @@ import { AskDeleteModal } from 'components/AskDeleteModal/AskDeleteModal';
 import { useState } from 'react';
 import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
-export const Board = ({ board, idActiveBoard, changeIdActiveBoard, changeLengthBoard }) => {
+export const Board = ({
+  board,
+  idActiveBoard,
+  changeIdActiveBoard,
+  changeLengthBoard,
+}) => {
   const [title, setTitle] = useState('Delete board?');
   const { isModalOpen, openModal, closeModal } = useModal();
   const { isAskDeleteModalOpen, openAskDeleteModal, closeAskDeleteModal } =
@@ -69,8 +74,20 @@ export const Board = ({ board, idActiveBoard, changeIdActiveBoard, changeLengthB
         </DivNameStyled>
         {idActiveBoard === board._id && (
           <DivIconStyled>
-          <ButtonIcon action={openModal} w={16} h={16} icon='pencil'/>
-          <ButtonIcon action={handleAskDeleteBoard} w={16} h={16} icon='trash'/>
+            <ButtonIcon
+              ariaLabel="edit"
+              action={openModal}
+              w={16}
+              h={16}
+              icon="pencil"
+            />
+            <ButtonIcon
+              ariaLabel="delete"
+              action={handleAskDeleteBoard}
+              w={16}
+              h={16}
+              icon="trash"
+            />
           </DivIconStyled>
         )}
       </LiStyled>

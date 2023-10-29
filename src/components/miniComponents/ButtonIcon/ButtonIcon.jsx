@@ -7,9 +7,15 @@ export const ButtonIcon = ({
   h = 18,
   icon = 'x-close',
   style,
+  ariaLabel,
 }) => {
   return (
-    <StyledButton type="button" onClick={action} style={style}>
+    <StyledButton
+      aria-label={ariaLabel}
+      type="button"
+      onClick={action}
+      style={style}
+    >
       <Svg w={w} h={h} icon={icon} />
     </StyledButton>
   );

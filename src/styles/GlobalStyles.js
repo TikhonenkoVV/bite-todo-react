@@ -21,6 +21,7 @@ export const GlobalStyles = css`
     font-family: 'Poppins';
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
     src: url('${eotRegular}');
     src: url('${eotRegular}?#iefix') format('embedded-opentype'),
       url('${woff2Regular}') format('woff2'),
@@ -33,6 +34,7 @@ export const GlobalStyles = css`
     font-family: 'Poppins';
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
     src: url('${eotMedium}');
     src: url('${eotMedium}?#iefix') format('embedded-opentype'),
       url('${woff2Medium}') format('woff2'), url('${woffMedium}') format('woff'),
@@ -44,6 +46,7 @@ export const GlobalStyles = css`
     font-family: 'Poppins';
     font-weight: 600;
     font-style: normal;
+    font-display: swap;
     src: url('${eotSemiBold}');
     src: url('${eotSemiBold}?#iefix') format('embedded-opentype'),
       url('${woff2SemiBold}') format('woff2'),
