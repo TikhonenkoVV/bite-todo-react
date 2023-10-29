@@ -16,7 +16,7 @@ export const CardListContainer = styled.div`
   }
 `;
 
-export const CardListStyled = styled.ul`
+export const CardListStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { priority } from 'styles';
 
-export const CardStyled = styled.li`
+export const CardStyled = styled.div`
   position: relative;
   height: 154px;
   width: 100%;

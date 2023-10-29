@@ -20,7 +20,7 @@ import { PrimaryButton } from 'components/miniComponents/PrimaryButton/PrimaryBu
 import { IconAddEditDeleteModal } from 'components/miniComponents/IconAddEditDeleteModal/IconAddEditDeleteModal';
 import { ButtonIcon } from 'components/miniComponents/ButtonIcon/ButtonIcon';
 
-export const Column = ({ _id, title, createdAt, cards, owner, index }) => {
+export const Column = ({ _id, title, cards, owner, index }) => {
   const [titleColumn, setTitleColumn] = useState('Delete column?');
   const [isEditCardMode, setIsEditCardMode] = useState(false);
 
